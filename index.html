@@ -378,34 +378,128 @@ tailwind.config = {
             </div>
           </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 mb-10">
-          <div class="space-y-2">
-            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Tagareal (m²)</label>
-            <input id="k-tag" class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 py-3 text-2xl font-headline focus:ring-0 focus:border-primary transition-colors placeholder:text-outline-variant/50" placeholder="f.eks. 120" type="number" oninput="calcKortlaeg()"/>
-            <p class="text-xs text-on-surface-variant/70 italic">Hvor meget vand opsamler dit tag?</p>
-          </div>
-          <div class="space-y-2">
-            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Havens areal (m²)</label>
-            <input id="k-have" class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 py-3 text-2xl font-headline focus:ring-0 focus:border-primary transition-colors placeholder:text-outline-variant/50" placeholder="f.eks. 450" type="number" oninput="calcKortlaeg()"/>
-            <p class="text-xs text-on-surface-variant/70 italic">Det grønne areal til nedsivning.</p>
-          </div>
-          <div class="space-y-2">
-            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Befæstet areal (m²)</label>
-            <input id="k-befaestet" class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 py-3 text-2xl font-headline focus:ring-0 focus:border-primary transition-colors placeholder:text-outline-variant/50" placeholder="f.eks. 40" type="number" oninput="calcKortlaeg()"/>
-            <p class="text-xs text-on-surface-variant/70 italic">Fliser, indkørsel og asfalt.</p>
-          </div>
-          <div class="space-y-2">
-            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Jordbundstype</label>
-            <select id="k-jord" class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 py-3 text-xl font-headline focus:ring-0 focus:border-primary transition-colors" onchange="calcKortlaeg()">
-              <option value="1">Sandet jord (hurtig nedsivning)</option>
-              <option value="0.6" selected>Leret jord (middel nedsivning)</option>
-              <option value="0.3">Tung lerjord (langsom nedsivning)</option>
-            </select>
-            <p class="text-xs text-on-surface-variant/70 italic">Hvilken type jord er der i din have?</p>
+        <!-- Arealer -->
+        <div class="mb-6">
+          <h3 class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">square_foot</span>Arealer</h3>
+          <div class="grid grid-cols-2 gap-x-10 gap-y-8">
+            <div class="space-y-1">
+              <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Tagareal (m²)</label>
+              <input id="k-tag" class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 py-2 text-2xl font-headline focus:ring-0 focus:border-primary transition-colors placeholder:text-outline-variant/40" placeholder="120" type="number" oninput="calcKortlaeg()"/>
+            </div>
+            <div class="space-y-1">
+              <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Befæstet areal (m²)</label>
+              <input id="k-befaestet" class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 py-2 text-2xl font-headline focus:ring-0 focus:border-primary transition-colors placeholder:text-outline-variant/40" placeholder="40" type="number" oninput="calcKortlaeg()"/>
+            </div>
+            <div class="space-y-1">
+              <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Græsareal (m²)</label>
+              <input id="k-graes" class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 py-2 text-2xl font-headline focus:ring-0 focus:border-primary transition-colors placeholder:text-outline-variant/40" placeholder="200" type="number" oninput="calcKortlaeg()"/>
+            </div>
+            <div class="space-y-1">
+              <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Mellemhøj vegetation (m²)</label>
+              <input id="k-veg" class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 py-2 text-2xl font-headline focus:ring-0 focus:border-primary transition-colors placeholder:text-outline-variant/40" placeholder="20" type="number" oninput="calcKortlaeg()"/>
+            </div>
           </div>
         </div>
-        <button onclick="calcKortlaeg()" class="w-full bg-primary text-on-primary py-5 rounded-lg font-label uppercase text-sm tracking-widest transition-all font-bold hover:bg-primary-dim">
-          Beregn mit behov
+
+        <!-- Jordbund og regnhændelse -->
+        <div class="grid grid-cols-2 gap-x-10 gap-y-6 mb-6">
+          <div class="space-y-1">
+            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-xs text-primary">layers</span>Jordbundstype</label>
+            <select id="k-jord" class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 py-2 text-base font-headline focus:ring-0 focus:border-primary transition-colors" onchange="calcKortlaeg()">
+              <option value="864">Grus/sandjord (864 l/m²/døgn)</option>
+              <option value="86.4" selected>Leret jord (86,4 l/m²/døgn)</option>
+              <option value="8.64">Siltjord (8,6 l/m²/døgn)</option>
+              <option value="1">Moræneler (meget lav nedsivning)</option>
+            </select>
+          </div>
+          <div class="space-y-1">
+            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-xs text-primary">thunderstorm</span>Regnhændelse (dimensionering)</label>
+            <select id="k-regn" class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 py-2 text-base font-headline focus:ring-0 focus:border-primary transition-colors" onchange="calcKortlaeg()">
+              <option value="54.24">5-årsregn 2011–2040 (54 mm)</option>
+              <option value="56.04">5-årsregn 2041–2070 (56 mm)</option>
+              <option value="74.47">20-årsregn 2011–2040 (74 mm)</option>
+              <option value="76.89">20-årsregn 2041–2070 (77 mm)</option>
+              <option value="90.72" selected>50-årsregn 2011–2040 (91 mm)</option>
+              <option value="92.74">50-årsregn 2041–2070 (93 mm)</option>
+              <option value="102.19">50-årsregn 2071–2100 (102 mm)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Træer -->
+        <div class="mb-6 pt-4 border-t border-outline-variant/10">
+          <h3 class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">park</span>Træer (fordampning via interception)</h3>
+          <div class="grid grid-cols-2 gap-6">
+            <div class="bg-surface-container p-4 rounded-xl">
+              <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant block mb-3">Løvtræer</label>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="text-[10px] text-on-surface-variant">Art</label>
+                  <select id="k-loev-art" class="w-full bg-transparent border-b border-outline-variant/30 py-1 text-sm font-headline focus:ring-0 focus:border-primary" onchange="calcKortlaeg()">
+                    <option value="5.7">Lind (Tilia) — BAI 5,7</option>
+                    <option value="5.4">Hestekastanje (Aesculus)</option>
+                    <option value="5.4">Ahorn (Acer)</option>
+                    <option value="4.8">Poppel (Populus)</option>
+                    <option value="4.0" selected>Eg (Quercus) — BAI 4,0</option>
+                    <option value="3.1">Ask (Fraxinus)</option>
+                    <option value="3.1">El (Alnus)</option>
+                    <option value="2.7">Pære (Pyrus)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="text-[10px] text-on-surface-variant">Antal</label>
+                  <input id="k-loev-antal" type="number" min="0" value="0" class="w-full bg-transparent border-b border-outline-variant/30 py-1 text-xl font-headline focus:ring-0 focus:border-primary" oninput="calcKortlaeg()"/>
+                </div>
+                <div class="col-span-2">
+                  <label class="text-[10px] text-on-surface-variant">Kronediameter (m)</label>
+                  <input id="k-loev-krone" type="number" min="1" value="5" class="w-full bg-transparent border-b border-outline-variant/30 py-1 text-xl font-headline focus:ring-0 focus:border-primary" oninput="calcKortlaeg()"/>
+                </div>
+              </div>
+            </div>
+            <div class="bg-surface-container p-4 rounded-xl">
+              <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant block mb-3">Nåletræer</label>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="text-[10px] text-on-surface-variant">Art</label>
+                  <select id="k-naal-art" class="w-full bg-transparent border-b border-outline-variant/30 py-1 text-sm font-headline focus:ring-0 focus:border-primary" onchange="calcKortlaeg()">
+                    <option value="8.2">Rødgran (Picea) — BAI 8,2</option>
+                    <option value="7.5" selected>Cypres (Chamaecyparis)</option>
+                    <option value="4.0">Fyr (Pinus)</option>
+                    <option value="3.8">Lærk (Larix)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="text-[10px] text-on-surface-variant">Antal</label>
+                  <input id="k-naal-antal" type="number" min="0" value="0" class="w-full bg-transparent border-b border-outline-variant/30 py-1 text-xl font-headline focus:ring-0 focus:border-primary" oninput="calcKortlaeg()"/>
+                </div>
+                <div class="col-span-2">
+                  <label class="text-[10px] text-on-surface-variant">Kronediameter (m)</label>
+                  <input id="k-naal-krone" type="number" min="1" value="3" class="w-full bg-transparent border-b border-outline-variant/30 py-1 text-xl font-headline focus:ring-0 focus:border-primary" oninput="calcKortlaeg()"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Genbrug af regnvand -->
+        <div class="mb-8 pt-4 border-t border-outline-variant/10">
+          <h3 class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">recycling</span>Genbrug af regnvand</h3>
+          <div class="grid grid-cols-2 gap-6">
+            <div class="space-y-1">
+              <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Toiletskyl (personer)</label>
+              <input id="k-toilet" type="number" min="0" value="0" class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 py-2 text-2xl font-headline focus:ring-0 focus:border-primary" oninput="calcKortlaeg()"/>
+              <p class="text-[10px] text-on-surface-variant/60 italic">28,35 l/person/dag</p>
+            </div>
+            <div class="space-y-1">
+              <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Tøjvask (personer)</label>
+              <input id="k-vask" type="number" min="0" value="0" class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 py-2 text-2xl font-headline focus:ring-0 focus:border-primary" oninput="calcKortlaeg()"/>
+              <p class="text-[10px] text-on-surface-variant/60 italic">13,65 l/person/dag</p>
+            </div>
+          </div>
+        </div>
+
+        <button onclick="calcKortlaeg()" class="w-full bg-primary text-on-primary py-5 rounded-lg font-label uppercase text-sm tracking-widest transition-all font-bold hover:opacity-90">
+          Beregn mit vandbehov
         </button>
       </section>
 
@@ -427,42 +521,102 @@ tailwind.config = {
       </section>
     </div>
 
-    <aside class="lg:col-span-5 sticky top-32">
-      <div class="bg-primary text-on-primary p-10 md:p-14 rounded-xl flex flex-col items-center text-center relative overflow-hidden">
-        <div class="absolute -bottom-20 -left-20 w-64 h-64 border-[32px] border-white/5 rounded-full"></div>
-        <span class="font-label text-xs uppercase tracking-[0.3em] opacity-80 mb-6">Dit Estimerede Behov</span>
-        <div class="mb-2">
-          <span class="font-headline text-8xl tracking-tighter" id="k-result">—</span>
-          <span class="font-headline text-2xl block mt-[-1rem]">Liter vand</span>
+    <aside class="lg:col-span-5 sticky top-32 space-y-4">
+      <!-- Hoved-resultat -->
+      <div class="bg-primary text-on-primary p-8 rounded-xl relative overflow-hidden">
+        <div class="absolute -bottom-16 -left-16 w-48 h-48 border-[24px] border-white/5 rounded-full"></div>
+        <span class="font-label text-xs uppercase tracking-[0.3em] opacity-70 mb-2 block">Magasineringskrav</span>
+        <div class="flex items-baseline gap-2 mb-1">
+          <span class="font-headline text-7xl tracking-tighter" id="k-result">—</span>
+          <span class="font-headline text-xl opacity-80">m³</span>
         </div>
-        <p class="text-on-primary/70 text-sm max-w-[240px] mb-12">pr. kraftig regnepisode (20mm regn)</p>
-        <div class="w-full space-y-8">
-          <div class="bg-on-primary/10 p-6 rounded-lg">
-            <h3 class="font-label text-xs uppercase tracking-widest mb-4 opacity-90">Svarer til</h3>
-            <div class="flex flex-wrap justify-center gap-3">
-              <div class="flex flex-col items-center gap-1">
-                <div class="w-12 h-12 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center">
-                  <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">bathtub</span>
-                </div>
-                <span class="font-label text-[10px] uppercase font-bold" id="k-badekar">— Badekar</span>
-              </div>
-              <div class="w-[1px] h-12 bg-white/20 mx-2"></div>
-              <div class="flex flex-col items-center gap-1">
-                <div class="w-12 h-12 bg-secondary-fixed text-on-secondary-fixed rounded-full flex items-center justify-center">
-                  <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">water_drop</span>
-                </div>
-                <span class="font-label text-[10px] uppercase font-bold" id="k-spande">— Spande</span>
-              </div>
+        <p class="text-on-primary/60 text-xs mb-6" id="k-result-sub">Indtast arealer for at beregne</p>
+
+        <!-- Sæsonfordeling -->
+        <div class="bg-on-primary/10 rounded-lg p-4 mb-4">
+          <h3 class="font-label text-[10px] uppercase tracking-widest mb-3 opacity-80">Vandbalance pr. sæson (m³)</h3>
+          <div class="grid grid-cols-4 gap-2 text-center">
+            <div>
+              <div class="text-sm font-headline font-bold" id="k-vinter">—</div>
+              <div class="text-[9px] opacity-60 uppercase">Vinter</div>
+            </div>
+            <div>
+              <div class="text-sm font-headline font-bold" id="k-foraar">—</div>
+              <div class="text-[9px] opacity-60 uppercase">Forår</div>
+            </div>
+            <div>
+              <div class="text-sm font-headline font-bold" id="k-sommer">—</div>
+              <div class="text-[9px] opacity-60 uppercase">Sommer</div>
+            </div>
+            <div>
+              <div class="text-sm font-headline font-bold" id="k-efteraar">—</div>
+              <div class="text-[9px] opacity-60 uppercase">Efterår</div>
             </div>
           </div>
-          <button onclick="navigate('byg')" class="w-full bg-white text-primary py-5 rounded-md font-label uppercase text-sm tracking-widest font-bold hover:bg-primary-container transition-colors shadow-xl">
-            Se løsningsforslag →
-          </button>
+        </div>
+
+        <button onclick="navigate('byg')" class="w-full bg-white text-primary py-4 rounded-lg font-label uppercase text-sm tracking-widest font-bold hover:bg-primary-container transition-colors">
+          Design din løsning →
+        </button>
+      </div>
+
+      <!-- Detaljerede nøgletal -->
+      <div class="bg-surface-container-lowest rounded-xl p-6 space-y-4 border border-outline-variant/10">
+        <h3 class="font-headline text-base font-bold text-on-surface">Nøgletal fra beregningen</h3>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="bg-surface-container p-3 rounded-lg">
+            <div class="text-lg font-headline font-bold text-primary" id="k-regnpaamatrikel">—</div>
+            <div class="text-[10px] font-label uppercase text-on-surface-variant mt-0.5">Regn på matrikel (m³)</div>
+          </div>
+          <div class="bg-surface-container p-3 rounded-lg">
+            <div class="text-lg font-headline font-bold text-primary" id="k-nedsivning">—</div>
+            <div class="text-[10px] font-label uppercase text-on-surface-variant mt-0.5">Nedsivning (m³/døgn)</div>
+          </div>
+          <div class="bg-surface-container p-3 rounded-lg">
+            <div class="text-lg font-headline font-bold text-tertiary" id="k-fordampning">—</div>
+            <div class="text-[10px] font-label uppercase text-on-surface-variant mt-0.5">Fordampning årligt (m³)</div>
+          </div>
+          <div class="bg-surface-container p-3 rounded-lg">
+            <div class="text-lg font-headline font-bold text-secondary" id="k-kloak-besparelse">—</div>
+            <div class="text-[10px] font-label uppercase text-on-surface-variant mt-0.5">Kloak spares (m³/år)</div>
+          </div>
+        </div>
+
+        <!-- Digehøjde -->
+        <div class="bg-surface-container p-4 rounded-lg border-l-4 border-primary">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-label uppercase text-on-surface-variant">Minimum digehøjde</span>
+            <span class="text-xl font-headline font-bold text-primary" id="k-digeh">— cm</span>
+          </div>
+          <div class="h-2 bg-surface-container-highest rounded-full overflow-hidden">
+            <div id="k-digebar" class="h-full bg-primary transition-all duration-700 rounded-full" style="width:0%"></div>
+          </div>
+          <p class="text-[10px] text-on-surface-variant mt-2 italic" id="k-dige-label">For den valgte regnhændelse</p>
+        </div>
+
+        <!-- Min. nedsivningsareal -->
+        <div class="bg-surface-container p-4 rounded-lg border-l-4 border-tertiary">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-label uppercase text-on-surface-variant">Min. nedsivningsareal</span>
+            <span class="text-xl font-headline font-bold text-tertiary" id="k-minneds">— m²</span>
+          </div>
+          <p class="text-[10px] text-on-surface-variant mt-1 italic">Arealkrav til faskine/regnbed baseret på jordbund</p>
+        </div>
+
+        <!-- Sæson-vandbalancegraf -->
+        <div class="bg-surface-container p-4 rounded-lg">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="material-symbols-outlined text-primary text-sm">bar_chart</span>
+            <span class="text-xs font-label uppercase tracking-wider text-on-surface-variant font-bold">Vandbalance pr. sæson</span>
+          </div>
+          <div id="k-saeson-graf" class="text-[10px] text-on-surface-variant italic">Udfyld arealerne for at se sæsonfordelingen</div>
         </div>
       </div>
-      <div class="mt-8 flex gap-4 p-6 bg-surface-container rounded-lg items-start">
-        <span class="material-symbols-outlined text-primary">info</span>
-        <p class="text-sm text-on-surface-variant leading-relaxed">Dette er et estimat baseret på gennemsnitlige nedbørstal for Egedal Kommune. I næste trin kan du vælge specifikke løsninger som regnbede eller faskiner.</p>
+
+      <div class="flex gap-3 p-4 bg-surface-container rounded-lg items-start">
+        <span class="material-symbols-outlined text-primary text-sm shrink-0 mt-0.5">info</span>
+        <p class="text-xs text-on-surface-variant leading-relaxed">Beregningsmetode fra Nina Sybrandt Jørgensens og Morten Skovgaards LAR-værktøj (2024). Nedbørsdata: DMI Klimaatlas. Fordampningskoefficienter: forskningslitteratur (ISA-Arbor, MDPI, GEUS).</p>
       </div>
     </aside>
   </div>
@@ -492,7 +646,7 @@ tailwind.config = {
         <div class="mt-6 h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
           <div class="h-full primary-gradient transition-all duration-500" id="byg-bar" style="width:100%"></div>
         </div>
-        <p class="mt-3 text-xs text-on-surface-variant font-medium italic">Af i alt 10.000 liter fra 100-års hændelse</p>
+        <p class="mt-3 text-xs text-on-surface-variant font-medium italic" id="byg-total-label">Af i alt 10.000 liter fra 100-års hændelse</p>
       </div>
     </div>
   </header>
@@ -1029,15 +1183,222 @@ function initReveal() {
   }, 100);
 }
 
-// ── Kortlæg beregning ──
+// ══════════════════════════════════════════════
+// LAR BEREGNINGSMOTOR — oversat fra Excel-ark
+// Nina Sybrandt Jørgensen & Morten Skovgaard, 2024
+// ══════════════════════════════════════════════
+
+// Sæsonnedbør (mm) — Egedal/Greve-gennemsnit fra DMI
+const SAESON_NEDBOER = { vinter:193, foraar:198, sommer:211, efteraar:238 };
+// Antal dage pr. sæson
+const SAESON_DAGE = { vinter:90, foraar:92, sommer:92, efteraar:91 };
+// Antal tørre dage pr. sæson
+const TOERRE_DAGE = { vinter:58.7, foraar:67.3, sommer:62.95, efteraar:60.08 };
+// Evaporationsrater (mm/dag) — åbent vand
+const EVAP_RATER = { vinter:0.333, foraar:2.0, sommer:3.0, efteraar:0.917 };
+// Græs fordampning (l/m²/dag)
+const GRAES_EVAP = { vinter:0.267, foraar:1.6, sommer:2.4, efteraar:0.733 };
+// Mellemhøj vegetation (l/m²/dag)
+const VEG_EVAP = { vinter:0.4, foraar:2.4, sommer:3.6, efteraar:1.1 };
+
 function calcKortlaeg() {
-  const tag = parseFloat(document.getElementById('k-tag').value) || 0;
-  const befaestet = parseFloat(document.getElementById('k-befaestet').value) || 0;
-  const regn = window._meteoEpisode || 0.02; // lokal data eller default 20mm
-  const liter = Math.round((tag + befaestet * 0.9) * regn * 1000);
-  document.getElementById('k-result').textContent = liter > 0 ? liter.toLocaleString('da-DK') : '—';
-  document.getElementById('k-badekar').textContent = liter > 0 ? Math.round(liter / 150) + ' Badekar' : '— Badekar';
-  document.getElementById('k-spande').textContent = liter > 0 ? Math.round(liter / 10) + ' Spande' : '— Spande';
+  // Hent inputs
+  const tag        = parseFloat(document.getElementById('k-tag')?.value)        || 0;
+  const befaestet  = parseFloat(document.getElementById('k-befaestet')?.value)  || 0;
+  const graes      = parseFloat(document.getElementById('k-graes')?.value)      || 0;
+  const veg        = parseFloat(document.getElementById('k-veg')?.value)        || 0;
+  const nedsivEvne = parseFloat(document.getElementById('k-jord')?.value)       || 86.4; // l/m²/døgn
+  const regnEpisode= parseFloat(document.getElementById('k-regn')?.value)       || 90.72; // mm/døgn
+  const loevBAI    = parseFloat(document.getElementById('k-loev-art')?.value)   || 4.0;
+  const loevAntal  = parseFloat(document.getElementById('k-loev-antal')?.value) || 0;
+  const loevKrone  = parseFloat(document.getElementById('k-loev-krone')?.value) || 5;
+  const naalBAI    = parseFloat(document.getElementById('k-naal-art')?.value)   || 7.5;
+  const naalAntal  = parseFloat(document.getElementById('k-naal-antal')?.value) || 0;
+  const naalKrone  = parseFloat(document.getElementById('k-naal-krone')?.value) || 3;
+  const toiletPers = parseFloat(document.getElementById('k-toilet')?.value)     || 0;
+  const vaskPers   = parseFloat(document.getElementById('k-vask')?.value)       || 0;
+
+  if (tag === 0 && befaestet === 0 && graes === 0) return;
+
+  // Skaler sæsonnedbør med lokal Open-Meteo data hvis tilgængeligt
+  const stdAar = 193 + 198 + 211 + 238; // 840mm standard
+  const lokalAar = window._meteoAarlig;
+  const skala = lokalAar ? Math.min(1.5, Math.max(0.6, lokalAar / stdAar)) : 1.0;
+  const lokalRegn = lokalAar ? skala : 1.0;
+
+  // Brug lokal episodenedbør hvis hentet, ellers behold dropdown-valget
+  const regnEpisodeFinal = window._meteoEpisode && window._meteoEpisode > 10
+    ? window._meteoEpisode
+    : regnEpisode;
+
+  // Justér SAESON-nedbør med lokalskala
+  const NB = {
+    vinter:   SAESON_NEDBOER.vinter   * lokalRegn,
+    foraar:   SAESON_NEDBOER.foraar   * lokalRegn,
+    sommer:   SAESON_NEDBOER.sommer   * lokalRegn,
+    efteraar: SAESON_NEDBOER.efteraar * lokalRegn,
+  };
+
+  // ── Grundareal ──
+  const grundAreal = tag + befaestet + graes + veg;
+
+  // ── Samlet regn på matrikel (m³/år) — bruger lokalt skaleret NB ──
+  const aarNedb = (NB.vinter + NB.foraar + NB.sommer + NB.efteraar) / 1000;
+  const regnPaaMatrikel = grundAreal * aarNedb;
+
+  // ── Nedsivningsareal og kapacitet ──
+  const nedsivAreal    = graes + veg;
+  const nedsivningDøgn = nedsivAreal * nedsivEvne / 1000; // m³/døgn
+
+  // ── Kroneareal ──
+  const loevKroneAreal = loevAntal > 0 ? loevAntal * Math.PI * (loevKrone/2)**2 : 0;
+  const naalKroneAreal = naalAntal > 0 ? naalAntal * Math.PI * (naalKrone/2)**2 : 0;
+
+  // ── Træ-interception (m³) pr. sæson — bruger NB ──
+  function treeInterception(bai, kroneAreal, s) {
+    const vaadeDage    = SAESON_DAGE[s] - TOERRE_DAGE[s];
+    const nedboerPrDag = NB[s] / SAESON_DAGE[s]; // mm/dag
+    return bai * kroneAreal * vaadeDage * nedboerPrDag / 1000 / 1000; // m³
+  }
+
+  const saesoner = ['vinter','foraar','sommer','efteraar'];
+  let loevFordS = {}, naalFordS = {}, graesFordS = {}, vegFordS = {};
+  let toiletForbrug = {}, vaskForbrug = {};
+
+  saesoner.forEach(s => {
+    loevFordS[s]     = treeInterception(loevBAI, loevKroneAreal, s);
+    naalFordS[s]     = treeInterception(naalBAI, naalKroneAreal, s);
+    graesFordS[s]    = graes * GRAES_EVAP[s] * SAESON_DAGE[s] / 1000;
+    vegFordS[s]      = veg   * VEG_EVAP[s]   * SAESON_DAGE[s] / 1000;
+    toiletForbrug[s] = toiletPers * 28.35 * SAESON_DAGE[s] / 1000;
+    vaskForbrug[s]   = vaskPers   * 13.65 * SAESON_DAGE[s] / 1000;
+  });
+
+  // ── Vandbalance pr. sæson — bruger NB ──
+  function tagvandM3(s) { return tag * NB[s] / 1000; }
+
+  let balanceS = {}, nedsivningAarS = {};
+  saesoner.forEach(s => {
+    const tagR            = tagvandM3(s);
+    const forbrug         = toiletForbrug[s] + vaskForbrug[s];
+    const overskudFraTag  = Math.max(0, tagR - forbrug);
+    const regnPaaHave     = (graes + veg + befaestet) * NB[s] / 1000;
+    const vandHaveIalt    = overskudFraTag + regnPaaHave;
+    const fordampning     = loevFordS[s] + naalFordS[s] + graesFordS[s] + vegFordS[s];
+    const nedsivning      = nedsivningDøgn * SAESON_DAGE[s];
+    balanceS[s]           = Math.max(0, vandHaveIalt - fordampning - nedsivning);
+    nedsivningAarS[s]     = Math.min(nedsivning, Math.max(0, vandHaveIalt - fordampning));
+  });
+
+  const nedsivningAar  = Object.values(nedsivningAarS).reduce((a,b) => a+b, 0);
+  const fordampningAar = saesoner.reduce((sum,s) =>
+    sum + loevFordS[s] + naalFordS[s] + graesFordS[s] + vegFordS[s], 0);
+
+  // ── Magasineringskrav — bruger lokal episodenedbør hvis tilgængeligt ──
+  const regnPaaMatrikelEpisode = grundAreal * regnEpisodeFinal / 1000; // m³
+  const magasineringskrav      = Math.max(0, regnPaaMatrikelEpisode - nedsivningDøgn);
+
+  // ── Digehøjde (cm) — fra Excel-formel ──
+  // digehøjde = magasineringskrav / nedsivningsareal × 100 (cm)
+  const digehøjde = nedsivAreal > 0
+    ? (magasineringskrav / nedsivAreal) * 100
+    : magasineringskrav * 10; // fallback
+
+  // ── Min. nedsivningsareal (m²) ──
+  // Fra Excel: regnPaaMatrikelEpisode / (nedsivEvne/1000) / SAESON_DAGE_avg
+  const minNedsivAreal = nedsivEvne > 0
+    ? (regnPaaMatrikelEpisode / (nedsivEvne / 1000))
+    : 0;
+
+  // ── Kloak spares (m³/år) ──
+  const kloakSpares = fordampningAar + nedsivningAar +
+    saesoner.reduce((s, sæs) => s + toiletForbrug[sæs] + vaskForbrug[sæs], 0);
+
+  // ── Opdater UI ──
+  const fmt = (v, dec=1) => isNaN(v) ? '—' : v.toFixed(dec).replace('.',',');
+
+  document.getElementById('k-result').textContent = fmt(magasineringskrav);
+  document.getElementById('k-result-sub').textContent =
+    `ved ${regnEpisodeFinal.toFixed(0)} mm regnhændelse — ${fmt(regnPaaMatrikelEpisode)} m³ falder på matriklen`;
+
+  document.getElementById('k-vinter').textContent   = fmt(balanceS.vinter);
+  document.getElementById('k-foraar').textContent   = fmt(balanceS.foraar);
+  document.getElementById('k-sommer').textContent   = fmt(balanceS.sommer);
+  document.getElementById('k-efteraar').textContent = fmt(balanceS.efteraar);
+
+  document.getElementById('k-regnpaamatrikel').textContent = fmt(regnPaaMatrikel);
+  document.getElementById('k-nedsivning').textContent      = fmt(nedsivningDøgn, 2);
+  document.getElementById('k-fordampning').textContent     = fmt(fordampningAar);
+  document.getElementById('k-kloak-besparelse').textContent= fmt(kloakSpares);
+
+  const dige = Math.min(digehøjde, 100);
+  document.getElementById('k-digeh').textContent = fmt(digehøjde, 1) + ' cm';
+  document.getElementById('k-digebar').style.width = Math.min(digehøjde, 100) + '%';
+  document.getElementById('k-dige-label').textContent =
+    `Regnvandsdiget skal være ${fmt(digehøjde,1)} cm højt for at håndtere den valgte hændelse`;
+
+  document.getElementById('k-minneds').textContent = fmt(minNedsivAreal, 0) + ' m²';
+
+  // ── Sæson-vandbalancegraf ──
+  renderSaesonGraf({ balanceS, loevFordS, naalFordS, graesFordS, vegFordS, nedsivningAarS });
+
+  // Gem til Byg-siden
+  window._larMagasineringskrav = magasineringskrav;
+  window._larRegnEpisode = regnEpisode;
+  window._larGrundAreal = grundAreal;
+}
+
+// ── Sæson-vandbalancegraf ──
+function renderSaesonGraf({ balanceS, loevFordS, naalFordS, graesFordS, vegFordS, nedsivningAarS }) {
+  const el = document.getElementById('k-saeson-graf');
+  if (!el) return;
+
+  const saesoner = ['vinter','foraar','sommer','efteraar'];
+  const labels   = ['Vinter','Forår','Sommer','Efterår'];
+
+  const fordampning = saesoner.map(s =>
+    (loevFordS[s]||0) + (naalFordS[s]||0) + (graesFordS[s]||0) + (vegFordS[s]||0));
+  const nedsivning  = saesoner.map(s => Math.max(0, nedsivningAarS[s]||0));
+  const overskud    = saesoner.map(s => balanceS[s]||0);
+
+  const allVals = [...fordampning, ...nedsivning, ...overskud];
+  const maxVal  = Math.max(...allVals, 0.1);
+
+  const barW = 36, gap = 20, groupW = barW * 3 + gap, svgW = groupW * 4 + 60;
+  const svgH = 140, chartH = 90, baseY = 110;
+
+  let bars = '';
+  saesoner.forEach((s, i) => {
+    const x0 = 30 + i * groupW;
+    const hF = (fordampning[i] / maxVal) * chartH;
+    const hN = (nedsivning[i]  / maxVal) * chartH;
+    const hO = (overskud[i]    / maxVal) * chartH;
+
+    bars += `
+      <rect x="${x0}"        y="${baseY - hF}" width="${barW}" height="${hF}" rx="3" fill="#006573" opacity="0.85"/>
+      <rect x="${x0+barW}"   y="${baseY - hN}" width="${barW}" height="${hN}" rx="3" fill="#006a2c" opacity="0.85"/>
+      <rect x="${x0+barW*2}" y="${baseY - hO}" width="${barW}" height="${hO}" rx="3" fill="${hO > 0.01 ? '#b02500' : '#e2ebe0'}" opacity="0.85"/>
+      <text x="${x0 + groupW/2 - gap/2}" y="${baseY + 16}" text-anchor="middle"
+            style="font-family:'Space Grotesk',sans-serif;font-size:10px;fill:#565d57">${labels[i]}</text>`;
+  });
+
+  el.innerHTML = `
+    <svg width="100%" viewBox="0 0 ${svgW} 145" style="overflow:visible">
+      ${bars}
+      <line x1="24" y1="${baseY}" x2="${svgW-10}" y2="${baseY}" stroke="#a8afa7" stroke-width="0.5"/>
+      <text x="10" y="${baseY - chartH + 8}" style="font-family:'Space Grotesk',sans-serif;font-size:9px;fill:#a8afa7">${maxVal.toFixed(1)} m³</text>
+    </svg>
+    <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap">
+      <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:#565d57;font-family:'Space Grotesk',sans-serif">
+        <span style="width:10px;height:10px;background:#006573;border-radius:2px;display:inline-block"></span>Fordampning
+      </span>
+      <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:#565d57;font-family:'Space Grotesk',sans-serif">
+        <span style="width:10px;height:10px;background:#006a2c;border-radius:2px;display:inline-block"></span>Nedsivning
+      </span>
+      <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:#565d57;font-family:'Space Grotesk',sans-serif">
+        <span style="width:10px;height:10px;background:#b02500;border-radius:2px;display:inline-block"></span>Overskud til magasin
+      </span>
+    </div>`;
 }
 
 // ── Byg din løsning ──
@@ -1048,7 +1409,14 @@ function updateByg(key, val, unit, lblId, factor) {
 }
 
 function recalcByg() {
-  const total = 10000;
+  // Brug magasineringskrav fra LAR-beregneren hvis tilgængeligt, ellers 10.000 L
+  const total = window._larMagasineringskrav
+    ? Math.round(window._larMagasineringskrav * 1000)
+    : 10000;
+  document.getElementById('byg-total-label').textContent =
+    window._larMagasineringskrav
+      ? `Af i alt ${total.toLocaleString('da-DK')} liter (dit magasineringskrav)`
+      : 'Af i alt 10.000 liter fra 100-års hændelse';
   const used = Object.values(bygValues).reduce((a, b) => a + b, 0);
   const remaining = Math.max(0, total - used);
   const pct = Math.min(100, (remaining / total) * 100);
@@ -1345,20 +1713,20 @@ function displayBBR(bbr, addr) {
   document.getElementById('bbr-bygaar').textContent = bygEst;
 
   // Auto-fill the form fields
-  const tagInput = document.getElementById('k-tag');
-  const haveInput = document.getElementById('k-have');
-  const befInput = document.getElementById('k-befaestet');
+  const tagInput  = document.getElementById('k-tag');
+  const graesInput = document.getElementById('k-graes');
+  const befInput  = document.getElementById('k-befaestet');
 
   if (tagInput && !tagInput.value) {
     tagInput.value = tagEst;
     animateField(tagInput);
   }
-  if (haveInput && !haveInput.value) {
-    haveInput.value = Math.round(grundEst * 0.65);
-    animateField(haveInput);
+  if (graesInput && !graesInput.value) {
+    graesInput.value = Math.round(grundEst * 0.55);
+    animateField(graesInput);
   }
   if (befInput && !befInput.value) {
-    befInput.value = Math.round(grundEst * 0.2);
+    befInput.value = Math.round(grundEst * 0.18);
     animateField(befInput);
   }
 
@@ -1401,12 +1769,9 @@ async function fetchMeteo(lat, lon) {
       document.getElementById('meteo-episode').textContent = episode;
       panel.classList.remove('hidden');
 
-      // Update the result label to use local data
-      document.querySelector('#page-kortlaeg aside p.text-on-primary\\/70').textContent =
-        `pr. kraftig regnepisode (${episode}mm — lokal data)`;
-
-      // Recalc with local episode
-      window._meteoEpisode = episode / 1000;
+      // Gem til beregner — bruges til at skalere sæsonnedbør
+      window._meteoAarlig  = aarlig;   // mm/år — bruges til sæsonskalering
+      window._meteoEpisode = episode;  // mm/episode
       calcKortlaeg();
     }
   } catch(e) {

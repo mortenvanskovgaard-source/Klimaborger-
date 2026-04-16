@@ -898,110 +898,71 @@ tailwind.config = {
 </div>
 
 <!-- ══════════════════════════════════════════════
-     PAGE 6: INSPIRATION
+     PAGE 6: INSPIRATION – Airbnb-stil kort
 ══════════════════════════════════════════════ -->
-<div id="page-inspiration" class="page pt-28 pb-20 px-8 max-w-7xl mx-auto">
-  <header class="mb-16">
-    <span class="font-label text-primary uppercase tracking-[0.2em] text-xs font-bold block mb-4">Inspiration</span>
-    <h1 class="text-5xl md:text-7xl font-headline font-extrabold text-on-background tracking-tighter max-w-3xl">
-      Haver der <span class="text-primary italic">virker.</span>
-    </h1>
-    <p class="text-on-surface-variant text-xl max-w-2xl mt-6">Se eksempler fra borgere i Egedal der allerede har klimasikret deres have. Lad dig inspirere og find din løsning.</p>
-  </header>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <!-- Filter -->
-  <div class="flex flex-wrap gap-3 mb-12">
-    <button onclick="filterInspi(this,'alle')" class="inspi-filter active-filter px-5 py-2 rounded-full bg-primary text-on-primary font-label text-sm font-bold uppercase tracking-wider">Alle</button>
-    <button onclick="filterInspi(this,'nedsivning')" class="inspi-filter px-5 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface font-label text-sm font-bold uppercase tracking-wider hover:border-primary">Nedsivning</button>
-    <button onclick="filterInspi(this,'fordampning')" class="inspi-filter px-5 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface font-label text-sm font-bold uppercase tracking-wider hover:border-primary">Fordampning</button>
-    <button onclick="filterInspi(this,'opsamling')" class="inspi-filter px-5 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface font-label text-sm font-bold uppercase tracking-wider hover:border-primary">Opsamling</button>
-    <button onclick="filterInspi(this,'forsinkelse')" class="inspi-filter px-5 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface font-label text-sm font-bold uppercase tracking-wider hover:border-primary">Forsinkelse</button>
-  </div>
+<div id="page-inspiration" class="page" style="padding-top:80px;">
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="inspi-grid">
-    <div class="inspi-card group rounded-2xl overflow-hidden bg-surface-container-lowest editorial-shadow hover:scale-[1.02] transition-all" data-cat="nedsivning">
-      <div class="aspect-[4/3] bg-surface-container flex items-center justify-center relative overflow-hidden">
-        <span class="material-symbols-outlined text-primary opacity-20 group-hover:opacity-30 transition-opacity" style="font-size:100px">rainy</span>
-        <div class="absolute bottom-4 left-4"><span class="bg-primary text-on-primary text-xs font-label uppercase font-bold px-3 py-1 rounded-full">Nedsivning</span></div>
+  <!-- Topbar med søgning og filtre -->
+  <div class="sticky top-20 z-40 bg-surface/95 backdrop-blur-md border-b border-outline-variant/15 px-6 py-4">
+    <div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+      <div>
+        <span class="font-label text-primary uppercase tracking-[0.2em] text-xs font-bold block">Inspiration</span>
+        <h1 class="text-2xl md:text-3xl font-headline font-extrabold text-on-background tracking-tighter">
+          Klimaprojekter i <span class="text-primary italic">Danmark</span>
+        </h1>
       </div>
-      <div class="p-6">
-        <h3 class="font-headline text-xl font-bold mb-2">Regnbed i Smørum</h3>
-        <p class="text-sm text-on-surface-variant mb-4">Et 12 m² regnbed koblet til tagrenden håndterer al regnvand fra et 120 m² tag. Planteret med iris, engkabbeleje og tagrør.</p>
-        <div class="flex items-center gap-4 text-xs text-on-surface-variant font-label uppercase"><span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">water_drop</span>4.200 L/episode</span><span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-secondary">eco</span>+12 arter</span></div>
-      </div>
-    </div>
-
-    <div class="inspi-card group rounded-2xl overflow-hidden bg-surface-container-lowest editorial-shadow hover:scale-[1.02] transition-all" data-cat="fordampning">
-      <div class="aspect-[4/3] bg-surface-container flex items-center justify-center relative overflow-hidden">
-        <span class="material-symbols-outlined text-primary opacity-20 group-hover:opacity-30 transition-opacity" style="font-size:100px">filter_hdr</span>
-        <div class="absolute bottom-4 left-4"><span class="bg-secondary text-on-secondary text-xs font-label uppercase font-bold px-3 py-1 rounded-full">Fordampning</span></div>
-      </div>
-      <div class="p-6">
-        <h3 class="font-headline text-xl font-bold mb-2">Grønt tag i Ølstykke</h3>
-        <p class="text-sm text-on-surface-variant mb-4">Sedum-tag på 45 m² carport. Tilbageholder 50% af nedbøren og forbedrer husets isolering markant.</p>
-        <div class="flex items-center gap-4 text-xs text-on-surface-variant font-label uppercase"><span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">water_drop</span>900 L/episode</span><span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-tertiary">thermostat</span>-3°C indendørs</span></div>
-      </div>
-    </div>
-
-    <div class="inspi-card group rounded-2xl overflow-hidden bg-surface-container-lowest editorial-shadow hover:scale-[1.02] transition-all" data-cat="opsamling">
-      <div class="aspect-[4/3] bg-surface-container flex items-center justify-center relative overflow-hidden">
-        <span class="material-symbols-outlined text-primary opacity-20 group-hover:opacity-30 transition-opacity" style="font-size:100px">water_full</span>
-        <div class="absolute bottom-4 left-4"><span class="bg-tertiary text-on-tertiary text-xs font-label uppercase font-bold px-3 py-1 rounded-full">Opsamling</span></div>
-      </div>
-      <div class="p-6">
-        <h3 class="font-headline text-xl font-bold mb-2">Regnvandstank i Stenløse</h3>
-        <p class="text-sm text-on-surface-variant mb-4">5.000 L underjordisk tank med pumpe til havevanding. Sparer familien ca. 3.000 kr. om året i vandregninger.</p>
-        <div class="flex items-center gap-4 text-xs text-on-surface-variant font-label uppercase"><span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">water_drop</span>5.000 L lager</span><span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">payments</span>3.000 kr./år</span></div>
-      </div>
-    </div>
-
-    <div class="inspi-card group rounded-2xl overflow-hidden bg-surface-container-lowest editorial-shadow hover:scale-[1.02] transition-all" data-cat="forsinkelse">
-      <div class="aspect-[4/3] bg-surface-container flex items-center justify-center relative overflow-hidden">
-        <span class="material-symbols-outlined text-primary opacity-20 group-hover:opacity-30 transition-opacity" style="font-size:100px">reorder</span>
-        <div class="absolute bottom-4 left-4"><span class="bg-surface-container-highest text-on-surface text-xs font-label uppercase font-bold px-3 py-1 rounded-full">Forsinkelse</span></div>
-      </div>
-      <div class="p-6">
-        <h3 class="font-headline text-xl font-bold mb-2">Vadi langs indkørslen</h3>
-        <p class="text-sm text-on-surface-variant mb-4">En 20 meter lang vadi langs indkørslen fordeler og forsinker vandet fra hele grunden. Ingen oversvømmelse siden 2021.</p>
-        <div class="flex items-center gap-4 text-xs text-on-surface-variant font-label uppercase"><span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">water_drop</span>6.000 L/episode</span><span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">schedule</span>3 tim. forsinkelse</span></div>
-      </div>
-    </div>
-
-    <div class="inspi-card group rounded-2xl overflow-hidden bg-surface-container-lowest editorial-shadow hover:scale-[1.02] transition-all" data-cat="nedsivning">
-      <div class="aspect-[4/3] bg-surface-container flex items-center justify-center relative overflow-hidden">
-        <span class="material-symbols-outlined text-primary opacity-20 group-hover:opacity-30 transition-opacity" style="font-size:100px">grid_view</span>
-        <div class="absolute bottom-4 left-4"><span class="bg-primary text-on-primary text-xs font-label uppercase font-bold px-3 py-1 rounded-full">Nedsivning</span></div>
-      </div>
-      <div class="p-6">
-        <h3 class="font-headline text-xl font-bold mb-2">Permeable fliser i Ganløse</h3>
-        <p class="text-sm text-on-surface-variant mb-4">Hele indkørslen (60 m²) lagt om med græsarmering. Reducerer afstrømning med 90% og giver grønt udtryk.</p>
-        <div class="flex items-center gap-4 text-xs text-on-surface-variant font-label uppercase"><span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">water_drop</span>1.200 L/episode</span><span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-secondary">eco</span>Grønt udtryk</span></div>
-      </div>
-    </div>
-
-    <div class="inspi-card group rounded-2xl overflow-hidden bg-surface-container-lowest editorial-shadow hover:scale-[1.02] transition-all" data-cat="fordampning">
-      <div class="aspect-[4/3] bg-surface-container flex items-center justify-center relative overflow-hidden">
-        <span class="material-symbols-outlined text-primary opacity-20 group-hover:opacity-30 transition-opacity" style="font-size:100px">park</span>
-        <div class="absolute bottom-4 left-4"><span class="bg-secondary text-on-secondary text-xs font-label uppercase font-bold px-3 py-1 rounded-full">Fordampning</span></div>
-      </div>
-      <div class="p-6">
-        <h3 class="font-headline text-xl font-bold mb-2">Pileallé i Veksø</h3>
-        <p class="text-sm text-on-surface-variant mb-4">6 pilekrat planteret langs skel fordamper enorme mængder vand og giver læ og privatliv. Naturlig klimasikring.</p>
-        <div class="flex items-center gap-4 text-xs text-on-surface-variant font-label uppercase"><span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">water_drop</span>1.800 L/dag (sommer)</span><span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-secondary">eco</span>+8 fuglearter</span></div>
+      <!-- Filtre -->
+      <div class="flex flex-wrap gap-2">
+        <button onclick="mapFilter('alle',this)" class="map-filter-btn active-map-filter px-4 py-2 rounded-full bg-primary text-on-primary font-label text-xs font-bold uppercase tracking-wider transition-all">Alle</button>
+        <button onclick="mapFilter('nedsivning',this)" class="map-filter-btn px-4 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface font-label text-xs font-bold uppercase tracking-wider hover:border-primary transition-all">Nedsivning</button>
+        <button onclick="mapFilter('forsinkelse',this)" class="map-filter-btn px-4 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface font-label text-xs font-bold uppercase tracking-wider hover:border-primary transition-all">Forsinkelse</button>
+        <button onclick="mapFilter('opsamling',this)" class="map-filter-btn px-4 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface font-label text-xs font-bold uppercase tracking-wider hover:border-primary transition-all">Opsamling</button>
+        <button onclick="mapFilter('fordampning',this)" class="map-filter-btn px-4 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface font-label text-xs font-bold uppercase tracking-wider hover:border-primary transition-all">Fordampning</button>
+        <button onclick="mapFilter('kystsikring',this)" class="map-filter-btn px-4 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface font-label text-xs font-bold uppercase tracking-wider hover:border-primary transition-all">Kystsikring</button>
       </div>
     </div>
   </div>
 
-  <div class="mt-20 text-center">
-    <h2 class="font-headline text-4xl font-bold mb-6">Klar til at komme i gang?</h2>
-    <p class="text-on-surface-variant text-xl mb-10 max-w-xl mx-auto">Du har nu fået et overblik. Nu er det din tur til at designe løsningen til din have.</p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <button onclick="navigate('kortlaeg')" class="primary-gradient text-on-primary-container font-headline font-bold px-10 py-5 rounded-xl hover:scale-105 transition-all editorial-shadow text-lg">
-        Start med at kortlægge →
-      </button>
-      <button onclick="navigate('byg')" class="bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-headline font-bold px-10 py-5 rounded-xl hover:bg-surface-container-low transition-all text-lg">
-        Byg din løsning
-      </button>
+  <!-- Split layout: kort + liste -->
+  <div class="flex flex-col lg:flex-row" style="height:calc(100vh - 160px); min-height:600px;">
+
+    <!-- Kortliste (venstre/top) -->
+    <div class="lg:w-[480px] xl:w-[540px] shrink-0 overflow-y-auto bg-surface" id="inspi-list-col" style="scrollbar-width:thin">
+      <div class="p-6 space-y-4" id="inspi-map-list">
+        <!-- Renderes af JS -->
+      </div>
+      <!-- CTA bund -->
+      <div class="p-6 border-t border-outline-variant/15 bg-surface">
+        <p class="text-sm text-on-surface-variant mb-4 font-medium">Klar til at implementere en løsning i din egen have?</p>
+        <div class="flex gap-3">
+          <button onclick="navigate('kortlaeg')" class="flex-1 primary-gradient text-on-primary-container font-headline font-bold py-3 rounded-xl text-sm hover:scale-105 transition-all">Kortlæg min matrikel →</button>
+          <button onclick="navigate('byg')" class="flex-1 bg-surface-container text-on-surface font-headline font-bold py-3 rounded-xl text-sm hover:bg-surface-container-low transition-all">Byg en løsning</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kort (højre/bund) -->
+    <div class="flex-1 relative">
+      <div id="inspi-map" style="width:100%;height:100%;min-height:400px;"></div>
+      <!-- Projekt-popup på kort -->
+      <div id="map-popup" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-80 bg-surface-container-lowest rounded-2xl editorial-shadow overflow-hidden z-[999] hidden transition-all">
+        <div class="aspect-[16/7] bg-surface-container flex items-center justify-center relative">
+          <span class="material-symbols-outlined text-primary opacity-20" style="font-size:60px" id="mp-icon">water_drop</span>
+          <div class="absolute top-3 left-3"><span id="mp-badge" class="text-xs font-label uppercase font-bold px-3 py-1 rounded-full bg-primary text-on-primary">Kategori</span></div>
+          <button onclick="document.getElementById('map-popup').classList.add('hidden')" class="absolute top-3 right-3 w-7 h-7 bg-surface-container-lowest/90 rounded-full flex items-center justify-center hover:bg-surface-container">
+            <span class="material-symbols-outlined text-sm">close</span>
+          </button>
+        </div>
+        <div class="p-4">
+          <h3 class="font-headline text-lg font-bold mb-1" id="mp-title">—</h3>
+          <p class="text-xs text-on-surface-variant mb-3" id="mp-loc"><span class="material-symbols-outlined text-xs">location_on</span> —</p>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-3" id="mp-desc">—</p>
+          <div class="flex gap-3 text-xs font-label uppercase text-on-surface-variant" id="mp-stats"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1043,6 +1004,7 @@ function navigate(page) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   updateNav(page);
   initReveal();
+  if (page === 'inspiration') setTimeout(initInspiMap, 100);
 }
 
 function updateNav(page) {
@@ -1470,6 +1432,132 @@ document.addEventListener('click', e => {
     document.getElementById('dawa-list').classList.add('hidden');
   }
 });
+
+// ── Inspiration kort ──
+const inspiProjects = [
+  { id:1,  navn:'Enghaveparken',            by:'København V',    lat:55.6669, lon:12.5413, kat:'forsinkelse', icon:'water',         desc:'Skybrudssikret park med kapacitet til at tilbageholde op til 26.000 m³ regnvand. Kombinerer rekreativt byrum med klimainfrastruktur.',           stat1:'26.000 m³', lbl1:'Kapacitet',          stat2:'100-årsregn', lbl2:'Sikringsniveau', år:2023 },
+  { id:2,  navn:'Bryggervangen Klimakvarter',by:'København Ø',   lat:55.7050, lon:12.5850, kat:'nedsivning',  icon:'rainy',         desc:'Klimakvarter med lokal håndtering via regnbede, permeable belægninger og grønne tage. Vejene fungerer som vandveje ved skybrud.',             stat1:'19 ha',      lbl1:'Projektareal',       stat2:'60%',         lbl2:'Afstrømning reduceret', år:2014 },
+  { id:3,  navn:'Langelands Plads',          by:'Frederiksberg',  lat:55.6777, lon:12.5235, kat:'forsinkelse', icon:'waves',         desc:'Byrum med integreret skybrudssikring. Pladsen kan fungere som midlertidigt bassin og leder vand kontrolleret til recipienter.',              stat1:'3.000 m³',   lbl1:'Forsinkelsesvolumen', stat2:'10-årsregn',  lbl2:'Sikringsniveau', år:2019 },
+  { id:4,  navn:'Lindevangsparken',          by:'Frederiksberg',  lat:55.6833, lon:12.5183, kat:'forsinkelse', icon:'landscape',     desc:'Park designet til at fungere som midlertidigt vandreservoir. Terrænet er bevidst sænket for at skabe naturlig vandsænkning ved skybrud.',    stat1:'5.000 m³',   lbl1:'Kapacitet',          stat2:'20 min',      lbl2:'Tømmetid', år:2017 },
+  { id:5,  navn:'Sønæs Vådområde',           by:'Viborg',         lat:56.4525, lon:9.4020,  kat:'nedsivning',  icon:'eco',           desc:'Vådområde der renser og forsinker regnvand fra byen. Kombinerer naturgenopretning med klimatilpasning og biodiversitetsfremme.',            stat1:'12 ha',      lbl1:'Vådområde',          stat2:'+40 arter',   lbl2:'Fugle registreret', år:2018 },
+  { id:6,  navn:'Glisholm Sø',               by:'Odense',         lat:55.3860, lon:10.4300,  kat:'opsamling',   icon:'water_full',    desc:'Regnvandssø der forebygger oversvømmelser. Vandet renses naturligt inden det siver til grundvandet via de omkringliggende arealer.',          stat1:'80.000 m³',  lbl1:'Søvolumen',          stat2:'50 ha',       lbl2:'Opland', år:2016 },
+  { id:7,  navn:'Risvangen LAR-projekt',     by:'Aarhus',         lat:56.1775, lon:10.1905,  kat:'nedsivning',  icon:'grass',         desc:'Klimatilpasningsområde med regnbede, faskiner og permeable belægninger. Borgerne har selv medvirket i anlægsprocessen.',                     stat1:'2.400 m²',   lbl1:'Regnbede',           stat2:'85%',         lbl2:'Nedsivning lokalt', år:2020 },
+  { id:8,  navn:'Klimabyen Middelfart',      by:'Middelfart',     lat:55.5053, lon:9.7308,   kat:'forsinkelse', icon:'location_city', desc:'Helhedsorienteret klimatilpasningsprojekt med vadier, regnbede og oversvømmelseskorridorer der håndterer skybrud fra alle retninger.',       stat1:'35 ha',      lbl1:'Projektområde',      stat2:'100-årsregn', lbl2:'Sikringsniveau', år:2021 },
+  { id:9,  navn:'Kilen Forsinkelsesbassin',  by:'Solrød',         lat:55.5365, lon:12.2130,  kat:'forsinkelse', icon:'pool',          desc:'Forsinkelsesbassin der reducerer risiko for oversvømmelser i lavtliggende boligkvarterer. Vandet forsinkes og frigives kontrolleret.',        stat1:'8.000 m³',   lbl1:'Bassinvolumen',      stat2:'3 timer',     lbl2:'Forsinkelsestid', år:2019 },
+  { id:10, navn:'Køge Bugt Strandpark',      by:'Greve/Solrød',   lat:55.6025, lon:12.3967,  kat:'kystsikring', icon:'waves',         desc:'Kystsikringsprojekt der beskytter mod stormflod og erosion langs 12 km kyst. Kombinerer hård og blød kystsikring med rekreative funktioner.', stat1:'12 km',      lbl1:'Kystlinje',          stat2:'2 m',         lbl2:'Stormflodssikring', år:2022 },
+  { id:11, navn:'Utterslev Mose LAR',        by:'København NV',   lat:55.7200, lon:12.5050,  kat:'opsamling',   icon:'water_drop',    desc:'Regnvand fra omkringliggende boligkvarterer ledes til Utterslev Mose via åbne render og regnbede fremfor kloakken.',                          stat1:'200 ha',     lbl1:'Opland',             stat2:'40%',         lbl2:'Aflastning af kloak', år:2015 },
+  { id:12, navn:'Klimavej Nørrebro',         by:'København N',    lat:55.6950, lon:12.5480,  kat:'nedsivning',  icon:'grid_view',     desc:'Gade ombygget med permeable belægninger, gadetræer og regnvandsbede der håndterer vand lokalt og skaber grønnere bymiljø.',                  stat1:'400 m',      lbl1:'Gadens længde',      stat2:'95%',         lbl2:'Permeable flader', år:2021 },
+];
+
+const katColors = {
+  nedsivning:  { bg:'#006a2c', text:'#cfffcf', light:'#e8f5ee' },
+  forsinkelse: { bg:'#006573', text:'#daf8ff', light:'#e0f4f6' },
+  opsamling:   { bg:'#005e3a', text:'#7bfbb6', light:'#e5f5ed' },
+  fordampning: { bg:'#5d4037', text:'#ffccbc', light:'#fbe9e7' },
+  kystsikring: { bg:'#1565c0', text:'#bbdefb', light:'#e3f2fd' },
+};
+
+let inspiMap = null;
+
+function initInspiMap() {
+  if (inspiMap) { setTimeout(() => inspiMap.invalidateSize(), 100); return; }
+
+  inspiMap = L.map('inspi-map', { center:[56.0, 11.5], zoom:7, zoomControl:false });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution:'© OpenStreetMap © CartoDB', maxZoom:19
+  }).addTo(inspiMap);
+
+  L.control.zoom({ position:'topright' }).addTo(inspiMap);
+
+  inspiProjects.forEach(p => {
+    const col = katColors[p.kat] || katColors.nedsivning;
+    const html = `<div style="background:${col.bg};color:${col.text};font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;padding:5px 10px;border-radius:20px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.18);border:2px solid white;cursor:pointer;">${p.navn.split(' ')[0]}</div>`;
+    const icon = L.divIcon({ html, className:'', iconAnchor:[0,0] });
+    const marker = L.marker([p.lat, p.lon], { icon }).addTo(inspiMap);
+    marker.on('click', () => showMapPopup(p));
+    p._marker = marker;
+  });
+
+  renderInspiList(inspiProjects);
+}
+
+function showMapPopup(p) {
+  const col = katColors[p.kat] || katColors.nedsivning;
+  document.getElementById('mp-icon').textContent = p.icon;
+  document.getElementById('mp-title').textContent = p.navn;
+  document.getElementById('mp-loc').innerHTML = `📍 ${p.by} &nbsp;·&nbsp; ${p.år}`;
+  document.getElementById('mp-desc').textContent = p.desc;
+  document.getElementById('mp-badge').textContent = p.kat.charAt(0).toUpperCase()+p.kat.slice(1);
+  document.getElementById('mp-badge').style.background = col.bg;
+  document.getElementById('mp-badge').style.color = col.text;
+  document.getElementById('mp-stats').innerHTML = `
+    <div style="flex:1;background:#f1f8ef;border-radius:8px;padding:8px;text-align:center">
+      <div style="font-size:15px;font-weight:700;color:${col.bg}">${p.stat1}</div>
+      <div style="font-size:10px;color:#565d57;margin-top:2px">${p.lbl1}</div>
+    </div>
+    <div style="flex:1;background:#f1f8ef;border-radius:8px;padding:8px;text-align:center">
+      <div style="font-size:15px;font-weight:700;color:${col.bg}">${p.stat2}</div>
+      <div style="font-size:10px;color:#565d57;margin-top:2px">${p.lbl2}</div>
+    </div>`;
+  document.getElementById('map-popup').classList.remove('hidden');
+
+  document.querySelectorAll('.inspi-map-card').forEach(c => c.style.outline='');
+  const card = document.getElementById('icard-'+p.id);
+  if (card) { card.style.outline=`2px solid ${col.bg}`; card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+  inspiMap.panTo([p.lat, p.lon], { animate:true });
+}
+
+function renderInspiList(projects) {
+  const el = document.getElementById('inspi-map-list');
+  if (!projects.length) { el.innerHTML='<p style="color:#565d57;font-size:13px;padding:16px;font-style:italic">Ingen projekter matcher filteret.</p>'; return; }
+  el.innerHTML = projects.map(p => {
+    const col = katColors[p.kat] || katColors.nedsivning;
+    return `<div id="icard-${p.id}" class="inspi-map-card" onclick="showMapPopup(inspiProjects.find(x=>x.id===${p.id}));inspiMap&&inspiMap.panTo([${p.lat},${p.lon}],{animate:true,duration:0.8})" style="background:#fff;border-radius:16px;overflow:hidden;cursor:pointer;border:1px solid rgba(168,175,167,0.15);transition:box-shadow 0.2s;display:flex;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.1)'" onmouseout="this.style.boxShadow=''">
+      <div style="width:6px;background:${col.bg};flex-shrink:0;border-radius:12px 0 0 12px;"></div>
+      <div style="padding:14px 16px;flex:1;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div>
+            <h3 style="font-family:'Epilogue',sans-serif;font-size:15px;font-weight:700;margin:0 0 2px;color:#29302b">${p.navn}</h3>
+            <p style="font-size:11px;color:#565d57;margin:0;">📍 ${p.by} &nbsp;·&nbsp; ${p.år}</p>
+          </div>
+          <span style="background:${col.bg};color:${col.text};font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:20px;white-space:nowrap;margin-left:8px;">${p.kat}</span>
+        </div>
+        <p style="font-size:12px;color:#565d57;line-height:1.5;margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${p.desc}</p>
+        <div style="display:flex;gap:8px;">
+          <div style="flex:1;background:${col.light};border-radius:6px;padding:6px 8px;text-align:center;">
+            <div style="font-size:13px;font-weight:700;color:${col.bg}">${p.stat1}</div>
+            <div style="font-size:9px;color:#565d57;text-transform:uppercase;letter-spacing:.05em">${p.lbl1}</div>
+          </div>
+          <div style="flex:1;background:${col.light};border-radius:6px;padding:6px 8px;text-align:center;">
+            <div style="font-size:13px;font-weight:700;color:${col.bg}">${p.stat2}</div>
+            <div style="font-size:9px;color:#565d57;text-transform:uppercase;letter-spacing:.05em">${p.lbl2}</div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function mapFilter(kat, btn) {
+  document.querySelectorAll('.map-filter-btn').forEach(b => {
+    b.classList.remove('bg-primary','text-on-primary');
+    b.classList.add('bg-surface-container','text-on-surface');
+  });
+  btn.classList.add('bg-primary','text-on-primary');
+  btn.classList.remove('bg-surface-container','text-on-surface');
+
+  const filtered = kat==='alle' ? inspiProjects : inspiProjects.filter(p=>p.kat===kat);
+  inspiProjects.forEach(p => {
+    if (!p._marker || !inspiMap) return;
+    if (kat==='alle'||p.kat===kat) p._marker.addTo(inspiMap); else inspiMap.removeLayer(p._marker);
+  });
+  renderInspiList(filtered);
+  document.getElementById('map-popup').classList.add('hidden');
+  if (filtered.length && inspiMap) {
+    inspiMap.fitBounds(L.latLngBounds(filtered.map(p=>[p.lat,p.lon])), {padding:[40,40]});
+  }
+}
 
 // ── Init ──
 navigate('forsta');

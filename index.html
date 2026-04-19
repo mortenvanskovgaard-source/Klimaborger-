@@ -249,8 +249,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
           <p class="text-sm text-on-surface-variant leading-relaxed" id="d-aarsag-forklaring">—</p>
         </div>
         <div class="flex gap-3">
-          <button onclick="navigate('kortlaeg')" class="flex-1 bg-surface-container text-on-surface py-3 rounded-xl font-headline text-sm font-bold hover:bg-surface-container-high transition-all">Beregn vandbehov</button>
-          <button onclick="navigate('gang')" class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-headline text-sm font-bold hover:opacity-90 transition-all">Byggevejledning</button>
+          <button onclick="navigate('kortlaeg')" class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-headline text-sm font-bold hover:opacity-90 transition-all">Beregn vandbehov</button>
         </div>
       </div>
       <div class="lg:col-span-8 space-y-5">
@@ -408,6 +407,57 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
         <button onclick="calcKortlaeg()" class="w-full bg-primary hover:opacity-90 text-on-primary py-5 rounded-lg font-label uppercase text-sm tracking-widest font-bold transition-all">
           Beregn mit vandbehov
         </button>
+      </section>
+
+      <!-- Tilføj flere adresser -->
+      <section class="bg-surface-container-lowest rounded-xl border border-outline-variant/15 overflow-hidden">
+        <button onclick="toggleMultiAddr()" class="w-full flex items-center justify-between px-6 py-4 hover:bg-surface-container-low transition-all group">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary">group_add</span>
+            <div class="text-left">
+              <p class="font-headline font-bold text-sm">Tilføj nabo eller grundejerforening</p>
+              <p class="text-xs text-on-surface-variant">Beregn det samlede vandbehov for flere adresser</p>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant transition-transform" id="multi-addr-icon">expand_more</span>
+        </button>
+
+        <div id="multi-addr-panel" class="hidden border-t border-outline-variant/15 p-6 space-y-4">
+          <!-- Ekstra adresse input -->
+          <div>
+            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2 block">Tilføj adresse</label>
+            <div class="flex gap-2">
+              <div class="relative flex-1">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-sm">search</span>
+                <input id="multi-dawa-input"
+                  class="w-full pl-9 pr-4 py-2.5 bg-white border-2 border-outline-variant/30 rounded-xl text-sm focus:ring-0 focus:border-primary transition-all"
+                  placeholder="Fx. Naboens adresse..." type="text" autocomplete="off"
+                  oninput="multiDawaSearch(this.value)"/>
+                <ul id="multi-dawa-list" class="absolute z-50 w-full mt-1 bg-white rounded-xl shadow-xl border border-outline-variant/20 hidden overflow-hidden"></ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Liste over tilføjede adresser -->
+          <div id="multi-addr-list" class="space-y-2 hidden">
+            <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Tilføjede adresser</p>
+            <div id="multi-addr-items"></div>
+          </div>
+
+          <!-- Samlet total -->
+          <div id="multi-total" class="hidden bg-primary-container/40 rounded-xl p-4 border border-primary/20">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="font-label text-xs uppercase tracking-widest text-primary font-bold mb-1">Samlet vandbehov</p>
+                <p class="text-xs text-on-surface-variant" id="multi-addr-count">— adresser</p>
+              </div>
+              <div class="text-right">
+                <p class="font-headline text-3xl font-bold text-primary" id="multi-total-liter">—</p>
+                <p class="text-xs text-on-surface-variant font-label uppercase">liter samlet</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Jordbundstest -->
@@ -2050,6 +2100,145 @@ function closeModal(event) {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { document.getElementById('loesning-modal').classList.add('hidden'); document.body.style.overflow = ''; }
 });
+
+
+
+// ══════════════════════════════════════
+// MULTI-ADRESSE — Grundejerforening
+// ══════════════════════════════════════
+let multiAddresses = []; // [{label, liter, kommuneNedboer}]
+let multiDawaTimer = null;
+
+function toggleMultiAddr() {
+  const panel = document.getElementById('multi-addr-panel');
+  const icon = document.getElementById('multi-addr-icon');
+  const open = panel.classList.toggle('hidden');
+  icon.textContent = open ? 'expand_more' : 'expand_less';
+  icon.style.transform = open ? '' : 'rotate(180deg)';
+}
+
+async function multiDawaSearch(q) {
+  clearTimeout(multiDawaTimer);
+  const list = document.getElementById('multi-dawa-list');
+  if (q.length < 3) { list.classList.add('hidden'); return; }
+  multiDawaTimer = setTimeout(async () => {
+    try {
+      const res = await fetch('https://api.dataforsyningen.dk/adresser/autocomplete?q=' + encodeURIComponent(q) + '&per_side=5&fuzzy=');
+      const data = await res.json();
+      list.innerHTML = data.map(item => `
+        <li class="flex items-center gap-3 px-4 py-2.5 cursor-pointer hover:bg-surface-container-low border-b border-outline-variant/10 last:border-0 text-sm"
+            onclick='multiSelectDawa(${JSON.stringify(item).replace(/'/g,"&apos;")})'>
+          <span class="material-symbols-outlined text-primary text-sm shrink-0">location_on</span>
+          ${item.tekst}
+        </li>`).join('');
+      list.classList.toggle('hidden', data.length === 0);
+    } catch(e) {}
+  }, 200);
+}
+
+async function multiSelectDawa(item) {
+  document.getElementById('multi-dawa-input').value = '';
+  document.getElementById('multi-dawa-list').classList.add('hidden');
+
+  try {
+    const res = await fetch('https://api.dataforsyningen.dk/adresser/' + item.adresse.id);
+    const addr = await res.json();
+    const lat = addr.adgangsadresse?.adgangspunkt?.koordinater?.[1];
+    const lon = addr.adgangsadresse?.adgangspunkt?.koordinater?.[0];
+    const kommunenavn = addr.adgangsadresse?.kommune?.navn || 'Egedal';
+    const nedboer = getKommuneNedboer(kommunenavn);
+
+    // Fetch grundareal from Matrikelkortet
+    let grundAreal = null;
+    try {
+      const proxy = await fetch('https://calm-disk-3282.mortenvanskovgaard.workers.dev?lon=' + lon + '&lat=' + lat);
+      const data = await proxy.json();
+      grundAreal = data.grundAreal || null;
+    } catch(e) {}
+
+    // Estimate liter using same formula as main calculator
+    const tagEst  = grundAreal ? grundAreal * 0.25 : 120;
+    const haveEst = grundAreal ? grundAreal * 0.55 : 400;
+    const befEst  = grundAreal ? grundAreal * 0.18 : 80;
+    const episode = (typeof getEpisodeMm === 'function') ? getEpisodeMm() : 43 * (nedboer/840);
+    const nedsivEvne = 86.4;
+    const grundSum = tagEst + haveEst + befEst;
+    const regn = grundSum * episode / 1000;
+    const nedsiv = haveEst * nedsivEvne / 1000 / 24;
+    const liter = Math.round(Math.max(0, regn - nedsiv) * 1000);
+
+    multiAddresses.push({
+      label: item.tekst,
+      liter,
+      grundAreal: grundAreal || grundSum,
+      kommunenavn
+    });
+    renderMultiAddresses();
+  } catch(e) {
+    console.error('Multi address error:', e);
+  }
+}
+
+function removeMultiAddr(idx) {
+  multiAddresses.splice(idx, 1);
+  renderMultiAddresses();
+}
+
+function renderMultiAddresses() {
+  const itemsEl = document.getElementById('multi-addr-items');
+  const listEl = document.getElementById('multi-addr-list');
+  const totalEl = document.getElementById('multi-total');
+  const badgeEl = document.getElementById('multi-liter-badge');
+  const antalEl = document.getElementById('multi-liter-antal');
+  const extraEl = document.getElementById('multi-liter-extra');
+  const countEl = document.getElementById('multi-addr-count');
+  const totalLiterEl = document.getElementById('multi-total-liter');
+
+  if (multiAddresses.length === 0) {
+    listEl.classList.add('hidden');
+    totalEl.classList.add('hidden');
+    badgeEl?.classList.add('hidden');
+    return;
+  }
+
+  listEl.classList.remove('hidden');
+  totalEl.classList.remove('hidden');
+  badgeEl?.classList.remove('hidden');
+
+  itemsEl.innerHTML = multiAddresses.map((addr, i) => `
+    <div class="flex items-center justify-between gap-3 bg-white rounded-xl px-4 py-3 border border-outline-variant/15">
+      <div class="flex items-center gap-3 min-w-0">
+        <span class="material-symbols-outlined text-primary text-sm shrink-0">home</span>
+        <div class="min-w-0">
+          <p class="text-sm font-medium truncate">${addr.label}</p>
+          <p class="text-xs text-on-surface-variant">${addr.kommunenavn} · ${addr.liter.toLocaleString('da-DK')} liter</p>
+        </div>
+      </div>
+      <button onclick="removeMultiAddr(${i})" class="shrink-0 w-7 h-7 flex items-center justify-center rounded-full hover:bg-error-container/20 transition-all">
+        <span class="material-symbols-outlined text-sm text-error">close</span>
+      </button>
+    </div>`).join('');
+
+  const extraLiter = multiAddresses.reduce((sum, a) => sum + a.liter, 0);
+  const mainLiter = KB.liter || 0;
+  const samlet = mainLiter + extraLiter;
+  const antal = multiAddresses.length;
+
+  countEl.textContent = antal + (antal === 1 ? ' nabo' : ' naboer/adresser') + ' tilføjet';
+  totalLiterEl.textContent = samlet.toLocaleString('da-DK');
+  if (antalEl) antalEl.textContent = antal;
+  if (extraEl) extraEl.textContent = '+' + extraLiter.toLocaleString('da-DK');
+
+  // Update KB for byg-siden
+  KB.samletLiter = samlet;
+}
+
+// Update multi total when main liter changes
+const _origCalc = calcKortlaeg;
+calcKortlaeg = function() {
+  _origCalc();
+  if (multiAddresses.length > 0) renderMultiAddresses();
+};
 
 
 navigate('forsta');

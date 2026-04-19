@@ -288,28 +288,17 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3" id="d-symptom-grid"></div>
   </div>
   <div id="d-step2" class="hidden">
+    <span id="d-sel-icon" class="hidden"></span>
+    <span id="d-sel-label" class="hidden"></span>
+    <div id="d-tid-grid" class="hidden"></div>
+  </div>
+  <div id="d-step3" class="hidden">
     <button onclick="dGoStep(1)" class="flex items-center gap-2 text-sm text-on-surface-variant hover:text-primary mb-6 transition-colors">
       <span class="material-symbols-outlined text-sm">arrow_back</span>Skift symptom
     </button>
-    <div class="mb-6 p-4 bg-primary-container/40 rounded-xl flex items-center gap-3">
-      <span class="material-symbols-outlined text-primary" id="d-sel-icon">foundation</span>
-      <span class="font-headline font-bold" id="d-sel-label">—</span>
-    </div>
-    <h2 class="font-headline text-xl font-bold mb-5 flex items-center gap-3">
-      <span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-sm font-bold shrink-0">2</span>
-      Hvornår sker det typisk?
-    </h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3" id="d-tid-grid"></div>
-  </div>
-  <div id="d-step3" class="hidden">
-    <button onclick="dGoStep(2)" class="flex items-center gap-2 text-sm text-on-surface-variant hover:text-primary mb-6 transition-colors">
-      <span class="material-symbols-outlined text-sm">arrow_back</span>Skift tidspunkt
-    </button>
     <div class="flex items-center gap-2 text-xs text-on-surface-variant mb-8 flex-wrap">
       <span class="px-3 py-1 bg-primary-container text-on-primary-container rounded-full font-bold" id="d-bc-symptom">—</span>
-      <span class="material-symbols-outlined text-sm">arrow_forward</span>
-      <span class="px-3 py-1 bg-surface-container text-on-surface rounded-full font-bold" id="d-bc-tid">—</span>
-      <span class="material-symbols-outlined text-sm">arrow_forward</span>
+
       <span class="px-3 py-1 bg-primary text-on-primary rounded-full font-bold" id="d-bc-aarsag">—</span>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -2070,66 +2059,75 @@ function dInit() {
 function dSelectSymptom(id) {
   dSymptom = id;
   const s = D_MATRIX[id];
-  document.getElementById("d-sel-icon").textContent = s.icon;
-  document.getElementById("d-sel-label").textContent = s.label;
-  const relevantAarsager = Object.keys(s.aarsager);
-  const relevantTider = D_TIDSPUNKTER.filter(t => t.aarsager.some(a => relevantAarsager.includes(a)));
-  document.getElementById("d-tid-grid").innerHTML = relevantTider.map(t => `
-    <button onclick="dSelectTid('${t.id}')" class="p-4 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all text-center group">
-      <span class="material-symbols-outlined text-2xl text-on-surface-variant group-hover:text-primary mb-2 block">${t.icon}</span>
-      <div class="font-headline font-bold text-sm">${t.label}</div>
-      <div class="text-xs text-on-surface-variant mt-1">${t.sub}</div>
-    </button>`).join("");
-  dGoStep(2);
-}
+  const aarsager = Object.entries(s.aarsager);
 
-function dSelectTid(tidId) {
-  const s = D_MATRIX[dSymptom];
-  const tid = D_TIDSPUNKTER.find(t => t.id === tidId);
-  const aarsagId = tid.aarsager.find(a => s.aarsager[a]);
-  if (!aarsagId) return;
-  const aarsag = D_AARSAGER[aarsagId];
-  const data = s.aarsager[aarsagId];
-  document.getElementById("d-bc-symptom").textContent = s.label;
-  document.getElementById("d-bc-tid").textContent = tid.label;
-  document.getElementById("d-bc-aarsag").textContent = aarsag.titel;
-  
-  // Gem til global state
-  KB.symptom = dSymptom;
+  // Merge alle årsagers løsninger i én samlet liste
+  const allePrimaer  = [...new Set(aarsager.flatMap(([,d]) => d.primaer))];
+  const alleSekundaer = [...new Set(aarsager.flatMap(([,d]) => d.sekundaer).filter(l => !allePrimaer.includes(l)))];
+  const alleUndgaa   = [...new Set(aarsager.flatMap(([,d]) => d.undgaa).filter(l => !allePrimaer.includes(l)))];
+
+  // Gem til global KB state
+  KB.symptom = id;
   KB.symptomLabel = s.label;
-  KB.aarsag = aarsagId;
-  KB.aarsagLabel = aarsag.titel;
-  KB.undgaa = data.undgaa || [];
-  KB.primaer = data.primaer || [];
-  KB.sekundaer = data.sekundaer || [];
+  KB.aarsag = aarsager[0]?.[0] || null;
+  KB.aarsagLabel = aarsager.map(([a]) => D_AARSAGER[a]?.titel).filter(Boolean).join(' / ');
+  KB.primaer = allePrimaer;
+  KB.sekundaer = alleSekundaer;
+  KB.undgaa = alleUndgaa;
   KB._opdaterUI();
-  document.getElementById("d-aarsag-titel").textContent = aarsag.titel;
-  document.getElementById("d-aarsag-tekst").textContent = aarsag.tekst;
-  document.getElementById("d-aarsag-forklaring").textContent = aarsag.forklaring;
-  document.getElementById("d-primaer").innerHTML = data.primaer.map(l => {
+
+  // Breadcrumb
+  const aarsagTitler = aarsager.map(([a]) => D_AARSAGER[a]?.titel).filter(Boolean);
+  document.getElementById("d-bc-symptom").textContent = s.label;
+  document.getElementById("d-bc-aarsag").textContent = aarsagTitler.join(' / ');
+
+  // Årsag forklaring
+  document.getElementById("d-aarsag-titel").textContent = aarsagTitler.join(' eller ');
+  document.getElementById("d-aarsag-tekst").textContent = aarsager.map(([a]) => D_AARSAGER[a]?.tekst).filter(Boolean).join(' ');
+  document.getElementById("d-aarsag-forklaring").textContent = aarsager.map(([a]) => D_AARSAGER[a]?.forklaring).filter(Boolean).join('
+
+');
+
+  // Primære løsninger
+  document.getElementById("d-primaer").innerHTML = allePrimaer.map(l => {
     const info = D_LOESNING_INFO[l] || {icon:"eco",desc:""};
-    return `<div class="bg-white p-4 rounded-xl border-l-4 border-primary flex items-start gap-4 hover:bg-surface-container-low cursor-pointer" onclick="navigate('gang')">
-      <div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary-container text-sm">${info.icon}</span></div>
-      <div class="flex-1"><div class="font-headline font-bold text-sm">${l}</div><div class="text-xs text-on-surface-variant mt-0.5">${info.desc}</div></div>
+    return `<div class="bg-white p-4 rounded-xl border-l-4 border-primary flex items-start gap-4 hover:bg-surface-container-low cursor-pointer transition-all" onclick="navigate('gang')">
+      <div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-on-primary-container text-sm">${info.icon}</span>
+      </div>
+      <div class="flex-1">
+        <div class="font-headline font-bold text-sm">${l}</div>
+        <div class="text-xs text-on-surface-variant mt-0.5">${info.desc}</div>
+      </div>
       <span class="material-symbols-outlined text-on-surface-variant text-sm mt-1 shrink-0">arrow_forward</span>
     </div>`;
   }).join("");
+
+  // Sekundære løsninger
   const sekWrap = document.getElementById("d-sekundaer-wrap");
-  if (data.sekundaer.length > 0) {
-    document.getElementById("d-sekundaer").innerHTML = data.sekundaer.map(l => {
+  if (alleSekundaer.length > 0) {
+    document.getElementById("d-sekundaer").innerHTML = alleSekundaer.map(l => {
       const info = D_LOESNING_INFO[l] || {icon:"eco"};
-      return `<div class="flex items-center gap-2 px-3 py-2 bg-white rounded-xl border border-outline-variant/20 text-sm cursor-pointer hover:border-primary" onclick="navigate('gang')"><span class="material-symbols-outlined text-primary text-sm">${info.icon}</span><span>${l}</span></div>`;
+      return `<div class="flex items-center gap-2 px-3 py-2 bg-white rounded-xl border border-outline-variant/20 text-sm cursor-pointer hover:border-primary transition-all" onclick="navigate('gang')">
+        <span class="material-symbols-outlined text-primary text-sm">${info.icon}</span><span>${l}</span></div>`;
     }).join("");
     sekWrap.classList.remove("hidden");
   } else { sekWrap.classList.add("hidden"); }
+
+  // Undgå løsninger
   const undgaaWrap = document.getElementById("d-undgaa-wrap");
-  if (data.undgaa.length > 0) {
-    document.getElementById("d-undgaa").innerHTML = data.undgaa.map(l =>
-      `<span class="flex items-center gap-1 px-3 py-1.5 bg-red-100 text-red-700 rounded-xl text-xs font-bold"><span class="material-symbols-outlined text-sm">block</span>${l}</span>`).join("");
+  if (alleUndgaa.length > 0) {
+    document.getElementById("d-undgaa").innerHTML = alleUndgaa.map(l =>
+      `<span class="flex items-center gap-1 px-3 py-1.5 bg-red-100 text-red-700 rounded-xl text-xs font-bold">
+        <span class="material-symbols-outlined text-sm">block</span>${l}</span>`).join("");
     undgaaWrap.classList.remove("hidden");
   } else { undgaaWrap.classList.add("hidden"); }
+
   dGoStep(3);
 }
+
+function dSelectTid() {} // ikke brugt
+
 
 function dGoStep(n) {
   document.getElementById("d-step1").classList.toggle("hidden", n !== 1);

@@ -1649,6 +1649,7 @@ async function fetchBBR(addr, lat, lon) {
     const jordUrl = 'https://api.dataforsyningen.dk/adgangsadresser/' + husnrId + '?struktur=nestet';
     const jordRes = await fetch(jordUrl);
     const jordData = await jordRes.json();
+    console.log('DAWA nestet data:', JSON.stringify(jordData).slice(0, 500));
 
     // Grundareal fra jordstykke
     let grundAreal = null;
@@ -1659,6 +1660,7 @@ async function fetchBBR(addr, lat, lon) {
     }
 
     // Fallback: prøv matrikelnr-endpoint
+    console.log('grundAreal efter jordstykker:', grundAreal);
     if (!grundAreal) {
       const matnr = jordData.matrikelnr || jordData.adgangsadresse?.matrikelnr;
       const ejerlav = jordData.ejerlav?.kode || jordData.adgangsadresse?.ejerlav?.kode;

@@ -63,6 +63,8 @@ input[type=range]::-webkit-slider-runnable-track{width:100%;height:4px;cursor:po
 input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%;background:#006a2c;cursor:pointer;-webkit-appearance:none;margin-top:-6px}
 .radio-chip input:checked + label{background-color:#006a2c;color:white;border-color:#006a2c}
 .solution-btn.active{background-color:#006a2c;color:#cfffcf;border-color:#006a2c}
+.byg-kort-fraraad{border-color:#b02500 !important;background-color:#fff5f5;}
+.byg-kort-anbefalet{border-color:#006a2c !important;background-color:#f1f8f1;}
 .nav-link.active{color:#006a2c;font-weight:700;border-bottom:2px solid #006a2c;padding-bottom:2px}
 .nav-link{color:#565d57;transition:color 0.2s}
 .nav-link:hover{color:#006a2c}
@@ -545,27 +547,31 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-lowest transition-all border-b-2 border-transparent hover:border-primary group relative">
             <span class="material-symbols-outlined text-3xl text-primary mb-4 block">pool</span>
-            <h3 class="font-bold mb-1">Våde bassiner</h3>
+            <div class="byg-advarsel hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-red-700 bg-red-100 rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">block</span>Frarådes til din situation</div>
+        <div class="byg-anbefalet hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-primary bg-primary-container rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">thumb_up</span>Anbefalet til din situation</div>
+        <h3 class="font-bold mb-1">Våde bassiner</h3>
             <p class="text-xs text-on-surface-variant leading-relaxed mb-4">Bassiner med permanent vandspejl.</p>
             <div class="mb-4">
               <div class="flex justify-between items-center mb-1">
                 <label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Areal</label>
                 <span class="text-primary font-bold text-xs" id="lbl-vaad">0 m²</span>
               </div>
-              <input class="w-full" max="200" min="0" step="5" type="range" value="0" oninput="updateByg('vaad',this.value,'m²','lbl-vaad',30)"/>
+              <input class="w-full" max="200" min="0" step="5" type="range" value="0" data-byg-navn="Våde bassiner" oninput="updateByg('vaad',this.value,'m²','lbl-vaad',30)"/>
             </div>
             <button class="w-full py-2 bg-primary-container text-on-primary-container font-label text-[10px] font-bold uppercase rounded-md">Tilføj element</button>
           </div>
           <div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-lowest transition-all border-b-2 border-transparent hover:border-primary group relative">
             <span class="material-symbols-outlined text-3xl text-primary mb-4 block">waves</span>
-            <h3 class="font-bold mb-1">Tørre bassiner</h3>
+            <div class="byg-advarsel hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-red-700 bg-red-100 rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">block</span>Frarådes til din situation</div>
+        <div class="byg-anbefalet hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-primary bg-primary-container rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">thumb_up</span>Anbefalet til din situation</div>
+        <h3 class="font-bold mb-1">Tørre bassiner</h3>
             <p class="text-xs text-on-surface-variant leading-relaxed mb-4">Områder der kun fyldes ved regn.</p>
             <div class="mb-4">
               <div class="flex justify-between items-center mb-1">
                 <label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Areal</label>
                 <span class="text-primary font-bold text-xs" id="lbl-toer">0 m²</span>
               </div>
-              <input class="w-full" max="200" min="0" step="5" type="range" value="0" oninput="updateByg('toer',this.value,'m²','lbl-toer',20)"/>
+              <input class="w-full" max="200" min="0" step="5" type="range" value="0" data-byg-navn="Tørre bassiner" oninput="updateByg('toer',this.value,'m²','lbl-toer',20)"/>
             </div>
             <button class="w-full py-2 bg-primary-container text-on-primary-container font-label text-[10px] font-bold uppercase rounded-md">Tilføj element</button>
           </div>
@@ -578,7 +584,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
                 <label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Kapacitet</label>
                 <span class="text-primary font-bold text-xs" id="lbl-lukket">0 L</span>
               </div>
-              <input class="w-full" max="10000" min="0" step="100" type="range" value="0" oninput="updateByg('lukket',this.value,'L','lbl-lukket',1)"/>
+              <input class="w-full" max="10000" min="0" step="100" type="range" value="0" data-byg-navn="Underjordisk bassin" oninput="updateByg('lukket',this.value,'L','lbl-lukket',1)"/>
             </div>
             <button class="w-full py-2 bg-primary-container text-on-primary-container font-label text-[10px] font-bold uppercase rounded-md">Tilføj element</button>
           </div>
@@ -600,7 +606,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
                 <label class="text-xs font-bold font-label uppercase text-on-surface-variant tracking-wider">Kapacitet</label>
                 <span class="text-primary font-bold text-sm" id="lbl-tank">0 L</span>
               </div>
-              <input class="w-full" max="10000" min="0" step="100" type="range" value="0" oninput="updateByg('tank',this.value,'L','lbl-tank',1)"/>
+              <input class="w-full" max="10000" min="0" step="100" type="range" value="0" data-byg-navn="Regnvandstank" oninput="updateByg('tank',this.value,'L','lbl-tank',1)"/>
               <div class="flex justify-between mt-1 text-[10px] text-on-surface-variant/60"><span>0 L</span><span>10.000 L</span></div>
             </div>
             <button class="primary-gradient text-on-primary-container px-6 py-2 rounded-lg font-label text-xs font-bold uppercase tracking-wider">Tilføj tank</button>
@@ -626,25 +632,29 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
                 <label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Areal</label>
                 <span class="text-primary font-bold text-xs" id="lbl-regnbed">0 m²</span>
               </div>
-              <input class="w-full" max="100" min="0" step="1" type="range" value="0" oninput="updateByg('regnbed',this.value,'m²','lbl-regnbed',50)"/>
+              <input class="w-full" max="100" min="0" step="1" type="range" value="0" data-byg-navn="Regnbed" oninput="updateByg('regnbed',this.value,'m²','lbl-regnbed',50)"/>
             </div>
             <button onclick="navigate('have')" class="bg-primary text-on-primary py-2 px-6 rounded-lg text-xs font-bold uppercase font-label">Se visualisering →</button>
           </div>
           <div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-lowest transition-all">
-            <h4 class="font-bold mb-2">Permeable belægninger</h4>
+            <div class="byg-advarsel hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-red-700 bg-red-100 rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">block</span>Frarådes</div>
+        <div class="byg-anbefalet hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-primary bg-primary-container rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">thumb_up</span>Anbefalet</div>
+        <h4 class="font-bold mb-2">Permeable belægninger</h4>
             <p class="text-xs text-on-surface-variant mb-4">Fliser eller sten der tillader vand at trænge ned.</p>
             <div class="mb-4">
               <div class="flex justify-between items-center mb-1"><label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Areal</label><span class="text-primary font-bold text-xs" id="lbl-perm">0 m²</span></div>
-              <input class="w-full" max="100" min="0" step="1" type="range" value="0" oninput="updateByg('perm',this.value,'m²','lbl-perm',20)"/>
+              <input class="w-full" max="100" min="0" step="1" type="range" value="0" data-byg-navn="Permeable belægninger" oninput="updateByg('perm',this.value,'m²','lbl-perm',20)"/>
             </div>
             <button class="w-full py-2 bg-surface-container-highest text-on-surface-variant font-label text-[10px] font-bold uppercase rounded-md hover:bg-primary hover:text-white transition-colors">Tilføj element</button>
           </div>
           <div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-lowest transition-all">
-            <h4 class="font-bold mb-2">Faskine</h4>
+            <div class="byg-advarsel hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-red-700 bg-red-100 rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">block</span>Frarådes</div>
+        <div class="byg-anbefalet hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-primary bg-primary-container rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">thumb_up</span>Anbefalet</div>
+        <h4 class="font-bold mb-2">Faskine</h4>
             <p class="text-xs text-on-surface-variant mb-4">Punktvis nedsivning i undergrunden.</p>
             <div class="mb-4">
               <div class="flex justify-between items-center mb-1"><label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Kapacitet</label><span class="text-primary font-bold text-xs" id="lbl-fask">0 L</span></div>
-              <input class="w-full" max="10000" min="0" step="100" type="range" value="0" oninput="updateByg('fask',this.value,'L','lbl-fask',1)"/>
+              <input class="w-full" max="10000" min="0" step="100" type="range" value="0" data-byg-navn="Faskine" oninput="updateByg('fask',this.value,'L','lbl-fask',1)"/>
             </div>
             <button class="w-full py-2 bg-surface-container-highest text-on-surface-variant font-label text-[10px] font-bold uppercase rounded-md hover:bg-primary hover:text-white transition-colors">Tilføj element</button>
           </div>
@@ -663,7 +673,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
             <p class="text-xs text-on-surface-variant mb-4">Sedum-måtter til carporte og udhuse.</p>
             <div class="mt-auto mb-4">
               <div class="flex justify-between items-center mb-1"><label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Areal</label><span class="text-primary font-bold text-xs" id="lbl-grontag">0 m²</span></div>
-              <input class="w-full" max="200" min="0" step="5" type="range" value="0" oninput="updateByg('grontag',this.value,'m²','lbl-grontag',15)"/>
+              <input class="w-full" max="200" min="0" step="5" type="range" value="0" data-byg-navn="Grønne tage" oninput="updateByg('grontag',this.value,'m²','lbl-grontag',15)"/>
             </div>
             <button class="w-full py-2 bg-primary-container text-on-primary-container font-label text-xs font-bold rounded-md hover:bg-primary hover:text-white transition-colors uppercase">Tilføj</button>
           </div>
@@ -672,7 +682,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
             <p class="text-xs text-on-surface-variant mb-4">Biodiverse træarter der fordamper store mængder vand.</p>
             <div class="mt-auto mb-4">
               <div class="flex justify-between items-center mb-1"><label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Antal</label><span class="text-primary font-bold text-xs" id="lbl-traeer">0 stk</span></div>
-              <input class="w-full" max="20" min="0" step="1" type="range" value="0" oninput="updateByg('traeer',this.value,'stk','lbl-traeer',200)"/>
+              <input class="w-full" max="20" min="0" step="1" type="range" value="0" data-byg-navn="Træer" oninput="updateByg('traeer',this.value,'stk','lbl-traeer',200)"/>
             </div>
             <button class="w-full py-2 bg-primary-container text-on-primary-container font-label text-xs font-bold rounded-md hover:bg-primary hover:text-white transition-colors uppercase">Tilføj</button>
           </div>
@@ -681,7 +691,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
             <p class="text-xs text-on-surface-variant mb-4">Vertikal beplantning til hegn eller facader.</p>
             <div class="mt-auto mb-4">
               <div class="flex justify-between items-center mb-1"><label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Areal</label><span class="text-primary font-bold text-xs" id="lbl-gronvaeg">0 m²</span></div>
-              <input class="w-full" max="100" min="0" step="1" type="range" value="0" oninput="updateByg('gronvaeg',this.value,'m²','lbl-gronvaeg',10)"/>
+              <input class="w-full" max="100" min="0" step="1" type="range" value="0" data-byg-navn="Grønne vægge" oninput="updateByg('gronvaeg',this.value,'m²','lbl-gronvaeg',10)"/>
             </div>
             <button class="w-full py-2 bg-primary-container text-on-primary-container font-label text-xs font-bold rounded-md hover:bg-primary hover:text-white transition-colors uppercase">Tilføj</button>
           </div>
@@ -1061,6 +1071,7 @@ function navigate(page) {
   updateNav(page);
   initReveal();
   if (page === 'inspiration') setTimeout(initInspiMap, 100);
+  if (page === 'byg' || page === 'kortlaeg') setTimeout(() => KB._opdaterUI(), 100);
   if (page === 'diagnose') setTimeout(dInit, 50);
 }
 
@@ -1283,6 +1294,8 @@ function calcKortlaeg() {
   // Gem til Byg-siden
   updateLiterDisplay(magasineringskrav, regnEpisodeFinal);
   window._larMagasineringskrav = magasineringskrav;
+  KB.liter = liter;
+  KB.kommuneNedboer = window._kommuneNedboer || 640;
   window._larRegnEpisode = regnEpisode;
   window._larGrundAreal = grundAreal;
 }
@@ -1833,6 +1846,68 @@ function updateLiterDisplay(magasineringskrav, regnEpisodeFinal) {
 
 // ── Init ──
 
+
+// ══════════════════════════════════════
+// GLOBAL BRUGERREJSE STATE
+// Gemmer svar på tværs af alle sider
+// ══════════════════════════════════════
+const KB = {
+  // Fra Diagnosér
+  symptom: null,        // fx "lavpunkt"
+  symptomLabel: null,   // fx "Der står vand i haven..."
+  aarsag: null,         // fx "skybrud"
+  aarsagLabel: null,    // fx "Skybrud"
+  undgaa: [],           // fx ["Regnbed","Faskine"]
+  primaer: [],          // anbefalede primære løsninger
+  sekundaer: [],        // anbefalede sekundære løsninger
+
+  // Fra Kortlæg
+  liter: null,          // fx 42051
+  kommuneNedboer: null, // fx 640.5
+
+  // Gem og opdater
+  set(key, value) {
+    this[key] = value;
+    this._opdaterUI();
+  },
+  _opdaterUI() {
+    this._opdaterDiagnoseResume();
+    this._opdaterBygAdvarsel();
+  },
+  _opdaterDiagnoseResume() {
+    ['kb-diagnose-resume','kb-diagnose-resume-byg'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (this.symptom && this.aarsag) {
+        el.classList.remove('hidden');
+        el.querySelectorAll('#kb-resume-symptom').forEach(e => e.textContent = this.symptomLabel || this.symptom);
+        el.querySelectorAll('#kb-resume-aarsag').forEach(e => e.textContent = this.aarsagLabel || this.aarsag);
+      }
+    });
+  },
+  _opdaterBygAdvarsel() {
+    if (!KB.undgaa.length && !KB.primaer.length) return;
+    // Find alle kort via data-byg-navn attribut
+    document.querySelectorAll('[data-byg-navn]').forEach(el => {
+      const navn = el.dataset.bygNavn;
+      const section = el.closest('section') || el.closest('div.bg-surface-container-low') || el.parentElement;
+      if (!section) return;
+      const advarselEls = section.querySelectorAll('.byg-advarsel');
+      const anbefaletEls = section.querySelectorAll('.byg-anbefalet');
+      const erFraraad = KB.undgaa.includes(navn);
+      const erAnbefalet = KB.primaer.includes(navn);
+      advarselEls.forEach(a => a.classList.toggle('hidden', !erFraraad));
+      anbefaletEls.forEach(a => a.classList.toggle('hidden', !erAnbefalet));
+      // Style the parent card
+      const card = el.closest('.bg-surface-container-low, .bg-white');
+      if (card) {
+        card.classList.toggle('byg-kort-fraraad', erFraraad);
+        card.classList.toggle('byg-kort-anbefalet', erAnbefalet);
+      }
+    });
+  }
+};
+
 // ══════════════════════════════════════
 // DIAGNOSÉR — Komplet matrix fra NIRAS guide (2020) s.24-35
 // ══════════════════════════════════════
@@ -1954,6 +2029,16 @@ function dSelectTid(tidId) {
   document.getElementById("d-bc-symptom").textContent = s.label;
   document.getElementById("d-bc-tid").textContent = tid.label;
   document.getElementById("d-bc-aarsag").textContent = aarsag.titel;
+  
+  // Gem til global state
+  KB.symptom = dSymptom;
+  KB.symptomLabel = s.label;
+  KB.aarsag = aarsagId;
+  KB.aarsagLabel = aarsag.titel;
+  KB.undgaa = data.undgaa || [];
+  KB.primaer = data.primaer || [];
+  KB.sekundaer = data.sekundaer || [];
+  KB._opdaterUI();
   document.getElementById("d-aarsag-titel").textContent = aarsag.titel;
   document.getElementById("d-aarsag-tekst").textContent = aarsag.tekst;
   document.getElementById("d-aarsag-forklaring").textContent = aarsag.forklaring;

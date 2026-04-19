@@ -549,7 +549,8 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
             <span class="material-symbols-outlined text-3xl text-primary mb-4 block">pool</span>
             <div class="byg-advarsel hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-red-700 bg-red-100 rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">block</span>Frarådes til din situation</div>
         <div class="byg-anbefalet hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-primary bg-primary-container rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">thumb_up</span>Anbefalet til din situation</div>
-        <h3 class="font-bold mb-1">Våde bassiner</h3>
+        <div class="byg-status-Vaadbassin hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div>
+              <h3 class="font-bold mb-1">Våde bassiner</h3>
             <p class="text-xs text-on-surface-variant leading-relaxed mb-4">Bassiner med permanent vandspejl.</p>
             <div class="mb-4">
               <div class="flex justify-between items-center mb-1">
@@ -564,7 +565,8 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
             <span class="material-symbols-outlined text-3xl text-primary mb-4 block">waves</span>
             <div class="byg-advarsel hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-red-700 bg-red-100 rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">block</span>Frarådes til din situation</div>
         <div class="byg-anbefalet hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-primary bg-primary-container rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">thumb_up</span>Anbefalet til din situation</div>
-        <h3 class="font-bold mb-1">Tørre bassiner</h3>
+        <div class="byg-status-Toerbassin hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div>
+              <h3 class="font-bold mb-1">Tørre bassiner</h3>
             <p class="text-xs text-on-surface-variant leading-relaxed mb-4">Områder der kun fyldes ved regn.</p>
             <div class="mb-4">
               <div class="flex justify-between items-center mb-1">
@@ -577,7 +579,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
           </div>
           <div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-lowest transition-all border-b-2 border-transparent hover:border-primary group relative">
             <span class="material-symbols-outlined text-3xl text-primary mb-4 block">inventory_2</span>
-            <h3 class="font-bold mb-1">Lukkede bassiner</h3>
+            <div class="byg-status-Underjordisk-bassin hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div><h3 class="font-bold mb-1">Lukkede bassiner</h3>
             <p class="text-xs text-on-surface-variant leading-relaxed mb-4">Underjordiske forsinkelsesmagasiner.</p>
             <div class="mb-4">
               <div class="flex justify-between items-center mb-1">
@@ -625,6 +627,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="md:col-span-2 bg-surface-container-low rounded-xl p-8 border-b-2 border-transparent hover:border-primary transition-all">
+            <div class="byg-status-Regnbed hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div>
             <h3 class="font-bold text-xl mb-2">Regnbed</h3>
             <p class="text-sm text-on-surface-variant mb-6">En beplantet lavning i terrænet, hvor regnvandet kan samles og nedsive over tid.</p>
             <div class="mb-6">
@@ -639,7 +642,8 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
           <div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-lowest transition-all">
             <div class="byg-advarsel hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-red-700 bg-red-100 rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">block</span>Frarådes</div>
         <div class="byg-anbefalet hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-primary bg-primary-container rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">thumb_up</span>Anbefalet</div>
-        <h4 class="font-bold mb-2">Permeable belægninger</h4>
+        <div class="byg-status-Permeabel-belaegning hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div>
+              <h4 class="font-bold mb-2">Permeable belægninger</h4>
             <p class="text-xs text-on-surface-variant mb-4">Fliser eller sten der tillader vand at trænge ned.</p>
             <div class="mb-4">
               <div class="flex justify-between items-center mb-1"><label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Areal</label><span class="text-primary font-bold text-xs" id="lbl-perm">0 m²</span></div>
@@ -650,7 +654,8 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
           <div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-lowest transition-all">
             <div class="byg-advarsel hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-red-700 bg-red-100 rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">block</span>Frarådes</div>
         <div class="byg-anbefalet hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-primary bg-primary-container rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">thumb_up</span>Anbefalet</div>
-        <h4 class="font-bold mb-2">Faskine</h4>
+        <div class="byg-status-Faskine hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div>
+              <h4 class="font-bold mb-2">Faskine</h4>
             <p class="text-xs text-on-surface-variant mb-4">Punktvis nedsivning i undergrunden.</p>
             <div class="mb-4">
               <div class="flex justify-between items-center mb-1"><label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Kapacitet</label><span class="text-primary font-bold text-xs" id="lbl-fask">0 L</span></div>
@@ -669,7 +674,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-lowest transition-all flex flex-col">
-            <div class="flex items-center gap-2 mb-4"><span class="material-symbols-outlined text-3xl text-primary">filter_hdr</span><h3 class="font-bold">Grønne tage</h3></div>
+            <div class="flex items-center gap-2 mb-4"><span class="material-symbols-outlined text-3xl text-primary">filter_hdr</span><div class="byg-status-Groent-tag hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div><h3 class="font-bold">Grønne tage</h3></div>
             <p class="text-xs text-on-surface-variant mb-4">Sedum-måtter til carporte og udhuse.</p>
             <div class="mt-auto mb-4">
               <div class="flex justify-between items-center mb-1"><label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Areal</label><span class="text-primary font-bold text-xs" id="lbl-grontag">0 m²</span></div>
@@ -678,7 +683,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
             <button class="w-full py-2 bg-primary-container text-on-primary-container font-label text-xs font-bold rounded-md hover:bg-primary hover:text-white transition-colors uppercase">Tilføj</button>
           </div>
           <div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-lowest transition-all flex flex-col">
-            <div class="flex items-center gap-2 mb-4"><span class="material-symbols-outlined text-3xl text-primary">park</span><h3 class="font-bold">Træer</h3></div>
+            <div class="flex items-center gap-2 mb-4"><span class="material-symbols-outlined text-3xl text-primary">park</span><div class="byg-status-Traeer hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div><h3 class="font-bold">Træer</h3></div>
             <p class="text-xs text-on-surface-variant mb-4">Biodiverse træarter der fordamper store mængder vand.</p>
             <div class="mt-auto mb-4">
               <div class="flex justify-between items-center mb-1"><label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Antal</label><span class="text-primary font-bold text-xs" id="lbl-traeer">0 stk</span></div>
@@ -687,7 +692,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
             <button class="w-full py-2 bg-primary-container text-on-primary-container font-label text-xs font-bold rounded-md hover:bg-primary hover:text-white transition-colors uppercase">Tilføj</button>
           </div>
           <div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-lowest transition-all flex flex-col">
-            <div class="flex items-center gap-2 mb-4"><span class="material-symbols-outlined text-3xl text-primary">grid_view</span><h3 class="font-bold">Grønne vægge</h3></div>
+            <div class="flex items-center gap-2 mb-4"><span class="material-symbols-outlined text-3xl text-primary">grid_view</span><div class="byg-status-Groenne-vaegge hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div><h3 class="font-bold">Grønne vægge</h3></div>
             <p class="text-xs text-on-surface-variant mb-4">Vertikal beplantning til hegn eller facader.</p>
             <div class="mt-auto mb-4">
               <div class="flex justify-between items-center mb-1"><label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Areal</label><span class="text-primary font-bold text-xs" id="lbl-gronvaeg">0 m²</span></div>
@@ -744,7 +749,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
   </header>
 
   <section class="mb-16">
-    <div class="mb-6"><h2 class="text-2xl font-headline font-bold">Vælg din løsning</h2><p class="text-on-surface-variant">Klik på en klimasikring for at se effekten</p></div>
+    <div class="mb-6"><div class="byg-status-Regnvandsbeholder hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div><h2 class="text-2xl font-headline font-bold">Vælg din løsning</h2><p class="text-on-surface-variant">Klik på en klimasikring for at se effekten</p></div>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4" id="have-solutions">
       <button onclick="selectHave(this,'regnbed')" class="have-btn p-4 rounded-xl bg-surface-container-lowest border-2 border-primary text-left transition-all">
         <span class="material-symbols-outlined text-primary mb-2 block" style="font-variation-settings:'FILL' 1">rainy</span>
@@ -1795,24 +1800,63 @@ const KB = {
     });
   },
   _opdaterBygAdvarsel() {
-    if (!KB.undgaa.length && !KB.primaer.length) return;
-    // Find alle kort via data-byg-navn attribut
-    document.querySelectorAll('[data-byg-navn]').forEach(el => {
-      const navn = el.dataset.bygNavn;
-      const section = el.closest('section') || el.closest('div.bg-surface-container-low') || el.parentElement;
-      if (!section) return;
-      const advarselEls = section.querySelectorAll('.byg-advarsel');
-      const anbefaletEls = section.querySelectorAll('.byg-anbefalet');
-      const erFraraad = KB.undgaa.includes(navn);
-      const erAnbefalet = KB.primaer.includes(navn);
-      advarselEls.forEach(a => a.classList.toggle('hidden', !erFraraad));
-      anbefaletEls.forEach(a => a.classList.toggle('hidden', !erAnbefalet));
-      // Style the parent card
-      const card = el.closest('.bg-surface-container-low, .bg-white');
-      if (card) {
-        card.classList.toggle('byg-kort-fraraad', erFraraad);
-        card.classList.toggle('byg-kort-anbefalet', erAnbefalet);
-      }
+    const LOESNING_CSS = {
+      'Vådbassin':           'Vaadbassin',
+      'Tørbassin':           'Toerbassin',
+      'Underjordisk bassin': 'Underjordisk-bassin',
+      'Regnvandsbeholder':   'Regnvandsbeholder',
+      'Regnbed':             'Regnbed',
+      'Permeabel belægning': 'Permeabel-belaegning',
+      'Faskine':             'Faskine',
+      'Grønt tag':           'Groent-tag',
+      'Træer':               'Traeer',
+      'Grønne vægge':        'Groenne-vaegge',
+      'Grøft':               null,
+      'Rende':               null,
+      'Omfangsdræn':         null,
+      'Højvandslukke':       null,
+      'Skybrudsvej':         null,
+      'Hævede kantsten':     null,
+      'Dige':                null,
+      'Pumpe':               null,
+      'Vejbed':              null,
+      'Græslavning':         null,
+    };
+
+    // Alle løsningsnavne at tjekke
+    const alleLoesninger = [...(KB.undgaa||[]), ...(KB.primaer||[]), ...(KB.sekundaer||[])];
+    
+    Object.entries(LOESNING_CSS).forEach(([navn, cssSuffix]) => {
+      if (!cssSuffix) return;
+      const els = document.querySelectorAll('.byg-status-' + cssSuffix);
+      els.forEach(el => {
+        const erFraraad  = KB.undgaa.includes(navn);
+        const erAnbefalet = KB.primaer.includes(navn);
+        const erSekundaer = KB.sekundaer.includes(navn);
+        
+        el.classList.remove('hidden');
+        const card = el.closest('.bg-surface-container-low, .bg-white, .rounded-xl');
+        
+        if (erFraraad) {
+          el.className = el.className.replace(/hidden|bg-\S+|text-\S+/g, '').trim();
+          el.classList.add('flex','items-center','gap-1.5','bg-red-100','text-red-700');
+          el.innerHTML = '<span class="material-symbols-outlined text-sm">block</span>Frarådes til din situation';
+          if (card) card.style.borderColor = '#b02500';
+        } else if (erAnbefalet) {
+          el.className = el.className.replace(/hidden|bg-\S+|text-\S+/g, '').trim();
+          el.classList.add('flex','items-center','gap-1.5','bg-primary-container','text-on-primary-container');
+          el.innerHTML = '<span class="material-symbols-outlined text-sm">thumb_up</span>Anbefalet til din situation';
+          if (card) card.style.borderColor = '#006a2c';
+        } else if (erSekundaer) {
+          el.className = el.className.replace(/hidden|bg-\S+|text-\S+/g, '').trim();
+          el.classList.add('flex','items-center','gap-1.5','bg-surface-container','text-on-surface-variant');
+          el.innerHTML = '<span class="material-symbols-outlined text-sm">info</span>Kan supplere din løsning';
+          if (card) card.style.borderColor = '';
+        } else {
+          el.classList.add('hidden');
+          if (card) card.style.borderColor = '';
+        }
+      });
     });
   }
 };

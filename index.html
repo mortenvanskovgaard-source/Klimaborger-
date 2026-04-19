@@ -2084,9 +2084,7 @@ function dSelectSymptom(id) {
   // Årsag forklaring
   document.getElementById("d-aarsag-titel").textContent = aarsagTitler.join(' eller ');
   document.getElementById("d-aarsag-tekst").textContent = aarsager.map(([a]) => D_AARSAGER[a]?.tekst).filter(Boolean).join(' ');
-  document.getElementById("d-aarsag-forklaring").textContent = aarsager.map(([a]) => D_AARSAGER[a]?.forklaring).filter(Boolean).join('
-
-');
+  document.getElementById("d-aarsag-forklaring").textContent = aarsager.map(([a]) => D_AARSAGER[a]?.forklaring).filter(Boolean).join(' ');
 
   // Primære løsninger
   document.getElementById("d-primaer").innerHTML = allePrimaer.map(l => {

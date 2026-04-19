@@ -9,52 +9,64 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
+<script id="tailwind-config">
 tailwind.config = {
-  darkMode:"class",
-  theme:{extend:{
-    colors:{
-      "primary":"#006a2c","on-primary":"#cfffcf","primary-container":"#82ff99","on-primary-container":"#006127",
-      "primary-fixed":"#82ff99","primary-fixed-dim":"#73f08c","primary-dim":"#005d25",
-      "secondary":"#006941","secondary-container":"#7bfbb6","on-secondary-container":"#005e3a",
-      "secondary-fixed":"#7bfbb6","secondary-fixed-dim":"#6ceca8","secondary-dim":"#005c38",
-      "tertiary":"#006573","tertiary-container":"#00e0fd","on-tertiary-container":"#004b56",
-      "tertiary-fixed":"#00e0fd","tertiary-fixed-dim":"#00d1ec","tertiary-dim":"#005864",
-      "surface":"#f1f8ef","surface-bright":"#f1f8ef","surface-dim":"#ccd7cc",
-      "surface-container-lowest":"#ffffff","surface-container-low":"#ebf3e9",
-      "surface-container":"#e2ebe0","surface-container-high":"#dbe5da","surface-container-highest":"#d5e0d4",
-      "surface-variant":"#d5e0d4","on-surface":"#29302b","on-surface-variant":"#565d57",
-      "outline":"#717971","outline-variant":"#a8afa7","background":"#f1f8ef","on-background":"#29302b",
-      "error":"#b02500","error-container":"#f95630","on-error":"#ffefec","on-error-container":"#520c00",
-      "inverse-surface":"#09100b","inverse-primary":"#82ff99","inverse-on-surface":"#989f97",
-      "on-secondary":"#caffdc","on-tertiary":"#daf8ff","surface-tint":"#006a2c"
-    },
-    borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
-    fontFamily:{"headline":["Epilogue"],"body":["Manrope"],"label":["Space Grotesk"]}
-  }}
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "secondary-fixed-dim": "#6ceca8","on-primary-container": "#006127","tertiary-container": "#00e0fd",
+        "surface-container": "#e2ebe0","error": "#b02500","secondary-container": "#7bfbb6",
+        "on-primary-fixed": "#004c1d","surface-bright": "#f1f8ef","outline": "#717971",
+        "primary-container": "#82ff99","on-secondary-container": "#005e3a","on-tertiary-fixed": "#00363e",
+        "surface-container-low": "#ebf3e9","error-container": "#f95630","tertiary-fixed-dim": "#00d1ec",
+        "on-background": "#29302b","outline-variant": "#a8afa7","surface-container-highest": "#d5e0d4",
+        "surface-variant": "#d5e0d4","secondary-fixed": "#7bfbb6","on-secondary": "#caffdc",
+        "surface-dim": "#ccd7cc","tertiary-fixed": "#00e0fd","surface": "#f1f8ef",
+        "primary": "#006a2c","surface-tint": "#006a2c","on-tertiary": "#daf8ff",
+        "primary-fixed-dim": "#73f08c","inverse-surface": "#09100b","tertiary": "#006573",
+        "on-tertiary-container": "#004b56","on-primary": "#cfffcf","on-error-container": "#520c00",
+        "on-surface": "#29302b","primary-dim": "#005d25","surface-container-high": "#dbe5da",
+        "on-surface-variant": "#565d57","on-error": "#ffefec","on-secondary-fixed": "#00492c",
+        "inverse-primary": "#82ff99","secondary": "#006941","primary-fixed": "#82ff99",
+        "background": "#f1f8ef","inverse-on-surface": "#989f97","surface-container-lowest": "#ffffff",
+        "tertiary-dim": "#005864","secondary-dim": "#005c38","on-primary-fixed-variant": "#006c2d",
+        "on-secondary-fixed-variant": "#006941","error-dim": "#b92902"
+      },
+      borderRadius: { "DEFAULT": "0.125rem","lg": "0.25rem","xl": "0.5rem","full": "0.75rem" },
+      fontFamily: { "headline": ["Epilogue"],"body": ["Manrope"],"label": ["Space Grotesk"] }
+    }
+  }
 }
 </script>
 <style>
-.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
-.editorial-shadow{box-shadow:0 40px 60px -10px rgba(41,48,43,0.06)}
-.glass-nav{background-color:rgba(241,248,239,0.8);backdrop-filter:blur(24px)}
-.primary-gradient{background:linear-gradient(135deg,#006a2c 0%,#82ff99 100%)}
-.page{display:none !important}
-.page.active{display:block !important}
-.nav-link{color:#565d57;transition:color 0.2s;font-family:'Epilogue',sans-serif}
-.nav-link:hover{color:#006a2c}
-.nav-link.active{color:#006a2c;font-weight:700;border-bottom:2px solid #006a2c;padding-bottom:2px}
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.editorial-shadow { box-shadow: 0 40px 60px -10px rgba(41,48,43,0.06); }
+.glass-nav { background-color: rgba(241,248,239,0.75); backdrop-filter: blur(24px); }
+.primary-gradient { background: linear-gradient(135deg,#006a2c 0%,#82ff99 100%); }
+.page { display: none; opacity: 0; transform: translateY(16px); transition: opacity 0.4s ease, transform 0.4s ease; }
+.page.active { display: block; opacity: 1; transform: translateY(0); }
+.reveal { opacity:0; transform:translateY(30px); transition:all 0.8s cubic-bezier(0.22,1,0.36,1); }
+.reveal.active { opacity:1; transform:translateY(0); }
+@keyframes sway { 0%,100%{transform:rotate(-2deg) scale(1.05)} 50%{transform:rotate(1deg) scale(1.07)} }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes pulse-gentle { 0%,100%{transform:scale(1)} 50%{transform:scale(1.03)} }
+@keyframes fade-in-up { 0%{opacity:0;transform:translateY(20px)} 100%{opacity:1;transform:translateY(0)} }
 @keyframes spin{to{transform:rotate(360deg)}}
-.animate-spin{animation:spin 1s linear infinite;display:inline-block}
-@keyframes pulse-gentle{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+.animate-sway{animation:sway 6s ease-in-out infinite}
+.animate-float{animation:float 3s ease-in-out infinite}
 .animate-pulse-gentle{animation:pulse-gentle 2s ease-in-out infinite}
-@keyframes fade-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.fade-up{animation:fade-up 0.6s ease-out forwards}
+.animate-fade-in-up{animation:fade-in-up 0.8s ease-out forwards}
+.animate-spin{animation:spin 1s linear infinite;display:inline-block}
 input[type=range]{-webkit-appearance:none;width:100%;background:transparent}
-input[type=range]::-webkit-slider-runnable-track{height:4px;background:#d5e0d4;border-radius:2px}
+input[type=range]::-webkit-slider-runnable-track{width:100%;height:4px;cursor:pointer;background:#d5e0d4;border-radius:2px}
 input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%;background:#006a2c;cursor:pointer;-webkit-appearance:none;margin-top:-6px}
+.radio-chip input:checked + label{background-color:#006a2c;color:white;border-color:#006a2c}
 .solution-btn.active{background-color:#006a2c;color:#cfffcf;border-color:#006a2c}
-#mobile-menu{max-height:0;opacity:0;overflow:hidden;transition:max-height 0.3s,opacity 0.3s}
+.nav-link.active{color:#006a2c;font-weight:700;border-bottom:2px solid #006a2c;padding-bottom:2px}
+.nav-link{color:#565d57;transition:color 0.2s}
+.nav-link:hover{color:#006a2c}
+#mobile-menu{transition:max-height 0.3s ease,opacity 0.3s ease;max-height:0;opacity:0;overflow:hidden}
 #mobile-menu.open{max-height:400px;opacity:1}
 </style>
 </head>
@@ -62,105 +74,127 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
 
 <!-- NAV -->
 <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
-  <div class="flex justify-between items-center px-6 md:px-8 py-4 max-w-screen-2xl mx-auto">
+  <div class="flex justify-between items-center w-full px-6 md:px-8 py-4 max-w-screen-2xl mx-auto">
     <button class="text-2xl font-bold tracking-tighter text-primary font-headline" onclick="navigate('forsta')">Klimaborger</button>
-        <div class="hidden md:flex items-center gap-6">
-      <button class="nav-link text-sm" data-page="forsta" onclick="navigate('forsta')">Forstå dit vand</button>
-      <button class="nav-link text-sm" data-page="diagnose" onclick="navigate('diagnose')">Diagnosér</button>
-      <button class="nav-link text-sm" data-page="kortlaeg" onclick="navigate('kortlaeg')">Kortlæg</button>
-      <button class="nav-link text-sm" data-page="byg" onclick="navigate('byg')">Byg din løsning</button>
-      <button class="nav-link text-sm" data-page="have" onclick="navigate('have')">Se din have</button>
-      <button class="nav-link text-sm" data-page="gang" onclick="navigate('gang')">Kom godt i gang</button>
-      <button class="nav-link text-sm" data-page="inspiration" onclick="navigate('inspiration')">Inspiration</button>
+    <div class="hidden md:flex items-center gap-6">
+      <button class="nav-link font-headline text-sm" data-page="forsta" onclick="navigate('forsta')">Forstå dit vand</button>
+      <button class="nav-link font-headline text-sm" data-page="diagnose" onclick="navigate('diagnose')">Diagnosér</button>
+      <button class="nav-link font-headline text-sm" data-page="kortlaeg" onclick="navigate('kortlaeg')">Kortlæg</button>
+      <button class="nav-link font-headline text-sm" data-page="byg" onclick="navigate('byg')">Byg din løsning</button>
+      <button class="nav-link font-headline text-sm" data-page="have" onclick="navigate('have')">Se din have</button>
+      <button class="nav-link font-headline text-sm" data-page="gang" onclick="navigate('gang')">Kom godt i gang</button>
+      <button class="nav-link font-headline text-sm" data-page="inspiration" onclick="navigate('inspiration')">Inspiration</button>
     </div>
     <div class="flex items-center gap-3">
-      <button class="primary-gradient text-on-primary-container px-5 py-2 rounded-md font-label uppercase tracking-wider text-sm font-bold hidden md:block">Log ind</button>
+      <button class="bg-gradient-to-r from-primary to-primary-container text-on-primary-container px-5 py-2 rounded-md font-label uppercase tracking-wider text-sm font-bold hidden md:block">Log ind</button>
       <button class="md:hidden p-2" onclick="toggleMobile()"><span class="material-symbols-outlined">menu</span></button>
     </div>
   </div>
-    <div id="mobile-menu" class="px-6 pb-4 bg-surface-container-low">
+  <div id="mobile-menu" class="px-6 pb-4 bg-surface-container-low">
     <div class="flex flex-col gap-3 pt-3">
-      <button class="nav-link text-left py-2 border-b border-outline-variant/20" data-page="forsta" onclick="navigate('forsta');toggleMobile()">Forstå dit vand</button>
-      <button class="nav-link text-left py-2 border-b border-outline-variant/20" data-page="diagnose" onclick="navigate('diagnose');toggleMobile()">Diagnosér</button>
-      <button class="nav-link text-left py-2 border-b border-outline-variant/20" data-page="kortlaeg" onclick="navigate('kortlaeg');toggleMobile()">Kortlæg</button>
-      <button class="nav-link text-left py-2 border-b border-outline-variant/20" data-page="byg" onclick="navigate('byg');toggleMobile()">Byg din løsning</button>
-      <button class="nav-link text-left py-2 border-b border-outline-variant/20" data-page="have" onclick="navigate('have');toggleMobile()">Se din have</button>
-      <button class="nav-link text-left py-2 border-b border-outline-variant/20" data-page="gang" onclick="navigate('gang');toggleMobile()">Kom godt i gang</button>
-      <button class="nav-link text-left py-2" data-page="inspiration" onclick="navigate('inspiration');toggleMobile()">Inspiration</button>
+      <button class="nav-link font-headline text-left py-2 border-b border-outline-variant/20" data-page="forsta" onclick="navigate('forsta');toggleMobile()">Forstå din rolle</button>
+      <button class="nav-link font-headline text-left py-2 border-b border-outline-variant/20" data-page="kortlaeg" onclick="navigate('kortlaeg');toggleMobile()">Kortlæg</button>
+      <button class="nav-link font-headline text-left py-2 border-b border-outline-variant/20" data-page="byg" onclick="navigate('byg');toggleMobile()">Byg din løsning</button>
+      <button class="nav-link font-headline text-left py-2 border-b border-outline-variant/20" data-page="have" onclick="navigate('have');toggleMobile()">Se din have</button>
+      <button class="nav-link font-headline text-left py-2 border-b border-outline-variant/20" data-page="gang" onclick="navigate('gang');toggleMobile()">Kom godt i gang</button>
+      <button class="nav-link font-headline text-left py-2" data-page="inspiration" onclick="navigate('inspiration');toggleMobile()">Inspiration</button>
     </div>
   </div>
 </nav>
 
-<!-- ══ PAGE: FORSTÅ ══ -->
+<!-- PAGE 1: FORSTÅ DIN ROLLE -->
 <div id="page-forsta" class="page pt-24">
-  <section class="relative px-6 md:px-8 py-20 md:py-32 max-w-screen-2xl mx-auto overflow-hidden">
-    <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary-fixed opacity-20 blur-[100px] rounded-full"></div>
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10">
-      <div class="md:col-span-7">
-        <span class="font-label text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Din have • Dit klima</span>
-        <h1 class="text-5xl md:text-8xl font-headline font-extrabold leading-tight tracking-tighter mb-8">
-          Vandet begynder <br/>hos <span class="text-primary italic">dig.</span>
-        </h1>
-        <p class="text-xl md:text-2xl text-on-surface-variant leading-relaxed max-w-2xl font-medium mb-10">
-          Hver regndråbe der lander på dit tag belaster enten kloakken eller giver liv til din have. Vi hjælper dig med at vende strømmen.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <button onclick="navigate('kortlaeg')" class="primary-gradient text-on-primary-container font-headline font-bold px-8 py-4 rounded-xl hover:scale-105 transition-all editorial-shadow">
-            Kortlæg din matrikel →
-          </button>
-          <button onclick="navigate('inspiration')" class="bg-surface-container-lowest border border-outline-variant/30 font-headline font-bold px-8 py-4 rounded-xl hover:bg-surface-container-low transition-all">
-            Se inspiration
-          </button>
+  <main>
+    <section class="relative px-6 md:px-8 py-20 md:py-32 overflow-hidden max-w-screen-2xl mx-auto">
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary-fixed opacity-20 blur-[100px] rounded-full"></div>
+      <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+        <div class="md:col-span-7 animate-fade-in-up">
+          <span class="font-label text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Din have • Dit klima</span>
+          <h1 class="text-5xl md:text-8xl font-headline font-extrabold text-on-background leading-tight tracking-tighter mb-8">
+            Vandet begynder <br/>hos <span class="text-primary italic">dig.</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-on-surface-variant leading-relaxed max-w-2xl font-medium">
+            Hver regndråbe der lander på dit tag, er en ressource der enten belaster byen eller giver liv til din have.
+          </p>
+          <div class="mt-10 flex flex-wrap gap-4">
+            <button onclick="navigate('kortlaeg')" class="primary-gradient text-on-primary-container font-headline font-bold px-8 py-4 rounded-xl hover:scale-105 transition-all editorial-shadow">
+              Kortlæg din matrikel →
+            </button>
+            <button onclick="navigate('inspiration')" class="bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-headline font-bold px-8 py-4 rounded-xl hover:bg-surface-container-low transition-all">
+              Se inspiration
+            </button>
+          </div>
+        </div>
+        <div class="md:col-span-5 relative">
+          <div class="aspect-[4/5] rounded-xl overflow-hidden editorial-shadow animate-sway bg-surface-container-high flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary opacity-20" style="font-size:200px">yard</span>
+          </div>
+          <div class="absolute -bottom-8 -left-8 bg-surface-container-lowest p-8 rounded-xl editorial-shadow hidden md:block max-w-[240px] animate-float">
+            <span class="material-symbols-outlined text-primary text-4xl mb-2">water_drop</span>
+            <p class="text-sm font-label uppercase tracking-wider font-bold">100% Naturligt</p>
+            <p class="text-xs text-on-surface-variant mt-1">Håndtér regnen lokalt og skab biodiversitet.</p>
+          </div>
         </div>
       </div>
-      <div class="md:col-span-5">
-        <div class="aspect-[4/5] rounded-xl bg-surface-container-high flex items-center justify-center editorial-shadow">
-          <span class="material-symbols-outlined text-primary opacity-20" style="font-size:200px">yard</span>
+    </section>
+    <section class="bg-surface-container-low py-24 px-6 md:px-8">
+      <div class="max-w-screen-2xl mx-auto">
+        <div class="mb-16 reveal">
+          <h2 class="text-3xl md:text-5xl font-headline font-bold mb-4">Vandets rejse</h2>
+          <p class="text-on-surface-variant max-w-xl">Fra skyerne til dit afløb – forstå hvorfor vores nuværende system er under pres.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="reveal bg-surface p-10 rounded-xl relative overflow-hidden hover:bg-surface-container-lowest transition-all" style="transition-delay:100ms">
+            <div class="text-6xl font-headline font-bold text-outline-variant/20 absolute -top-2 -right-2">01</div>
+            <span class="material-symbols-outlined text-primary text-5xl mb-6 inline-block">cloudy_snowing</span>
+            <h3 class="text-2xl font-headline font-bold mb-4">Nedbør</h3>
+            <p class="text-on-surface-variant leading-relaxed">Når regnen falder tungt, modtager dine fliser og dit tag tusindvis af liter vand på få minutter.</p>
+          </div>
+          <div class="reveal bg-surface p-10 rounded-xl relative overflow-hidden hover:bg-surface-container-lowest transition-all md:translate-y-12" style="transition-delay:300ms">
+            <div class="text-6xl font-headline font-bold text-outline-variant/20 absolute -top-2 -right-2">02</div>
+            <span class="material-symbols-outlined text-primary text-5xl mb-6 inline-block">waves</span>
+            <h3 class="text-2xl font-headline font-bold mb-4">Overfladeafstrømning</h3>
+            <p class="text-on-surface-variant leading-relaxed">I de fleste haver løber vandet direkte i kloakken og belaster vores fælles rensningsanlæg.</p>
+          </div>
+          <div class="reveal bg-surface p-10 rounded-xl relative overflow-hidden hover:bg-surface-container-lowest transition-all" style="transition-delay:500ms">
+            <div class="text-6xl font-headline font-bold text-outline-variant/20 absolute -top-2 -right-2">03</div>
+            <span class="material-symbols-outlined text-primary text-5xl mb-6 inline-block">home_repair_service</span>
+            <h3 class="text-2xl font-headline font-bold mb-4">Din løsning</h3>
+            <p class="text-on-surface-variant leading-relaxed">Ved at nedsive vandet i din egen have, aflaster du byen og styrker grundvandet.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="bg-surface-container-low py-24 px-6 md:px-8">
-    <div class="max-w-screen-2xl mx-auto">
-      <h2 class="text-3xl md:text-5xl font-headline font-bold mb-4">Vandets rejse</h2>
-      <p class="text-on-surface-variant max-w-xl mb-16">Fra skyerne til dit afløb – forstå hvorfor vores nuværende system er under pres.</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-surface p-10 rounded-xl relative overflow-hidden hover:bg-surface-container-lowest transition-all">
-          <div class="text-6xl font-headline font-bold text-outline-variant/20 absolute -top-2 -right-2">01</div>
-          <span class="material-symbols-outlined text-primary text-5xl mb-6 block">cloudy_snowing</span>
-          <h3 class="text-2xl font-headline font-bold mb-4">Nedbør</h3>
-          <p class="text-on-surface-variant">Når regnen falder tungt modtager dine fliser og dit tag tusindvis af liter vand på få minutter.</p>
+    </section>
+    <section class="py-32 px-6 md:px-8 max-w-screen-2xl mx-auto">
+      <div class="flex flex-col md:flex-row gap-16 items-center">
+        <div class="w-full md:w-1/2 space-y-8">
+          <h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tight reveal">Hvorfor er det <span class="text-primary">vigtigt?</span></h2>
+          <div class="space-y-6">
+            <div class="flex gap-6 items-start reveal"><div class="bg-primary-container p-3 rounded-md shrink-0"><span class="material-symbols-outlined text-on-primary-container">security</span></div><div><h4 class="font-bold text-xl mb-1">Beskyt din bolig</h4><p class="text-on-surface-variant">Korrekt håndtering af regnvand minimerer risikoen for fugt og vandskader.</p></div></div>
+            <div class="flex gap-6 items-start reveal"><div class="bg-secondary-container p-3 rounded-md shrink-0"><span class="material-symbols-outlined text-on-secondary-container">eco</span></div><div><h4 class="font-bold text-xl mb-1">Øg biodiversiteten</h4><p class="text-on-surface-variant">Regnvandsløsninger skaber nye levesteder for insekter og fugle.</p></div></div>
+            <div class="flex gap-6 items-start reveal"><div class="bg-tertiary-container/30 p-3 rounded-md shrink-0"><span class="material-symbols-outlined text-on-tertiary-container">payments</span></div><div><h4 class="font-bold text-xl mb-1">Spar penge</h4><p class="text-on-surface-variant">Mange kommuner giver tilskud når du kobler dig af kloakken.</p></div></div>
+          </div>
         </div>
-        <div class="bg-surface p-10 rounded-xl relative overflow-hidden hover:bg-surface-container-lowest transition-all md:translate-y-12">
-          <div class="text-6xl font-headline font-bold text-outline-variant/20 absolute -top-2 -right-2">02</div>
-          <span class="material-symbols-outlined text-primary text-5xl mb-6 block">waves</span>
-          <h3 class="text-2xl font-headline font-bold mb-4">Overfladeafstrømning</h3>
-          <p class="text-on-surface-variant">I de fleste haver løber vandet direkte i kloakken og belaster vores fælles rensningsanlæg.</p>
-        </div>
-        <div class="bg-surface p-10 rounded-xl relative overflow-hidden hover:bg-surface-container-lowest transition-all">
-          <div class="text-6xl font-headline font-bold text-outline-variant/20 absolute -top-2 -right-2">03</div>
-          <span class="material-symbols-outlined text-primary text-5xl mb-6 block">eco</span>
-          <h3 class="text-2xl font-headline font-bold mb-4">Din løsning</h3>
-          <p class="text-on-surface-variant">Ved at nedsive vandet i din have aflaster du byen og styrker grundvandet for fremtidige generationer.</p>
+        <div class="w-full md:w-1/2 reveal">
+          <div class="aspect-[4/3] rounded-xl bg-surface-container-high flex items-center justify-center editorial-shadow">
+            <span class="material-symbols-outlined text-primary opacity-20" style="font-size:150px">eco</span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <section class="px-6 md:px-8 pb-32">
+      <div class="max-w-screen-xl mx-auto primary-gradient rounded-[2rem] p-12 md:p-24 text-center editorial-shadow">
+        <h2 class="text-4xl md:text-7xl font-headline font-extrabold text-on-primary mb-8 tracking-tighter">Er din have klar til fremtiden?</h2>
+        <p class="text-on-primary/80 text-xl mb-12 max-w-2xl mx-auto">Tag det første skridt mod en klimasikret have.</p>
+        <button onclick="navigate('kortlaeg')" class="bg-surface-container-lowest text-primary font-headline font-bold text-lg px-12 py-6 rounded-xl hover:scale-105 transition-all editorial-shadow animate-pulse-gentle">
+          Find ud af hvad din have kan
+        </button>
+      </div>
+    </section>
+  </main>
+</div>
 
-  <section class="py-32 px-6 md:px-8">
-    <div class="max-w-screen-xl mx-auto primary-gradient rounded-[2rem] p-12 md:p-24 text-center editorial-shadow">
-      <h2 class="text-4xl md:text-7xl font-headline font-extrabold text-on-primary mb-8 tracking-tighter">Er din have klar til fremtiden?</h2>
-      <p class="text-on-primary/80 text-xl mb-12 max-w-2xl mx-auto">Tag det første skridt mod en klimasikret have. Det er nemmere end du tror.</p>
-      <button onclick="navigate('kortlaeg')" class="bg-surface-container-lowest text-primary font-headline font-bold text-lg px-12 py-6 rounded-xl hover:scale-105 transition-all editorial-shadow animate-pulse-gentle">
-        Find ud af hvad din have kan
-      </button>
-    </div>
-  </section>
-
-  
-</div><!-- /page-forsta -->
-
+<!-- PAGE 2: KORTLÆG — NYT DESIGN -->
 <!-- ══ PAGE: DIAGNOSÉR ══ -->
 <div id="page-diagnose" class="page pt-28 pb-24 px-6 max-w-screen-xl mx-auto">
   <header class="mb-10">
@@ -168,8 +202,6 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
     <h1 class="font-headline text-5xl md:text-7xl tracking-tighter leading-[0.95] mb-5">Hvad sker der <span class="text-primary italic">hos dig?</span></h1>
     <p class="text-on-surface-variant text-lg max-w-xl">Vælg dit symptom — vi finder årsagen og de rigtige løsninger. Baseret direkte på NIRAS' klimaguide.</p>
   </header>
-
-  <!-- TRIN 1: SYMPTOM -->
   <div id="d-step1">
     <h2 class="font-headline text-xl font-bold mb-5 flex items-center gap-3">
       <span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-sm font-bold shrink-0">1</span>
@@ -177,8 +209,6 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3" id="d-symptom-grid"></div>
   </div>
-
-  <!-- TRIN 2: HVORNÅR -->
   <div id="d-step2" class="hidden">
     <button onclick="dGoStep(1)" class="flex items-center gap-2 text-sm text-on-surface-variant hover:text-primary mb-6 transition-colors">
       <span class="material-symbols-outlined text-sm">arrow_back</span>Skift symptom
@@ -191,16 +221,12 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
       <span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-sm font-bold shrink-0">2</span>
       Hvornår sker det typisk?
     </h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="d-tid-grid"></div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3" id="d-tid-grid"></div>
   </div>
-
-  <!-- TRIN 3: RESULTAT -->
   <div id="d-step3" class="hidden">
     <button onclick="dGoStep(2)" class="flex items-center gap-2 text-sm text-on-surface-variant hover:text-primary mb-6 transition-colors">
       <span class="material-symbols-outlined text-sm">arrow_back</span>Skift tidspunkt
     </button>
-
-    <!-- Breadcrumb -->
     <div class="flex items-center gap-2 text-xs text-on-surface-variant mb-8 flex-wrap">
       <span class="px-3 py-1 bg-primary-container text-on-primary-container rounded-full font-bold" id="d-bc-symptom">—</span>
       <span class="material-symbols-outlined text-sm">arrow_forward</span>
@@ -208,9 +234,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
       <span class="material-symbols-outlined text-sm">arrow_forward</span>
       <span class="px-3 py-1 bg-primary text-on-primary rounded-full font-bold" id="d-bc-aarsag">—</span>
     </div>
-
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-      <!-- Venstre: årsag + forklaring -->
       <div class="lg:col-span-4 space-y-4">
         <div class="bg-primary text-on-primary p-8 rounded-2xl">
           <p class="font-label text-[10px] uppercase tracking-[0.3em] opacity-70 mb-2">Sandsynlig årsag</p>
@@ -218,58 +242,42 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
           <p class="text-on-primary/80 text-sm leading-relaxed" id="d-aarsag-tekst">—</p>
         </div>
         <div class="bg-surface-container-low p-6 rounded-xl">
-          <h4 class="font-headline font-bold mb-2 text-sm flex items-center gap-2">
-            <span class="material-symbols-outlined text-primary text-sm">psychology</span>Hvad sker der?
-          </h4>
+          <h4 class="font-headline font-bold mb-2 text-sm flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">psychology</span>Hvad sker der?</h4>
           <p class="text-sm text-on-surface-variant leading-relaxed" id="d-aarsag-forklaring">—</p>
         </div>
         <div class="flex gap-3">
-          <button onclick="navigate('kortlaeg')" class="flex-1 bg-surface-container text-on-surface py-3 rounded-xl font-headline text-sm font-bold hover:bg-surface-container-high transition-all">
-            Beregn vandbehov
-          </button>
-          <button onclick="navigate('gang')" class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-headline text-sm font-bold hover:opacity-90 transition-all">
-            Byggevejledning
-          </button>
+          <button onclick="navigate('kortlaeg')" class="flex-1 bg-surface-container text-on-surface py-3 rounded-xl font-headline text-sm font-bold hover:bg-surface-container-high transition-all">Beregn vandbehov</button>
+          <button onclick="navigate('gang')" class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-headline text-sm font-bold hover:opacity-90 transition-all">Byggevejledning</button>
         </div>
       </div>
-
-      <!-- Højre: løsninger -->
       <div class="lg:col-span-8 space-y-5">
-        <!-- Primære -->
         <div>
           <h3 class="font-label text-xs uppercase font-bold tracking-widest text-primary mb-3">Primære løsninger — løser problemet alene</h3>
           <div class="space-y-2" id="d-primaer"></div>
         </div>
-        <!-- Sekundære -->
         <div id="d-sekundaer-wrap" class="hidden">
           <h3 class="font-label text-xs uppercase font-bold tracking-widest text-on-surface-variant mb-3">Supplerende løsninger</h3>
           <div class="flex flex-wrap gap-2" id="d-sekundaer"></div>
         </div>
-        <!-- Undgå -->
         <div id="d-undgaa-wrap" class="hidden">
           <div class="bg-red-50 border border-red-200 rounded-xl p-5">
-            <h3 class="font-label text-xs uppercase font-bold tracking-widest text-red-700 mb-3 flex items-center gap-2">
-              <span class="material-symbols-outlined text-sm">warning</span>Disse løsninger vil forværre situationen
-            </h3>
+            <h3 class="font-label text-xs uppercase font-bold tracking-widest text-red-700 mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-sm">warning</span>Disse løsninger vil forværre situationen</h3>
             <div class="flex flex-wrap gap-2" id="d-undgaa"></div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Kilde -->
   <div class="mt-14 bg-surface-container-low rounded-2xl p-6 flex gap-4 items-start">
     <span class="material-symbols-outlined text-primary shrink-0 mt-0.5">menu_book</span>
     <div>
       <h3 class="font-headline font-bold mb-1 text-sm">Kilde: NIRAS' klimaguide for grundejere (2020)</h3>
-      <p class="text-xs text-on-surface-variant">Symptom→årsag→løsning matricen er udledt direkte fra NIRAS/DNN's interaktive guide. Alle anbefalinger kan spores til guidens løsningsskema (s. 24–35).</p>
+      <p class="text-xs text-on-surface-variant">Symptom-årsag-løsning matricen er udledt direkte fra NIRAS/DNN's guide. Alle anbefalinger kan spores til guidens løsningsskema (s. 24-35).</p>
     </div>
   </div>
 </div>
 
 
-<!-- PAGE 2: KORTLÆG — NYT DESIGN -->
 <div id="page-kortlaeg" class="page pt-28 pb-20 px-6 max-w-screen-xl mx-auto">
   <header class="mb-12 relative">
     <span class="font-label text-primary uppercase tracking-[0.2em] text-xs font-bold block mb-4">Trin 02: Analyse</span>
@@ -488,8 +496,6 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
     </aside>
   </div>
 </div>
-
-
 
 <!-- ══════════════════════════════════════════════
      PAGE 3: BYG DIN LØSNING
@@ -711,8 +717,6 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
   </div>
 </div>
 
-
-
 <!-- ══════════════════════════════════════════════
      PAGE 4: SE DIN HAVE
 ══════════════════════════════════════════════ -->
@@ -813,8 +817,6 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
     </div>
   </section>
 </div>
-
-
 
 <!-- ══════════════════════════════════════════════
      PAGE 5: KOM GODT I GANG
@@ -930,50 +932,64 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<div 
+<div id="page-inspiration" class="page" style="padding-top:80px;">
 
-</div>
-
-<!-- ══ PAGE: INSPIRATION ══ -->
-<div id="page-inspiration" class="page" style="padding-top:80px">
-  <div class="sticky top-20 z-40 bg-surface/95 backdrop-blur border-b border-outline-variant/15 px-6 py-4">
+  <!-- Topbar med søgning og filtre -->
+  <div class="sticky top-20 z-40 bg-surface/95 backdrop-blur-md border-b border-outline-variant/15 px-6 py-4">
     <div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
       <div>
         <span class="font-label text-primary uppercase tracking-[0.2em] text-xs font-bold block">Inspiration</span>
-        <h1 class="text-2xl md:text-3xl font-headline font-extrabold tracking-tighter">Klimaprojekter i <span class="text-primary italic">Danmark</span></h1>
+        <h1 class="text-2xl md:text-3xl font-headline font-extrabold text-on-background tracking-tighter">
+          Klimaprojekter i <span class="text-primary italic">Danmark</span>
+        </h1>
       </div>
+      <!-- Filtre -->
       <div class="flex flex-wrap gap-2">
-        <button onclick="mapFilter('alle',this)" class="map-filter-btn px-4 py-2 rounded-full bg-primary text-on-primary font-label text-xs font-bold uppercase">Alle</button>
-        <button onclick="mapFilter('nedsivning',this)" class="map-filter-btn px-4 py-2 rounded-full bg-surface-container border border-outline-variant/30 font-label text-xs font-bold uppercase">Nedsivning</button>
-        <button onclick="mapFilter('forsinkelse',this)" class="map-filter-btn px-4 py-2 rounded-full bg-surface-container border border-outline-variant/30 font-label text-xs font-bold uppercase">Forsinkelse</button>
-        <button onclick="mapFilter('opsamling',this)" class="map-filter-btn px-4 py-2 rounded-full bg-surface-container border border-outline-variant/30 font-label text-xs font-bold uppercase">Opsamling</button>
-        <button onclick="mapFilter('kystsikring',this)" class="map-filter-btn px-4 py-2 rounded-full bg-surface-container border border-outline-variant/30 font-label text-xs font-bold uppercase">Kystsikring</button>
+        <button onclick="mapFilter('alle',this)" class="map-filter-btn active-map-filter px-4 py-2 rounded-full bg-primary text-on-primary font-label text-xs font-bold uppercase tracking-wider transition-all">Alle</button>
+        <button onclick="mapFilter('nedsivning',this)" class="map-filter-btn px-4 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface font-label text-xs font-bold uppercase tracking-wider hover:border-primary transition-all">Nedsivning</button>
+        <button onclick="mapFilter('forsinkelse',this)" class="map-filter-btn px-4 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface font-label text-xs font-bold uppercase tracking-wider hover:border-primary transition-all">Forsinkelse</button>
+        <button onclick="mapFilter('opsamling',this)" class="map-filter-btn px-4 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface font-label text-xs font-bold uppercase tracking-wider hover:border-primary transition-all">Opsamling</button>
+        <button onclick="mapFilter('fordampning',this)" class="map-filter-btn px-4 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface font-label text-xs font-bold uppercase tracking-wider hover:border-primary transition-all">Fordampning</button>
+        <button onclick="mapFilter('kystsikring',this)" class="map-filter-btn px-4 py-2 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface font-label text-xs font-bold uppercase tracking-wider hover:border-primary transition-all">Kystsikring</button>
       </div>
     </div>
   </div>
-  <div class="flex flex-col lg:flex-row" style="height:calc(100vh - 160px);min-height:600px">
-    <div class="lg:w-[480px] shrink-0 overflow-y-auto bg-surface">
-      <div class="p-6 space-y-4" id="inspi-map-list"></div>
-      <div class="p-6 border-t border-outline-variant/15">
+
+  <!-- Split layout: kort + liste -->
+  <div class="flex flex-col lg:flex-row" style="height:calc(100vh - 160px); min-height:600px;">
+
+    <!-- Kortliste (venstre/top) -->
+    <div class="lg:w-[480px] xl:w-[540px] shrink-0 overflow-y-auto bg-surface" id="inspi-list-col" style="scrollbar-width:thin">
+      <div class="p-6 space-y-4" id="inspi-map-list">
+        <!-- Renderes af JS -->
+      </div>
+      <!-- CTA bund -->
+      <div class="p-6 border-t border-outline-variant/15 bg-surface">
+        <p class="text-sm text-on-surface-variant mb-4 font-medium">Klar til at implementere en løsning i din egen have?</p>
         <div class="flex gap-3">
           <button onclick="navigate('kortlaeg')" class="flex-1 primary-gradient text-on-primary-container font-headline font-bold py-3 rounded-xl text-sm hover:scale-105 transition-all">Kortlæg min matrikel →</button>
-          <button onclick="navigate('byg')" class="flex-1 bg-surface-container font-headline font-bold py-3 rounded-xl text-sm hover:bg-surface-container-low">Byg en løsning</button>
+          <button onclick="navigate('byg')" class="flex-1 bg-surface-container text-on-surface font-headline font-bold py-3 rounded-xl text-sm hover:bg-surface-container-low transition-all">Byg en løsning</button>
         </div>
       </div>
     </div>
+
+    <!-- Kort (højre/bund) -->
     <div class="flex-1 relative">
-      <div id="inspi-map" style="width:100%;height:100%;min-height:400px"></div>
-      <div id="map-popup" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-80 bg-white rounded-2xl editorial-shadow overflow-hidden z-[999] hidden">
+      <div id="inspi-map" style="width:100%;height:100%;min-height:400px;"></div>
+      <!-- Projekt-popup på kort -->
+      <div id="map-popup" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-80 bg-surface-container-lowest rounded-2xl editorial-shadow overflow-hidden z-[999] hidden transition-all">
         <div class="aspect-[16/7] bg-surface-container flex items-center justify-center relative">
           <span class="material-symbols-outlined text-primary opacity-20" style="font-size:60px" id="mp-icon">water_drop</span>
           <div class="absolute top-3 left-3"><span id="mp-badge" class="text-xs font-label uppercase font-bold px-3 py-1 rounded-full bg-primary text-on-primary">Kategori</span></div>
-          <button onclick="document.getElementById('map-popup').classList.add('hidden')" class="absolute top-3 right-3 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-sm">close</span></button>
+          <button onclick="document.getElementById('map-popup').classList.add('hidden')" class="absolute top-3 right-3 w-7 h-7 bg-surface-container-lowest/90 rounded-full flex items-center justify-center hover:bg-surface-container">
+            <span class="material-symbols-outlined text-sm">close</span>
+          </button>
         </div>
         <div class="p-4">
           <h3 class="font-headline text-lg font-bold mb-1" id="mp-title">—</h3>
-          <p class="text-xs text-on-surface-variant mb-3" id="mp-loc">—</p>
-          <p class="text-sm text-on-surface-variant mb-3" id="mp-desc">—</p>
-          <div class="flex gap-3" id="mp-stats"></div>
+          <p class="text-xs text-on-surface-variant mb-3" id="mp-loc"><span class="material-symbols-outlined text-xs">location_on</span> —</p>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-3" id="mp-desc">—</p>
+          <div class="flex gap-3 text-xs font-label uppercase text-on-surface-variant" id="mp-stats"></div>
         </div>
       </div>
     </div>
@@ -981,4 +997,929 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
 </div>
 
 
-<!-- FOOTER -->
+<!-- ── SHARED FOOTER ── -->
+<footer class="bg-surface-container-low w-full border-t border-outline-variant/15 mt-16">
+  <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full max-w-screen-2xl mx-auto">
+    <div class="mb-6 md:mb-0">
+      <button class="font-headline font-bold text-primary text-xl" onclick="navigate('forsta')">Klimaborger</button>
+      <p class="font-body text-sm leading-relaxed text-on-surface-variant mt-2">© 2024 Klimaborger – Et samarbejde med Egedal Kommune</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-8">
+      <a class="font-body text-sm text-on-surface-variant hover:text-primary transition-opacity opacity-80 hover:opacity-100" href="#">Kontakt os</a>
+      <a class="font-body text-sm text-on-surface-variant hover:text-primary transition-opacity opacity-80 hover:opacity-100" href="#">Privatlivspolitik</a>
+      <a class="font-body text-sm text-on-surface-variant hover:text-primary transition-opacity opacity-80 hover:opacity-100" href="#">Egedal Kommune</a>
+      <a class="font-body text-sm text-on-surface-variant hover:text-primary transition-opacity opacity-80 hover:opacity-100" href="#">Tilgængelighed</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+// ══════════════════════════════════════════════
+// KOMMUNEBASERET NEDBØRSDATA
+// Kilde: Spildevandskomiteens LAR-regneark v2024
+// Årsnedbør (mm) for alle danske kommuner
+// ══════════════════════════════════════════════
+const KOMMUNE_NEDBOER = {"Albertslund": 640.9, "Allerød": 685.9, "Assens": 715.0, "Ballerup": 658.4, "Billund": 888.6, "Bornholm": 694.9, "Brøndby": 637.7, "Brønderslev": 756.6, "Christiansø": 575.9, "Dragør": 608.7, "Egedal": 640.5, "Esbjerg": 836.2, "Fanø": 806.0, "Favrskov": 670.5, "Faxe": 650.7, "Fredensborg": 722.5, "Fredericia": 745.1, "Frederiksberg": 639.3, "Frederikshavn": 748.1, "Frederikssund": 645.1, "Furesø": 681.3, "Faaborg-Midtfyn": 745.5, "Gentofte": 668.6, "Gladsaxe": 679.7, "Glostrup": 645.5, "Greve": 624.2, "Gribskov": 690.8, "Guldborgsund": 636.3, "Haderslev": 841.3, "Halsnæs": 659.2, "Hedensted": 741.8, "Helsingør": 691.1, "Herlev": 674.6, "Herning": 922.5, "Hillerød": 717.5, "Hjørring": 745.5, "Holbæk": 645.6, "Holstebro": 854.7, "Horsens": 718.5, "Hvidovre": 633.3, "Høje-Taastrup": 631.2, "Hørsholm": 710.4, "Ikast-Brande": 842.2, "Ishøj": 628.0, "Jammerbugt": 749.3, "Kalundborg": 583.1, "Kerteminde": 598.9, "Kolding": 827.8, "København": 633.1, "Køge": 642.3, "Langeland": 610.3, "Lejre": 643.9, "Lemvig": 847.0, "Lolland": 604.2, "Lyngby-Taarbæk": 682.5, "Læsø": 668.9, "Mariagerfjord": 740.6, "Middelfart": 693.2, "Morsø": 793.0, "Norddjurs": 649.7, "Nordfyns": 626.9, "Nyborg": 668.4, "Næstved": 645.1, "Odder": 656.9, "Odense": 687.0, "Odsherred": 628.5, "Randers": 684.3, "Rebild": 776.1, "Ringkøbing-Skjern": 870.8, "Ringsted": 665.1, "Roskilde": 638.2, "Rudersdal": 705.3, "Rødovre": 646.3, "Samsø": 567.9, "Silkeborg": 783.1, "Skanderborg": 736.2, "Skive": 779.7, "Slagelse": 581.1, "Solrød": 633.0, "Sorø": 654.7, "Stevns": 627.2, "Struer": 823.8, "Svendborg": 725.8, "Syddjurs": 653.1, "Sønderborg": 712.9, "Thisted": 809.2, "Tønder": 839.2, "Tårnby": 613.6, "Vallensbæk": 633.9, "Varde": 893.3, "Vejen": 926.6, "Vejle": 832.7, "Vesthimmerlands": 736.0, "Viborg": 744.1, "Vordingborg": 629.1, "Ærø": 598.3, "Aabenraa": 877.2, "Aalborg": 715.8, "Aarhus": 699.0};
+
+function getKommuneNedboer(kommunenavn) {
+  // Prøv direkte match
+  if (KOMMUNE_NEDBOER[kommunenavn]) return KOMMUNE_NEDBOER[kommunenavn];
+  // Prøv delvist match (fx "Høje-Taastrup" vs "Høje Taastrup")
+  const key = Object.keys(KOMMUNE_NEDBOER).find(k => 
+    k.toLowerCase().includes(kommunenavn.toLowerCase()) || 
+    kommunenavn.toLowerCase().includes(k.toLowerCase())
+  );
+  return key ? KOMMUNE_NEDBOER[key] : 640; // fallback til DK-gennemsnit
+}
+
+// ── State ──
+const bygValues = {};
+let currentPage = 'forsta';
+
+// ── Navigation ──
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+  const el = document.getElementById('page-' + page);
+  if (!el) return;
+  el.style.display = 'block';
+  requestAnimationFrame(() => {
+    el.classList.add('active');
+  });
+  currentPage = page;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  updateNav(page);
+  initReveal();
+  if (page === 'inspiration') setTimeout(initInspiMap, 100);
+  if (page === 'diagnose') setTimeout(dInit, 50);
+}
+
+function updateNav(page) {
+  document.querySelectorAll('.nav-link').forEach(l => {
+    l.classList.remove('active');
+    if (l.dataset.page === page) l.classList.add('active');
+  });
+}
+
+function toggleMobile() {
+  const m = document.getElementById('mobile-menu');
+  m.classList.toggle('open');
+}
+
+// ── Scroll reveal ──
+function initReveal() {
+  setTimeout(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('#page-' + currentPage + ' .reveal').forEach(el => observer.observe(el));
+  }, 100);
+}
+
+// ══════════════════════════════════════════════
+// LAR BEREGNINGSMOTOR — oversat fra Excel-ark
+// Nina Sybrandt Jørgensen & Morten Skovgaard, 2024
+// ══════════════════════════════════════════════
+
+// Sæsonnedbør (mm) — Egedal/Greve-gennemsnit fra DMI
+const SAESON_NEDBOER = { vinter:193, foraar:198, sommer:211, efteraar:238 };
+// Antal dage pr. sæson
+const SAESON_DAGE = { vinter:90, foraar:92, sommer:92, efteraar:91 };
+// Antal tørre dage pr. sæson
+const TOERRE_DAGE = { vinter:58.7, foraar:67.3, sommer:62.95, efteraar:60.08 };
+// Evaporationsrater (mm/dag) — åbent vand
+const EVAP_RATER = { vinter:0.333, foraar:2.0, sommer:3.0, efteraar:0.917 };
+// Græs fordampning (l/m²/dag)
+const GRAES_EVAP = { vinter:0.267, foraar:1.6, sommer:2.4, efteraar:0.733 };
+// Mellemhøj vegetation (l/m²/dag)
+const VEG_EVAP = { vinter:0.4, foraar:2.4, sommer:3.6, efteraar:1.1 };
+
+function calcKortlaeg() {
+  // Hent inputs
+  const tag        = parseFloat(document.getElementById('k-tag')?.value)        || 0;
+  const befaestet  = parseFloat(document.getElementById('k-befaestet')?.value)  || 0;
+  const graes      = parseFloat(document.getElementById('k-have')?.value || document.getElementById('k-graes')?.value) || 0;
+  const veg        = parseFloat(document.getElementById('k-veg')?.value)        || 0;
+  const nedsivEvne = parseFloat(document.getElementById('k-jord')?.value)       || 86.4; // l/m²/døgn
+  const regnEpisode= parseFloat(document.getElementById('k-regn')?.value)       || 54.24; // mm/døgn — 5-årsregn som default
+  const loevBAI    = parseFloat(document.getElementById('k-loev-art')?.value)   || 4.0;
+  const loevAntal  = parseFloat(document.getElementById('k-loev-antal')?.value) || 0;
+  const loevKrone  = parseFloat(document.getElementById('k-loev-krone')?.value) || 5;
+  const naalBAI    = parseFloat(document.getElementById('k-naal-art')?.value)   || 7.5;
+  const naalAntal  = parseFloat(document.getElementById('k-naal-antal')?.value) || 0;
+  const naalKrone  = parseFloat(document.getElementById('k-naal-krone')?.value) || 3;
+  const toiletPers = parseFloat(document.getElementById('k-toilet')?.value)     || 0;
+  const vaskPers   = parseFloat(document.getElementById('k-vask')?.value)       || 0;
+
+  if (tag === 0 && befaestet === 0 && graes === 0) return;
+
+  // Skaler sæsonnedbør med lokal Open-Meteo data hvis tilgængeligt
+  const stdAar = 193 + 198 + 211 + 238; // 840mm standard
+  const lokalAar = window._meteoAarlig;
+  const skala = lokalAar ? Math.min(1.5, Math.max(0.6, lokalAar / stdAar)) : 1.0;
+  const lokalRegn = lokalAar ? skala : 1.0;
+
+  // Brug lokal episodenedbør hvis hentet, ellers behold dropdown-valget
+  const regnEpisodeFinal = window._meteoEpisode && window._meteoEpisode > 10
+    ? window._meteoEpisode
+    : regnEpisode;
+
+  // Justér SAESON-nedbør med lokalskala
+  const NB = {
+    vinter:   SAESON_NEDBOER.vinter   * lokalRegn,
+    foraar:   SAESON_NEDBOER.foraar   * lokalRegn,
+    sommer:   SAESON_NEDBOER.sommer   * lokalRegn,
+    efteraar: SAESON_NEDBOER.efteraar * lokalRegn,
+  };
+
+  // ── Grundareal ──
+  const grundAreal = tag + befaestet + graes + veg;
+
+  // ── Samlet regn på matrikel (m³/år) — bruger lokalt skaleret NB ──
+  const aarNedb = (NB.vinter + NB.foraar + NB.sommer + NB.efteraar) / 1000;
+  const regnPaaMatrikel = grundAreal * aarNedb;
+
+  // ── Nedsivningsareal og kapacitet ──
+  const nedsivAreal    = graes + veg;
+  const nedsivningDøgn = nedsivAreal * nedsivEvne / 1000; // m³/døgn
+
+  // ── Kroneareal ──
+  const loevKroneAreal = loevAntal > 0 ? loevAntal * Math.PI * (loevKrone/2)**2 : 0;
+  const naalKroneAreal = naalAntal > 0 ? naalAntal * Math.PI * (naalKrone/2)**2 : 0;
+
+  // ── Træ-interception (m³) pr. sæson — bruger NB ──
+  function treeInterception(bai, kroneAreal, s) {
+    const vaadeDage    = SAESON_DAGE[s] - TOERRE_DAGE[s];
+    const nedboerPrDag = NB[s] / SAESON_DAGE[s]; // mm/dag
+    return bai * kroneAreal * vaadeDage * nedboerPrDag / 1000 / 1000; // m³
+  }
+
+  const saesoner = ['vinter','foraar','sommer','efteraar'];
+  let loevFordS = {}, naalFordS = {}, graesFordS = {}, vegFordS = {};
+  let toiletForbrug = {}, vaskForbrug = {};
+
+  saesoner.forEach(s => {
+    loevFordS[s]     = treeInterception(loevBAI, loevKroneAreal, s);
+    naalFordS[s]     = treeInterception(naalBAI, naalKroneAreal, s);
+    graesFordS[s]    = graes * GRAES_EVAP[s] * SAESON_DAGE[s] / 1000;
+    vegFordS[s]      = veg   * VEG_EVAP[s]   * SAESON_DAGE[s] / 1000;
+    toiletForbrug[s] = toiletPers * 28.35 * SAESON_DAGE[s] / 1000;
+    vaskForbrug[s]   = vaskPers   * 13.65 * SAESON_DAGE[s] / 1000;
+  });
+
+  // ── Vandbalance pr. sæson — bruger NB ──
+  function tagvandM3(s) { return tag * NB[s] / 1000; }
+
+  let balanceS = {}, nedsivningAarS = {};
+  saesoner.forEach(s => {
+    const tagR            = tagvandM3(s);
+    const forbrug         = toiletForbrug[s] + vaskForbrug[s];
+    const overskudFraTag  = Math.max(0, tagR - forbrug);
+    const regnPaaHave     = (graes + veg + befaestet) * NB[s] / 1000;
+    const vandHaveIalt    = overskudFraTag + regnPaaHave;
+    const fordampning     = loevFordS[s] + naalFordS[s] + graesFordS[s] + vegFordS[s];
+    const nedsivning      = nedsivningDøgn * SAESON_DAGE[s];
+    balanceS[s]           = Math.max(0, vandHaveIalt - fordampning - nedsivning);
+    nedsivningAarS[s]     = Math.min(nedsivning, Math.max(0, vandHaveIalt - fordampning));
+  });
+
+  const nedsivningAar  = Object.values(nedsivningAarS).reduce((a,b) => a+b, 0);
+  const fordampningAar = saesoner.reduce((sum,s) =>
+    sum + loevFordS[s] + naalFordS[s] + graesFordS[s] + vegFordS[s], 0);
+
+  // ── Magasineringskrav — bruger lokal episodenedbør hvis tilgængeligt ──
+  const regnPaaMatrikelEpisode = grundAreal * regnEpisodeFinal / 1000; // m³
+  const magasineringskrav      = Math.max(0, regnPaaMatrikelEpisode - nedsivningDøgn);
+
+  // ── Digehøjde (cm) — fra Excel-formel ──
+  // digehøjde = magasineringskrav / nedsivningsareal × 100 (cm)
+  const digehøjde = nedsivAreal > 0
+    ? (magasineringskrav / nedsivAreal) * 100
+    : magasineringskrav * 10; // fallback
+
+  // ── Min. nedsivningsareal (m²) ──
+  // Fra Excel: regnPaaMatrikelEpisode / (nedsivEvne/1000) / SAESON_DAGE_avg
+  const minNedsivAreal = nedsivEvne > 0
+    ? (regnPaaMatrikelEpisode / (nedsivEvne / 1000))
+    : 0;
+
+  // ── Kloak spares (m³/år) ──
+  const kloakSpares = fordampningAar + nedsivningAar +
+    saesoner.reduce((s, sæs) => s + toiletForbrug[sæs] + vaskForbrug[sæs], 0);
+
+  // ── Opdater UI ──
+  const fmt = (v, dec=1) => isNaN(v) ? '—' : v.toFixed(dec).replace('.',',');
+
+  document.getElementById('k-result').textContent = fmt(magasineringskrav);
+  document.getElementById('k-result-sub').textContent =
+    `ved ${regnEpisodeFinal.toFixed(0)} mm regnhændelse — ${fmt(regnPaaMatrikelEpisode)} m³ falder på matriklen`;
+
+  document.getElementById('k-vinter').textContent   = fmt(balanceS.vinter);
+  document.getElementById('k-foraar').textContent   = fmt(balanceS.foraar);
+  document.getElementById('k-sommer').textContent   = fmt(balanceS.sommer);
+  document.getElementById('k-efteraar').textContent = fmt(balanceS.efteraar);
+
+  document.getElementById('k-regnpaamatrikel').textContent = fmt(regnPaaMatrikel);
+  document.getElementById('k-nedsivning').textContent      = fmt(nedsivningDøgn, 2);
+  document.getElementById('k-fordampning').textContent     = fmt(fordampningAar);
+  document.getElementById('k-kloak-besparelse').textContent= fmt(kloakSpares);
+
+  const dige = Math.min(digehøjde, 100);
+  document.getElementById('k-digeh').textContent = fmt(digehøjde, 1) + ' cm';
+  document.getElementById('k-digebar').style.width = Math.min(digehøjde, 100) + '%';
+  document.getElementById('k-dige-label').textContent =
+    `Regnvandsdiget skal være ${fmt(digehøjde,1)} cm højt for at håndtere den valgte hændelse`;
+
+  document.getElementById('k-minneds').textContent = fmt(minNedsivAreal, 0) + ' m²';
+
+  // ── Sæson-vandbalancegraf ──
+  renderSaesonGraf({ balanceS, loevFordS, naalFordS, graesFordS, vegFordS, nedsivningAarS });
+
+  // Gem til Byg-siden
+  updateLiterDisplay(magasineringskrav, regnEpisodeFinal);
+  window._larMagasineringskrav = magasineringskrav;
+  window._larRegnEpisode = regnEpisode;
+  window._larGrundAreal = grundAreal;
+}
+
+// ── Sæson-vandbalancegraf ──
+function renderSaesonGraf({ balanceS, loevFordS, naalFordS, graesFordS, vegFordS, nedsivningAarS }) {
+  const el = document.getElementById('k-saeson-graf');
+  if (!el) return;
+
+  const saesoner = ['vinter','foraar','sommer','efteraar'];
+  const labels   = ['Vinter','Forår','Sommer','Efterår'];
+
+  const fordampning = saesoner.map(s =>
+    (loevFordS[s]||0) + (naalFordS[s]||0) + (graesFordS[s]||0) + (vegFordS[s]||0));
+  const nedsivning  = saesoner.map(s => Math.max(0, nedsivningAarS[s]||0));
+  const overskud    = saesoner.map(s => balanceS[s]||0);
+
+  const allVals = [...fordampning, ...nedsivning, ...overskud];
+  const maxVal  = Math.max(...allVals, 0.1);
+
+  const barW = 36, gap = 20, groupW = barW * 3 + gap, svgW = groupW * 4 + 60;
+  const svgH = 140, chartH = 90, baseY = 110;
+
+  let bars = '';
+  saesoner.forEach((s, i) => {
+    const x0 = 30 + i * groupW;
+    const hF = (fordampning[i] / maxVal) * chartH;
+    const hN = (nedsivning[i]  / maxVal) * chartH;
+    const hO = (overskud[i]    / maxVal) * chartH;
+
+    bars += `
+      <rect x="${x0}"        y="${baseY - hF}" width="${barW}" height="${hF}" rx="3" fill="#006573" opacity="0.85"/>
+      <rect x="${x0+barW}"   y="${baseY - hN}" width="${barW}" height="${hN}" rx="3" fill="#006a2c" opacity="0.85"/>
+      <rect x="${x0+barW*2}" y="${baseY - hO}" width="${barW}" height="${hO}" rx="3" fill="${hO > 0.01 ? '#b02500' : '#e2ebe0'}" opacity="0.85"/>
+      <text x="${x0 + groupW/2 - gap/2}" y="${baseY + 16}" text-anchor="middle"
+            style="font-family:'Space Grotesk',sans-serif;font-size:10px;fill:#565d57">${labels[i]}</text>`;
+  });
+
+  el.innerHTML = `
+    <svg width="100%" viewBox="0 0 ${svgW} 145" style="overflow:visible">
+      ${bars}
+      <line x1="24" y1="${baseY}" x2="${svgW-10}" y2="${baseY}" stroke="#a8afa7" stroke-width="0.5"/>
+      <text x="10" y="${baseY - chartH + 8}" style="font-family:'Space Grotesk',sans-serif;font-size:9px;fill:#a8afa7">${maxVal.toFixed(1)} m³</text>
+    </svg>
+    <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap">
+      <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:#565d57;font-family:'Space Grotesk',sans-serif">
+        <span style="width:10px;height:10px;background:#006573;border-radius:2px;display:inline-block"></span>Fordampning
+      </span>
+      <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:#565d57;font-family:'Space Grotesk',sans-serif">
+        <span style="width:10px;height:10px;background:#006a2c;border-radius:2px;display:inline-block"></span>Nedsivning
+      </span>
+      <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:#565d57;font-family:'Space Grotesk',sans-serif">
+        <span style="width:10px;height:10px;background:#b02500;border-radius:2px;display:inline-block"></span>Overskud til magasin
+      </span>
+    </div>`;
+}
+
+// ── Byg din løsning ──
+function updateByg(key, val, unit, lblId, factor) {
+  document.getElementById(lblId).textContent = val + ' ' + unit;
+  bygValues[key] = parseFloat(val) * factor;
+  recalcByg();
+}
+
+function recalcByg() {
+  // Brug magasineringskrav fra LAR-beregneren hvis tilgængeligt, ellers 10.000 L
+  const total = window._larMagasineringskrav
+    ? Math.round(window._larMagasineringskrav * 1000)
+    : 10000;
+  document.getElementById('byg-total-label').textContent =
+    window._larMagasineringskrav
+      ? `Af i alt ${total.toLocaleString('da-DK')} liter (dit magasineringskrav)`
+      : 'Af i alt 10.000 liter fra 100-års hændelse';
+  const used = Object.values(bygValues).reduce((a, b) => a + b, 0);
+  const remaining = Math.max(0, total - used);
+  const pct = Math.min(100, (remaining / total) * 100);
+  document.getElementById('byg-counter').textContent = remaining.toLocaleString('da-DK');
+  document.getElementById('byg-bar').style.width = pct + '%';
+
+  // Update lijst
+  const items = Object.entries(bygValues).filter(([k, v]) => v > 0);
+  const listeEl = document.getElementById('byg-liste');
+  if (items.length === 0) {
+    listeEl.innerHTML = '<span class="italic text-on-surface-variant">Ingen elementer tilføjet endnu.</span>';
+  } else {
+    listeEl.innerHTML = items.map(([k, v]) => `<div class="flex justify-between py-1 border-b border-outline-variant/10"><span class="capitalize">${k}</span><span class="text-primary font-bold">${v.toLocaleString('da-DK')} L</span></div>`).join('');
+  }
+
+  // Profile bars
+  const bioKeys = ['regnbed','traeer','gronvaeg','grontag'];
+  const rekKeys = ['regnbed','grontag','traeer'];
+  const total_bio = bioKeys.reduce((a, k) => a + (bygValues[k] || 0), 0);
+  const total_rek = rekKeys.reduce((a, k) => a + (bygValues[k] || 0), 0);
+  const total_econ = Math.max(0, 10000 - used) / 100;
+
+  setBar('bar-okon', 'prof-okon', Math.min(100, total_econ));
+  setBar('bar-bio', 'prof-bio', Math.min(100, total_bio / 50));
+  setBar('bar-rek', 'prof-rek', Math.min(100, total_rek / 30));
+}
+
+function setBar(barId, lblId, pct) {
+  document.getElementById(barId).style.width = pct + '%';
+  const labels = [['Lav','Middel','God','Høj','Meget høj']];
+  const idx = Math.min(4, Math.floor(pct / 20));
+  document.getElementById(lblId).textContent = ['Lav','Middel','God','Høj','Meget høj'][idx];
+}
+
+// ── Se din have ──
+const haveData = {
+  regnbed: { title: 'Om Regnbedet', desc: 'Et regnbed er en lavning i haven beplantet med robuste planter, der kan tåle både masser af vand og udtørring.', icon: 'rainy', stat: '95% Effektivitet', statDesc: 'Kan håndtere op til en 10-årshændelse.' },
+  bassin: { title: 'Om Våde Bassiner', desc: 'Bassiner med permanent vandspejl opsamler store mængder regnvand og øger biodiversiteten markant.', icon: 'pool', stat: '80% Effektivitet', statDesc: 'Høj kapacitet til store regnhændelser.' },
+  perm: { title: 'Om Permeable Belægninger', desc: 'Permeable fliser lader vandet sive direkte ned i undergrunden og eliminerer overfladeafstrømning.', icon: 'grid_view', stat: '70% Effektivitet', statDesc: 'Reducerer afstrømning fra befæstede arealer.' },
+  grontag: { title: 'Om Grønne Tage', desc: 'Sedum-tage tilbageholder op til 50% af nedbøren og forbedrer husets isolering.', icon: 'filter_hdr', stat: '50% Tilbageholdelse', statDesc: 'Velegnet til carporte og udhuse.' },
+  vadi: { title: 'Om Vadi', desc: 'En åben grøft der transporterer og forsinker regnvand. Kombinerer nedsivning med forsinkelse.', icon: 'reorder', stat: '3 t. Forsinkelse', statDesc: 'Forsinker vandet effektivt ved kraftig regn.' },
+  fask: { title: 'Om Infiltrationsplæne', desc: 'En optimeret græsplæne der nedsiver regnvand hurtigt direkte til grundvand.', icon: 'circle', stat: '60% Effektivitet', statDesc: 'Lavteknologisk og effektiv løsning.' },
+  traeer: { title: 'Om Træer', desc: 'Store løvtræer fordamper enorme mængder vand og giver naturlig klimasikring og biodiversitet.', icon: 'park', stat: '200 L/dag', statDesc: 'Et enkelt løvtræ fordamper op til 200L/dag.' },
+  vaeg: { title: 'Om Grønne Vægge', desc: 'Beplantede facader og hegn fordamper vand og skaber grønne levesteder i byrummet.', icon: 'texture', stat: '40% Fordampning', statDesc: 'Effektiv på varme, solbeskinnede flader.' },
+  tank: { title: 'Om Regnvandstanke', desc: 'Underjordiske tanke opsamler tagvand til havevanding og toiletskyl og reducerer vandforbrug.', icon: 'water_full', stat: '5.000 L Lager', statDesc: 'Typisk kapacitet for en familiehave.' }
+};
+
+function selectHave(btn, key) {
+  document.querySelectorAll('.have-btn').forEach(b => {
+    b.classList.remove('bg-surface-container-lowest', 'border-primary');
+    b.classList.add('bg-surface-container-low', 'border-transparent');
+    b.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 0";
+    b.querySelector('span.font-headline').classList.remove('text-primary');
+    b.querySelector('span.font-headline').classList.add('text-on-surface');
+  });
+  btn.classList.remove('bg-surface-container-low', 'border-transparent');
+  btn.classList.add('bg-surface-container-lowest', 'border-primary');
+  btn.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 1";
+  btn.querySelector('span.font-headline').classList.add('text-primary');
+  btn.querySelector('span.font-headline').classList.remove('text-on-surface');
+
+  const d = haveData[key];
+  if (!d) return;
+  document.getElementById('have-info-title').textContent = d.title;
+  document.getElementById('have-info-desc').textContent = d.desc;
+  document.getElementById('have-icon').textContent = d.icon;
+  document.getElementById('have-viz-title').textContent = d.title.replace('Om ','');
+  document.getElementById('have-stat1').textContent = d.stat;
+  document.getElementById('have-stat1-desc').textContent = d.statDesc;
+}
+
+function setSeason(label, icon) {
+  document.getElementById('have-season').textContent = label;
+  document.querySelectorAll('.season-btn').forEach(b => {
+    b.classList.remove('bg-primary-container', 'text-on-primary-container', 'border-primary');
+    b.classList.add('bg-surface-container-lowest', 'text-on-surface-variant');
+    b.style.borderColor = '';
+  });
+  event.currentTarget.classList.add('bg-primary-container', 'text-on-primary-container', 'border-primary');
+  event.currentTarget.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant');
+}
+
+// ── Kom godt i gang ──
+const gangData = {
+  regnbed: { title: 'Anlæg dit eget <br/><span class="text-primary italic">regnbed</span>', desc: 'Et regnbed er en smuk og effektiv måde at håndtere tagvand i din have. Det aflaster kloaksystemet og skaber liv i haven.', priceDesc: 'For et gennemsnitligt bed på 5–10 m²', price: '2.500 – 5.000 kr.', materials: ['Regnvandsplanter','Filterjord / Grus','Fiberdug','Skovl og trillebør','Niveaumåler','Græskant'], maintIntro: 'Et regnbed er selvkørende i store dele af året, men kræver lidt opmærksomhed.', maint: [{t:'Tøm indløbet',d:'Fjern blade og affald fra tagrenden jævnligt.'},{t:'Ukrudt',d:'Hold bedet frit for ukrudt de første 2 år.'}] },
+  vaade: { title: 'Etabler et <br/><span class="text-primary italic">vådt bassin</span>', desc: 'Et vådt bassin har permanent vandspejl og er ideelt til store mængder regnvand. Giver stor biodiversitet.', priceDesc: 'Afhænger af størrelse og membrantype', price: '10.000 – 25.000 kr.', materials: ['EPDM Membran','Bassin-dug','Vandplanter','Sten og grus','Overløbsrør'], maintIntro: 'Våde bassiner kræver overvågning af vandkvalitet og plantevækst.', maint: [{t:'Algerkontrol',d:'Hold øje med algevækst i sommermånederne.'},{t:'Slamtømning',d:'Hvert 5–10 år kan det være nødvendigt at fjerne slam.'}] },
+  toerre: { title: 'Anlæg et <br/><span class="text-primary italic">tørt bassin</span>', desc: 'Tørre bassiner fyldes kun ved regn og nedsiver vandet over tid. Lavt vedligeholdsbehov.', priceDesc: 'Typisk for et bassin på 20–50 m²', price: '5.000 – 15.000 kr.', materials: ['Grus og singels','Drænrør','Fiberdug','Jordarbejde','Robuste planter'], maintIntro: 'Tørre bassiner kræver minimal vedligeholdelse.', maint: [{t:'Aflejringer',d:'Fjern silt og blade fra bunden 1x om året.'},{t:'Beplantning',d:'Klip og ryd vegetation i efteråret.'}] },
+  faskine: { title: 'Byg en <br/><span class="text-primary italic">faskine</span>', desc: 'En faskine er et underjordisk hulrum der opsamler og langsomt nedsiver regnvand til grundvandet.', priceDesc: 'Pr. meter eller pr. modul', price: '3.000 – 8.000 kr.', materials: ['Plastmoduler','Geotekstil','Grus','Nedløbsrør','Inspektionsbrønd'], maintIntro: 'Faskiner er lavvedligeholdelseskrævende men skal tjekkes.', maint: [{t:'Inspektion',d:'Kontrollér via inspektionsbrønd hvert 2. år.'},{t:'Filterrensning',d:'Rens inlet-filteret årligt.'}] },
+  perm: { title: 'Læg <br/><span class="text-primary italic">permeable belægninger</span>', desc: 'Permeable belægninger lader vandet sive direkte ned i undergrunden og erstatter tætte fliser.', priceDesc: 'Pr. m² (inkl. underlag)', price: '400 – 900 kr./m²', materials: ['Græsarmering eller chaussésten','Bærelag af grus','Geotekstil','Sand','Kantsten'], maintIntro: 'Permeable belægninger kræver vedligeholdelse for at bevare infiltrationsevnen.', maint: [{t:'Rensning',d:'Spул belægningen med vand om foråret for at fjerne støv.'},{t:'Ukrudt',d:'Fjern ukrudt i fugerne mekanisk.'}] },
+  grontag: { title: 'Byg et <br/><span class="text-primary italic">grønt tag</span>', desc: 'Grønne tage med sedum-planter opsuger op til 50% af regnen og isolerer bygningen.', priceDesc: 'Pr. kvadratmeter (DIY)', price: '400 – 800 kr./m²', materials: ['Rodfast membran','Drænplader','Filterlag','Vækstsubstrat','Sedum-måtter'], maintIntro: 'Grønne tage kræver minimal pasning men skal gødes.', maint: [{t:'Gødskning',d:'Specialgødning til sedum en gang om foråret.'},{t:'Afvanding',d:'Tjek at tagrender og nedløb er frie for blade.'}] },
+  traeer: { title: 'Plant <br/><span class="text-primary italic">klimatræer</span>', desc: 'Biodiverse træarter fordamper store mængder vand og skaber naturlig klimasikring og biodiversitet.', priceDesc: 'Pr. stk. afhæng. af art og størrelse', price: '500 – 3.000 kr./stk.', materials: ['Klimarobust træ','Træpæl og bindsel','Barkflis','Plantekompost','Vand til etablering'], maintIntro: 'Nyplantede træer kræver vanding de første 2 somre.', maint: [{t:'Vanding',d:'Vand ugentligt de første 2 somre ved tørke.'},{t:'Beskæring',d:'Fjern døde grene og krydsende grene om foråret.'}] },
+  vadi: { title: 'Grav en <br/><span class="text-primary italic">vadi</span>', desc: 'En vadi er en åben kanal der transporterer, forsinker og nedsiver regnvand. Kombinerer funktioner.', priceDesc: 'Pr. løbende meter', price: '200 – 600 kr./m', materials: ['Jordarbejde','Drænrør (evt.)','Sten og grus','Engplanter','Fiberdug'], maintIntro: 'Vadier kræver klipning og rensning.', maint: [{t:'Slåning',d:'Klip vegetation 1–2x om året.'},{t:'Sediment',d:'Fjern sediment fra bunden hvert 3. år.'}] },
+  gronvaeg: { title: 'Byg en <br/><span class="text-primary italic">grøn væg</span>', desc: 'Grønne vægge og facader med klatreplanter fordamper vand og skaber grønne levesteder.', priceDesc: 'Pr. m² (inkl. klatresystem)', price: '300 – 1.200 kr./m²', materials: ['Klatresystem / espalier','Klatreplanter','Vækstjord','Vand til etablering','Eventuelt drip-vanding'], maintIntro: 'Grønne vægge kræver styring af vækst.', maint: [{t:'Beskæring',d:'Beskær klatreplanten 1–2x om året.'},{t:'Vinding',d:'Guide nye skud ind i systemet løbende.'}] },
+};
+
+function gangSelect(btn) {
+  document.querySelectorAll('.solution-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const key = btn.dataset.solution;
+  const d = gangData[key];
+  if (!d) return;
+  document.getElementById('gang-title').innerHTML = d.title;
+  document.getElementById('gang-desc').textContent = d.desc;
+  document.getElementById('gang-price-desc').textContent = d.priceDesc;
+  document.getElementById('gang-price').textContent = d.price;
+  document.getElementById('gang-materials').innerHTML = d.materials.map(m => `<div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary">check_circle</span><span class="text-sm">${m}</span></div>`).join('');
+  document.getElementById('gang-maint-intro').textContent = d.maintIntro;
+  document.getElementById('gang-maint-list').innerHTML = d.maint.map(item => `<li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center mt-1 shrink-0"><span class="material-symbols-outlined text-xs text-on-primary-container">priority_high</span></div><div><strong class="font-bold block">${item.t}</strong><span class="text-sm text-on-surface-variant">${item.d}</span></div></li>`).join('');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Inspiration filter ──
+function filterInspi(btn, cat) {
+  document.querySelectorAll('.inspi-filter').forEach(b => {
+    b.classList.remove('bg-primary', 'text-on-primary');
+    b.classList.add('bg-surface-container', 'text-on-surface');
+  });
+  btn.classList.add('bg-primary', 'text-on-primary');
+  btn.classList.remove('bg-surface-container', 'text-on-surface');
+
+  document.querySelectorAll('.inspi-card').forEach(c => {
+    if (cat === 'alle' || c.dataset.cat === cat) {
+      c.style.display = '';
+    } else {
+      c.style.display = 'none';
+    }
+  });
+}
+
+// ══════════════════════════════════════════════
+// DAWA – Danmarks Adressers Web API
+// ══════════════════════════════════════════════
+let dawaTimer = null;
+let selectedAddress = null;
+
+async function dawaSearch(q) {
+  clearTimeout(dawaTimer);
+  const list = document.getElementById('dawa-list');
+  const clear = document.getElementById('dawa-clear');
+  clear.classList.toggle('hidden', q.length === 0);
+  if (q.length < 3) { list.classList.add('hidden'); return; }
+
+  dawaTimer = setTimeout(async () => {
+    try {
+      const res = await fetch(`https://api.dataforsyningen.dk/adresser/autocomplete?q=${encodeURIComponent(q)}&per_side=6&fuzzy=`);
+      const data = await res.json();
+      renderDawaList(data);
+    } catch(e) {
+      list.innerHTML = '<li class="px-4 py-3 text-sm text-on-surface-variant">Kunne ikke hente adresser</li>';
+      list.classList.remove('hidden');
+    }
+  }, 200);
+}
+
+function renderDawaList(items) {
+  const list = document.getElementById('dawa-list');
+  if (!items.length) {
+    list.innerHTML = '<li class="px-4 py-3 text-sm text-on-surface-variant italic">Ingen adresser fundet</li>';
+    list.classList.remove('hidden');
+    return;
+  }
+  list.innerHTML = items.map((item, i) => `
+    <li
+      class="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-surface-container-low transition-colors border-b border-outline-variant/10 last:border-0"
+      onclick="selectDawa(${JSON.stringify(item).replace(/"/g,'&quot;')})"
+    >
+      <span class="material-symbols-outlined text-primary text-sm shrink-0">location_on</span>
+      <div>
+        <div class="text-sm font-medium">${highlight(item.tekst)}</div>
+      </div>
+    </li>
+  `).join('');
+  list.classList.remove('hidden');
+}
+
+function highlight(text) {
+  const q = document.getElementById('dawa-input').value;
+  return text.replace(new RegExp(`(${q.split(' ').filter(Boolean).join('|')})`, 'gi'), '<strong>$1</strong>');
+}
+
+async function selectDawa(item) {
+  const list = document.getElementById('dawa-list');
+  const input = document.getElementById('dawa-input');
+  const icon = document.getElementById('dawa-icon');
+  const statusEl = document.getElementById('dawa-status');
+  const statusLabel = document.getElementById('dawa-status-label');
+
+  input.value = item.tekst;
+  list.classList.add('hidden');
+  selectedAddress = item;
+
+  // Show loading state
+  icon.textContent = 'sync';
+  icon.classList.add('animate-spin');
+  statusEl.classList.remove('hidden');
+  statusLabel.textContent = 'Henter BBR-data...';
+
+  // Fetch address detail to get coordinates + adresse-id
+  try {
+    const res = await fetch(`https://api.dataforsyningen.dk/adresser/${item.adresse.id}`);
+    const addr = await res.json();
+
+    const lat = addr.adgangsadresse?.adgangspunkt?.koordinater?.[1];
+    const lon = addr.adgangsadresse?.adgangspunkt?.koordinater?.[0];
+
+    // BBR lookup via DAR/BBRVSK
+    const esr = addr.adgangsadresse?.esrejendomsnr;
+    fetchBBR(addr, lat, lon);
+    const kommunenavn = addr.adgangsadresse?.kommune?.navn || 'Egedal';
+    fetchMeteo(lat, lon, kommunenavn);
+
+  } catch(e) {
+    statusLabel.textContent = 'Adresse fundet (BBR utilgængeligt)';
+    icon.textContent = 'check_circle';
+    icon.classList.remove('animate-spin');
+    icon.classList.add('text-primary');
+  }
+}
+
+async function fetchBBR(addr, lat, lon) {
+  const icon = document.getElementById('dawa-icon');
+  const statusLabel = document.getElementById('dawa-status-label');
+  const panel = document.getElementById('bbr-panel');
+
+  try {
+    if (!lat || !lon) throw new Error('no coords');
+
+    // Cloudflare Worker proxy til Matrikelkortet
+    const proxyUrl = 'https://calm-disk-3282.mortenvanskovgaard.workers.dev?lon=' + lon + '&lat=' + lat;
+    const res = await fetch(proxyUrl);
+    const data = await res.json();
+
+    const grundAreal = data.grundAreal || null;
+    displayBBR({ grund: grundAreal }, addr);
+
+  } catch(e) {
+    displayBBR({ grund: null }, addr);
+  }
+
+  icon.textContent = 'check_circle';
+  icon.classList.remove('animate-spin');
+  icon.classList.add('text-primary');
+  statusLabel.textContent = 'Adresse fundet — ' + (addr.adgangsadresse?.postnr?.navn || '');
+  panel.classList.remove('hidden');
+}
+function displayBBR(bbr, addr) {
+  const kommunenavn = addr?.adgangsadresse?.kommune?.navn || '';
+  const grundAreal = bbr.grund || null;
+  const tagEst   = grundAreal ? Math.round(grundAreal * 0.25) : null;
+  const graesEst = grundAreal ? Math.round(grundAreal * 0.55) : null;
+  const befEst   = grundAreal ? Math.round(grundAreal * 0.18) : null;
+  const erRigtigt = grundAreal !== null;
+
+  document.getElementById('bbr-tag').textContent   = tagEst  || '—';
+  document.getElementById('bbr-grund').textContent = grundAreal || '—';
+  document.getElementById('bbr-bygaar').textContent = '—';
+
+  const tagInput   = document.getElementById('k-tag');
+  const graesInput = document.getElementById('k-have') || document.getElementById('k-graes');
+  const befInput   = document.getElementById('k-befaestet');
+
+  if (tagInput   && !tagInput.value   && tagEst)   { tagInput.value   = tagEst;   animateField(tagInput); }
+  if (graesEst) {
+    const haveEl = document.getElementById('k-have');
+    const graesEl = document.getElementById('k-graes');
+    if (haveEl && !haveEl.value) { haveEl.value = graesEst; animateField(haveEl); }
+    if (graesEl && !graesEl.value) { graesEl.value = graesEst; animateField(graesEl); }
+  }
+  if (befInput   && !befInput.value   && befEst)   { befInput.value   = befEst;   animateField(befInput); }
+
+  setTimeout(() => calcKortlaeg(), 50);
+
+  const existing = document.querySelector('#bbr-panel .bbr-note');
+  if (!existing) {
+    const note = document.createElement('p');
+    note.className = 'text-[10px] text-on-surface-variant italic mt-2 bbr-note';
+    note.textContent = erRigtigt
+      ? 'Grundareal hentet fra Matrikelkortet for ' + kommunenavn + '. Tagareal estimeret — ret det hvis du kender det præcise mål.'
+      : 'Kunne ikke hente matrikeldata. Indtast dine egne mål nedenfor.';
+    document.getElementById('bbr-panel').querySelector('.grid').after(note);
+  }
+}
+function animateField(el) {
+  el.style.transition = 'border-color 0.3s';
+  el.style.borderColor = '#006a2c';
+  setTimeout(() => { el.style.borderColor = ''; }, 1500);
+}
+
+function fetchMeteo(lat, lon, kommunenavn) {
+  // Bruger Spildevandskomiteens officielle nedbørsdata (LAR-regneark v2024)
+  // i stedet for at kalde Open-Meteo API
+  const aarlig = getKommuneNedboer(kommunenavn);
+  
+  const panel = document.getElementById('meteo-panel');
+  const meteoAarEl = document.getElementById('meteo-aar');
+  const meteoEpEl = document.getElementById('meteo-episode');
+  
+  if (meteoAarEl) meteoAarEl.textContent = Math.round(aarlig);
+  if (meteoEpEl) meteoEpEl.textContent = '54'; // 5-årsregn som standard
+  if (panel) panel.classList.remove('hidden');
+
+  window._meteoAarlig  = aarlig;
+  window._meteoEpisode = null; // bruger dropdown-valg
+  calcKortlaeg();
+}
+
+function dawaClear() {
+  document.getElementById('dawa-input').value = '';
+  document.getElementById('dawa-list').classList.add('hidden');
+  document.getElementById('dawa-clear').classList.add('hidden');
+  document.getElementById('dawa-status').classList.add('hidden');
+  document.getElementById('bbr-panel').classList.add('hidden');
+  document.getElementById('dawa-icon').textContent = 'search';
+  document.getElementById('dawa-icon').classList.remove('text-primary');
+  selectedAddress = null;
+  window._meteoEpisode = null;
+}
+
+// Close dropdown on outside click
+document.addEventListener('click', e => {
+  if (!e.target.closest('#dawa-input') && !e.target.closest('#dawa-list')) {
+    document.getElementById('dawa-list').classList.add('hidden');
+  }
+});
+
+// ── Inspiration kort ──
+const inspiProjects = [
+  { id:1,  navn:'Enghaveparken',            by:'København V',    lat:55.6669, lon:12.5413, kat:'forsinkelse', icon:'water',         desc:'Skybrudssikret park med kapacitet til at tilbageholde op til 26.000 m³ regnvand. Kombinerer rekreativt byrum med klimainfrastruktur.',           stat1:'26.000 m³', lbl1:'Kapacitet',          stat2:'100-årsregn', lbl2:'Sikringsniveau', år:2023 },
+  { id:2,  navn:'Bryggervangen Klimakvarter',by:'København Ø',   lat:55.7050, lon:12.5850, kat:'nedsivning',  icon:'rainy',         desc:'Klimakvarter med lokal håndtering via regnbede, permeable belægninger og grønne tage. Vejene fungerer som vandveje ved skybrud.',             stat1:'19 ha',      lbl1:'Projektareal',       stat2:'60%',         lbl2:'Afstrømning reduceret', år:2014 },
+  { id:3,  navn:'Langelands Plads',          by:'Frederiksberg',  lat:55.6777, lon:12.5235, kat:'forsinkelse', icon:'waves',         desc:'Byrum med integreret skybrudssikring. Pladsen kan fungere som midlertidigt bassin og leder vand kontrolleret til recipienter.',              stat1:'3.000 m³',   lbl1:'Forsinkelsesvolumen', stat2:'10-årsregn',  lbl2:'Sikringsniveau', år:2019 },
+  { id:4,  navn:'Lindevangsparken',          by:'Frederiksberg',  lat:55.6833, lon:12.5183, kat:'forsinkelse', icon:'landscape',     desc:'Park designet til at fungere som midlertidigt vandreservoir. Terrænet er bevidst sænket for at skabe naturlig vandsænkning ved skybrud.',    stat1:'5.000 m³',   lbl1:'Kapacitet',          stat2:'20 min',      lbl2:'Tømmetid', år:2017 },
+  { id:5,  navn:'Sønæs Vådområde',           by:'Viborg',         lat:56.4525, lon:9.4020,  kat:'nedsivning',  icon:'eco',           desc:'Vådområde der renser og forsinker regnvand fra byen. Kombinerer naturgenopretning med klimatilpasning og biodiversitetsfremme.',            stat1:'12 ha',      lbl1:'Vådområde',          stat2:'+40 arter',   lbl2:'Fugle registreret', år:2018 },
+  { id:6,  navn:'Glisholm Sø',               by:'Odense',         lat:55.3860, lon:10.4300,  kat:'opsamling',   icon:'water_full',    desc:'Regnvandssø der forebygger oversvømmelser. Vandet renses naturligt inden det siver til grundvandet via de omkringliggende arealer.',          stat1:'80.000 m³',  lbl1:'Søvolumen',          stat2:'50 ha',       lbl2:'Opland', år:2016 },
+  { id:7,  navn:'Risvangen LAR-projekt',     by:'Aarhus',         lat:56.1775, lon:10.1905,  kat:'nedsivning',  icon:'grass',         desc:'Klimatilpasningsområde med regnbede, faskiner og permeable belægninger. Borgerne har selv medvirket i anlægsprocessen.',                     stat1:'2.400 m²',   lbl1:'Regnbede',           stat2:'85%',         lbl2:'Nedsivning lokalt', år:2020 },
+  { id:8,  navn:'Klimabyen Middelfart',      by:'Middelfart',     lat:55.5053, lon:9.7308,   kat:'forsinkelse', icon:'location_city', desc:'Helhedsorienteret klimatilpasningsprojekt med vadier, regnbede og oversvømmelseskorridorer der håndterer skybrud fra alle retninger.',       stat1:'35 ha',      lbl1:'Projektområde',      stat2:'100-årsregn', lbl2:'Sikringsniveau', år:2021 },
+  { id:9,  navn:'Kilen Forsinkelsesbassin',  by:'Solrød',         lat:55.5365, lon:12.2130,  kat:'forsinkelse', icon:'pool',          desc:'Forsinkelsesbassin der reducerer risiko for oversvømmelser i lavtliggende boligkvarterer. Vandet forsinkes og frigives kontrolleret.',        stat1:'8.000 m³',   lbl1:'Bassinvolumen',      stat2:'3 timer',     lbl2:'Forsinkelsestid', år:2019 },
+  { id:10, navn:'Køge Bugt Strandpark',      by:'Greve/Solrød',   lat:55.6025, lon:12.3967,  kat:'kystsikring', icon:'waves',         desc:'Kystsikringsprojekt der beskytter mod stormflod og erosion langs 12 km kyst. Kombinerer hård og blød kystsikring med rekreative funktioner.', stat1:'12 km',      lbl1:'Kystlinje',          stat2:'2 m',         lbl2:'Stormflodssikring', år:2022 },
+  { id:11, navn:'Utterslev Mose LAR',        by:'København NV',   lat:55.7200, lon:12.5050,  kat:'opsamling',   icon:'water_drop',    desc:'Regnvand fra omkringliggende boligkvarterer ledes til Utterslev Mose via åbne render og regnbede fremfor kloakken.',                          stat1:'200 ha',     lbl1:'Opland',             stat2:'40%',         lbl2:'Aflastning af kloak', år:2015 },
+  { id:12, navn:'Klimavej Nørrebro',         by:'København N',    lat:55.6950, lon:12.5480,  kat:'nedsivning',  icon:'grid_view',     desc:'Gade ombygget med permeable belægninger, gadetræer og regnvandsbede der håndterer vand lokalt og skaber grønnere bymiljø.',                  stat1:'400 m',      lbl1:'Gadens længde',      stat2:'95%',         lbl2:'Permeable flader', år:2021 },
+];
+
+const katColors = {
+  nedsivning:  { bg:'#006a2c', text:'#cfffcf', light:'#e8f5ee' },
+  forsinkelse: { bg:'#006573', text:'#daf8ff', light:'#e0f4f6' },
+  opsamling:   { bg:'#005e3a', text:'#7bfbb6', light:'#e5f5ed' },
+  fordampning: { bg:'#5d4037', text:'#ffccbc', light:'#fbe9e7' },
+  kystsikring: { bg:'#1565c0', text:'#bbdefb', light:'#e3f2fd' },
+};
+
+let inspiMap = null;
+
+function initInspiMap() {
+  if (inspiMap) { setTimeout(() => inspiMap.invalidateSize(), 100); return; }
+
+  inspiMap = L.map('inspi-map', { center:[56.0, 11.5], zoom:7, zoomControl:false });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution:'© OpenStreetMap © CartoDB', maxZoom:19
+  }).addTo(inspiMap);
+
+  L.control.zoom({ position:'topright' }).addTo(inspiMap);
+
+  inspiProjects.forEach(p => {
+    const col = katColors[p.kat] || katColors.nedsivning;
+    const html = `<div style="background:${col.bg};color:${col.text};font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;padding:5px 10px;border-radius:20px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.18);border:2px solid white;cursor:pointer;">${p.navn.split(' ')[0]}</div>`;
+    const icon = L.divIcon({ html, className:'', iconAnchor:[0,0] });
+    const marker = L.marker([p.lat, p.lon], { icon }).addTo(inspiMap);
+    marker.on('click', () => showMapPopup(p));
+    p._marker = marker;
+  });
+
+  renderInspiList(inspiProjects);
+}
+
+function showMapPopup(p) {
+  const col = katColors[p.kat] || katColors.nedsivning;
+  document.getElementById('mp-icon').textContent = p.icon;
+  document.getElementById('mp-title').textContent = p.navn;
+  document.getElementById('mp-loc').innerHTML = `📍 ${p.by} &nbsp;·&nbsp; ${p.år}`;
+  document.getElementById('mp-desc').textContent = p.desc;
+  document.getElementById('mp-badge').textContent = p.kat.charAt(0).toUpperCase()+p.kat.slice(1);
+  document.getElementById('mp-badge').style.background = col.bg;
+  document.getElementById('mp-badge').style.color = col.text;
+  document.getElementById('mp-stats').innerHTML = `
+    <div style="flex:1;background:#f1f8ef;border-radius:8px;padding:8px;text-align:center">
+      <div style="font-size:15px;font-weight:700;color:${col.bg}">${p.stat1}</div>
+      <div style="font-size:10px;color:#565d57;margin-top:2px">${p.lbl1}</div>
+    </div>
+    <div style="flex:1;background:#f1f8ef;border-radius:8px;padding:8px;text-align:center">
+      <div style="font-size:15px;font-weight:700;color:${col.bg}">${p.stat2}</div>
+      <div style="font-size:10px;color:#565d57;margin-top:2px">${p.lbl2}</div>
+    </div>`;
+  document.getElementById('map-popup').classList.remove('hidden');
+
+  document.querySelectorAll('.inspi-map-card').forEach(c => c.style.outline='');
+  const card = document.getElementById('icard-'+p.id);
+  if (card) { card.style.outline=`2px solid ${col.bg}`; card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+  inspiMap.panTo([p.lat, p.lon], { animate:true });
+}
+
+function renderInspiList(projects) {
+  const el = document.getElementById('inspi-map-list');
+  if (!projects.length) { el.innerHTML='<p style="color:#565d57;font-size:13px;padding:16px;font-style:italic">Ingen projekter matcher filteret.</p>'; return; }
+  el.innerHTML = projects.map(p => {
+    const col = katColors[p.kat] || katColors.nedsivning;
+    return `<div id="icard-${p.id}" class="inspi-map-card" onclick="showMapPopup(inspiProjects.find(x=>x.id===${p.id}));inspiMap&&inspiMap.panTo([${p.lat},${p.lon}],{animate:true,duration:0.8})" style="background:#fff;border-radius:16px;overflow:hidden;cursor:pointer;border:1px solid rgba(168,175,167,0.15);transition:box-shadow 0.2s;display:flex;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.1)'" onmouseout="this.style.boxShadow=''">
+      <div style="width:6px;background:${col.bg};flex-shrink:0;border-radius:12px 0 0 12px;"></div>
+      <div style="padding:14px 16px;flex:1;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div>
+            <h3 style="font-family:'Epilogue',sans-serif;font-size:15px;font-weight:700;margin:0 0 2px;color:#29302b">${p.navn}</h3>
+            <p style="font-size:11px;color:#565d57;margin:0;">📍 ${p.by} &nbsp;·&nbsp; ${p.år}</p>
+          </div>
+          <span style="background:${col.bg};color:${col.text};font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:20px;white-space:nowrap;margin-left:8px;">${p.kat}</span>
+        </div>
+        <p style="font-size:12px;color:#565d57;line-height:1.5;margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${p.desc}</p>
+        <div style="display:flex;gap:8px;">
+          <div style="flex:1;background:${col.light};border-radius:6px;padding:6px 8px;text-align:center;">
+            <div style="font-size:13px;font-weight:700;color:${col.bg}">${p.stat1}</div>
+            <div style="font-size:9px;color:#565d57;text-transform:uppercase;letter-spacing:.05em">${p.lbl1}</div>
+          </div>
+          <div style="flex:1;background:${col.light};border-radius:6px;padding:6px 8px;text-align:center;">
+            <div style="font-size:13px;font-weight:700;color:${col.bg}">${p.stat2}</div>
+            <div style="font-size:9px;color:#565d57;text-transform:uppercase;letter-spacing:.05em">${p.lbl2}</div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function mapFilter(kat, btn) {
+  document.querySelectorAll('.map-filter-btn').forEach(b => {
+    b.classList.remove('bg-primary','text-on-primary');
+    b.classList.add('bg-surface-container','text-on-surface');
+  });
+  btn.classList.add('bg-primary','text-on-primary');
+  btn.classList.remove('bg-surface-container','text-on-surface');
+
+  const filtered = kat==='alle' ? inspiProjects : inspiProjects.filter(p=>p.kat===kat);
+  inspiProjects.forEach(p => {
+    if (!p._marker || !inspiMap) return;
+    if (kat==='alle'||p.kat===kat) p._marker.addTo(inspiMap); else inspiMap.removeLayer(p._marker);
+  });
+  renderInspiList(filtered);
+  document.getElementById('map-popup').classList.add('hidden');
+  if (filtered.length && inspiMap) {
+    inspiMap.fitBounds(L.latLngBounds(filtered.map(p=>[p.lat,p.lon])), {padding:[40,40]});
+  }
+}
+
+
+// ── Opdater ny liter-display på kortlæg siden ──
+function updateLiterDisplay(magasineringskrav, regnEpisodeFinal) {
+  const liter = Math.round(magasineringskrav * 1000);
+  const displayEl = document.getElementById('k-liter-display');
+  const episodeEl = document.getElementById('k-episode-label');
+  const badekarlEl = document.getElementById('k-badekar');
+  const spandeEl = document.getElementById('k-spande');
+  const noegletal = document.getElementById('k-noegletal');
+  
+  if (displayEl) {
+    if (liter > 0) {
+      displayEl.textContent = liter.toLocaleString('da-DK');
+      if (episodeEl) episodeEl.textContent = 'pr. ' + regnEpisodeFinal.toFixed(0) + ' mm regnhændelse';
+      if (badekarlEl) badekarlEl.textContent = Math.round(liter / 150) + ' Badekar';
+      if (spandeEl) spandeEl.textContent = Math.round(liter / 10) + ' Spande';
+      if (noegletal) noegletal.classList.remove('hidden');
+    } else {
+      displayEl.textContent = '—';
+      if (episodeEl) episodeEl.textContent = 'Indtast arealer for at beregne';
+    }
+  }
+}
+
+// ── Init ──
+
+// ══════════════════════════════════════
+// DIAGNOSÉR — Komplet matrix fra NIRAS guide (2020) s.24-35
+// ══════════════════════════════════════
+const D_MATRIX = {
+  kaelder_revner:{label:"Vand gennem revner i kælder",icon:"foundation",desc:"Fugt eller vand trænger ind gennem kældervæg eller kældergulv",aarsager:{grundvand:{primaer:["Omfangsdræn"],sekundaer:[],undgaa:["Regnbed","Faskine","Vejbed","Permeabel belægning","Grøft","Græslavning"]},langvarig:{primaer:["Omfangsdræn"],sekundaer:[],undgaa:["Regnbed","Faskine","Vejbed","Permeabel belægning","Grøft","Græslavning"]}}},
+  lavpunkt:{label:"Vand stående i lavpunkt på grund",icon:"water",desc:"Vand samler sig i en lavning og forsvinder langsomt",aarsager:{grundvand:{primaer:["Omfangsdræn","Grøft"],sekundaer:["Rende","Græslavning"],undgaa:["Regnbed","Faskine","Vejbed","Permeabel belægning"]},langvarig:{primaer:["Grøft","Rende","Græslavning","Tørbassin"],sekundaer:["Faskine","Regnbed","Permeabel belægning"],undgaa:[]},skybrud:{primaer:["Grøft","Rende","Græslavning","Tørbassin"],sekundaer:["Regnbed","Faskine","Permeabel belægning"],undgaa:[]},toebrud:{primaer:["Rende","Grøft","Tørbassin"],sekundaer:["Regnbed"],undgaa:[]}}},
+  gulvafloeb:{label:"Vand op af gulvafløb/toilet i kælder",icon:"plumbing",desc:"Kloakvand presses baglæns op gennem afløb eller toilet",aarsager:{langvarig:{primaer:["Højvandslukke"],sekundaer:[],undgaa:[]},skybrud:{primaer:["Højvandslukke"],sekundaer:[],undgaa:[]},stormflod:{primaer:["Højvandslukke"],sekundaer:[],undgaa:[]}}},
+  vand_fra_vej:{label:"Vand fra vej løber ind på grund",icon:"directions_car",desc:"Overfladevand fra vejen løber ind over skelgrænsen",aarsager:{langvarig:{primaer:["Rende","Grøft","Vejbed"],sekundaer:["Regnbed","Faskine","Tørbassin","Vådbassin"],undgaa:[]},skybrud:{primaer:["Skybrudsvej","Hævede kantsten","Vejbed"],sekundaer:["Regnbed","Faskine"],undgaa:[]},toebrud:{primaer:["Skybrudsvej","Hævede kantsten"],sekundaer:[],undgaa:[]}}},
+  kloak_vej:{label:"Vand fra kloak i vej løber ind på grund",icon:"domain",desc:"Overbelastet kloak presser vand op via vejriste og ind på grunden",aarsager:{langvarig:{primaer:["Rende","Skybrudsvej","Hævede kantsten","Vejbed","Græslavning"],sekundaer:["Grønt tag","Regnbed","Faskine","Regnvandsbeholder"],undgaa:[]},skybrud:{primaer:["Skybrudsvej","Hævede kantsten"],sekundaer:["Vejbed","Permeabel belægning"],undgaa:[]},stormflod:{primaer:["Hævede kantsten","Dige"],sekundaer:[],undgaa:[]}}},
+  fra_nabo:{label:"Vand løbende på terræn fra nabogrund",icon:"fence",desc:"Overfladevand strømmer fra naboens grund ind på din matrikel",aarsager:{langvarig:{primaer:["Regnbed","Faskine","Grøft","Græslavning","Rende","Vådbassin"],sekundaer:[],undgaa:[]},skybrud:{primaer:["Grøft","Rende","Tørbassin","Dige","Hævede kantsten"],sekundaer:["Vådbassin"],undgaa:[]},toebrud:{primaer:["Grøft","Rende","Dige","Hævede kantsten"],sekundaer:[],undgaa:[]},stormflod:{primaer:["Dige"],sekundaer:["Vådbassin","Tørbassin"],undgaa:[]}}},
+  havvand:{label:"Havvand ind til bygning",icon:"sailing",desc:"Stormflod presser havvand ind over land — primært i kystnære områder",aarsager:{stormflod:{primaer:["Dige"],sekundaer:["Pumpe","Højvandslukke"],undgaa:[]}}},
+  fra_aasoe:{label:"Vand fra å/sø løber ind på grund",icon:"waves",desc:"Vandløb eller sø stiger og oversvømmer grunden",aarsager:{langvarig:{primaer:["Dige","Hævede kantsten"],sekundaer:["Vådbassin","Tørbassin"],undgaa:[]},skybrud:{primaer:["Dige","Pumpe","Hævede kantsten"],sekundaer:["Vådbassin","Tørbassin"],undgaa:[]},toebrud:{primaer:["Dige","Pumpe","Hævede kantsten"],sekundaer:["Vådbassin"],undgaa:[]},stormflod:{primaer:["Dige"],sekundaer:["Pumpe"],undgaa:[]}}}
+};
+
+const D_TIDSPUNKTER = [
+  {id:"sommer",label:"Sommer",sub:"maj-september",icon:"wb_sunny",aarsager:["skybrud"]},
+  {id:"efteraar_vinter",label:"Efterår / vinter",sub:"lang regnperiode",icon:"cloudy_snowing",aarsager:["langvarig","stormflod"]},
+  {id:"foraar_vinter",label:"Forår / vinter",sub:"når sneen smelter",icon:"ac_unit",aarsager:["toebrud","langvarig"]},
+  {id:"vinterhalvaar",label:"Vinterhalvåret",sub:"næsten hele vinteren",icon:"water_drop",aarsager:["grundvand","langvarig"]},
+  {id:"hele_aaret",label:"Hele året",sub:"uanset årstid",icon:"calendar_month",aarsager:["grundvand"]}
+];
+
+const D_AARSAGER = {
+  grundvand:{titel:"Højtstående grundvand",tekst:"Grundvandet i dit område står tæt på eller over jordoverfladen.",forklaring:"I områder med højtstående grundvand er jorden vandmættet. Der er ingen plads til mere vand — det presser ind gennem revner i kældre eller op på overfladen. Sker typisk hele vinterhalvåret."},
+  langvarig:{titel:"Langvarige regnperioder",tekst:"Vedvarende regn fylder gradvist alle systemer og hæver grundvandsspejlet.",forklaring:"Under lange regnperioder stiger grundvandsspejlet langsomt. Lavninger fyldes, kloakken overbelastes og kan presse vand baglæns op gennem afløb. Åer og søer kan gå over bredder."},
+  skybrud:{titel:"Skybrud",tekst:"Ekstrem kortvarig regn der på minutter overstiger kloakkens kapacitet.",forklaring:"Skybrud forekommer næsten kun om sommeren. Der kommer så meget vand på kort tid at kloakken slet ikke kan følge med. Vandet løber på overfladen og presses op gennem afløb."},
+  stormflod:{titel:"Stormflod",tekst:"Kraftig vind presser havvand ind over land i kystnære områder.",forklaring:"Stormflod sker typisk om efterår og vinter. Havvandet kan stige over land og trænge op via å-udløb og kloakker. Oversvømmelsen sker over flere timer."},
+  toebrud:{titel:"Tøbrud",tekst:"Sne smelter hurtigt mens jorden er frossen og ikke kan absorbere vand.",forklaring:"Når temperaturen hurtigt går fra minus til plus smelter sneen hurtigt. Den frosne jord absorberer ikke vandet — alt løber på overfladen til de laveste punkter."}
+};
+
+const D_LOESNING_INFO = {
+  "Grønt tag":{icon:"filter_hdr",desc:"Sedum tilbageholder op til 50% af hverdagsregnen og fordamper det."},
+  "Regnbed":{icon:"rainy",desc:"Beplantet lavning der magasinerer og nedsiver regnvand naturligt."},
+  "Faskine":{icon:"water_drop",desc:"Underjordisk hulrum der nedsiver vand uden at bruge overfladeareal."},
+  "Regnvandsbeholder":{icon:"water_full",desc:"Opsamler tagvand til havevanding — begrænset effekt ved kraftig regn."},
+  "Højvandslukke":{icon:"lock",desc:"Ventil der forhindrer kloakvand i at presses op gennem afløb."},
+  "Omfangsdræn":{icon:"home_repair_service",desc:"Perforeret rør langs fundamentet der afleder grundvand fra kælderen."},
+  "Vejbed":{icon:"local_florist",desc:"Beplantet bed langs vejkanten der optager og nedsiver vejvand."},
+  "Grøft":{icon:"linear_scale",desc:"Åben kanal der transporterer og nedsiver overfladevand langs veje."},
+  "Permeabel belægning":{icon:"grid_view",desc:"Fliser der lader vandet sive direkte igennem belægningen."},
+  "Skybrudsvej":{icon:"directions_car",desc:"Vej med kontrolleret fald der leder store vandmængder til magasinering."},
+  "Hævede kantsten":{icon:"border_top",desc:"Forhøjede kantsten der holder vand på vejen væk fra private grunde."},
+  "Græslavning":{icon:"grass",desc:"Sænket græsareal der kan rumme og nedsive store vandmængder."},
+  "Rende":{icon:"remove",desc:"Åben rende der transporterer overfladevand til nedsivning eller kloak."},
+  "Vådbassin":{icon:"pool",desc:"Permanent vandflade der magasinerer og renser store regnvandsmængder."},
+  "Tørbassin":{icon:"landscape",desc:"Nedsænket areal tørt til daglig men fyldes op ved kraftig regn."},
+  "Dige":{icon:"terrain",desc:"Jordvold der fysisk afspærrer mod indtrængende overfladevand."},
+  "Pumpe":{icon:"speed",desc:"Pumper aktivt store vandmængder bort fra oversvømmede arealer."}
+};
+
+let dSymptom = null;
+
+function dInit() {
+  const grid = document.getElementById("d-symptom-grid");
+  if (!grid || grid.children.length > 0) return;
+  grid.innerHTML = Object.entries(D_MATRIX).map(([id, s]) =>
+    "<button onclick=\"dSelectSymptom('" + id + "')\"><span class=\"material-symbols-outlined\">" + s.icon + "</span><h3>" + s.label + "</h3><p>" + s.desc + "</p></button>"
+  ).join("");
+  // Nicer version:
+  grid.innerHTML = Object.entries(D_MATRIX).map(([id, s]) => `
+    <button onclick="dSelectSymptom('${id}')" class="text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary hover:bg-primary-container/10 transition-all group">
+      <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-2xl">${s.icon}</span>
+      <h3 class="font-headline font-bold text-sm mb-1">${s.label}</h3>
+      <p class="text-xs text-on-surface-variant leading-snug">${s.desc}</p>
+    </button>`).join("");
+}
+
+function dSelectSymptom(id) {
+  dSymptom = id;
+  const s = D_MATRIX[id];
+  document.getElementById("d-sel-icon").textContent = s.icon;
+  document.getElementById("d-sel-label").textContent = s.label;
+  const relevantAarsager = Object.keys(s.aarsager);
+  const relevantTider = D_TIDSPUNKTER.filter(t => t.aarsager.some(a => relevantAarsager.includes(a)));
+  document.getElementById("d-tid-grid").innerHTML = relevantTider.map(t => `
+    <button onclick="dSelectTid('${t.id}')" class="p-4 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all text-center group">
+      <span class="material-symbols-outlined text-2xl text-on-surface-variant group-hover:text-primary mb-2 block">${t.icon}</span>
+      <div class="font-headline font-bold text-sm">${t.label}</div>
+      <div class="text-xs text-on-surface-variant mt-1">${t.sub}</div>
+    </button>`).join("");
+  dGoStep(2);
+}
+
+function dSelectTid(tidId) {
+  const s = D_MATRIX[dSymptom];
+  const tid = D_TIDSPUNKTER.find(t => t.id === tidId);
+  const aarsagId = tid.aarsager.find(a => s.aarsager[a]);
+  if (!aarsagId) return;
+  const aarsag = D_AARSAGER[aarsagId];
+  const data = s.aarsager[aarsagId];
+  document.getElementById("d-bc-symptom").textContent = s.label;
+  document.getElementById("d-bc-tid").textContent = tid.label;
+  document.getElementById("d-bc-aarsag").textContent = aarsag.titel;
+  document.getElementById("d-aarsag-titel").textContent = aarsag.titel;
+  document.getElementById("d-aarsag-tekst").textContent = aarsag.tekst;
+  document.getElementById("d-aarsag-forklaring").textContent = aarsag.forklaring;
+  document.getElementById("d-primaer").innerHTML = data.primaer.map(l => {
+    const info = D_LOESNING_INFO[l] || {icon:"eco",desc:""};
+    return `<div class="bg-white p-4 rounded-xl border-l-4 border-primary flex items-start gap-4 hover:bg-surface-container-low cursor-pointer" onclick="navigate('gang')">
+      <div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary-container text-sm">${info.icon}</span></div>
+      <div class="flex-1"><div class="font-headline font-bold text-sm">${l}</div><div class="text-xs text-on-surface-variant mt-0.5">${info.desc}</div></div>
+      <span class="material-symbols-outlined text-on-surface-variant text-sm mt-1 shrink-0">arrow_forward</span>
+    </div>`;
+  }).join("");
+  const sekWrap = document.getElementById("d-sekundaer-wrap");
+  if (data.sekundaer.length > 0) {
+    document.getElementById("d-sekundaer").innerHTML = data.sekundaer.map(l => {
+      const info = D_LOESNING_INFO[l] || {icon:"eco"};
+      return `<div class="flex items-center gap-2 px-3 py-2 bg-white rounded-xl border border-outline-variant/20 text-sm cursor-pointer hover:border-primary" onclick="navigate('gang')"><span class="material-symbols-outlined text-primary text-sm">${info.icon}</span><span>${l}</span></div>`;
+    }).join("");
+    sekWrap.classList.remove("hidden");
+  } else { sekWrap.classList.add("hidden"); }
+  const undgaaWrap = document.getElementById("d-undgaa-wrap");
+  if (data.undgaa.length > 0) {
+    document.getElementById("d-undgaa").innerHTML = data.undgaa.map(l =>
+      `<span class="flex items-center gap-1 px-3 py-1.5 bg-red-100 text-red-700 rounded-xl text-xs font-bold"><span class="material-symbols-outlined text-sm">block</span>${l}</span>`).join("");
+    undgaaWrap.classList.remove("hidden");
+  } else { undgaaWrap.classList.add("hidden"); }
+  dGoStep(3);
+}
+
+function dGoStep(n) {
+  document.getElementById("d-step1").classList.toggle("hidden", n !== 1);
+  document.getElementById("d-step2").classList.toggle("hidden", n !== 2);
+  document.getElementById("d-step3").classList.toggle("hidden", n !== 3);
+}
+
+
+navigate('forsta');
+</script>
+</body>
+</html>

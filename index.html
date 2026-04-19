@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="da" class="light">
 <head>
@@ -1650,7 +1651,7 @@ async function fetchBBR(addr, lat, lon) {
       + '&count=1'
       + `&CQL_FILTER=INTERSECTS(geometri,POINT(${lon}%20${lat}))`
       + '&outputFormat=application/json'
-      + '&token=DIN_TOKEN_HER';
+      + '&token= https://api.dataforsyningen.dk/wfs/MatGaeldendeOgForeloebigWFS_DAF?service=WFS&request=GetCapabilities&token=25a8155237a4baabb5c9a1a501d1f1b4;
 
     const wfsRes = await fetch(wfsUrl);
     const wfsData = await wfsRes.json();

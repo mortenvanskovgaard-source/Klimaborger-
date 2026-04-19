@@ -1641,36 +1641,17 @@ async function fetchBBR(addr, lat, lon) {
   const panel = document.getElementById('bbr-panel');
 
   try {
-    // Hent jordstykke (grundareal) fra DAWA — åbent CORS, ingen token nødvendig
-    const husnrId = addr.adgangsadresse?.id;
-    if (!husnrId) throw new Error('no id');
+    if (!lat || !lon) throw new Error('no coords');
 
-    // DAWA jordstykke via adgangsadresse-id
-    const jordUrl = 'https://api.dataforsyningen.dk/adgangsadresser/' + husnrId + '?struktur=nestet';
-    const jordRes = await fetch(jordUrl);
-    const jordData = await jordRes.json();
-    console.log('DAWA nestet data:', JSON.stringify(jordData).slice(0, 500));
+    // Cloudflare Worker proxy til Matrikelkortet (løser CORS)
+    const proxyUrl = 'https://calm-disk-3282.mortenvanskovgaard.workers.dev?lon=' + lon + '&lat=' + lat;
+    const res = await fetch(proxyUrl);
+    const data = await res.json();
 
-    // Grundareal fra jordstykke
     let grundAreal = null;
-    const jordstykker = jordData.jordstykker || jordData.adgangsadresse?.jordstykker;
-    if (jordstykker && jordstykker.length > 0) {
-      grundAreal = jordstykker[0].registreretAreal || jordstykker[0].arealTilBebyggelse || null;
-      if (grundAreal) grundAreal = Math.round(grundAreal);
-    }
-
-    // Fallback: prøv matrikelnr-endpoint
-    console.log('grundAreal efter jordstykker:', grundAreal);
-    if (!grundAreal) {
-      const matnr = jordData.matrikelnr || jordData.adgangsadresse?.matrikelnr;
-      const ejerlav = jordData.ejerlav?.kode || jordData.adgangsadresse?.ejerlav?.kode;
-      if (matnr && ejerlav) {
-        const matRes = await fetch('https://api.dataforsyningen.dk/jordstykker?matrikelnr=' + matnr + '&ejerlavkode=' + ejerlav);
-        const matData = await matRes.json();
-        if (matData.length > 0) {
-          grundAreal = Math.round(matData[0].registreretAreal || matData[0].arealTilBebyggelse || 0) || null;
-        }
-      }
+    if (data.features && data.features.length > 0) {
+      const props = data.features[0].properties;
+      grundAreal = Math.round(props.registreretAreal || props.arealBeregnet || 0) || null;
     }
 
     displayBBR({ grund: grundAreal }, addr);
@@ -1685,7 +1666,6 @@ async function fetchBBR(addr, lat, lon) {
   statusLabel.textContent = 'Adresse fundet — ' + (addr.adgangsadresse?.postnr?.navn || '');
   panel.classList.remove('hidden');
 }
-
 function displayBBR(bbr, addr) {
   const kommunenavn = addr?.adgangsadresse?.kommune?.navn || '';
   const grundAreal = bbr.grund || null;

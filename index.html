@@ -1671,7 +1671,15 @@ function fetchMeteo(lat, lon, kommunenavn) {
   if (panel) panel.classList.remove('hidden');
 
   window._meteoAarlig  = aarlig;
-  window._meteoEpisode = null; // bruger dropdown-valg
+  window._kommuneNedboer = aarlig;  // bruges af calcKortlaeg og getEpisodeMm
+  window._kommuneNavn = kommunenavn;
+  window._meteoEpisode = null;
+  // Opdater episode-knapperne
+  const epEl = document.getElementById('meteo-episode');
+  if (epEl) {
+    const skala = aarlig / 840;
+    epEl.textContent = Math.round(43 * skala); // 5-årsregn
+  }
   calcKortlaeg();
 }
 

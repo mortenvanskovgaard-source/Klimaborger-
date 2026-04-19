@@ -1169,16 +1169,16 @@ function calcKortlaeg() {
 
   if (tag === 0 && befaestet === 0 && graes === 0) return;
 
-  // Skaler sæsonnedbør med lokal Open-Meteo data hvis tilgængeligt
-  const stdAar = 193 + 198 + 211 + 238; // 840mm standard
-  const lokalAar = window._meteoAarlig;
-  const skala = lokalAar ? Math.min(1.5, Math.max(0.6, lokalAar / stdAar)) : 1.0;
-  const lokalRegn = lokalAar ? skala : 1.0;
+  // Skaler med kommunens officielle årsnedbør (Spildevandskomiteens LAR-regneark 2024)
+  const stdAar = 840; // mm standard DK årsnedbør
+  const lokalAar = window._kommuneNedboer || stdAar;
+  const skala = Math.min(1.5, Math.max(0.6, lokalAar / stdAar));
+  const lokalRegn = skala;
 
-  // Brug lokal episodenedbør hvis hentet, ellers behold dropdown-valget
-  const regnEpisodeFinal = window._meteoEpisode && window._meteoEpisode > 10
-    ? window._meteoEpisode
-    : regnEpisode;
+  // Brug valgt regnhændelse fra knapperne (getEpisodeMm skalerer automatisk)
+  const regnEpisodeFinal = (typeof getEpisodeMm === 'function')
+    ? getEpisodeMm()
+    : regnEpisode * skala;
 
   // Justér SAESON-nedbør med lokalskala
   const NB = {

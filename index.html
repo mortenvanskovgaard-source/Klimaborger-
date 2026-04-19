@@ -929,6 +929,7 @@ const D_MATRIX = {
     aarsager:{
       grundvand: {primaer:["Omfangsdræn"],sekundaer:[],undgaa:["Regnbed","Faskine","Vejbed","Permeabel belægning","Grøft","Græslavning"]},
       langvarig:  {primaer:["Omfangsdræn"],sekundaer:[],undgaa:["Regnbed","Faskine","Vejbed","Permeabel belægning","Grøft","Græslavning"]}
+      // Guide nævner KUN grundvand og langvarig for dette symptom — skybrud/tøbrud ikke relevant
     }
   },
   lavpunkt: {
@@ -938,16 +939,16 @@ const D_MATRIX = {
       grundvand: {primaer:["Omfangsdræn","Grøft"],sekundaer:["Rende","Græslavning"],undgaa:["Regnbed","Faskine","Vejbed","Permeabel belægning"]},
       langvarig:  {primaer:["Grøft","Rende","Græslavning","Tørbassin"],sekundaer:["Faskine","Regnbed","Permeabel belægning"],undgaa:[]},
       skybrud:    {primaer:["Grøft","Rende","Græslavning","Tørbassin"],sekundaer:["Regnbed","Faskine","Permeabel belægning"],undgaa:[]},
-      toebrud:    {primaer:["Grøft","Rende","Tørbassin"],sekundaer:["Regnbed","Faskine"],undgaa:[]}
+      toebrud:    {primaer:["Rende","Grøft","Tørbassin"],sekundaer:["Regnbed"],undgaa:[]}
     }
   },
   gulvafloeb: {
     label:"Vand op af gulvafløb/toilet i kælder", icon:"plumbing",
-    desc:"Kloakvand presses op gennem afløb eller toilet — kloakken er overbelastet",
+    desc:"Kloakvand presses baglæns op through afløb eller toilet",
     aarsager:{
-      langvarig: {primaer:["Højvandslukke"],sekundaer:[],undgaa:[]},
-      skybrud:   {primaer:["Højvandslukke"],sekundaer:[],undgaa:[]},
-      stormflod: {primaer:["Højvandslukke"],sekundaer:[],undgaa:[]}
+      langvarig:  {primaer:["Højvandslukke"],sekundaer:[],undgaa:[]},
+      skybrud:    {primaer:["Højvandslukke"],sekundaer:[],undgaa:[]},
+      stormflod:  {primaer:["Højvandslukke"],sekundaer:[],undgaa:[]}
     }
   },
   vand_fra_vej: {
@@ -961,21 +962,21 @@ const D_MATRIX = {
   },
   kloak_vej: {
     label:"Vand fra kloak i vej løber ind på grund", icon:"domain",
-    desc:"Overbelastet kloak presser vand op via vejriste og ind på grunden",
+    desc:"Overbelastet kloak presser vand op via vejriste ind på grunden",
     aarsager:{
-      langvarig: {primaer:["Rende","Skybrudsvej","Hævede kantsten","Vejbed","Græslavning"],sekundaer:["Grønt tag","Regnbed","Faskine","Regnvandsbeholder"],undgaa:[]},
-      skybrud:   {primaer:["Skybrudsvej","Hævede kantsten"],sekundaer:["Vejbed","Permeabel belægning"],undgaa:[]},
-      stormflod: {primaer:["Hævede kantsten","Dige"],sekundaer:[],undgaa:[]}
+      langvarig:  {primaer:["Rende","Skybrudsvej","Hævede kantsten","Vejbed","Græslavning"],sekundaer:["Grønt tag","Regnbed","Faskine","Regnvandsbeholder"],undgaa:[]},
+      skybrud:    {primaer:["Skybrudsvej","Hævede kantsten"],sekundaer:["Vejbed","Permeabel belægning"],undgaa:[]},
+      stormflod:  {primaer:["Hævede kantsten","Dige"],sekundaer:[],undgaa:[]}
     }
   },
   fra_nabo: {
     label:"Vand løbende på terræn fra nabogrund", icon:"fence",
     desc:"Overfladevand strømmer fra naboens grund ind på din matrikel",
     aarsager:{
-      langvarig: {primaer:["Regnbed","Faskine","Grøft","Græslavning","Rende","Vådbassin"],sekundaer:[],undgaa:[]},
-      skybrud:   {primaer:["Grøft","Rende","Tørbassin","Dige","Hævede kantsten"],sekundaer:["Vådbassin","Tørbassin"],undgaa:[]},
-      toebrud:   {primaer:["Grøft","Rende","Dige","Hævede kantsten"],sekundaer:[],undgaa:[]},
-      stormflod: {primaer:["Dige"],sekundaer:["Vådbassin","Tørbassin"],undgaa:[]}
+      langvarig:  {primaer:["Regnbed","Faskine","Grøft","Græslavning","Rende","Vådbassin"],sekundaer:[],undgaa:[]},
+      skybrud:    {primaer:["Grøft","Rende","Tørbassin","Dige","Hævede kantsten"],sekundaer:["Vådbassin"],undgaa:[]},
+      toebrud:    {primaer:["Grøft","Rende","Dige","Hævede kantsten"],sekundaer:[],undgaa:[]},
+      stormflod:  {primaer:["Dige"],sekundaer:["Vådbassin","Tørbassin"],undgaa:[]}
     }
   },
   havvand: {
@@ -989,10 +990,10 @@ const D_MATRIX = {
     label:"Vand fra å/sø løber ind på grund", icon:"waves",
     desc:"Vandløb eller sø stiger og oversvømmer grunden",
     aarsager:{
-      langvarig: {primaer:["Dige","Hævede kantsten"],sekundaer:["Vådbassin","Tørbassin"],undgaa:[]},
-      skybrud:   {primaer:["Dige","Pumpe","Hævede kantsten"],sekundaer:["Vådbassin","Tørbassin"],undgaa:[]},
-      toebrud:   {primaer:["Dige","Pumpe","Hævede kantsten"],sekundaer:["Vådbassin"],undgaa:[]},
-      stormflod: {primaer:["Dige"],sekundaer:["Pumpe"],undgaa:[]}
+      langvarig:  {primaer:["Dige","Hævede kantsten"],sekundaer:["Vådbassin","Tørbassin"],undgaa:[]},
+      skybrud:    {primaer:["Dige","Pumpe","Hævede kantsten"],sekundaer:["Vådbassin","Tørbassin"],undgaa:[]},
+      toebrud:    {primaer:["Dige","Pumpe","Hævede kantsten"],sekundaer:["Vådbassin"],undgaa:[]},
+      stormflod:  {primaer:["Dige"],sekundaer:["Pumpe"],undgaa:[]}
     }
   }
 };

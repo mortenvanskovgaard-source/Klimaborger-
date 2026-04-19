@@ -1151,154 +1151,55 @@ function getEpisodeMm() {
 }
 
 function calcKortlaeg() {
-  // Hent inputs
-  const tag        = parseFloat(document.getElementById('k-tag')?.value)        || 0;
-  const befaestet  = parseFloat(document.getElementById('k-befaestet')?.value)  || 0;
-  const graes      = parseFloat(document.getElementById('k-have')?.value || document.getElementById('k-graes')?.value) || 0;
-  const veg        = parseFloat(document.getElementById('k-veg')?.value)        || 0;
-  const nedsivEvne = parseFloat(document.getElementById('k-jord')?.value)       || 86.4; // l/m²/døgn
-  const regnEpisode= parseFloat(document.getElementById('k-regn')?.value)       || 54.24; // mm/døgn — 5-årsregn som default
-  const loevBAI    = parseFloat(document.getElementById('k-loev-art')?.value)   || 4.0;
-  const loevAntal  = parseFloat(document.getElementById('k-loev-antal')?.value) || 0;
-  const loevKrone  = parseFloat(document.getElementById('k-loev-krone')?.value) || 5;
-  const naalBAI    = parseFloat(document.getElementById('k-naal-art')?.value)   || 7.5;
-  const naalAntal  = parseFloat(document.getElementById('k-naal-antal')?.value) || 0;
-  const naalKrone  = parseFloat(document.getElementById('k-naal-krone')?.value) || 3;
-  const toiletPers = parseFloat(document.getElementById('k-toilet')?.value)     || 0;
-  const vaskPers   = parseFloat(document.getElementById('k-vask')?.value)       || 0;
+  // Hent værdier fra felterne
+  const tag       = parseFloat(document.getElementById('k-tag')?.value) || 0;
+  const have      = parseFloat(document.getElementById('k-have')?.value) || 0;
+  const bef       = parseFloat(document.getElementById('k-befaestet')?.value) || 0;
+  const nedsivEvne = parseFloat(document.getElementById('k-jord')?.value) || 86.4;
 
-  if (tag === 0 && befaestet === 0 && graes === 0) return;
+  // Skal have mindst ét felt udfyldt
+  if (tag === 0 && have === 0 && bef === 0) return;
 
-  // Skaler med kommunens officielle årsnedbør (Spildevandskomiteens LAR-regneark 2024)
-  const stdAar = 840; // mm standard DK årsnedbør
-  const lokalAar = window._kommuneNedboer || stdAar;
-  const skala = Math.min(1.5, Math.max(0.6, lokalAar / stdAar));
-  const lokalRegn = skala;
+  // Kommunens årsnedbør (sat af fetchMeteo via getKommuneNedboer)
+  const aarligNedboer = window._kommuneNedboer || 640;
 
-  // Brug valgt regnhændelse fra knapperne (getEpisodeMm skalerer automatisk)
-  const regnEpisodeFinal = (typeof getEpisodeMm === 'function')
+  // Regnhændelse i mm (fra knapperne, skaleret med kommunedata)
+  const episode = (typeof getEpisodeMm === 'function')
     ? getEpisodeMm()
-    : regnEpisode * skala;
+    : 43.0 * (aarligNedboer / 840);
 
-  // Justér SAESON-nedbør med lokalskala
-  const NB = {
-    vinter:   SAESON_NEDBOER.vinter   * lokalRegn,
-    foraar:   SAESON_NEDBOER.foraar   * lokalRegn,
-    sommer:   SAESON_NEDBOER.sommer   * lokalRegn,
-    efteraar: SAESON_NEDBOER.efteraar * lokalRegn,
-  };
+  // Beregning
+  const grundAreal = tag + have + bef;
+  const regnPaaMatrikelEpisode = grundAreal * episode / 1000; // m³
 
-  // ── Grundareal ──
-  const grundAreal = tag + befaestet + graes + veg;
+  // Nedsivning på 1 time (regnhændelsens varighed)
+  const nedsivningTime = have * nedsivEvne / 1000 / 24; // m³/time
 
-  // ── Samlet regn på matrikel (m³/år) — bruger lokalt skaleret NB ──
-  const aarNedb = (NB.vinter + NB.foraar + NB.sommer + NB.efteraar) / 1000;
-  const regnPaaMatrikel = grundAreal * aarNedb;
+  // Magasineringskrav
+  const magasineringskrav = Math.max(0, regnPaaMatrikelEpisode - nedsivningTime);
+  const liter = Math.round(magasineringskrav * 1000);
 
-  // ── Nedsivningsareal og kapacitet ──
-  const nedsivAreal    = graes + veg;
-  const nedsivningDøgn = nedsivAreal * nedsivEvne / 1000; // m³/døgn
+  // Opdater liter-display
+  const talEl      = document.getElementById('k-liter-display');
+  const subtitleEl = document.getElementById('k-episode-label');
+  const badekarlEl = document.getElementById('k-badekar');
+  const spandeEl   = document.getElementById('k-spande');
+  const noegEl     = document.getElementById('k-noegletal');
 
-  // ── Kroneareal ──
-  const loevKroneAreal = loevAntal > 0 ? loevAntal * Math.PI * (loevKrone/2)**2 : 0;
-  const naalKroneAreal = naalAntal > 0 ? naalAntal * Math.PI * (naalKrone/2)**2 : 0;
-
-  // ── Træ-interception (m³) pr. sæson — bruger NB ──
-  function treeInterception(bai, kroneAreal, s) {
-    const vaadeDage    = SAESON_DAGE[s] - TOERRE_DAGE[s];
-    const nedboerPrDag = NB[s] / SAESON_DAGE[s]; // mm/dag
-    return bai * kroneAreal * vaadeDage * nedboerPrDag / 1000 / 1000; // m³
+  if (talEl) {
+    talEl.textContent = liter > 0 ? liter.toLocaleString('da-DK') : '0';
+    if (subtitleEl) subtitleEl.textContent = 'pr. ' + Math.round(episode) + ' mm regnhændelse';
+    if (badekarlEl) badekarlEl.textContent = Math.round(liter / 150) + ' badekar';
+    if (spandeEl)   spandeEl.textContent   = Math.round(liter / 10)  + ' spande';
+    if (noegEl)     noegEl.classList.remove('hidden');
   }
 
-  const saesoner = ['vinter','foraar','sommer','efteraar'];
-  let loevFordS = {}, naalFordS = {}, graesFordS = {}, vegFordS = {};
-  let toiletForbrug = {}, vaskForbrug = {};
-
-  saesoner.forEach(s => {
-    loevFordS[s]     = treeInterception(loevBAI, loevKroneAreal, s);
-    naalFordS[s]     = treeInterception(naalBAI, naalKroneAreal, s);
-    graesFordS[s]    = graes * GRAES_EVAP[s] * SAESON_DAGE[s] / 1000;
-    vegFordS[s]      = veg   * VEG_EVAP[s]   * SAESON_DAGE[s] / 1000;
-    toiletForbrug[s] = toiletPers * 28.35 * SAESON_DAGE[s] / 1000;
-    vaskForbrug[s]   = vaskPers   * 13.65 * SAESON_DAGE[s] / 1000;
-  });
-
-  // ── Vandbalance pr. sæson — bruger NB ──
-  function tagvandM3(s) { return tag * NB[s] / 1000; }
-
-  let balanceS = {}, nedsivningAarS = {};
-  saesoner.forEach(s => {
-    const tagR            = tagvandM3(s);
-    const forbrug         = toiletForbrug[s] + vaskForbrug[s];
-    const overskudFraTag  = Math.max(0, tagR - forbrug);
-    const regnPaaHave     = (graes + veg + befaestet) * NB[s] / 1000;
-    const vandHaveIalt    = overskudFraTag + regnPaaHave;
-    const fordampning     = loevFordS[s] + naalFordS[s] + graesFordS[s] + vegFordS[s];
-    const nedsivning      = nedsivningDøgn * SAESON_DAGE[s];
-    balanceS[s]           = Math.max(0, vandHaveIalt - fordampning - nedsivning);
-    nedsivningAarS[s]     = Math.min(nedsivning, Math.max(0, vandHaveIalt - fordampning));
-  });
-
-  const nedsivningAar  = Object.values(nedsivningAarS).reduce((a,b) => a+b, 0);
-  const fordampningAar = saesoner.reduce((sum,s) =>
-    sum + loevFordS[s] + naalFordS[s] + graesFordS[s] + vegFordS[s], 0);
-
-  // ── Magasineringskrav — bruger lokal episodenedbør hvis tilgængeligt ──
-  const regnPaaMatrikelEpisode = grundAreal * regnEpisodeFinal / 1000; // m³
-  const magasineringskrav      = Math.max(0, regnPaaMatrikelEpisode - nedsivningDøgn);
-
-  // ── Digehøjde (cm) — fra Excel-formel ──
-  // digehøjde = magasineringskrav / nedsivningsareal × 100 (cm)
-  const digehøjde = nedsivAreal > 0
-    ? (magasineringskrav / nedsivAreal) * 100
-    : magasineringskrav * 10; // fallback
-
-  // ── Min. nedsivningsareal (m²) ──
-  // Fra Excel: regnPaaMatrikelEpisode / (nedsivEvne/1000) / SAESON_DAGE_avg
-  const minNedsivAreal = nedsivEvne > 0
-    ? (regnPaaMatrikelEpisode / (nedsivEvne / 1000))
-    : 0;
-
-  // ── Kloak spares (m³/år) ──
-  const kloakSpares = fordampningAar + nedsivningAar +
-    saesoner.reduce((s, sæs) => s + toiletForbrug[sæs] + vaskForbrug[sæs], 0);
-
-  // ── Opdater UI ──
-  const fmt = (v, dec=1) => isNaN(v) ? '—' : v.toFixed(dec).replace('.',',');
-
-  document.getElementById('k-result').textContent = fmt(magasineringskrav);
-  document.getElementById('k-result-sub').textContent =
-    `ved ${regnEpisodeFinal.toFixed(0)} mm regnhændelse — ${fmt(regnPaaMatrikelEpisode)} m³ falder på matriklen`;
-
-  document.getElementById('k-vinter').textContent   = fmt(balanceS.vinter);
-  document.getElementById('k-foraar').textContent   = fmt(balanceS.foraar);
-  document.getElementById('k-sommer').textContent   = fmt(balanceS.sommer);
-  document.getElementById('k-efteraar').textContent = fmt(balanceS.efteraar);
-
-  document.getElementById('k-regnpaamatrikel').textContent = fmt(regnPaaMatrikel);
-  document.getElementById('k-nedsivning').textContent      = fmt(nedsivningDøgn, 2);
-  document.getElementById('k-fordampning').textContent     = fmt(fordampningAar);
-  document.getElementById('k-kloak-besparelse').textContent= fmt(kloakSpares);
-
-  const dige = Math.min(digehøjde, 100);
-  document.getElementById('k-digeh').textContent = fmt(digehøjde, 1) + ' cm';
-  document.getElementById('k-digebar').style.width = Math.min(digehøjde, 100) + '%';
-  document.getElementById('k-dige-label').textContent =
-    `Regnvandsdiget skal være ${fmt(digehøjde,1)} cm højt for at håndtere den valgte hændelse`;
-
-  document.getElementById('k-minneds').textContent = fmt(minNedsivAreal, 0) + ' m²';
-
-  // ── Sæson-vandbalancegraf ──
-  renderSaesonGraf({ balanceS, loevFordS, naalFordS, graesFordS, vegFordS, nedsivningAarS });
-
-  // Gem til Byg-siden
-  updateLiterDisplay(magasineringskrav, regnEpisodeFinal);
+  // Gem til resten af siden
   window._larMagasineringskrav = magasineringskrav;
   KB.liter = liter;
-  KB.kommuneNedboer = window._kommuneNedboer || 640;
-  window._larRegnEpisode = regnEpisode;
-  window._larGrundAreal = grundAreal;
+  KB.kommuneNedboer = aarligNedboer;
 }
+
 
 // ── Sæson-vandbalancegraf ──
 function renderSaesonGraf({ balanceS, loevFordS, naalFordS, graesFordS, vegFordS, nedsivningAarS }) {

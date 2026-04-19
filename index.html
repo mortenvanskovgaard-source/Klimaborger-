@@ -717,12 +717,13 @@ function autoCalc() {
   const episode = 54.24 * skala;
   const regnPaaMatrikelEpisode = grundAreal * episode / 1000; // m³
 
-  // Nedsivning
+  // Nedsivning over 1 time (varighed af regnhændelse)
+  // nedsivEvne er i l/m²/døgn → omregn til m³/time
   const nedsivAreal = have;
-  const nedsivningDøgn = nedsivAreal * nedsivEvne / 1000; // m³/døgn
+  const nedsivningTime = nedsivAreal * nedsivEvne / 1000 / 24; // m³/time
 
-  // Magasineringskrav
-  const magasineringskrav = Math.max(0, regnPaaMatrikelEpisode - nedsivningDøgn);
+  // Magasineringskrav = regn på matrikel - hvad der når at nedsive på 1 time
+  const magasineringskrav = Math.max(0, regnPaaMatrikelEpisode - nedsivningTime);
   const liter = Math.round(magasineringskrav * 1000);
 
   // Gem til byg-siden

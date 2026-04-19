@@ -298,6 +298,19 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
           </div>
         </div>
 
+
+        <!-- Skjulte standardfelter til LAR-beregner -->
+        <input type="hidden" id="k-veg" value="0"/>
+        <input type="hidden" id="k-regn" value="54.24"/>
+        <input type="hidden" id="k-loev-art" value="4.0"/>
+        <input type="hidden" id="k-loev-antal" value="0"/>
+        <input type="hidden" id="k-loev-krone" value="5"/>
+        <input type="hidden" id="k-naal-art" value="7.5"/>
+        <input type="hidden" id="k-naal-antal" value="0"/>
+        <input type="hidden" id="k-naal-krone" value="3"/>
+        <input type="hidden" id="k-toilet" value="0"/>
+        <input type="hidden" id="k-vask" value="0"/>
+        <input type="hidden" id="k-graes" value="0"/>
         <button onclick="calcKortlaeg()" class="w-full bg-primary hover:opacity-90 text-on-primary py-5 rounded-lg font-label uppercase text-sm tracking-widest font-bold transition-all">
           Beregn mit vandbehov
         </button>

@@ -71,6 +71,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
       <button class="nav-link text-sm" data-page="have" onclick="navigate('have')">Se din have</button>
       <button class="nav-link text-sm" data-page="gang" onclick="navigate('gang')">Kom godt i gang</button>
       <button class="nav-link text-sm" data-page="inspiration" onclick="navigate('inspiration')">Inspiration</button>
+      <button class="nav-link text-sm" data-page="diagnose" onclick="navigate('diagnose')">Diagnos&eacute;r</button>
     </div>
     <div class="flex items-center gap-3">
       <button class="primary-gradient text-on-primary-container px-5 py-2 rounded-md font-label uppercase tracking-wider text-sm font-bold hidden md:block">Log ind</button>
@@ -85,6 +86,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
       <button class="nav-link text-left py-2 border-b border-outline-variant/20" data-page="have" onclick="navigate('have');toggleMobile()">Se din have</button>
       <button class="nav-link text-left py-2 border-b border-outline-variant/20" data-page="gang" onclick="navigate('gang');toggleMobile()">Kom godt i gang</button>
       <button class="nav-link text-left py-2" data-page="inspiration" onclick="navigate('inspiration');toggleMobile()">Inspiration</button>
+      <button class="nav-link text-left py-2" data-page="diagnose" onclick="navigate('diagnose');toggleMobile()">Diagnosér</button>
     </div>
   </div>
 </nav>
@@ -156,7 +158,159 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
     </div>
   </section>
 
-  <footer class="bg-surface-container-low border-t border-outline-variant/15">
+  
+<!-- ══ PAGE: DIAGNOSÉR ══ -->
+<div id="page-diagnose" class="page pt-28 pb-20 px-6 max-w-screen-xl mx-auto">
+  <header class="mb-12">
+    <span class="font-label text-primary uppercase tracking-[0.2em] text-xs font-bold block mb-4">Trin 00: Find årsagen</span>
+    <h1 class="font-headline text-5xl md:text-7xl tracking-tighter max-w-3xl leading-[0.95] mb-6">
+      Hvad sker der <span class="text-primary italic">hos dig?</span>
+    </h1>
+    <p class="text-on-surface-variant text-lg max-w-xl">Vælg det symptom du oplever — vi finder årsagen og de bedste løsninger. Baseret på NIRAS' guide til klimatilpasning.</p>
+  </header>
+
+  <!-- Step 1: Symptom valg -->
+  <div id="diag-step1" class="mb-10">
+    <h2 class="font-headline text-2xl font-bold mb-2">Trin 1 — Hvad oplever du?</h2>
+    <p class="text-on-surface-variant mb-6 text-sm">Vælg det symptom der passer bedst på din situation.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <button onclick="diagSelectSymptom('kaelder-revner')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">foundation</span>
+        <h3 class="font-headline font-bold mb-1">Vand gennem revner i kælder</h3>
+        <p class="text-xs text-on-surface-variant">Fugt eller vand trænger ind gennem kældervæg eller -gulv</p>
+      </button>
+      <button onclick="diagSelectSymptom('lavpunkt')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">water</span>
+        <h3 class="font-headline font-bold mb-1">Vand stående i lavpunkt</h3>
+        <p class="text-xs text-on-surface-variant">Vand samler sig i en lavning på grunden og forsvinder langsomt</p>
+      </button>
+      <button onclick="diagSelectSymptom('gulvafloeb')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">plumbing</span>
+        <h3 class="font-headline font-bold mb-1">Vand op af gulvafløb/toilet</h3>
+        <p class="text-xs text-on-surface-variant">Vand trykkes op gennem afløb eller toilet i kælderen</p>
+      </button>
+      <button onclick="diagSelectSymptom('vand-fra-vej')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">directions_car</span>
+        <h3 class="font-headline font-bold mb-1">Vand fra vej løber ind på grund</h3>
+        <p class="text-xs text-on-surface-variant">Overfladevand fra vejen ender på din matrikel</p>
+      </button>
+      <button onclick="diagSelectSymptom('kloak-vej')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">domain</span>
+        <h3 class="font-headline font-bold mb-1">Vand fra kloak løber ind på grund</h3>
+        <p class="text-xs text-on-surface-variant">Kloakvand fra vejriste strømmer ind på grunden</p>
+      </button>
+      <button onclick="diagSelectSymptom('nabo')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">fence</span>
+        <h3 class="font-headline font-bold mb-1">Vand løber ind fra nabogrund</h3>
+        <p class="text-xs text-on-surface-variant">Overfladevand strømmer fra naboens grund ind på din</p>
+      </button>
+      <button onclick="diagSelectSymptom('aasoe')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">waves</span>
+        <h3 class="font-headline font-bold mb-1">Vand fra å/sø løber ind</h3>
+        <p class="text-xs text-on-surface-variant">Vandløb eller sø går over sine bredder</p>
+      </button>
+      <button onclick="diagSelectSymptom('havvand')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">sailing</span>
+        <h3 class="font-headline font-bold mb-1">Havvand ind til bygning</h3>
+        <p class="text-xs text-on-surface-variant">Stormflod presser havvand ind over land</p>
+      </button>
+    </div>
+  </div>
+
+  <!-- Step 2: Hvornår -->
+  <div id="diag-step2" class="hidden mb-10">
+    <div class="flex items-center gap-3 mb-6">
+      <button onclick="diagReset()" class="text-on-surface-variant hover:text-primary flex items-center gap-1 text-sm"><span class="material-symbols-outlined text-sm">arrow_back</span>Tilbage</button>
+      <h2 class="font-headline text-2xl font-bold">Trin 2 — Hvornår sker det?</h2>
+    </div>
+    <p class="text-on-surface-variant mb-6 text-sm">Tidspunktet hjælper os med at indsnævre årsagen.</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <button onclick="diagSelectTid('sommer')" class="diag-tid-btn p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all text-center group">
+        <span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary mb-2 block">wb_sunny</span>
+        <div class="font-headline font-bold">Sommer</div>
+        <div class="text-xs text-on-surface-variant mt-1">maj–september</div>
+        <div class="text-xs text-primary mt-2 font-bold">→ Skybrud</div>
+      </button>
+      <button onclick="diagSelectTid('efteraar-vinter')" class="diag-tid-btn p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all text-center group">
+        <span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary mb-2 block">cloudy_snowing</span>
+        <div class="font-headline font-bold">Efterår/Vinter</div>
+        <div class="text-xs text-on-surface-variant mt-1">lange regnperioder</div>
+        <div class="text-xs text-primary mt-2 font-bold">→ Langvarig regn / Stormflod</div>
+      </button>
+      <button onclick="diagSelectTid('foraar')" class="diag-tid-btn p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all text-center group">
+        <span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary mb-2 block">ac_unit</span>
+        <div class="font-headline font-bold">Forår/Vinter</div>
+        <div class="text-xs text-on-surface-variant mt-1">når sneen smelter</div>
+        <div class="text-xs text-primary mt-2 font-bold">→ Tøbrud</div>
+      </button>
+      <button onclick="diagSelectTid('hele-aaret')" class="diag-tid-btn p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all text-center group">
+        <span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary mb-2 block">calendar_month</span>
+        <div class="font-headline font-bold">Hele året</div>
+        <div class="text-xs text-on-surface-variant mt-1">altid eller vinterhalvåret</div>
+        <div class="text-xs text-primary mt-2 font-bold">→ Højt grundvand</div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Step 3: Resultat -->
+  <div id="diag-result" class="hidden">
+    <div class="flex items-center gap-3 mb-8">
+      <button onclick="diagBackToTid()" class="text-on-surface-variant hover:text-primary flex items-center gap-1 text-sm"><span class="material-symbols-outlined text-sm">arrow_back</span>Tilbage</button>
+      <h2 class="font-headline text-2xl font-bold">Din diagnose</h2>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+      <!-- Årsag forklaring -->
+      <div class="lg:col-span-5">
+        <div class="bg-primary text-on-primary p-8 rounded-2xl mb-5">
+          <p class="font-label text-xs uppercase tracking-[0.2em] opacity-70 mb-3">Sandsynlig årsag</p>
+          <h3 class="font-headline text-3xl font-bold mb-4" id="diag-aarsag-titel">—</h3>
+          <p class="text-on-primary/80 leading-relaxed" id="diag-aarsag-tekst">—</p>
+        </div>
+        <div class="bg-surface-container-low p-6 rounded-xl">
+          <h4 class="font-headline font-bold mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">info</span>Hvad sker der?</h4>
+          <p class="text-sm text-on-surface-variant leading-relaxed" id="diag-forklaring">—</p>
+        </div>
+      </div>
+
+      <!-- Løsninger -->
+      <div class="lg:col-span-7">
+        <h3 class="font-headline text-xl font-bold mb-5">Anbefalede løsninger</h3>
+        <div id="diag-loesninger-primaer" class="mb-6"></div>
+        <div id="diag-loesninger-sekundaer" class="mb-6 hidden">
+          <h4 class="text-sm font-label uppercase font-bold text-on-surface-variant mb-3">Supplerende løsninger</h4>
+          <div id="diag-loesninger-sekundaer-liste"></div>
+        </div>
+        <div id="diag-undgaa" class="hidden">
+          <div class="bg-error-container/20 border border-error/20 rounded-xl p-5">
+            <h4 class="text-sm font-label uppercase font-bold text-error mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-sm">warning</span>Undgå disse løsninger</h4>
+            <div id="diag-undgaa-liste" class="text-sm text-on-surface-variant"></div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex gap-3">
+          <button onclick="navigate('gang')" class="flex-1 bg-primary text-on-primary py-4 rounded-xl font-headline font-bold hover:opacity-90 transition-all text-sm">
+            Læs byggevejledning →
+          </button>
+          <button onclick="navigate('kortlaeg')" class="flex-1 bg-surface-container text-on-surface py-4 rounded-xl font-headline font-bold hover:bg-surface-container-high transition-all text-sm">
+            Beregn dit vandbehov
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bund info -->
+  <div class="mt-16 bg-surface-container-low rounded-2xl p-8 flex gap-4 items-start">
+    <span class="material-symbols-outlined text-primary shrink-0 mt-1">menu_book</span>
+    <div>
+      <h3 class="font-headline font-bold mb-1">Baseret på NIRAS' klimaguide</h3>
+      <p class="text-sm text-on-surface-variant">Symptom-årsag-løsning matricen er udarbejdet af NIRAS for DNNK (Dansk Naturfredningsforening) og er en anerkendt metode til systematisk klimatilpasning for private grundejere.</p>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-surface-container-low border-t border-outline-variant/15">
     <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 max-w-screen-2xl mx-auto">
       <div class="mb-6 md:mb-0">
         <span class="font-headline font-bold text-primary text-xl">Klimaborger</span>
@@ -641,6 +795,158 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
 </div>
 
 <!-- FOOTER -->
+
+<!-- ══ PAGE: DIAGNOSÉR ══ -->
+<div id="page-diagnose" class="page pt-28 pb-20 px-6 max-w-screen-xl mx-auto">
+  <header class="mb-12">
+    <span class="font-label text-primary uppercase tracking-[0.2em] text-xs font-bold block mb-4">Trin 00: Find årsagen</span>
+    <h1 class="font-headline text-5xl md:text-7xl tracking-tighter max-w-3xl leading-[0.95] mb-6">
+      Hvad sker der <span class="text-primary italic">hos dig?</span>
+    </h1>
+    <p class="text-on-surface-variant text-lg max-w-xl">Vælg det symptom du oplever — vi finder årsagen og de bedste løsninger. Baseret på NIRAS' guide til klimatilpasning.</p>
+  </header>
+
+  <!-- Step 1: Symptom valg -->
+  <div id="diag-step1" class="mb-10">
+    <h2 class="font-headline text-2xl font-bold mb-2">Trin 1 — Hvad oplever du?</h2>
+    <p class="text-on-surface-variant mb-6 text-sm">Vælg det symptom der passer bedst på din situation.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <button onclick="diagSelectSymptom('kaelder-revner')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">foundation</span>
+        <h3 class="font-headline font-bold mb-1">Vand gennem revner i kælder</h3>
+        <p class="text-xs text-on-surface-variant">Fugt eller vand trænger ind gennem kældervæg eller -gulv</p>
+      </button>
+      <button onclick="diagSelectSymptom('lavpunkt')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">water</span>
+        <h3 class="font-headline font-bold mb-1">Vand stående i lavpunkt</h3>
+        <p class="text-xs text-on-surface-variant">Vand samler sig i en lavning på grunden og forsvinder langsomt</p>
+      </button>
+      <button onclick="diagSelectSymptom('gulvafloeb')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">plumbing</span>
+        <h3 class="font-headline font-bold mb-1">Vand op af gulvafløb/toilet</h3>
+        <p class="text-xs text-on-surface-variant">Vand trykkes op gennem afløb eller toilet i kælderen</p>
+      </button>
+      <button onclick="diagSelectSymptom('vand-fra-vej')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">directions_car</span>
+        <h3 class="font-headline font-bold mb-1">Vand fra vej løber ind på grund</h3>
+        <p class="text-xs text-on-surface-variant">Overfladevand fra vejen ender på din matrikel</p>
+      </button>
+      <button onclick="diagSelectSymptom('kloak-vej')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">domain</span>
+        <h3 class="font-headline font-bold mb-1">Vand fra kloak løber ind på grund</h3>
+        <p class="text-xs text-on-surface-variant">Kloakvand fra vejriste strømmer ind på grunden</p>
+      </button>
+      <button onclick="diagSelectSymptom('nabo')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">fence</span>
+        <h3 class="font-headline font-bold mb-1">Vand løber ind fra nabogrund</h3>
+        <p class="text-xs text-on-surface-variant">Overfladevand strømmer fra naboens grund ind på din</p>
+      </button>
+      <button onclick="diagSelectSymptom('aasoe')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">waves</span>
+        <h3 class="font-headline font-bold mb-1">Vand fra å/sø løber ind</h3>
+        <p class="text-xs text-on-surface-variant">Vandløb eller sø går over sine bredder</p>
+      </button>
+      <button onclick="diagSelectSymptom('havvand')" class="diag-symptom-btn text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all group">
+        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-3xl">sailing</span>
+        <h3 class="font-headline font-bold mb-1">Havvand ind til bygning</h3>
+        <p class="text-xs text-on-surface-variant">Stormflod presser havvand ind over land</p>
+      </button>
+    </div>
+  </div>
+
+  <!-- Step 2: Hvornår -->
+  <div id="diag-step2" class="hidden mb-10">
+    <div class="flex items-center gap-3 mb-6">
+      <button onclick="diagReset()" class="text-on-surface-variant hover:text-primary flex items-center gap-1 text-sm"><span class="material-symbols-outlined text-sm">arrow_back</span>Tilbage</button>
+      <h2 class="font-headline text-2xl font-bold">Trin 2 — Hvornår sker det?</h2>
+    </div>
+    <p class="text-on-surface-variant mb-6 text-sm">Tidspunktet hjælper os med at indsnævre årsagen.</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <button onclick="diagSelectTid('sommer')" class="diag-tid-btn p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all text-center group">
+        <span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary mb-2 block">wb_sunny</span>
+        <div class="font-headline font-bold">Sommer</div>
+        <div class="text-xs text-on-surface-variant mt-1">maj–september</div>
+        <div class="text-xs text-primary mt-2 font-bold">→ Skybrud</div>
+      </button>
+      <button onclick="diagSelectTid('efteraar-vinter')" class="diag-tid-btn p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all text-center group">
+        <span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary mb-2 block">cloudy_snowing</span>
+        <div class="font-headline font-bold">Efterår/Vinter</div>
+        <div class="text-xs text-on-surface-variant mt-1">lange regnperioder</div>
+        <div class="text-xs text-primary mt-2 font-bold">→ Langvarig regn / Stormflod</div>
+      </button>
+      <button onclick="diagSelectTid('foraar')" class="diag-tid-btn p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all text-center group">
+        <span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary mb-2 block">ac_unit</span>
+        <div class="font-headline font-bold">Forår/Vinter</div>
+        <div class="text-xs text-on-surface-variant mt-1">når sneen smelter</div>
+        <div class="text-xs text-primary mt-2 font-bold">→ Tøbrud</div>
+      </button>
+      <button onclick="diagSelectTid('hele-aaret')" class="diag-tid-btn p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary transition-all text-center group">
+        <span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary mb-2 block">calendar_month</span>
+        <div class="font-headline font-bold">Hele året</div>
+        <div class="text-xs text-on-surface-variant mt-1">altid eller vinterhalvåret</div>
+        <div class="text-xs text-primary mt-2 font-bold">→ Højt grundvand</div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Step 3: Resultat -->
+  <div id="diag-result" class="hidden">
+    <div class="flex items-center gap-3 mb-8">
+      <button onclick="diagBackToTid()" class="text-on-surface-variant hover:text-primary flex items-center gap-1 text-sm"><span class="material-symbols-outlined text-sm">arrow_back</span>Tilbage</button>
+      <h2 class="font-headline text-2xl font-bold">Din diagnose</h2>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+      <!-- Årsag forklaring -->
+      <div class="lg:col-span-5">
+        <div class="bg-primary text-on-primary p-8 rounded-2xl mb-5">
+          <p class="font-label text-xs uppercase tracking-[0.2em] opacity-70 mb-3">Sandsynlig årsag</p>
+          <h3 class="font-headline text-3xl font-bold mb-4" id="diag-aarsag-titel">—</h3>
+          <p class="text-on-primary/80 leading-relaxed" id="diag-aarsag-tekst">—</p>
+        </div>
+        <div class="bg-surface-container-low p-6 rounded-xl">
+          <h4 class="font-headline font-bold mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">info</span>Hvad sker der?</h4>
+          <p class="text-sm text-on-surface-variant leading-relaxed" id="diag-forklaring">—</p>
+        </div>
+      </div>
+
+      <!-- Løsninger -->
+      <div class="lg:col-span-7">
+        <h3 class="font-headline text-xl font-bold mb-5">Anbefalede løsninger</h3>
+        <div id="diag-loesninger-primaer" class="mb-6"></div>
+        <div id="diag-loesninger-sekundaer" class="mb-6 hidden">
+          <h4 class="text-sm font-label uppercase font-bold text-on-surface-variant mb-3">Supplerende løsninger</h4>
+          <div id="diag-loesninger-sekundaer-liste"></div>
+        </div>
+        <div id="diag-undgaa" class="hidden">
+          <div class="bg-error-container/20 border border-error/20 rounded-xl p-5">
+            <h4 class="text-sm font-label uppercase font-bold text-error mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-sm">warning</span>Undgå disse løsninger</h4>
+            <div id="diag-undgaa-liste" class="text-sm text-on-surface-variant"></div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex gap-3">
+          <button onclick="navigate('gang')" class="flex-1 bg-primary text-on-primary py-4 rounded-xl font-headline font-bold hover:opacity-90 transition-all text-sm">
+            Læs byggevejledning →
+          </button>
+          <button onclick="navigate('kortlaeg')" class="flex-1 bg-surface-container text-on-surface py-4 rounded-xl font-headline font-bold hover:bg-surface-container-high transition-all text-sm">
+            Beregn dit vandbehov
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bund info -->
+  <div class="mt-16 bg-surface-container-low rounded-2xl p-8 flex gap-4 items-start">
+    <span class="material-symbols-outlined text-primary shrink-0 mt-1">menu_book</span>
+    <div>
+      <h3 class="font-headline font-bold mb-1">Baseret på NIRAS' klimaguide</h3>
+      <p class="text-sm text-on-surface-variant">Symptom-årsag-løsning matricen er udarbejdet af NIRAS for DNNK (Dansk Naturfredningsforening) og er en anerkendt metode til systematisk klimatilpasning for private grundejere.</p>
+    </div>
+  </div>
+</div>
+
 <footer class="bg-surface-container-low border-t border-outline-variant/15">
   <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 max-w-screen-2xl mx-auto">
     <div class="mb-6 md:mb-0">
@@ -1088,6 +1394,166 @@ function mapFilter(kat, btn) {
 // ══════════════════════════════════════
 // INIT
 // ══════════════════════════════════════
+
+// ══════════════════════════════════════
+// DIAGNOSÉR — Symptom → Årsag → Løsning
+// Kilde: NIRAS/DNNK Guide (2020)
+// ══════════════════════════════════════
+let diagSymptom = null;
+let diagTid = null;
+
+const AARSAGER = {
+  grundvand: { titel:'Højtstående grundvand', tekst:'Grundvandet i dit område står tæt på eller over jordoverfladen.', forklaring:'I områder med højtstående grundvand er jorden vandmættet. Vand kan presse ind gennem kælderrevner. Sker typisk hele vinterhalvåret.' },
+  langvarig:  { titel:'Langvarige regnperioder', tekst:'Langsom vedvarende regn der mætter jorden og overbelaster kloakken.', forklaring:'Under lange regnperioder stiger grundvandsspejlet gradvist. Kloaksystemet overbelastes og kan presse vand baglæns op gennem afløb.' },
+  skybrud:    { titel:'Skybrud', tekst:'Ekstrem kortvarig regn der overstiger kloakkens kapacitet på få minutter.', forklaring:'Skybrud sker næsten udelukkende om sommeren. Kloakken er ikke dimensioneret til disse vandmængder på kort tid.' },
+  stormflod:  { titel:'Stormflod', tekst:'Storm presser havvand ind over land — særligt i kystnære områder.', forklaring:'Stormflod sker om efteråret og vinteren. Kraftig vind presser havvand ind over lavtliggende kystområder.' },
+  toebrud:    { titel:'Tøbrud', tekst:'Sne smelter hurtigt mens jorden stadig er frossen — vandet kan ikke sive ned.', forklaring:'Når temperaturen stiger fra minus til plus smelter sneen hurtigt. Den frosne jord absorberer ikke vandet.' }
+};
+
+const LOESNING_INFO = {
+  'Grønt tag':          {icon:'filter_hdr', desc:'Sedum tilbageholder op til 50% af hverdagsregnen.'},
+  'Regnbed':            {icon:'rainy', desc:'Beplantet lavning der magasinerer og nedsiver regnvand.'},
+  'Faskine':            {icon:'water_drop', desc:'Underjordisk hulrum der nedsiver vand uden at bruge overfladeareal.'},
+  'Regnvandsbeholder':  {icon:'water_full', desc:'Opsaml tagvand til havevanding og toiletskyl.'},
+  'Højvandslukke':      {icon:'lock', desc:'Forhindrer kloakvand i at trykkes op gennem gulvafløb.'},
+  'Omfangsdræn':        {icon:'home_repair_service', desc:'Afleder grundvand fra fundamentet og holder kælder tør.'},
+  'Vejbed':             {icon:'local_florist', desc:'Grønt bed langs vejen der optager vejvand.'},
+  'Grøft':              {icon:'linear_scale', desc:'Åben kanal der transporterer og nedsiver overfladevand.'},
+  'Permeabel belægning':{icon:'grid_view', desc:'Fliser der lader vandet sive igennem.'},
+  'Skybrudsvej':        {icon:'directions_car', desc:'Vej designet til at lede store vandmængder kontrolleret.'},
+  'Hævede kantsten':    {icon:'border_top', desc:'Styrer vand på vejen og holder det væk fra private grunde.'},
+  'Græslavning':        {icon:'grass', desc:'Sænket græsareal der kan rumme store vandmængder.'},
+  'Rende':              {icon:'remove', desc:'Åben rende der transporterer vand væk fra bygningen.'},
+  'Vådbassin':          {icon:'pool', desc:'Permanent vandflade der magasinerer og renser regnvand.'},
+  'Tørbassin':          {icon:'landscape', desc:'Nedsænket areal der kun er vandfyldt under regn.'},
+  'Dige':               {icon:'terrain', desc:'Jordvold der afspærrer mod indtrængende vand.'},
+  'Pumpe':              {icon:'speed', desc:'Pumper vand væk fra oversvømmede arealer.'}
+};
+
+const DIAG_DATA = {
+  'kaelder-revner': {
+    'hele-aaret':      {aarsag:'grundvand', primaer:['Omfangsdræn'], sekundaer:[], undgaa:['Regnbed','Faskine','Vejbed','Grøft','Græslavning']},
+    'efteraar-vinter': {aarsag:'langvarig', primaer:['Omfangsdræn'], sekundaer:[], undgaa:['Regnbed','Faskine','Vejbed','Grøft','Græslavning']},
+    'sommer':          {aarsag:'skybrud',   primaer:['Højvandslukke','Omfangsdræn'], sekundaer:[], undgaa:[]},
+    'foraar':          {aarsag:'toebrud',   primaer:['Omfangsdræn'], sekundaer:[], undgaa:[]}
+  },
+  'lavpunkt': {
+    'hele-aaret':      {aarsag:'grundvand', primaer:['Omfangsdræn','Grøft'], sekundaer:['Rende','Græslavning'], undgaa:['Regnbed','Faskine']},
+    'efteraar-vinter': {aarsag:'langvarig', primaer:['Grøft','Rende','Græslavning'], sekundaer:['Faskine','Regnbed'], undgaa:[]},
+    'sommer':          {aarsag:'skybrud',   primaer:['Grøft','Rende','Tørbassin'], sekundaer:['Regnbed','Faskine'], undgaa:[]},
+    'foraar':          {aarsag:'toebrud',   primaer:['Grøft','Rende','Tørbassin'], sekundaer:['Regnbed'], undgaa:[]}
+  },
+  'gulvafloeb': {
+    'efteraar-vinter': {aarsag:'langvarig', primaer:['Højvandslukke'], sekundaer:[], undgaa:[]},
+    'sommer':          {aarsag:'skybrud',   primaer:['Højvandslukke'], sekundaer:[], undgaa:[]},
+    'hele-aaret':      {aarsag:'grundvand', primaer:['Højvandslukke','Omfangsdræn'], sekundaer:[], undgaa:[]},
+    'foraar':          {aarsag:'toebrud',   primaer:['Højvandslukke'], sekundaer:[], undgaa:[]}
+  },
+  'vand-fra-vej': {
+    'efteraar-vinter': {aarsag:'langvarig', primaer:['Hævede kantsten','Skybrudsvej'], sekundaer:['Vejbed'], undgaa:[]},
+    'sommer':          {aarsag:'skybrud',   primaer:['Hævede kantsten','Skybrudsvej'], sekundaer:['Vejbed','Regnbed'], undgaa:[]},
+    'foraar':          {aarsag:'toebrud',   primaer:['Hævede kantsten','Skybrudsvej'], sekundaer:[], undgaa:[]},
+    'hele-aaret':      {aarsag:'grundvand', primaer:['Hævede kantsten'], sekundaer:[], undgaa:[]}
+  },
+  'kloak-vej': {
+    'efteraar-vinter': {aarsag:'langvarig', primaer:['Vejbed','Skybrudsvej','Hævede kantsten'], sekundaer:['Grønt tag','Regnbed','Faskine'], undgaa:[]},
+    'sommer':          {aarsag:'skybrud',   primaer:['Skybrudsvej','Hævede kantsten'], sekundaer:['Vejbed'], undgaa:[]},
+    'hele-aaret':      {aarsag:'grundvand', primaer:['Hævede kantsten'], sekundaer:[], undgaa:[]},
+    'foraar':          {aarsag:'toebrud',   primaer:['Skybrudsvej','Hævede kantsten'], sekundaer:[], undgaa:[]}
+  },
+  'nabo': {
+    'efteraar-vinter': {aarsag:'langvarig', primaer:['Regnbed','Faskine','Grøft','Græslavning'], sekundaer:[], undgaa:[]},
+    'sommer':          {aarsag:'skybrud',   primaer:['Grøft','Rende','Dige','Hævede kantsten'], sekundaer:['Vådbassin','Tørbassin'], undgaa:[]},
+    'foraar':          {aarsag:'toebrud',   primaer:['Grøft','Rende','Dige'], sekundaer:[], undgaa:[]},
+    'hele-aaret':      {aarsag:'grundvand', primaer:['Grøft'], sekundaer:[], undgaa:[]}
+  },
+  'aasoe': {
+    'efteraar-vinter': {aarsag:'langvarig', primaer:['Dige','Hævede kantsten'], sekundaer:['Vådbassin','Tørbassin'], undgaa:[]},
+    'sommer':          {aarsag:'skybrud',   primaer:['Dige','Pumpe'], sekundaer:['Vådbassin'], undgaa:[]},
+    'foraar':          {aarsag:'toebrud',   primaer:['Dige','Pumpe'], sekundaer:[], undgaa:[]},
+    'hele-aaret':      {aarsag:'grundvand', primaer:['Dige'], sekundaer:['Pumpe'], undgaa:[]}
+  },
+  'havvand': {
+    'efteraar-vinter': {aarsag:'stormflod', primaer:['Dige'], sekundaer:['Pumpe','Højvandslukke'], undgaa:[]},
+    'sommer':          {aarsag:'stormflod', primaer:['Dige'], sekundaer:[], undgaa:[]},
+    'hele-aaret':      {aarsag:'stormflod', primaer:['Dige'], sekundaer:[], undgaa:[]},
+    'foraar':          {aarsag:'stormflod', primaer:['Dige'], sekundaer:[], undgaa:[]}
+  }
+};
+
+function diagSelectSymptom(symptom) {
+  diagSymptom = symptom;
+  document.querySelectorAll('.diag-symptom-btn').forEach(b => { b.classList.remove('border-primary','bg-primary-container/20'); });
+  event.currentTarget.classList.add('border-primary','bg-primary-container/20');
+  document.getElementById('diag-step1').classList.add('hidden');
+  document.getElementById('diag-step2').classList.remove('hidden');
+  document.getElementById('diag-result').classList.add('hidden');
+}
+
+function diagSelectTid(tid) {
+  diagTid = tid;
+  showDiagResult();
+}
+
+function showDiagResult() {
+  const data = DIAG_DATA[diagSymptom];
+  if (!data) return;
+  let result = data[diagTid] || data[Object.keys(data)[0]];
+  if (!result) return;
+  const aarsag = AARSAGER[result.aarsag] || AARSAGER.skybrud;
+
+  document.getElementById('diag-aarsag-titel').textContent = aarsag.titel;
+  document.getElementById('diag-aarsag-tekst').textContent = aarsag.tekst;
+  document.getElementById('diag-forklaring').textContent = aarsag.forklaring;
+
+  const primEl = document.getElementById('diag-loesninger-primaer');
+  primEl.innerHTML = '<h4 class="text-sm font-label uppercase font-bold text-primary mb-3">Primære løsninger — kan løse problemet alene</h4><div class="space-y-3">' +
+    result.primaer.map(l => {
+      const info = LOESNING_INFO[l] || {icon:'eco', desc:''};
+      return `<div class="bg-white p-4 rounded-xl border-l-4 border-primary flex items-start gap-4 hover:bg-surface-container-low cursor-pointer transition-all" onclick="navigate('gang')">
+        <div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-on-primary-container text-sm">${info.icon}</span>
+        </div>
+        <div class="flex-1"><div class="font-headline font-bold">${l}</div><div class="text-xs text-on-surface-variant mt-0.5">${info.desc}</div></div>
+        <span class="material-symbols-outlined text-on-surface-variant text-sm mt-1">arrow_forward</span>
+      </div>`;
+    }).join('') + '</div>';
+
+  const sekEl = document.getElementById('diag-loesninger-sekundaer');
+  if (result.sekundaer && result.sekundaer.length > 0) {
+    document.getElementById('diag-loesninger-sekundaer-liste').innerHTML =
+      '<div class="flex flex-wrap gap-2">' +
+      result.sekundaer.map(l => {
+        const info = LOESNING_INFO[l] || {icon:'eco'};
+        return `<div class="flex items-center gap-2 px-3 py-2 bg-white rounded-xl border border-outline-variant/20 text-sm"><span class="material-symbols-outlined text-primary text-sm">${info.icon}</span>${l}</div>`;
+      }).join('') + '</div>';
+    sekEl.classList.remove('hidden');
+  } else { sekEl.classList.add('hidden'); }
+
+  const undgaaEl = document.getElementById('diag-undgaa');
+  if (result.undgaa && result.undgaa.length > 0) {
+    document.getElementById('diag-undgaa-liste').innerHTML = result.undgaa.map(l =>
+      `<span class="inline-flex items-center gap-1 mr-3 mb-1 text-sm"><span class="material-symbols-outlined text-error text-sm">block</span>${l}</span>`).join('');
+    undgaaEl.classList.remove('hidden');
+  } else { undgaaEl.classList.add('hidden'); }
+
+  document.getElementById('diag-step2').classList.add('hidden');
+  document.getElementById('diag-result').classList.remove('hidden');
+}
+
+function diagBackToTid() {
+  document.getElementById('diag-step2').classList.remove('hidden');
+  document.getElementById('diag-result').classList.add('hidden');
+}
+
+function diagReset() {
+  diagSymptom = null; diagTid = null;
+  document.getElementById('diag-step1').classList.remove('hidden');
+  document.getElementById('diag-step2').classList.add('hidden');
+  document.getElementById('diag-result').classList.add('hidden');
+}
+
+
 navigate('forsta');
 </script>
 </body>

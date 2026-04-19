@@ -1643,17 +1643,12 @@ async function fetchBBR(addr, lat, lon) {
   try {
     if (!lat || !lon) throw new Error('no coords');
 
-    // Cloudflare Worker proxy til Matrikelkortet (løser CORS)
+    // Cloudflare Worker proxy til Matrikelkortet
     const proxyUrl = 'https://calm-disk-3282.mortenvanskovgaard.workers.dev?lon=' + lon + '&lat=' + lat;
     const res = await fetch(proxyUrl);
     const data = await res.json();
 
-    let grundAreal = null;
-    if (data.features && data.features.length > 0) {
-      const props = data.features[0].properties;
-      grundAreal = Math.round(props.registreretAreal || props.arealBeregnet || 0) || null;
-    }
-
+    const grundAreal = data.grundAreal || null;
     displayBBR({ grund: grundAreal }, addr);
 
   } catch(e) {

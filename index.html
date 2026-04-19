@@ -39,8 +39,8 @@ tailwind.config = {
 .editorial-shadow{box-shadow:0 40px 60px -10px rgba(41,48,43,0.06)}
 .glass-nav{background-color:rgba(241,248,239,0.8);backdrop-filter:blur(24px)}
 .primary-gradient{background:linear-gradient(135deg,#006a2c 0%,#82ff99 100%)}
-.page{display:none}
-.page.active{display:block}
+.page{display:none !important}
+.page.active{display:block !important}
 .nav-link{color:#565d57;transition:color 0.2s;font-family:'Epilogue',sans-serif}
 .nav-link:hover{color:#006a2c}
 .nav-link.active{color:#006a2c;font-weight:700;border-bottom:2px solid #006a2c;padding-bottom:2px}
@@ -159,6 +159,8 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
   </section>
 
   
+</div><!-- /page-forsta -->
+
 <!-- ══ PAGE: DIAGNOSÉR ══ -->
 <div id="page-diagnose" class="page pt-28 pb-20 px-6 max-w-screen-xl mx-auto">
   <header class="mb-12">

@@ -1003,7 +1003,7 @@ function calcKortlaeg() {
   // Hent inputs
   const tag        = parseFloat(document.getElementById('k-tag')?.value)        || 0;
   const befaestet  = parseFloat(document.getElementById('k-befaestet')?.value)  || 0;
-  const graes      = parseFloat(document.getElementById('k-graes')?.value)      || 0;
+  const graes      = parseFloat(document.getElementById('k-have')?.value || document.getElementById('k-graes')?.value) || 0;
   const veg        = parseFloat(document.getElementById('k-veg')?.value)        || 0;
   const nedsivEvne = parseFloat(document.getElementById('k-jord')?.value)       || 86.4; // l/m²/døgn
   const regnEpisode= parseFloat(document.getElementById('k-regn')?.value)       || 54.24; // mm/døgn — 5-årsregn som default
@@ -1478,10 +1478,15 @@ function displayBBR(bbr, addr) {
   const befInput   = document.getElementById('k-befaestet');
 
   if (tagInput   && !tagInput.value   && tagEst)   { tagInput.value   = tagEst;   animateField(tagInput); }
-  if (graesInput && !graesInput.value && graesEst) { graesInput.value = graesEst; if (document.getElementById('k-have') && !document.getElementById('k-have').value) { document.getElementById('k-have').value = graesEst; animateField(document.getElementById('k-have')); } animateField(graesInput); }
+  if (graesEst) {
+    const haveEl = document.getElementById('k-have');
+    const graesEl = document.getElementById('k-graes');
+    if (haveEl && !haveEl.value) { haveEl.value = graesEst; animateField(haveEl); }
+    if (graesEl && !graesEl.value) { graesEl.value = graesEst; animateField(graesEl); }
+  }
   if (befInput   && !befInput.value   && befEst)   { befInput.value   = befEst;   animateField(befInput); }
 
-  calcKortlaeg();
+  setTimeout(() => calcKortlaeg(), 50);
 
   const existing = document.querySelector('#bbr-panel .bbr-note');
   if (!existing) {

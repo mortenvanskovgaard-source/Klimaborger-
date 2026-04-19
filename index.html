@@ -63,8 +63,9 @@ input[type=range]::-webkit-slider-runnable-track{width:100%;height:4px;cursor:po
 input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%;background:#006a2c;cursor:pointer;-webkit-appearance:none;margin-top:-6px}
 .radio-chip input:checked + label{background-color:#006a2c;color:white;border-color:#006a2c}
 .solution-btn.active{background-color:#006a2c;color:#cfffcf;border-color:#006a2c}
-.byg-kort-fraraad{border-color:#b02500 !important;background-color:#fff5f5;}
-.byg-kort-anbefalet{border-color:#006a2c !important;background-color:#f1f8f1;}
+.byg-kort-fraraad{border-color:#b02500 !important;background-color:#fff5f5 !important;}
+.byg-kort-anbefalet{border-color:#006a2c !important;background-color:#f0f9f0 !important;box-shadow:0 0 0 2px rgba(0,106,44,0.15);}
+.byg-kort-sekundaer{border-color:#a8afa7 !important;}
 .nav-link.active{color:#006a2c;font-weight:700;border-bottom:2px solid #006a2c;padding-bottom:2px}
 .nav-link{color:#565d57;transition:color 0.2s}
 .nav-link:hover{color:#006a2c}
@@ -571,7 +572,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
         </div>
         <div class="bg-surface-container-low p-8 rounded-xl flex flex-col md:flex-row gap-8 items-start">
           <div class="flex-1 w-full">
-            <div class="flex items-start justify-between gap-2 mb-2"><h3 class="font-bold text-xl">Regnvandstank</h3><button onclick="openModal('Regnvandstank')" class="shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container transition-all" title="Læs mere"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
+            <div class="byg-status-Regnvandsbeholder hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div><div class="flex items-start justify-between gap-2 mb-2"><h3 class="font-bold text-xl">Regnvandstank</h3><button onclick="openModal('Regnvandstank')" class="shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container transition-all" title="Læs mere"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
             <p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Opsamling af tagvand til brug i haven eller toiletskyl.</p>
             <div class="mb-6">
               <div class="flex justify-between items-center mb-2">
@@ -719,7 +720,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
   </header>
 
   <section class="mb-16">
-    <div class="mb-6"><div class="byg-status-Regnvandsbeholder hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div><h2 class="text-2xl font-headline font-bold">Vælg din løsning</h2><p class="text-on-surface-variant">Klik på en klimasikring for at se effekten</p></div>
+    <div class="mb-6"><h2 class="text-2xl font-headline font-bold">Vælg din løsning</h2><p class="text-on-surface-variant">Klik på en klimasikring for at se effekten</p></div>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4" id="have-solutions">
       <button onclick="selectHave(this,'regnbed')" class="have-btn p-4 rounded-xl bg-surface-container-lowest border-2 border-primary text-left transition-all">
         <span class="material-symbols-outlined text-primary mb-2 block" style="font-variation-settings:'FILL' 1">rainy</span>
@@ -1794,6 +1795,13 @@ const KB = {
     // Alle løsningsnavne at tjekke
     const alleLoesninger = [...(KB.undgaa||[]), ...(KB.primaer||[]), ...(KB.sekundaer||[])];
     
+    // Reset all cards first
+    document.querySelectorAll('.byg-kort-fraraad, .byg-kort-anbefalet, .byg-kort-sekundaer').forEach(el => {
+      el.classList.remove('byg-kort-fraraad','byg-kort-anbefalet','byg-kort-sekundaer');
+      el.style.borderColor = '';
+    });
+    document.querySelectorAll('[class*="byg-status-"]').forEach(el => el.classList.add('hidden'));
+
     Object.entries(LOESNING_CSS).forEach(([navn, cssSuffix]) => {
       if (!cssSuffix) return;
       const els = document.querySelectorAll('.byg-status-' + cssSuffix);
@@ -1819,7 +1827,7 @@ const KB = {
           el.className = el.className.replace(/hidden|bg-\S+|text-\S+/g, '').trim();
           el.classList.add('flex','items-center','gap-1.5','bg-surface-container','text-on-surface-variant');
           el.innerHTML = '<span class="material-symbols-outlined text-sm">info</span>Kan supplere din løsning';
-          if (card) card.style.borderColor = '';
+          if (card) { card.classList.add('byg-kort-sekundaer'); card.style.borderColor = ''; }
         } else {
           el.classList.add('hidden');
           if (card) card.style.borderColor = '';

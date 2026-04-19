@@ -105,99 +105,174 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
   </div>
 </nav>
 
-<!-- PAGE 1: FORSTÅ DIN ROLLE -->
-<div id="page-forsta" class="page pt-24">
-  <main>
-    <section class="relative px-6 md:px-8 py-20 md:py-32 overflow-hidden max-w-screen-2xl mx-auto">
-      <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary-fixed opacity-20 blur-[100px] rounded-full"></div>
-      <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-        <div class="md:col-span-7 animate-fade-in-up">
-          <span class="font-label text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Din have • Dit klima</span>
-          <h1 class="text-5xl md:text-8xl font-headline font-extrabold text-on-background leading-tight tracking-tighter mb-8">
-            Vandet begynder <br/>hos <span class="text-primary italic">dig.</span>
-          </h1>
-          <p class="text-xl md:text-2xl text-on-surface-variant leading-relaxed max-w-2xl font-medium">
-            Hver regndråbe der lander på dit tag, er en ressource der enten belaster byen eller giver liv til din have.
-          </p>
-          <div class="mt-10 flex flex-wrap gap-4">
-            <button onclick="navigate('kortlaeg')" class="primary-gradient text-on-primary-container font-headline font-bold px-8 py-4 rounded-xl hover:scale-105 transition-all editorial-shadow">
-              Kortlæg din matrikel →
-            </button>
-            <button onclick="navigate('inspiration')" class="bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-headline font-bold px-8 py-4 rounded-xl hover:bg-surface-container-low transition-all">
-              Se inspiration
-            </button>
-          </div>
+<!-- PAGE 1: FORSTÅ ══ -->
+<div id="page-forsta" class="page">
+
+  <!-- HERO -->
+  <section class="min-h-screen flex flex-col justify-center px-6 md:px-12 max-w-screen-xl mx-auto pt-24 pb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div>
+        <span class="inline-block font-label text-primary font-bold tracking-[0.2em] uppercase text-xs mb-6 px-4 py-1.5 bg-primary-container rounded-full">Et gratis klimaværktøj til dig</span>
+        <h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter leading-tight mb-6 text-on-background">
+          Dit regnvand<br/>er dit <span class="text-primary italic">ansvar.</span><br/>Vi hjælper dig.
+        </h1>
+        <p class="text-xl text-on-surface-variant leading-relaxed mb-10 max-w-lg">
+          Klimaet ændrer sig. Vi får mere regn, kraftigere skybrud og stigende grundvand. Men vidste du, at du som grundejer selv er ansvarlig for at håndtere regnvandet på din matrikel?
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <button onclick="navigate('diagnose')" class="primary-gradient text-on-primary-container font-headline font-bold px-8 py-4 rounded-xl hover:scale-105 transition-all editorial-shadow text-lg">
+            Find dit problem →
+          </button>
+          <button onclick="navigate('kortlaeg')" class="bg-white border-2 border-outline-variant/30 font-headline font-bold px-8 py-4 rounded-xl hover:bg-surface-container-low transition-all text-lg">
+            Beregn dit vandbehov
+          </button>
         </div>
-        <div class="md:col-span-5 relative">
-          <div class="aspect-[4/5] rounded-xl overflow-hidden editorial-shadow animate-sway bg-surface-container-high flex items-center justify-center">
-            <span class="material-symbols-outlined text-primary opacity-20" style="font-size:200px">yard</span>
+      </div>
+      <!-- Illustreret vandrejse -->
+      <div class="relative hidden md:block">
+        <div class="bg-surface-container-low rounded-2xl p-8 editorial-shadow">
+          <!-- Sky og regn -->
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-14 h-14 bg-tertiary-fixed/50 rounded-full flex items-center justify-center">
+              <span class="material-symbols-outlined text-tertiary text-3xl">thunderstorm</span>
+            </div>
+            <div>
+              <p class="font-headline font-bold">Kraftig regn falder</p>
+              <p class="text-sm text-on-surface-variant">Dit tag + din have modtager alt vandet</p>
+            </div>
           </div>
-          <div class="absolute -bottom-8 -left-8 bg-surface-container-lowest p-8 rounded-xl editorial-shadow hidden md:block max-w-[240px] animate-float">
-            <span class="material-symbols-outlined text-primary text-4xl mb-2">water_drop</span>
-            <p class="text-sm font-label uppercase tracking-wider font-bold">100% Naturligt</p>
-            <p class="text-xs text-on-surface-variant mt-1">Håndtér regnen lokalt og skab biodiversitet.</p>
+          <!-- Pil ned -->
+          <div class="flex items-center gap-3 mb-6 pl-7">
+            <div class="w-0.5 h-8 bg-outline-variant/40 mx-auto"></div>
+          </div>
+          <!-- Problem -->
+          <div class="flex items-center gap-3 mb-6 bg-red-50 rounded-xl p-4 border border-red-100">
+            <div class="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-red-600 text-3xl">warning</span>
+            </div>
+            <div>
+              <p class="font-headline font-bold text-red-700">Vandet har ingen vej</p>
+              <p class="text-sm text-red-600">Kloakken overbelastes. Vand i kælderen. Oversvømmelse i haven.</p>
+            </div>
+          </div>
+          <!-- Pil ned -->
+          <div class="flex items-center gap-3 mb-6 pl-7">
+            <div class="w-0.5 h-8 bg-outline-variant/40 mx-auto"></div>
+          </div>
+          <!-- Løsning -->
+          <div class="flex items-center gap-3 bg-primary-container/40 rounded-xl p-4 border border-primary/20">
+            <div class="w-14 h-14 bg-primary-container rounded-full flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-primary text-3xl">eco</span>
+            </div>
+            <div>
+              <p class="font-headline font-bold text-primary">Du håndterer det lokalt</p>
+              <p class="text-sm text-on-surface-variant">Regnbed, faskine eller grønt tag nedsiver vandet i din have.</p>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-    <section class="bg-surface-container-low py-24 px-6 md:px-8">
-      <div class="max-w-screen-2xl mx-auto">
-        <div class="mb-16 reveal">
-          <h2 class="text-3xl md:text-5xl font-headline font-bold mb-4">Vandets rejse</h2>
-          <p class="text-on-surface-variant max-w-xl">Fra skyerne til dit afløb – forstå hvorfor vores nuværende system er under pres.</p>
+    </div>
+  </section>
+
+  <!-- HVORFOR ER DET VIGTIGT -->
+  <section class="bg-surface-container-low py-20 px-6 md:px-12">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight mb-4">Hvorfor skal du handle nu?</h2>
+        <p class="text-on-surface-variant text-lg max-w-2xl mx-auto">Klimaforandringerne er allerede i gang — og de berører din have direkte.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-8 editorial-shadow">
+          <div class="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mb-5">
+            <span class="material-symbols-outlined text-red-600 text-2xl">flood</span>
+          </div>
+          <h3 class="font-headline text-xl font-bold mb-3">Skybrud er blevet hyppigere</h3>
+          <p class="text-on-surface-variant leading-relaxed">Siden 1990 er antallet af kraftige regnhændelser over Danmark steget markant. Kloaksystemerne er bygget til en anden tid — og de kan ikke følge med.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="reveal bg-surface p-10 rounded-xl relative overflow-hidden hover:bg-surface-container-lowest transition-all" style="transition-delay:100ms">
-            <div class="text-6xl font-headline font-bold text-outline-variant/20 absolute -top-2 -right-2">01</div>
-            <span class="material-symbols-outlined text-primary text-5xl mb-6 inline-block">cloudy_snowing</span>
-            <h3 class="text-2xl font-headline font-bold mb-4">Nedbør</h3>
-            <p class="text-on-surface-variant leading-relaxed">Når regnen falder tungt, modtager dine fliser og dit tag tusindvis af liter vand på få minutter.</p>
+        <div class="bg-white rounded-2xl p-8 editorial-shadow">
+          <div class="w-14 h-14 bg-amber-100 rounded-full flex items-center justify-center mb-5">
+            <span class="material-symbols-outlined text-amber-600 text-2xl">gavel</span>
           </div>
-          <div class="reveal bg-surface p-10 rounded-xl relative overflow-hidden hover:bg-surface-container-lowest transition-all md:translate-y-12" style="transition-delay:300ms">
-            <div class="text-6xl font-headline font-bold text-outline-variant/20 absolute -top-2 -right-2">02</div>
-            <span class="material-symbols-outlined text-primary text-5xl mb-6 inline-block">waves</span>
-            <h3 class="text-2xl font-headline font-bold mb-4">Overfladeafstrømning</h3>
-            <p class="text-on-surface-variant leading-relaxed">I de fleste haver løber vandet direkte i kloakken og belaster vores fælles rensningsanlæg.</p>
+          <h3 class="font-headline text-xl font-bold mb-3">Du har selv ansvaret</h3>
+          <p class="text-on-surface-variant leading-relaxed">Som grundejer er det juridisk dit ansvar at håndtere regnvand på din matrikel. Kommunen hjælper ikke, medmindre du selv tager initiativ.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 editorial-shadow">
+          <div class="w-14 h-14 bg-primary-container rounded-full flex items-center justify-center mb-5">
+            <span class="material-symbols-outlined text-primary text-2xl">savings</span>
           </div>
-          <div class="reveal bg-surface p-10 rounded-xl relative overflow-hidden hover:bg-surface-container-lowest transition-all" style="transition-delay:500ms">
-            <div class="text-6xl font-headline font-bold text-outline-variant/20 absolute -top-2 -right-2">03</div>
-            <span class="material-symbols-outlined text-primary text-5xl mb-6 inline-block">home_repair_service</span>
-            <h3 class="text-2xl font-headline font-bold mb-4">Din løsning</h3>
-            <p class="text-on-surface-variant leading-relaxed">Ved at nedsive vandet i din egen have, aflaster du byen og styrker grundvandet.</p>
-          </div>
+          <h3 class="font-headline text-xl font-bold mb-3">Du kan spare penge</h3>
+          <p class="text-on-surface-variant leading-relaxed">Mange kommuner refunderer dele af tilslutningsbidraget, når du kobler dig fra kloakken. Et regnbed betaler sig hurtigt hjem.</p>
         </div>
       </div>
-    </section>
-    <section class="py-32 px-6 md:px-8 max-w-screen-2xl mx-auto">
-      <div class="flex flex-col md:flex-row gap-16 items-center">
-        <div class="w-full md:w-1/2 space-y-8">
-          <h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tight reveal">Hvorfor er det <span class="text-primary">vigtigt?</span></h2>
-          <div class="space-y-6">
-            <div class="flex gap-6 items-start reveal"><div class="bg-primary-container p-3 rounded-md shrink-0"><span class="material-symbols-outlined text-on-primary-container">security</span></div><div><h4 class="font-bold text-xl mb-1">Beskyt din bolig</h4><p class="text-on-surface-variant">Korrekt håndtering af regnvand minimerer risikoen for fugt og vandskader.</p></div></div>
-            <div class="flex gap-6 items-start reveal"><div class="bg-secondary-container p-3 rounded-md shrink-0"><span class="material-symbols-outlined text-on-secondary-container">eco</span></div><div><h4 class="font-bold text-xl mb-1">Øg biodiversiteten</h4><p class="text-on-surface-variant">Regnvandsløsninger skaber nye levesteder for insekter og fugle.</p></div></div>
-            <div class="flex gap-6 items-start reveal"><div class="bg-tertiary-container/30 p-3 rounded-md shrink-0"><span class="material-symbols-outlined text-on-tertiary-container">payments</span></div><div><h4 class="font-bold text-xl mb-1">Spar penge</h4><p class="text-on-surface-variant">Mange kommuner giver tilskud når du kobler dig af kloakken.</p></div></div>
-          </div>
-        </div>
-        <div class="w-full md:w-1/2 reveal">
-          <div class="aspect-[4/3] rounded-xl bg-surface-container-high flex items-center justify-center editorial-shadow">
-            <span class="material-symbols-outlined text-primary opacity-20" style="font-size:150px">eco</span>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="px-6 md:px-8 pb-32">
-      <div class="max-w-screen-xl mx-auto primary-gradient rounded-[2rem] p-12 md:p-24 text-center editorial-shadow">
-        <h2 class="text-4xl md:text-7xl font-headline font-extrabold text-on-primary mb-8 tracking-tighter">Er din have klar til fremtiden?</h2>
-        <p class="text-on-primary/80 text-xl mb-12 max-w-2xl mx-auto">Tag det første skridt mod en klimasikret have.</p>
-        <button onclick="navigate('kortlaeg')" class="bg-surface-container-lowest text-primary font-headline font-bold text-lg px-12 py-6 rounded-xl hover:scale-105 transition-all editorial-shadow animate-pulse-gentle">
-          Find ud af hvad din have kan
+    </div>
+  </section>
+
+  <!-- SÅDAN VIRKER VÆRKTØJET -->
+  <section class="py-20 px-6 md:px-12 max-w-screen-xl mx-auto">
+    <div class="text-center mb-14">
+      <h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight mb-4">Sådan virker Klimaborger</h2>
+      <p class="text-on-surface-variant text-lg max-w-xl mx-auto">Fire enkle trin fra problem til løsning — tilpasset præcis din have og dit postnummer.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <button onclick="navigate('diagnose')" class="text-left bg-surface-container-low hover:bg-white hover:shadow-lg rounded-2xl p-7 transition-all group border-2 border-transparent hover:border-primary/20">
+        <div class="w-10 h-10 bg-primary text-on-primary rounded-full flex items-center justify-center font-headline font-bold mb-5 group-hover:scale-110 transition-transform">1</div>
+        <span class="material-symbols-outlined text-primary text-3xl mb-3 block">search</span>
+        <h3 class="font-headline font-bold text-lg mb-2">Diagnosér</h3>
+        <p class="text-sm text-on-surface-variant">Vælg det symptom du oplever. Vi finder årsagen og hvad du <em>ikke</em> skal gøre.</p>
+      </button>
+      <button onclick="navigate('kortlaeg')" class="text-left bg-surface-container-low hover:bg-white hover:shadow-lg rounded-2xl p-7 transition-all group border-2 border-transparent hover:border-primary/20">
+        <div class="w-10 h-10 bg-primary text-on-primary rounded-full flex items-center justify-center font-headline font-bold mb-5 group-hover:scale-110 transition-transform">2</div>
+        <span class="material-symbols-outlined text-primary text-3xl mb-3 block">map</span>
+        <h3 class="font-headline font-bold text-lg mb-2">Kortlæg</h3>
+        <p class="text-sm text-on-surface-variant">Indtast din adresse. Vi henter din matrikelstørrelse og din kommunes nedbørsdata automatisk.</p>
+      </button>
+      <button onclick="navigate('byg')" class="text-left bg-surface-container-low hover:bg-white hover:shadow-lg rounded-2xl p-7 transition-all group border-2 border-transparent hover:border-primary/20">
+        <div class="w-10 h-10 bg-primary text-on-primary rounded-full flex items-center justify-center font-headline font-bold mb-5 group-hover:scale-110 transition-transform">3</div>
+        <span class="material-symbols-outlined text-primary text-3xl mb-3 block">build</span>
+        <h3 class="font-headline font-bold text-lg mb-2">Byg din løsning</h3>
+        <p class="text-sm text-on-surface-variant">Vælg løsninger der passer til netop din situation. Anbefalede løsninger er fremhævet.</p>
+      </button>
+      <button onclick="navigate('gang')" class="text-left bg-surface-container-low hover:bg-white hover:shadow-lg rounded-2xl p-7 transition-all group border-2 border-transparent hover:border-primary/20">
+        <div class="w-10 h-10 bg-primary text-on-primary rounded-full flex items-center justify-center font-headline font-bold mb-5 group-hover:scale-110 transition-transform">4</div>
+        <span class="material-symbols-outlined text-primary text-3xl mb-3 block">construction</span>
+        <h3 class="font-headline font-bold text-lg mb-2">Kom i gang</h3>
+        <p class="text-sm text-on-surface-variant">Trin-for-trin vejledninger til alle løsninger med priser og materialer.</p>
+      </button>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="px-6 md:px-12 pb-24">
+    <div class="max-w-screen-xl mx-auto primary-gradient rounded-3xl p-12 md:p-20 text-center editorial-shadow relative overflow-hidden">
+      <div class="absolute -top-12 -right-12 w-64 h-64 bg-white/5 rounded-full"></div>
+      <div class="absolute -bottom-12 -left-12 w-48 h-48 bg-white/5 rounded-full"></div>
+      <div class="relative z-10">
+        <h2 class="font-headline text-4xl md:text-6xl font-extrabold text-on-primary tracking-tight mb-6">Klar til at tage ansvar<br/>for dit regnvand?</h2>
+        <p class="text-on-primary/80 text-xl mb-10 max-w-xl mx-auto">Det tager under 5 minutter at få din personlige klimaplan — gratis og uden tilmelding.</p>
+        <button onclick="navigate('diagnose')" class="bg-white text-primary font-headline font-bold text-xl px-14 py-6 rounded-2xl hover:scale-105 transition-all editorial-shadow animate-pulse-gentle">
+          Start her →
         </button>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-surface-container-low border-t border-outline-variant/15">
+    <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 max-w-screen-2xl mx-auto">
+      <div class="mb-6 md:mb-0">
+        <button class="font-headline font-bold text-primary text-xl" onclick="navigate('forsta')">Klimaborger</button>
+        <p class="text-sm text-on-surface-variant mt-2">© 2024 Klimaborger – Et samarbejde med Egedal Kommune</p>
+      </div>
+      <div class="flex gap-8">
+        <a class="text-sm text-on-surface-variant hover:text-primary" href="#">Kontakt os</a>
+        <a class="text-sm text-on-surface-variant hover:text-primary" href="#">Privatlivspolitik</a>
+        <a class="text-sm text-on-surface-variant hover:text-primary" href="#">Egedal Kommune</a>
+        <a class="text-sm text-on-surface-variant hover:text-primary" href="#">Tilgængelighed</a>
+      </div>
+    </div>
+  </footer>
 </div>
 
-<!-- PAGE 2: KORTLÆG — NYT DESIGN -->
 <!-- ══ PAGE: DIAGNOSÉR ══ -->
 <div id="page-diagnose" class="page pt-28 pb-24 px-6 max-w-screen-xl mx-auto">
   <header class="mb-10">

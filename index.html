@@ -1670,68 +1670,7 @@ async function fetchBBR(addr, lat, lon) {
   icon.textContent = 'check_circle';
   icon.classList.remove('animate-spin');
   icon.classList.add('text-primary');
-  statusLabel.textContent = \`Adresse fundet — \${addr.adgangsadresse?.postnr?.navn || ''}\`;
-  panel.classList.remove('hidden');
-}
-
-async function fetchBBR_UNUSED(addr, lat, lon) {
-  const icon = document.getElementById('dawa-icon');
-  const statusLabel = document.getElementById('dawa-status-label');
-  const panel = document.getElementById('bbr-panel');
-
-  try {
-    // Use the adgangsadresse id to look up building data via DAWA's husnummer endpoint
-    const husnrId = addr.adgangsadresse?.id;
-    if (!husnrId) throw new Error('no id');
-
-    const res = await fetch(`https://api.dataforsyningen.dk/adgangsadresser/${husnrId}`);
-    const data = await res.json();
-
-    // Extract what we can from DAWA (grundareal comes from matriklen)
-    const matrikel = data.matrikelnr || '—';
-    const kommune = data.ejerlav?.navn || '';
-
-    // BBR bygninger via Dataforsyningen bygning endpoint
-    const bygRes = await fetch(`https://api.dataforsyningen.dk/adresser?adgangsadresseid=${husnrId}&struktur=nestet`);
-    const bygData = await bygRes.json();
-
-    // Estimate tag from bebyggetAreal if available
-    let tagAreal = null;
-    let grundAreal = null;
-    let byggeaar = null;
-
-    if (bygData.length > 0) {
-      const b = bygData[0].adgangsadresse;
-      // Try to get BBR data from the supplerendebynavne/ejerlav context
-      grundAreal = b?.ejerlav ? null : null;
-    }
-
-    // Fetch from BBR directly (open.bbr.dk)
-    const bbrRes = await fetch(`https://services.datafordeler.dk/BBR/BBRPublic/1/REST/bygning?AdresseIdentificerer=${husnrId}&username=DEMO&password=DEMO`).catch(() => null);
-
-    // Since BBR needs auth, we use a fallback estimation based on typical Danish house
-    // and display what we DO have from DAWA
-    const kommunekode = addr.adgangsadresse?.kommune?.kode || '';
-    const vejnavn = addr.adgangsadresse?.vejnavn || '';
-
-    // Display estimated/fallback values with clear labelling
-    displayBBR({
-      tag: null,       // We'll show estimated
-      grund: null,
-      byggeaar: null,
-      matrikel: matrikel,
-      vejnavn: vejnavn,
-      adresseId: husnrId,
-    }, addr);
-
-  } catch(e) {
-    displayBBR({ tag: null, grund: null, byggeaar: null }, addr);
-  }
-
-  icon.textContent = 'check_circle';
-  icon.classList.remove('animate-spin');
-  icon.classList.add('text-primary');
-  statusLabel.textContent = `Adresse fundet — ${addr.adgangsadresse?.postnr?.navn || ''}`;
+  statusLabel.textContent = 'Adresse fundet — ' + (addr.adgangsadresse?.postnr?.navn || '');
   panel.classList.remove('hidden');
 }
 

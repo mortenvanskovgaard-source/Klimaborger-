@@ -1795,14 +1795,42 @@ function updateLiterDisplay(magasineringskrav, regnEpisodeFinal) {
 // DIAGNOSÉR — Komplet matrix fra NIRAS guide (2020) s.24-35
 // ══════════════════════════════════════
 const D_MATRIX = {
-  kaelder_revner:{label:"Vand gennem revner i kælder",icon:"foundation",desc:"Fugt eller vand trænger ind gennem kældervæg eller kældergulv",aarsager:{grundvand:{primaer:["Omfangsdræn"],sekundaer:[],undgaa:["Regnbed","Faskine","Vejbed","Permeabel belægning","Grøft","Græslavning"]},langvarig:{primaer:["Omfangsdræn"],sekundaer:[],undgaa:["Regnbed","Faskine","Vejbed","Permeabel belægning","Grøft","Græslavning"]}}},
-  lavpunkt:{label:"Vand stående i lavpunkt på grund",icon:"water",desc:"Vand samler sig i en lavning og forsvinder langsomt",aarsager:{grundvand:{primaer:["Omfangsdræn","Grøft"],sekundaer:["Rende","Græslavning"],undgaa:["Regnbed","Faskine","Vejbed","Permeabel belægning"]},langvarig:{primaer:["Grøft","Rende","Græslavning","Tørbassin"],sekundaer:["Faskine","Regnbed","Permeabel belægning"],undgaa:[]},skybrud:{primaer:["Grøft","Rende","Græslavning","Tørbassin"],sekundaer:["Regnbed","Faskine","Permeabel belægning"],undgaa:[]},toebrud:{primaer:["Rende","Grøft","Tørbassin"],sekundaer:["Regnbed"],undgaa:[]}}},
-  gulvafloeb:{label:"Vand op af gulvafløb/toilet i kælder",icon:"plumbing",desc:"Kloakvand presses baglæns op gennem afløb eller toilet",aarsager:{langvarig:{primaer:["Højvandslukke"],sekundaer:[],undgaa:[]},skybrud:{primaer:["Højvandslukke"],sekundaer:[],undgaa:[]},stormflod:{primaer:["Højvandslukke"],sekundaer:[],undgaa:[]}}},
-  vand_fra_vej:{label:"Vand fra vej løber ind på grund",icon:"directions_car",desc:"Overfladevand fra vejen løber ind over skelgrænsen",aarsager:{langvarig:{primaer:["Rende","Grøft","Vejbed"],sekundaer:["Regnbed","Faskine","Tørbassin","Vådbassin"],undgaa:[]},skybrud:{primaer:["Skybrudsvej","Hævede kantsten","Vejbed"],sekundaer:["Regnbed","Faskine"],undgaa:[]},toebrud:{primaer:["Skybrudsvej","Hævede kantsten"],sekundaer:[],undgaa:[]}}},
-  kloak_vej:{label:"Vand fra kloak i vej løber ind på grund",icon:"domain",desc:"Overbelastet kloak presser vand op via vejriste og ind på grunden",aarsager:{langvarig:{primaer:["Rende","Skybrudsvej","Hævede kantsten","Vejbed","Græslavning"],sekundaer:["Grønt tag","Regnbed","Faskine","Regnvandsbeholder"],undgaa:[]},skybrud:{primaer:["Skybrudsvej","Hævede kantsten"],sekundaer:["Vejbed","Permeabel belægning"],undgaa:[]},stormflod:{primaer:["Hævede kantsten","Dige"],sekundaer:[],undgaa:[]}}},
-  fra_nabo:{label:"Vand løbende på terræn fra nabogrund",icon:"fence",desc:"Overfladevand strømmer fra naboens grund ind på din matrikel",aarsager:{langvarig:{primaer:["Regnbed","Faskine","Grøft","Græslavning","Rende","Vådbassin"],sekundaer:[],undgaa:[]},skybrud:{primaer:["Grøft","Rende","Tørbassin","Dige","Hævede kantsten"],sekundaer:["Vådbassin"],undgaa:[]},toebrud:{primaer:["Grøft","Rende","Dige","Hævede kantsten"],sekundaer:[],undgaa:[]},stormflod:{primaer:["Dige"],sekundaer:["Vådbassin","Tørbassin"],undgaa:[]}}},
-  havvand:{label:"Havvand ind til bygning",icon:"sailing",desc:"Stormflod presser havvand ind over land — primært i kystnære områder",aarsager:{stormflod:{primaer:["Dige"],sekundaer:["Pumpe","Højvandslukke"],undgaa:[]}}},
-  fra_aasoe:{label:"Vand fra å/sø løber ind på grund",icon:"waves",desc:"Vandløb eller sø stiger og oversvømmer grunden",aarsager:{langvarig:{primaer:["Dige","Hævede kantsten"],sekundaer:["Vådbassin","Tørbassin"],undgaa:[]},skybrud:{primaer:["Dige","Pumpe","Hævede kantsten"],sekundaer:["Vådbassin","Tørbassin"],undgaa:[]},toebrud:{primaer:["Dige","Pumpe","Hævede kantsten"],sekundaer:["Vådbassin"],undgaa:[]},stormflod:{primaer:["Dige"],sekundaer:["Pumpe"],undgaa:[]}}}
+  kaelder_revner:{label:"Vand gennem revner i kælder",icon:"foundation",desc:"Fugt eller vand trænger ind gennem kældervæg eller kældergulv",aarsager:{
+    grundvand:{primaer:["Omfangsdræn","Pumpe"],sekundaer:[],undgaa:["Regnbed","Faskine","Vejbed","Grøft","Permeabel belægning","Græslavning"]},
+    langvarig: {primaer:["Omfangsdræn","Pumpe"],sekundaer:[],undgaa:["Regnbed","Faskine","Vejbed","Grøft","Permeabel belægning","Græslavning"]}
+  }},
+  lavpunkt:{label:"Vand stående i lavpunkt på grund",icon:"water",desc:"Vand samler sig i en lavning på grunden og forsvinder langsomt",aarsager:{
+    grundvand:{primaer:["Omfangsdræn","Pumpe"],sekundaer:["Rende","Tørbassin"],undgaa:["Regnbed","Faskine","Vejbed","Grøft","Permeabel belægning","Græslavning"]},
+    langvarig: {primaer:["Rende","Grøft","Tørbassin","Omfangsdræn","Pumpe"],sekundaer:["Græslavning","Regnbed","Faskine","Regnvandsbeholder","Grønt tag"],undgaa:[]},
+    skybrud:   {primaer:["Rende","Grøft","Tørbassin"],sekundaer:["Græslavning","Regnbed","Faskine","Regnvandsbeholder","Grønt tag"],undgaa:[]},
+    toebrud:   {primaer:["Rende","Grøft","Tørbassin"],sekundaer:["Græslavning","Vådbassin","Faskine","Regnbed"],undgaa:[]}
+  }},
+  gulvafloeb:{label:"Vand op af gulvafløb/toilet i kælder",icon:"plumbing",desc:"Kloakvand presses baglæns op through afløb eller toilet",aarsager:{
+    langvarig: {primaer:["Højvandslukke"],sekundaer:["Pumpe"],undgaa:[]},
+    skybrud:   {primaer:["Højvandslukke"],sekundaer:["Pumpe"],undgaa:[]},
+    stormflod: {primaer:["Højvandslukke"],sekundaer:["Pumpe"],undgaa:[]}
+  }},
+  vand_fra_vej:{label:"Vand fra vej løber ind på grund",icon:"directions_car",desc:"Overfladevand fra vejen løber ind over skelgrænsen",aarsager:{
+    skybrud:   {primaer:["Skybrudsvej","Hævede kantsten","Dige"],sekundaer:["Vådbassin","Rende","Vejbed","Regnbed","Grøft","Græslavning","Tørbassin"],undgaa:[]},
+    toebrud:   {primaer:["Skybrudsvej","Hævede kantsten","Dige"],sekundaer:["Vådbassin","Rende","Regnbed","Faskine","Tørbassin","Vejbed","Græslavning"],undgaa:[]}
+  }},
+  kloak_vej:{label:"Vand fra kloak i vej løber ind på grund",icon:"domain",desc:"Overbelastet kloak presser vand op via vejriste og ind på grunden",aarsager:{
+    langvarig: {primaer:["Skybrudsvej","Hævede kantsten","Rende","Vejbed","Græslavning","Dige"],sekundaer:["Tørbassin","Vådbassin","Faskine","Regnbed","Grøft","Permeabel belægning","Regnvandsbeholder","Grønt tag"],undgaa:[]},
+    skybrud:   {primaer:["Skybrudsvej","Hævede kantsten","Rende","Dige"],sekundaer:["Vejbed","Tørbassin","Vådbassin","Faskine","Græslavning","Regnbed","Grøft","Permeabel belægning"],undgaa:[]},
+    stormflod: {primaer:["Hævede kantsten","Dige"],sekundaer:[],undgaa:[]}
+  }},
+  fra_nabo:{label:"Vand løbende på terræn fra nabogrund",icon:"fence",desc:"Overfladevand strømmer fra naboens grund ind på din matrikel",aarsager:{
+    langvarig: {primaer:["Rende","Græslavning","Regnbed","Faskine","Grøft"],sekundaer:["Dige","Tørbassin","Vådbassin"],undgaa:[]},
+    skybrud:   {primaer:["Rende","Græslavning","Dige","Grøft"],sekundaer:["Regnbed","Faskine","Tørbassin","Vådbassin"],undgaa:[]},
+    toebrud:   {primaer:["Rende","Græslavning","Dige","Grøft"],sekundaer:["Regnbed","Faskine","Tørbassin","Vådbassin"],undgaa:[]}
+  }},
+  havvand:{label:"Havvand ind til bygning",icon:"sailing",desc:"Stormflod presser havvand ind over land — primært i kystnære områder",aarsager:{
+    stormflod: {primaer:["Dige"],sekundaer:["Pumpe","Hævede kantsten"],undgaa:[]}
+  }},
+  fra_aasoe:{label:"Vand fra å/sø løber ind på grund",icon:"waves",desc:"Vandløb eller sø stiger og oversvømmer grunden",aarsager:{
+    stormflod: {primaer:["Dige"],sekundaer:["Hævede kantsten","Tørbassin","Vådbassin","Pumpe"],undgaa:[]},
+    toebrud:   {primaer:["Dige","Pumpe"],sekundaer:["Hævede kantsten","Tørbassin","Vådbassin"],undgaa:[]}
+  }}
 };
 
 const D_TIDSPUNKTER = [

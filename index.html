@@ -1641,24 +1641,34 @@ async function fetchBBR(addr, lat, lon) {
   const panel = document.getElementById('bbr-panel');
 
   try {
-    if (!lat || !lon) throw new Error('no coords');
+    // Hent jordstykke (grundareal) fra DAWA — åbent CORS, ingen token nødvendig
+    const husnrId = addr.adgangsadresse?.id;
+    if (!husnrId) throw new Error('no id');
 
-    // Hent grundareal fra Matrikelkortet via Dataforsyningen WFS
-    const wfsUrl = 'https://api.dataforsyningen.dk/wfs/MatGaeldendeOgForeloebigWFS_DAF'
-      + '?service=WFS&version=2.0.0&request=GetFeature'
-      + '&typeNames=mat:Jordstykke'
-      + '&count=1'
-      + '&CQL_FILTER=INTERSECTS(geometri,POINT(' + lon + '%20' + lat + '))'
-      + '&outputFormat=application/json'
-      + '&token=25a8155237a4baabb5c9a1a501d1f1b4';
+    // DAWA jordstykke via adgangsadresse-id
+    const jordUrl = 'https://api.dataforsyningen.dk/adgangsadresser/' + husnrId + '?struktur=nestet';
+    const jordRes = await fetch(jordUrl);
+    const jordData = await jordRes.json();
 
-    const wfsRes = await fetch(wfsUrl);
-    const wfsData = await wfsRes.json();
-
+    // Grundareal fra jordstykke
     let grundAreal = null;
-    if (wfsData.features && wfsData.features.length > 0) {
-      const props = wfsData.features[0].properties;
-      grundAreal = Math.round(props.registreretAreal || props.arealBeregnet || 0);
+    const jordstykker = jordData.jordstykker || jordData.adgangsadresse?.jordstykker;
+    if (jordstykker && jordstykker.length > 0) {
+      grundAreal = jordstykker[0].registreretAreal || jordstykker[0].arealTilBebyggelse || null;
+      if (grundAreal) grundAreal = Math.round(grundAreal);
+    }
+
+    // Fallback: prøv matrikelnr-endpoint
+    if (!grundAreal) {
+      const matnr = jordData.matrikelnr || jordData.adgangsadresse?.matrikelnr;
+      const ejerlav = jordData.ejerlav?.kode || jordData.adgangsadresse?.ejerlav?.kode;
+      if (matnr && ejerlav) {
+        const matRes = await fetch('https://api.dataforsyningen.dk/jordstykker?matrikelnr=' + matnr + '&ejerlavkode=' + ejerlav);
+        const matData = await matRes.json();
+        if (matData.length > 0) {
+          grundAreal = Math.round(matData[0].registreretAreal || matData[0].arealTilBebyggelse || 0) || null;
+        }
+      }
     }
 
     displayBBR({ grund: grundAreal }, addr);

@@ -1641,52 +1641,30 @@ async function fetchBBR(addr, lat, lon) {
   const panel = document.getElementById('bbr-panel');
 
   try {
-    // Use the adgangsadresse id to look up building data via DAWA's husnummer endpoint
-    const husnrId = addr.adgangsadresse?.id;
-    if (!husnrId) throw new Error('no id');
+    if (!lat || !lon) throw new Error('no coords');
 
-    const res = await fetch(`https://api.dataforsyningen.dk/adgangsadresser/${husnrId}`);
-    const data = await res.json();
+    // Hent det faktiske grundareal fra Matrikelkortet (Dataforsyningen WFS)
+    const wfsUrl = 'https://api.dataforsyningen.dk/wfs/MatGaeldendeOgForeloebigWFS_DAF'
+      + '?service=WFS&version=2.0.0&request=GetFeature'
+      + '&typeNames=mat:Jordstykke'
+      + '&count=1'
+      + `&CQL_FILTER=INTERSECTS(geometri,POINT(${lon}%20${lat}))`
+      + '&outputFormat=application/json'
+      + '&token=DIN_TOKEN_HER';
 
-    // Extract what we can from DAWA (grundareal comes from matriklen)
-    const matrikel = data.matrikelnr || '—';
-    const kommune = data.ejerlav?.navn || '';
+    const wfsRes = await fetch(wfsUrl);
+    const wfsData = await wfsRes.json();
 
-    // BBR bygninger via Dataforsyningen bygning endpoint
-    const bygRes = await fetch(`https://api.dataforsyningen.dk/adresser?adgangsadresseid=${husnrId}&struktur=nestet`);
-    const bygData = await bygRes.json();
-
-    // Estimate tag from bebyggetAreal if available
-    let tagAreal = null;
     let grundAreal = null;
-    let byggeaar = null;
-
-    if (bygData.length > 0) {
-      const b = bygData[0].adgangsadresse;
-      // Try to get BBR data from the supplerendebynavne/ejerlav context
-      grundAreal = b?.ejerlav ? null : null;
+    if (wfsData.features && wfsData.features.length > 0) {
+      const props = wfsData.features[0].properties;
+      grundAreal = Math.round(props.registreretAreal || props.arealBeregnet || 0);
     }
 
-    // Fetch from BBR directly (open.bbr.dk)
-    const bbrRes = await fetch(`https://services.datafordeler.dk/BBR/BBRPublic/1/REST/bygning?AdresseIdentificerer=${husnrId}&username=DEMO&password=DEMO`).catch(() => null);
-
-    // Since BBR needs auth, we use a fallback estimation based on typical Danish house
-    // and display what we DO have from DAWA
-    const kommunekode = addr.adgangsadresse?.kommune?.kode || '';
-    const vejnavn = addr.adgangsadresse?.vejnavn || '';
-
-    // Display estimated/fallback values with clear labelling
-    displayBBR({
-      tag: null,       // We'll show estimated
-      grund: null,
-      byggeaar: null,
-      matrikel: matrikel,
-      vejnavn: vejnavn,
-      adresseId: husnrId,
-    }, addr);
+    displayBBR({ grund: grundAreal }, addr);
 
   } catch(e) {
-    displayBBR({ tag: null, grund: null, byggeaar: null }, addr);
+    displayBBR({ grund: null }, addr);
   }
 
   icon.textContent = 'check_circle';
@@ -1697,48 +1675,40 @@ async function fetchBBR(addr, lat, lon) {
 }
 
 function displayBBR(bbr, addr) {
-  // Show what we have — for prototype, show realistic demo values
-  // In production this would come from BBR API with proper auth
-  const kommunenavn = addr.adgangsadresse?.kommune?.navn || '';
-  const husnr = addr.adgangsadresse?.husnr || '';
+  const kommunenavn = addr?.adgangsadresse?.kommune?.navn || '';
 
-  // Generate plausible values based on address context (prototype demo)
-  const seed = (addr.adgangsadresse?.id || '').charCodeAt(0) || 42;
-  const tagEst = 80 + ((seed * 7) % 80);   // 80–160 m²
-  const grundEst = 400 + ((seed * 13) % 600); // 400–1000 m²
-  const bygEst = 1960 + ((seed * 3) % 62);   // 1960–2022
+  // Grundareal fra Matrikelkortet (WFS) — ellers vis streg
+  const grundAreal = bbr.grund || null;
+  // Tagareal estimeres til ca. 25% af grundareal for typisk dansk parcelhus
+  const tagEst  = grundAreal ? Math.round(grundAreal * 0.25) : null;
+  const graesEst = grundAreal ? Math.round(grundAreal * 0.55) : null;
+  const befEst   = grundAreal ? Math.round(grundAreal * 0.18) : null;
 
-  document.getElementById('bbr-tag').textContent = tagEst;
-  document.getElementById('bbr-grund').textContent = grundEst;
-  document.getElementById('bbr-bygaar').textContent = bygEst;
+  const erRigtigt = grundAreal !== null;
 
-  // Auto-fill the form fields
-  const tagInput  = document.getElementById('k-tag');
+  document.getElementById('bbr-tag').textContent   = tagEst  || '—';
+  document.getElementById('bbr-grund').textContent = grundAreal || '—';
+  document.getElementById('bbr-bygaar').textContent = '—';
+
+  // Auto-udfyld felter
+  const tagInput   = document.getElementById('k-tag');
   const graesInput = document.getElementById('k-graes');
-  const befInput  = document.getElementById('k-befaestet');
+  const befInput   = document.getElementById('k-befaestet');
 
-  if (tagInput && !tagInput.value) {
-    tagInput.value = tagEst;
-    animateField(tagInput);
-  }
-  if (graesInput && !graesInput.value) {
-    graesInput.value = Math.round(grundEst * 0.55);
-    animateField(graesInput);
-  }
-  if (befInput && !befInput.value) {
-    befInput.value = Math.round(grundEst * 0.18);
-    animateField(befInput);
-  }
+  if (tagInput   && !tagInput.value   && tagEst)   { tagInput.value   = tagEst;   animateField(tagInput); }
+  if (graesInput && !graesInput.value && graesEst) { graesInput.value = graesEst; animateField(graesInput); }
+  if (befInput   && !befInput.value   && befEst)   { befInput.value   = befEst;   animateField(befInput); }
 
   calcKortlaeg();
 
-  // Note for user
-  const note = document.createElement('p');
-  note.className = 'text-[10px] text-on-surface-variant italic mt-2';
-  note.textContent = `Estimerede værdier for ${kommunenavn}. Ret tallene hvis du kender de præcise mål.`;
+  // Note til brugeren
   const existing = document.querySelector('#bbr-panel .bbr-note');
   if (!existing) {
-    note.classList.add('bbr-note');
+    const note = document.createElement('p');
+    note.className = 'text-[10px] text-on-surface-variant italic mt-2 bbr-note';
+    note.textContent = erRigtigt
+      ? `Grundareal hentet fra Matrikelkortet for ${kommunenavn}. Tagareal er estimeret — ret det hvis du kender det præcise mål.`
+      : `Kunne ikke hente matrikeldata. Indtast dine egne mål nedenfor.`;
     document.getElementById('bbr-panel').querySelector('.grid').after(note);
   }
 }

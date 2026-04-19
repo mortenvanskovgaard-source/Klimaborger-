@@ -471,37 +471,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
         <p class="text-xs text-on-surface-variant leading-relaxed">Dette er et estimat baseret på gennemsnitlige nedbørstal for dit område. I næste trin kan du vælge specifikke løsninger som regnbede eller faskiner.</p>
       </div>
 
-      <!-- Detaljerede nøgletal (skjult som standard, vises efter beregning) -->
-      <div id="k-noegletal" class="hidden bg-surface-container-lowest rounded-xl p-6 space-y-4 border border-outline-variant/10">
-        <h3 class="font-headline text-base font-bold">Nøgletal</h3>
-        <div class="grid grid-cols-2 gap-3">
-          <div class="bg-surface-container p-3 rounded-lg"><div class="text-lg font-headline font-bold text-primary" id="k-regnpaamatrikel">—</div><div class="text-[10px] font-label uppercase text-on-surface-variant mt-0.5">Regn på matrikel (m³)</div></div>
-          <div class="bg-surface-container p-3 rounded-lg"><div class="text-lg font-headline font-bold text-primary" id="k-nedsivning">—</div><div class="text-[10px] font-label uppercase text-on-surface-variant mt-0.5">Nedsivning (m³/døgn)</div></div>
-          <div class="bg-surface-container p-3 rounded-lg"><div class="text-lg font-headline font-bold text-tertiary" id="k-fordampning">—</div><div class="text-[10px] font-label uppercase text-on-surface-variant mt-0.5">Fordampning (m³/år)</div></div>
-          <div class="bg-surface-container p-3 rounded-lg"><div class="text-lg font-headline font-bold text-secondary" id="k-kloak-besparelse">—</div><div class="text-[10px] font-label uppercase text-on-surface-variant mt-0.5">Kloak spares (m³/år)</div></div>
-        </div>
-        <div class="bg-surface-container p-4 rounded-lg border-l-4 border-primary">
-          <div class="flex justify-between items-center mb-2"><span class="text-xs font-label uppercase text-on-surface-variant">Minimum digehøjde</span><span class="text-xl font-headline font-bold text-primary" id="k-digeh">— cm</span></div>
-          <div class="h-2 bg-surface-container-highest rounded-full overflow-hidden"><div id="k-digebar" class="h-full bg-primary transition-all duration-700 rounded-full" style="width:0%"></div></div>
-          <p class="text-[10px] text-on-surface-variant mt-2 italic" id="k-dige-label">For den valgte regnhændelse</p>
-        </div>
-        <div class="bg-surface-container p-4 rounded-lg border-l-4 border-tertiary">
-          <div class="flex justify-between items-center"><span class="text-xs font-label uppercase text-on-surface-variant">Min. nedsivningsareal</span><span class="text-xl font-headline font-bold text-tertiary" id="k-minneds">— m²</span></div>
-        </div>
-        <div class="bg-surface-container p-4 rounded-lg">
-          <div class="flex items-center gap-2 mb-3"><span class="material-symbols-outlined text-primary text-sm">bar_chart</span><span class="text-xs font-label uppercase text-on-surface-variant font-bold">Vandbalance pr. sæson</span></div>
-          <div class="grid grid-cols-4 gap-2 text-center">
-            <div><div class="text-sm font-headline font-bold text-primary" id="k-vinter">—</div><div class="text-[9px] text-on-surface-variant uppercase">Vinter</div></div>
-            <div><div class="text-sm font-headline font-bold text-primary" id="k-foraar">—</div><div class="text-[9px] text-on-surface-variant uppercase">Forår</div></div>
-            <div><div class="text-sm font-headline font-bold text-primary" id="k-sommer">—</div><div class="text-[9px] text-on-surface-variant uppercase">Sommer</div></div>
-            <div><div class="text-sm font-headline font-bold text-primary" id="k-efteraar">—</div><div class="text-[9px] text-on-surface-variant uppercase">Efterår</div></div>
-          </div>
-        </div>
-        <div class="flex gap-3 p-3 bg-surface-container rounded-lg items-start">
-          <span class="material-symbols-outlined text-primary text-sm shrink-0">info</span>
-          <p class="text-xs text-on-surface-variant">Beregningsmetode fra Nina Sybrandt Jørgensens og Morten Skovgaards LAR-værktøj (2024).</p>
-        </div>
-      </div>
+
     </aside>
   </div>
 </div>
@@ -1189,14 +1159,12 @@ function calcKortlaeg() {
   const subtitleEl = document.getElementById('k-episode-label');
   const badekarlEl = document.getElementById('k-badekar');
   const spandeEl   = document.getElementById('k-spande');
-  const noegEl     = document.getElementById('k-noegletal');
 
   if (talEl) {
     talEl.textContent = liter > 0 ? liter.toLocaleString('da-DK') : '0';
     if (subtitleEl) subtitleEl.textContent = 'pr. ' + Math.round(episode) + ' mm regnhændelse';
     if (badekarlEl) badekarlEl.textContent = Math.round(liter / 150) + ' badekar';
     if (spandeEl)   spandeEl.textContent   = Math.round(liter / 10)  + ' spande';
-    if (noegEl)     noegEl.classList.remove('hidden');
   }
 
   // Gem til resten af siden

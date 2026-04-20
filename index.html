@@ -438,79 +438,285 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 </div><!-- /page-forsta -->
 
 <!-- ══════════════ PAGE: DIAGNOSÉR ══════════════ -->
-<div id="page-diagnose" class="page pt-24">
-  <section class="relative bg-gradient-to-br from-primary to-primary-container pt-16 pb-32 px-8 overflow-hidden">
-    <div class="max-w-7xl mx-auto relative z-10">
-      <p class="text-on-primary/60 text-xs uppercase tracking-widest font-medium mb-3">Find årsagen</p>
-      <h1 class="font-headline text-4xl md:text-5xl text-on-primary font-bold leading-tight mb-4">Hvad sker der hos dig?</h1>
-      <p class="text-on-primary/80 text-lg max-w-xl">Vælg det symptom du oplever — vi finder årsagen og de rigtige løsninger.</p>
-    </div>
-    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none translate-y-1">
-      <svg class="block w-full h-16 text-surface fill-current" preserveAspectRatio="none" viewBox="0 0 1200 60"><path d="M0,0 C300,60 900,60 1200,0 L1200,60 L0,60 Z"/></svg>
+<div id="page-diagnose" class="page">
+<div class="pt-16 bg-[#f5e8b0] min-h-screen">
+
+  <!-- HERO BLOK — hvid kort på gul baggrund, illustration til højre -->
+  <section class="max-w-4xl mx-auto px-6 pt-10 pb-8">
+    <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
+      <div class="grid lg:grid-cols-2 gap-0 items-stretch">
+        <div class="p-10 flex flex-col justify-center">
+          <p class="text-[#1a4a3a] text-xs uppercase tracking-widest font-bold mb-3">Find årsagen</p>
+          <h1 class="font-headline text-3xl font-bold text-[#1a2a1a] leading-tight mb-4">
+            Hvad sker der hos dig?
+          </h1>
+          <p class="text-[#1a2a1a]/65 text-sm leading-relaxed mb-6 max-w-sm">
+            Vælg det symptom du oplever nedenfor — vi finder den sandsynlige årsag og de rigtige løsninger til netop din situation.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-[#e8f5ee] text-[#1a4a3a] text-xs font-medium px-3 py-1.5 rounded-full">Kælder</span>
+            <span class="bg-[#e8f5ee] text-[#1a4a3a] text-xs font-medium px-3 py-1.5 rounded-full">Have</span>
+            <span class="bg-[#e8f5ee] text-[#1a4a3a] text-xs font-medium px-3 py-1.5 rounded-full">Kloak</span>
+            <span class="bg-[#e8f5ee] text-[#1a4a3a] text-xs font-medium px-3 py-1.5 rounded-full">Vejvand</span>
+          </div>
+        </div>
+        <div class="bg-[#eef6ef] flex items-end justify-center pt-6 min-h-[200px]">
+          <svg viewBox="0 0 260 200" class="w-56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Person med paraply -->
+            <ellipse cx="130" cy="185" rx="110" ry="12" fill="#c8dfc8" opacity="0.5"/>
+            <!-- Hus -->
+            <rect x="55" y="105" width="95" height="80" rx="3" fill="#fff"/>
+            <polygon points="48,110 158,110 103,62" fill="#2d7a5a"/>
+            <rect x="48" y="104" width="110" height="11" rx="2" fill="#3d9a6a"/>
+            <!-- Dør -->
+            <rect x="95" y="148" width="22" height="37" rx="2" fill="#c8a050"/>
+            <!-- Vindue -->
+            <rect x="63" y="118" width="22" height="18" rx="2" fill="#a8d8c8"/>
+            <rect x="120" y="118" width="22" height="18" rx="2" fill="#a8d8c8"/>
+            <!-- Vand der kommer ind -->
+            <path d="M48 140 Q35 135 28 145 Q22 152 28 158 L55 158 L55 152 Z" fill="#7dd8f8" opacity="0.7"/>
+            <circle cx="38" cy="130" r="4" fill="#7dd8f8" opacity="0.6"/>
+            <circle cx="25" cy="148" r="3" fill="#7dd8f8" opacity="0.5"/>
+            <!-- Stående vand i have -->
+            <ellipse cx="185" cy="170" rx="45" ry="12" fill="#7dd8f8" opacity="0.4"/>
+            <ellipse cx="185" cy="168" rx="35" ry="8" fill="#7dd8f8" opacity="0.5"/>
+            <!-- Regn fra sky -->
+            <ellipse cx="195" cy="50" rx="30" ry="15" fill="#b8d8e8" opacity="0.6"/>
+            <ellipse cx="215" cy="45" rx="22" ry="12" fill="#b8d8e8" opacity="0.6"/>
+            <ellipse cx="178" cy="52" rx="18" ry="10" fill="#b8d8e8" opacity="0.6"/>
+            <!-- Regndråber -->
+            <line x1="180" y1="65" x2="175" y2="80" stroke="#7dd8f8" stroke-width="2" stroke-linecap="round"/>
+            <line x1="195" y1="62" x2="190" y2="77" stroke="#7dd8f8" stroke-width="2" stroke-linecap="round"/>
+            <line x1="210" y1="58" x2="205" y2="73" stroke="#7dd8f8" stroke-width="2" stroke-linecap="round"/>
+            <line x1="225" y1="60" x2="220" y2="75" stroke="#7dd8f8" stroke-width="2" stroke-linecap="round"/>
+            <!-- Person med paraply -->
+            <circle cx="195" cy="110" r="7" fill="#e8c090"/>
+            <!-- Paraply -->
+            <path d="M185 110 Q195 90 205 110 Z" fill="#e05040"/>
+            <line x1="195" y1="110" x2="195" y2="135" stroke="#c04030" stroke-width="2"/>
+            <rect x="192" y="117" width="6" height="16" rx="2" fill="#e8a060"/>
+          </svg>
+        </div>
+      </div>
     </div>
   </section>
 
-  <div class="max-w-7xl mx-auto px-8 py-12 -mt-8 relative z-20">
-    <div id="d-step1">
-      <p class="font-medium text-on-surface mb-5 text-lg">Hvad oplever du?</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="d-symptom-grid"></div>
+  <!-- SYMPTOM GRID — som "varmetype"-menu i SparEnergi -->
+  <section class="max-w-4xl mx-auto px-6 pb-8">
+    <div class="bg-white rounded-2xl p-8 shadow-[0_2px_16px_rgba(0,0,0,0.06)]" id="d-step1-wrap">
+      <div class="flex items-center justify-between mb-1">
+        <p class="text-xs text-[#1a4a3a] uppercase tracking-widest font-bold">Vælg dit symptom</p>
+        <button class="text-xs text-[#1a2a1a]/40 hover:text-[#1a2a1a] flex items-center gap-1 transition-colors" id="d-collapse-btn" onclick="dToggleGrid()">
+          <span class="material-symbols-outlined text-sm" id="d-collapse-icon">expand_less</span>
+        </button>
+      </div>
+      <p class="text-sm text-[#1a2a1a]/55 mb-6">Bliv klogere på dit problem — vælg fra listen</p>
+
+      <div id="d-step1">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="d-symptom-grid"></div>
+      </div>
     </div>
-    <div id="d-step2" class="hidden">
-      <span id="d-sel-icon" class="hidden"></span>
-      <span id="d-sel-label" class="hidden"></span>
-      <div id="d-tid-grid" class="hidden"></div>
+  </section>
+
+  <!-- FORDELE SEKTION — tre ikoner på gul baggrund, som SparEnergi fordele -->
+  <section class="max-w-4xl mx-auto px-6 pb-8" id="d-fordele-wrap">
+    <div class="text-center mb-6">
+      <h2 class="font-headline text-2xl font-bold text-[#1a2a1a] mb-2">Fordele ved at handle nu</h2>
+      <p class="text-sm text-[#1a2a1a]/55 max-w-lg mx-auto">Du kan spare penge og undgå skader ved at håndtere regnvandsproblemer inden næste skybrud</p>
     </div>
-    <div id="d-step3" class="hidden">
-      <button onclick="dGoStep(1)" class="flex items-center gap-2 text-sm text-on-surface-variant mb-6 hover:text-on-surface transition-colors">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+      <div class="text-center px-4">
+        <div class="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="22" fill="#e8f5ee"/>
+            <path d="M22 12 C22 12 15 19 15 24 C15 27.9 18.1 31 22 31 C25.9 31 29 27.9 29 24 C29 19 22 12 22 12Z" fill="#2d7a5a"/>
+          </svg>
+        </div>
+        <h3 class="font-headline font-bold text-[#1a2a1a] text-sm mb-1.5">Spar penge</h3>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">En faskine koster fra 3.000 kr. — en oversvømmelse koster typisk 50.000–200.000 kr. i skader.</p>
+        <a onclick="navigate('kortlaeg')" class="text-xs text-[#1a4a3a] font-bold mt-2 inline-flex items-center gap-1 cursor-pointer hover:underline">Beregn dit behov <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+      </div>
+      <div class="text-center px-4">
+        <div class="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="22" fill="#e8f5ee"/>
+            <circle cx="22" cy="22" r="10" stroke="#2d7a5a" stroke-width="2.5" fill="none"/>
+            <path d="M17 22 L20 25 L27 18" stroke="#2d7a5a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="font-headline font-bold text-[#1a2a1a] text-sm mb-1.5">Hjælp klimaet</h3>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Med lokal regnvandshåndtering reducerer du kloakkens belastning og mindsker CO₂, og lar.</p>
+        <a onclick="navigate('inspiration')" class="text-xs text-[#1a4a3a] font-bold mt-2 inline-flex items-center gap-1 cursor-pointer hover:underline">Se eksempler <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+      </div>
+      <div class="text-center px-4">
+        <div class="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="22" fill="#e8f5ee"/>
+            <rect x="14" y="18" width="16" height="12" rx="2" fill="none" stroke="#2d7a5a" stroke-width="2.5"/>
+            <path d="M18 18 L18 15 C18 12.8 19.8 11 22 11 C24.2 11 26 12.8 26 15 L26 18" stroke="#2d7a5a" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="font-headline font-bold text-[#1a2a1a] text-sm mb-1.5">Slip for vedligeholdelse</h3>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">De fleste LAR-løsninger er selvkørende. Et regnbed klarer sig selv med minimal indsats.</p>
+        <a onclick="navigate('gang')" class="text-xs text-[#1a4a3a] font-bold mt-2 inline-flex items-center gap-1 cursor-pointer hover:underline">Læs vejledninger <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTAT SEKTION (step 3) — vises når symptom er valgt -->
+  <div id="d-step2" class="hidden"></div>
+  <section id="d-step3-wrap" class="hidden max-w-4xl mx-auto px-6 pb-8">
+
+    <!-- Tilbage knap + breadcrumb -->
+    <div class="flex items-center gap-3 mb-5 flex-wrap">
+      <button onclick="dGoStep(1)" class="flex items-center gap-1.5 text-xs font-bold text-[#1a4a3a] bg-white px-4 py-2 rounded-full hover:bg-[#e8f5ee] transition-colors shadow-sm">
         <span class="material-symbols-outlined text-sm">arrow_back</span>Skift symptom
       </button>
-      <div class="flex items-center gap-2 mb-8 flex-wrap">
-        <span class="bg-secondary-container text-on-secondary-container text-xs font-bold px-3 py-1.5 rounded-full" id="d-bc-symptom">—</span>
-        <span class="material-symbols-outlined text-outline text-sm">chevron_right</span>
-        <span class="bg-surface-container text-on-surface text-xs font-bold px-3 py-1.5 rounded-full" id="d-bc-aarsag">—</span>
-      </div>
-      <div class="grid lg:grid-cols-12 gap-8">
-        <div class="lg:col-span-4 space-y-5">
-          <div class="bg-gradient-to-br from-primary to-primary-container rounded-[1.5rem] p-7">
-            <p class="text-on-primary/50 text-xs uppercase tracking-widest font-medium mb-2">Sandsynlig årsag</p>
-            <h3 class="font-headline text-xl font-bold text-on-primary mb-3" id="d-aarsag-titel">—</h3>
-            <p class="text-on-primary/75 text-sm leading-relaxed" id="d-aarsag-tekst">—</p>
+      <span class="text-[#1a2a1a]/30 text-xs">→</span>
+      <span class="bg-[#1a4a3a] text-white text-xs font-bold px-3 py-1.5 rounded-full" id="d-bc-symptom">—</span>
+      <span class="text-[#1a2a1a]/30 text-xs">→</span>
+      <span class="bg-white text-[#1a2a1a] text-xs font-medium px-3 py-1.5 rounded-full shadow-sm" id="d-bc-aarsag">—</span>
+    </div>
+
+    <!-- Årsag blok — hvid kort som SparEnergi's info-blokke -->
+    <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)] mb-5">
+      <div class="grid lg:grid-cols-3 gap-0">
+        <div class="lg:col-span-2 p-8 border-r border-[#1a2a1a]/5">
+          <p class="text-[#1a4a3a] text-xs uppercase tracking-widest font-bold mb-2">Sandsynlig årsag</p>
+          <h2 class="font-headline text-2xl font-bold text-[#1a2a1a] mb-3" id="d-aarsag-titel">—</h2>
+          <p class="text-sm text-[#1a2a1a]/65 leading-relaxed mb-4" id="d-aarsag-tekst">—</p>
+          <div class="bg-[#f5f0e5] rounded-xl p-4">
+            <p class="text-xs font-bold text-[#1a2a1a] mb-1 flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[#1a4a3a] text-sm">psychology</span>Hvad sker der teknisk set?
+            </p>
+            <p class="text-xs text-[#1a2a1a]/60 leading-relaxed" id="d-aarsag-forklaring">—</p>
           </div>
-          <div class="bg-surface-container-low rounded-[1.5rem] p-6">
-            <h4 class="font-medium text-sm mb-2 flex items-center gap-2 text-on-surface">
-              <span class="material-symbols-outlined text-secondary text-sm">psychology</span>Hvad sker der?
-            </h4>
-            <p class="text-sm text-on-surface-variant leading-relaxed" id="d-aarsag-forklaring">—</p>
-          </div>
-          <button onclick="navigate('kortlaeg')" class="w-full bg-primary text-on-primary py-3.5 rounded-full font-medium hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
-            Beregn vandbehov <span class="material-symbols-outlined text-sm">arrow_forward</span>
-          </button>
         </div>
-        <div class="lg:col-span-8 space-y-6">
+        <div class="p-6 flex flex-col justify-between bg-[#f9f5e8]">
           <div>
-            <p class="text-xs uppercase tracking-widest font-medium text-secondary mb-3">Primære løsninger — løser problemet alene</p>
-            <div class="space-y-3" id="d-primaer"></div>
+            <p class="text-xs text-[#1a2a1a]/40 uppercase tracking-widest font-medium mb-3">Næste skridt</p>
+            <button onclick="navigate('kortlaeg')" class="w-full bg-[#1a4a3a] text-white py-3 rounded-xl font-bold text-sm hover:bg-[#154035] transition-colors flex items-center justify-center gap-2 mb-2">
+              Beregn vandbehov <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </button>
+            <button onclick="navigate('byg')" class="w-full bg-white text-[#1a4a3a] py-3 rounded-xl font-medium text-sm hover:bg-[#e8f5ee] transition-colors border border-[#1a4a3a]/15 flex items-center justify-center gap-2">
+              Byg din løsning <span class="material-symbols-outlined text-sm">build</span>
+            </button>
           </div>
-          <div id="d-sekundaer-wrap" class="hidden">
-            <p class="text-xs uppercase tracking-widest font-medium text-on-surface-variant mb-3">Supplerende løsninger</p>
-            <div class="flex flex-wrap gap-2" id="d-sekundaer"></div>
+          <div class="mt-4 pt-4 border-t border-[#1a2a1a]/8">
+            <p class="text-[10px] text-[#1a2a1a]/35 leading-relaxed">Baseret på NIRAS klimatilpasningsguide og Spildevandskomiteens LAR-metode, 2024.</p>
           </div>
-          <div id="d-undgaa-wrap" class="hidden">
-            <div class="bg-error-container rounded-[1.5rem] p-6">
-              <p class="text-xs uppercase tracking-widest font-medium text-on-error-container mb-3 flex items-center gap-2">
-                <span class="material-symbols-outlined text-sm">warning</span>Disse løsninger vil forværre situationen
+        </div>
+      </div>
+    </div>
+
+    <!-- Løsnings-grid — som "Alle varmetyper"-menu -->
+    <div class="bg-white rounded-2xl p-7 shadow-[0_2px_16px_rgba(0,0,0,0.06)] mb-5">
+      <p class="text-[#1a4a3a] text-xs uppercase tracking-widest font-bold mb-1">Bliv klogere på løsningerne — vælg fra listen</p>
+      <p class="text-sm text-[#1a2a1a]/50 mb-6">Primære løsninger løser problemet alene. Supplerende løsninger kan kombineres.</p>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <!-- Primære -->
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-5 h-5 bg-[#1a4a3a] rounded flex items-center justify-center">
+              <span class="material-symbols-outlined text-white text-[11px]">star</span>
+            </div>
+            <h3 class="font-headline font-bold text-[#1a2a1a] text-sm">Primære løsninger</h3>
+            <span class="text-[10px] text-[#1a4a3a] bg-[#e8f5ee] px-2 py-0.5 rounded-full font-bold">Løser det alene</span>
+          </div>
+          <div class="space-y-1" id="d-primaer"></div>
+        </div>
+        <!-- Supplerende + Undgå -->
+        <div>
+          <div id="d-sekundaer-col">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-5 h-5 bg-[#e8f5ee] rounded flex items-center justify-center">
+                <span class="material-symbols-outlined text-[#1a4a3a] text-[11px]">add</span>
+              </div>
+              <h3 class="font-headline font-bold text-[#1a2a1a] text-sm">Supplerende løsninger</h3>
+            </div>
+            <div class="space-y-1 mb-5" id="d-sekundaer"></div>
+          </div>
+          <div id="d-undgaa-col" class="hidden">
+            <div class="bg-[#fff3f0] rounded-xl p-4">
+              <p class="text-xs font-bold text-[#c04030] mb-2 flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-sm">warning</span>Undgå disse løsninger
               </p>
-              <div class="flex flex-wrap gap-2" id="d-undgaa"></div>
+              <div class="flex flex-wrap gap-1.5" id="d-undgaa"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- To feature-cards — som SparEnergi's "Det skal du vide om fjernvarme" -->
+    <div class="grid sm:grid-cols-2 gap-4 mb-5">
+      <div onclick="navigate('kortlaeg')" class="bg-[#e8f0e8] rounded-2xl p-7 cursor-pointer hover:brightness-97 transition-all relative overflow-hidden group">
+        <div class="absolute top-5 right-5 opacity-60">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="28" stroke="#2d7a5a" stroke-width="1.5" fill="none"/>
+            <path d="M30 14 C30 14 20 24 20 32 C20 37.5 24.5 42 30 42 C35.5 42 40 37.5 40 32 C40 24 30 14 30 14Z" fill="#2d7a5a" opacity="0.4"/>
+          </svg>
+        </div>
+        <p class="text-xs text-[#1a4a3a] uppercase tracking-widest font-bold mb-3">Næste skridt</p>
+        <h3 class="font-headline font-bold text-[#0d2a1a] text-lg mb-2 leading-snug pr-12">Se hvad du<br/>skal håndtere</h3>
+        <p class="text-xs text-[#0d2a1a]/60 leading-relaxed mb-5">Find ud af præcis hvad din matrikel modtager ved et 5-årsregn — og hvad det svarer til i liter.</p>
+        <button class="bg-[#1a4a3a] text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#154035] transition-colors inline-flex items-center gap-1.5">
+          Beregn vandbehov <span class="material-symbols-outlined text-xs">arrow_forward</span>
+        </button>
+      </div>
+      <div onclick="navigate('gang')" class="bg-[#1a4a3a] rounded-2xl p-7 cursor-pointer hover:brightness-110 transition-all relative overflow-hidden group">
+        <div class="absolute top-5 right-5 opacity-30">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="28" stroke="white" stroke-width="1.5" fill="none"/>
+            <rect x="20" y="25" width="20" height="16" rx="2" stroke="white" stroke-width="1.5" fill="none"/>
+            <path d="M25 25 L25 21 C25 18.2 27.2 16 30 16 C32.8 16 35 18.2 35 21 L35 25" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="text-xs text-white/50 uppercase tracking-widest font-bold mb-3">Vejledning</p>
+        <h3 class="font-headline font-bold text-white text-lg mb-2 leading-snug pr-12">Overvejer du<br/>et regnbed?</h3>
+        <p class="text-xs text-white/65 leading-relaxed mb-5">Regnbede giver billig og effektiv klimasikring. Her får du trin-for-trin vejledning, hvad det koster og hvad du skal overveje.</p>
+        <button class="bg-white text-[#1a4a3a] text-xs font-bold px-4 py-2 rounded-full hover:bg-[#e8f5ee] transition-colors inline-flex items-center gap-1.5">
+          Guide til regnbed <span class="material-symbols-outlined text-xs">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tre action-cards — som de tre bundkort hos SparEnergi -->
+    <div class="grid sm:grid-cols-3 gap-4">
+      <div onclick="navigate('kortlaeg')" class="bg-[#f5e8c0] rounded-2xl p-6 cursor-pointer hover:brightness-97 transition-all">
+        <div class="w-9 h-9 bg-[#e8b84b]/30 rounded-xl flex items-center justify-center mb-4">
+          <span class="material-symbols-outlined text-[#8a6010] text-lg">calculate</span>
+        </div>
+        <h4 class="font-headline font-bold text-[#2a1400] text-sm mb-1.5">Kan du få tilskud?</h4>
+        <p class="text-xs text-[#2a1400]/60 leading-relaxed mb-4">Bliv klogere på de aktuelle tilskudsmuligheder og find ud af hvem du kan få tilskud fra.</p>
+        <span class="text-xs font-bold text-[#8a6010] inline-flex items-center gap-1">→</span>
+      </div>
+      <div onclick="navigate('byg')" class="bg-[#cce0cc] rounded-2xl p-6 cursor-pointer hover:brightness-97 transition-all">
+        <div class="w-9 h-9 bg-[#1a4a3a]/15 rounded-xl flex items-center justify-center mb-4">
+          <span class="material-symbols-outlined text-[#1a4a3a] text-lg">build</span>
+        </div>
+        <h4 class="font-headline font-bold text-[#0d2a1a] text-sm mb-1.5">Byg din løsning</h4>
+        <p class="text-xs text-[#0d2a1a]/60 leading-relaxed mb-4">Sammensæt dine løsninger og se hvad de samlet kan klare — opdateres i realtid.</p>
+        <span class="text-xs font-bold text-[#1a4a3a] inline-flex items-center gap-1">→</span>
+      </div>
+      <div onclick="navigate('inspiration')" class="bg-[#fce5dc] rounded-2xl p-6 cursor-pointer hover:brightness-97 transition-all">
+        <div class="w-9 h-9 bg-[#c04030]/15 rounded-xl flex items-center justify-center mb-4">
+          <span class="material-symbols-outlined text-[#c04030] text-lg">favorite</span>
+        </div>
+        <h4 class="font-headline font-bold text-[#2a0a00] text-sm mb-1.5">Spar energi i hverdagen</h4>
+        <p class="text-xs text-[#2a0a00]/60 leading-relaxed mb-4">Se hvad andre danskere har gjort og få inspiration til din have og klimaløsning.</p>
+        <span class="text-xs font-bold text-[#c04030] inline-flex items-center gap-1">→</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom padding -->
+  <div class="pb-16"></div>
 </div>
+</div><!-- /page-diagnose -->
 
 <!-- ══════════════ PAGE: KORTLÆG ══════════════ -->
-<div id="page-kortlaeg" class="page pt-24">
+<div page-kortlaeg" class="page pt-24">
   <section class="relative bg-gradient-to-br from-primary to-primary-container pt-16 pb-32 px-8 overflow-hidden">
     <div class="max-w-7xl mx-auto relative z-10">
       <p class="text-on-primary/60 text-xs uppercase tracking-widest font-medium mb-3">Trin 2: Analyse</p>
@@ -1612,11 +1818,24 @@ function dInit() {
   const grid = document.getElementById("d-symptom-grid");
   if (!grid || grid.children.length > 0) return;
   grid.innerHTML = Object.entries(D_MATRIX).map(([id, s]) => `
-    <button onclick="dSelectSymptom('${id}')" class="text-left p-5 rounded-xl bg-white border-2 border-outline-variant/20 hover:border-primary hover:bg-primary-container/10 transition-all group">
-      <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-3 block text-2xl">${s.icon}</span>
-      <h3 class="font-headline font-bold text-sm mb-1">${s.label}</h3>
-      <p class="text-xs text-on-surface-variant leading-snug">${s.desc}</p>
+    <button onclick="dSelectSymptom('${id}')" class="text-left p-5 rounded-xl bg-[#f9f5e8] border border-[#1a4a3a]/10 hover:border-[#1a4a3a] hover:bg-[#eef6ef] transition-all group flex gap-4 items-start">
+      <div class="w-9 h-9 bg-[#e8f5ee] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#1a4a3a] transition-colors">
+        <span class="material-symbols-outlined text-[#1a4a3a] group-hover:text-white text-lg transition-colors">${s.icon}</span>
+      </div>
+      <div class="flex-1">
+        <h3 class="font-headline font-bold text-sm text-[#1a2a1a] mb-0.5">${s.label}</h3>
+        <p class="text-xs text-[#1a2a1a]/50 leading-snug">${s.desc}</p>
+      </div>
+      <span class="material-symbols-outlined text-[#1a4a3a]/30 group-hover:text-[#1a4a3a] text-lg mt-0.5 transition-colors shrink-0">chevron_right</span>
     </button>`).join("");
+}
+
+function dToggleGrid() {
+  const step1 = document.getElementById("d-step1");
+  const icon = document.getElementById("d-collapse-icon");
+  const collapsed = step1.style.display === "none";
+  step1.style.display = collapsed ? "" : "none";
+  icon.textContent = collapsed ? "expand_less" : "expand_more";
 }
 
 function dSelectSymptom(id) {
@@ -1639,33 +1858,67 @@ function dSelectSymptom(id) {
   document.getElementById("d-aarsag-forklaring").textContent = aarsager.map(([a]) => D_AARSAGER[a]?.forklaring).filter(Boolean).join(' ');
   document.getElementById("d-primaer").innerHTML = allePrimaer.map(l => {
     const info = D_LOESNING_INFO[l] || {icon:"eco",desc:""};
-    return `<div class="bg-white p-4 rounded-xl border-l-4 border-primary flex items-start gap-4 hover:bg-surface-container-low cursor-pointer" onclick="navigate('gang')">
-      <div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary-container text-sm">${info.icon}</span></div>
-      <div class="flex-1"><div class="font-headline font-bold text-sm">${l}</div><div class="text-xs text-on-surface-variant mt-0.5">${info.desc}</div></div>
-      <span class="material-symbols-outlined text-on-surface-variant text-sm mt-1 shrink-0">arrow_forward</span>
-    </div>`;
+    return `<button onclick="navigate('gang')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[#f9f5e8] hover:bg-[#eef6ef] border border-[#1a4a3a]/10 hover:border-[#1a4a3a] transition-all text-left group">
+      <div class="w-7 h-7 bg-[#1a4a3a] rounded-lg flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-white text-sm">${info.icon}</span>
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="font-headline font-bold text-sm text-[#1a2a1a]">${l}</div>
+        <div class="text-xs text-[#1a2a1a]/50 truncate">${info.desc}</div>
+      </div>
+      <span class="material-symbols-outlined text-[#1a4a3a]/40 group-hover:text-[#1a4a3a] text-base shrink-0 transition-colors">chevron_right</span>
+    </button>`;
   }).join("");
-  const sekWrap = document.getElementById("d-sekundaer-wrap");
+  const sekCol = document.getElementById("d-sekundaer-col");
   if (alleSekundaer.length > 0) {
     document.getElementById("d-sekundaer").innerHTML = alleSekundaer.map(l => {
       const info = D_LOESNING_INFO[l] || {icon:"eco"};
-      return `<div class="flex items-center gap-2 px-3 py-2 bg-white rounded-xl border border-outline-variant/20 text-sm cursor-pointer hover:border-primary" onclick="navigate('gang')"><span class="material-symbols-outlined text-primary text-sm">${info.icon}</span><span>${l}</span></div>`;
+      return `<button onclick="navigate('gang')" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#f9f5e8] hover:bg-[#eef6ef] border border-[#1a4a3a]/8 hover:border-[#1a4a3a] transition-all text-left group">
+        <div class="w-6 h-6 bg-[#e8f5ee] rounded-md flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-[#1a4a3a] text-sm">${info.icon}</span>
+        </div>
+        <span class="text-xs font-medium text-[#1a2a1a]">${l}</span>
+        <span class="material-symbols-outlined text-[#1a4a3a]/30 text-sm ml-auto shrink-0">chevron_right</span>
+      </button>`;
     }).join("");
-    sekWrap.classList.remove("hidden");
-  } else { sekWrap.classList.add("hidden"); }
-  const undgaaWrap = document.getElementById("d-undgaa-wrap");
+    if (sekCol) sekCol.classList.remove("hidden");
+  } else { if (sekCol) sekCol.classList.add("hidden"); }
+  const undgaaCol = document.getElementById("d-undgaa-col");
   if (alleUndgaa.length > 0) {
     document.getElementById("d-undgaa").innerHTML = alleUndgaa.map(l =>
-      `<span class="flex items-center gap-1 px-3 py-1.5 bg-red-100 text-red-700 rounded-xl text-xs font-bold"><span class="material-symbols-outlined text-sm">block</span>${l}</span>`).join("");
-    undgaaWrap.classList.remove("hidden");
-  } else { undgaaWrap.classList.add("hidden"); }
+      `<span class="flex items-center gap-1 px-2.5 py-1 bg-[#fff3f0] text-[#c04030] rounded-lg text-xs font-bold border border-[#c04030]/15"><span class="material-symbols-outlined text-xs">block</span>${l}</span>`).join("");
+    if (undgaaCol) undgaaCol.classList.remove("hidden");
+  } else { if (undgaaCol) undgaaCol.classList.add("hidden"); }
   dGoStep(3);
 }
 
 function dGoStep(n) {
-  document.getElementById("d-step1").classList.toggle("hidden", n !== 1);
-  document.getElementById("d-step2").classList.toggle("hidden", n !== 2);
-  document.getElementById("d-step3").classList.toggle("hidden", n !== 3);
+  // Step 1: symptom grid visible
+  const step1Wrap = document.getElementById("d-step1-wrap");
+  const step3Wrap = document.getElementById("d-step3-wrap");
+  const fordeleWrap = document.getElementById("d-fordele-wrap");
+
+  if (n === 1) {
+    if (step1Wrap) step1Wrap.classList.remove("hidden");
+    if (step3Wrap) step3Wrap.classList.add("hidden");
+    if (fordeleWrap) fordeleWrap.classList.remove("hidden");
+    // Show d-step1 grid again
+    const step1 = document.getElementById("d-step1");
+    if (step1) step1.style.display = "";
+    const icon = document.getElementById("d-collapse-icon");
+    if (icon) icon.textContent = "expand_less";
+  } else if (n === 3) {
+    if (step1Wrap) step1Wrap.classList.remove("hidden");
+    if (step3Wrap) step3Wrap.classList.remove("hidden");
+    if (fordeleWrap) fordeleWrap.classList.add("hidden");
+    // Collapse symptom grid
+    const step1 = document.getElementById("d-step1");
+    if (step1) step1.style.display = "none";
+    const icon = document.getElementById("d-collapse-icon");
+    if (icon) icon.textContent = "expand_more";
+    // Scroll to results
+    setTimeout(() => step3Wrap.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
+  }
 }
 
 // ── Init ──

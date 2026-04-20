@@ -1264,179 +1264,588 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 </div><!-- /page-kortlaeg -->
 
 <!-- ══ PAGE: BYG ══ -->
-<div id="page-byg" class="page pt-24">
-  <section class="relative bg-gradient-to-br from-primary to-primary-container pt-16 pb-32 px-8 overflow-hidden">
-    <div class="max-w-7xl mx-auto relative z-10">
-      <p class="text-on-primary/60 text-xs uppercase tracking-widest font-medium mb-3">Trin 3</p>
-      <h1 class="font-headline text-4xl md:text-5xl text-on-primary font-bold leading-tight mb-4">Byg din løsning</h1>
-      <p class="text-on-primary/80 text-lg">Skru på størrelserne — din tæller opdateres i realtid.</p>
-    </div>
-    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none translate-y-1">
-      <svg class="block w-full h-16 text-surface fill-current" preserveAspectRatio="none" viewBox="0 0 1200 60"><path d="M0,0 C300,60 900,60 1200,0 L1200,60 L0,60 Z"/></svg>
+<div id="page-byg" class="page">
+<div class="pt-16 bg-[#f5e8b0] min-h-screen">
+
+  <!-- HERO — gul baggrund + foto halvt, som SparEnergi tilskud-siden -->
+  <section class="bg-[#e8b84b] relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 pt-10 pb-0 grid lg:grid-cols-2 gap-0 items-end">
+      <div class="pb-10">
+        <p class="text-[#2a1400]/50 text-xs uppercase tracking-widest font-bold mb-3">Trin 3: Planlæg</p>
+        <h1 class="font-headline text-3xl font-bold text-[#2a1400] leading-tight mb-4">
+          Byg din løsning
+        </h1>
+        <p class="text-[#2a1400]/65 text-sm leading-relaxed mb-6 max-w-sm">
+          Har du fundet årsagen til dit vandproblem? Skru på størrelserne nedenfor og se i realtid hvad din løsning kan klare.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-[#2a1400]/10 text-[#2a1400] text-xs font-medium px-3 py-1.5 rounded-full">Nedsivning</span>
+          <span class="bg-[#2a1400]/10 text-[#2a1400] text-xs font-medium px-3 py-1.5 rounded-full">Magasinering</span>
+          <span class="bg-[#2a1400]/10 text-[#2a1400] text-xs font-medium px-3 py-1.5 rounded-full">Fordampning</span>
+        </div>
+      </div>
+      <!-- Illustration som "foto"-placering -->
+      <div class="flex items-end justify-center lg:justify-end">
+        <svg viewBox="0 0 280 210" class="w-64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="140" cy="195" rx="125" ry="14" fill="#c8952a" opacity="0.3"/>
+          <!-- Hus med grønt tag -->
+          <rect x="60" y="105" width="120" height="90" rx="4" fill="white" opacity="0.9"/>
+          <polygon points="50,108 190,108 120,55" fill="#2d7a5a"/>
+          <rect x="50" y="101" width="140" height="14" rx="2" fill="#3d9a6a"/>
+          <!-- Sedum på taget -->
+          <ellipse cx="80" cy="98" rx="9" ry="5" fill="#4bb865" opacity="0.8"/>
+          <ellipse cx="100" cy="94" rx="11" ry="5" fill="#55c870" opacity="0.8"/>
+          <ellipse cx="120" cy="92" rx="9" ry="4" fill="#4bb865" opacity="0.8"/>
+          <ellipse cx="140" cy="94" rx="10" ry="5" fill="#55c870" opacity="0.8"/>
+          <ellipse cx="158" cy="98" rx="8" ry="4" fill="#4bb865" opacity="0.8"/>
+          <!-- Dør -->
+          <rect x="112" y="163" width="22" height="32" rx="2" fill="#c8a050"/>
+          <!-- Vinduer -->
+          <rect x="68" y="120" width="24" height="20" rx="2" fill="#a8d8c8"/>
+          <rect x="152" y="120" width="24" height="20" rx="2" fill="#a8d8c8"/>
+          <!-- Regnbed venstre -->
+          <ellipse cx="28" cy="188" rx="30" ry="9" fill="#1a5535"/>
+          <ellipse cx="28" cy="184" rx="23" ry="6" fill="#2a7045"/>
+          <circle cx="16" cy="175" r="9" fill="#3aaa55"/>
+          <circle cx="30" cy="171" r="11" fill="#4bb865"/>
+          <circle cx="43" cy="176" r="8" fill="#3aaa55"/>
+          <circle cx="21" cy="168" r="4" fill="#f0d040"/>
+          <circle cx="36" cy="164" r="4.5" fill="#f0a030"/>
+          <!-- Faskine (underjordisk) antydet -->
+          <rect x="175" y="155" width="55" height="35" rx="3" fill="#c8a050" opacity="0.3" stroke="#8a6a20" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <text x="202" y="176" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#8a6a20" opacity="0.7">Faskine</text>
+          <!-- Flow-pil fra tag til regnbed -->
+          <path d="M60 115 Q28 140 28 177" stroke="#e8b84b" stroke-width="2" stroke-dasharray="5,4" fill="none" opacity="0.7"/>
+          <!-- Flow-pil fra tag til faskine -->
+          <path d="M190 115 Q202 135 202 152" stroke="#e8b84b" stroke-width="2" stroke-dasharray="5,4" fill="none" opacity="0.7"/>
+          <!-- Regnvandstank -->
+          <rect x="196" y="120" width="18" height="28" rx="3" fill="#5a8aaa"/>
+          <rect x="194" y="118" width="22" height="6" rx="1" fill="#4a7a9a"/>
+          <line x1="205" y1="148" x2="205" y2="155" stroke="#4a7a9a" stroke-width="2"/>
+          <!-- Person -->
+          <circle cx="235" cy="145" r="8" fill="#f5d5a8"/>
+          <rect x="230" y="153" width="10" height="24" rx="3" fill="#e05040"/>
+          <line x1="235" y1="160" x2="220" y2="165" stroke="#c04030" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
     </div>
   </section>
 
-  <div class="max-w-7xl mx-auto px-8 py-12 -mt-8 relative z-20">
-    <div id="kb-diagnose-resume-byg" class="hidden bg-secondary-container rounded-[1.5rem] px-6 py-4 flex items-center gap-4 mb-8 flex-wrap">
-      <span class="material-symbols-outlined text-on-secondary-container text-sm">fact_check</span>
+  <!-- KB DIAGNOSE RESUME -->
+  <div id="kb-diagnose-resume-byg" class="hidden max-w-4xl mx-auto px-6 pt-4">
+    <div class="bg-[#eef6ef] rounded-xl px-5 py-3 flex items-center gap-4 flex-wrap">
+      <span class="material-symbols-outlined text-[#1a4a3a] text-sm">fact_check</span>
       <div class="flex-1">
-        <p class="text-xs uppercase tracking-widest font-medium text-on-secondary-container/70">Din diagnose huskes</p>
-        <p class="text-sm text-on-secondary-container">Løsninger markeret <span class="font-bold text-error">rødt</span> frarådes. <span class="font-bold" style="color:#2f685a">Grønt</span> = anbefalet.</p>
+        <p class="text-[10px] uppercase tracking-widest font-bold text-[#1a4a3a]/60">Din diagnose huskes</p>
+        <p class="text-sm text-[#1a4a3a]">Løsninger markeret <span class="font-bold text-[#c04030]">rødt</span> frarådes. <span class="font-bold text-[#1a4a3a]">Grønt</span> = anbefalet til din situation.</p>
       </div>
-      <button onclick="navigate('diagnose')" class="text-xs font-medium text-on-secondary-container border border-on-secondary-container/30 px-4 py-1.5 rounded-full">Skift</button>
-    </div>
-
-    <div class="grid lg:grid-cols-3 gap-8 items-start">
-      <div class="lg:col-span-2 space-y-10">
-        <div>
-          <h2 class="font-headline text-xl font-semibold text-on-surface mb-1 flex items-center gap-2"><span class="material-symbols-outlined text-secondary">water_drop</span>Nedsivning</h2>
-          <p class="text-sm text-on-surface-variant mb-5">Vand nedsives direkte i jordbunden</p>
-          <div class="grid md:grid-cols-2 gap-5">
-            <div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden shadow-[0_4px_16px_rgba(30,28,17,0.05)]">
-              <div class="byg-status-Regnbed px-4 py-2 text-xs font-bold"></div>
-              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=560&h=220&fit=crop&q=80" alt="Regnbed" class="w-full h-44 object-cover"/>
-              <div class="p-5">
-                <div class="flex items-start justify-between gap-2 mb-1">
-                  <h3 class="font-headline font-semibold">Regnbed</h3>
-                  <button onclick="openModal('Regnbed')" class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center hover:bg-secondary-container shrink-0 transition-colors"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button>
-                </div>
-                <p class="text-xs text-on-surface-variant mb-4">Beplantet lavning der nedsiver regnvand naturligt</p>
-                <div class="flex justify-between mb-1"><label class="text-xs uppercase tracking-widest font-medium text-on-surface-variant">Størrelse</label><span class="text-xs font-bold text-secondary" id="lbl-regnbed">0 m²</span></div>
-                <input class="w-full" max="500" min="0" step="5" type="range" value="0" data-byg-navn="Regnbed" oninput="updateByg('regnbed',this.value,'m²','lbl-regnbed',40)"/>
-              </div>
-            </div>
-            <div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden shadow-[0_4px_16px_rgba(30,28,17,0.05)]">
-              <div class="byg-status-Faskine px-4 py-2 text-xs font-bold"></div>
-              <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=560&h=220&fit=crop&q=80" alt="Faskine" class="w-full h-44 object-cover"/>
-              <div class="p-5">
-                <div class="flex items-start justify-between gap-2 mb-1">
-                  <h3 class="font-headline font-semibold">Faskine</h3>
-                  <button onclick="openModal('Faskine')" class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center hover:bg-secondary-container shrink-0 transition-colors"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button>
-                </div>
-                <p class="text-xs text-on-surface-variant mb-4">Underjordisk nedsivning — ingen overfladebrug</p>
-                <div class="flex justify-between mb-1"><label class="text-xs uppercase tracking-widest font-medium text-on-surface-variant">Volumen</label><span class="text-xs font-bold text-secondary" id="lbl-fask">0 L</span></div>
-                <input class="w-full" max="10000" min="0" step="100" type="range" value="0" data-byg-navn="Faskine" oninput="updateByg('fask',this.value,'L','lbl-fask',1)"/>
-              </div>
-            </div>
-            <div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden shadow-[0_4px_16px_rgba(30,28,17,0.05)]">
-              <div class="byg-status-Permeabel-belaegning px-4 py-2 text-xs font-bold"></div>
-              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=560&h=220&fit=crop&q=80" alt="Permeable belægninger" class="w-full h-44 object-cover"/>
-              <div class="p-5">
-                <div class="flex items-start justify-between gap-2 mb-1">
-                  <h4 class="font-headline font-semibold">Permeable belægninger</h4>
-                  <button onclick="openModal('Permeable belægninger')" class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center hover:bg-secondary-container shrink-0 transition-colors"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button>
-                </div>
-                <p class="text-xs text-on-surface-variant mb-4">Porøse sten der lader vand sive igennem</p>
-                <div class="flex justify-between mb-1"><label class="text-xs uppercase tracking-widest font-medium text-on-surface-variant">Areal</label><span class="text-xs font-bold text-secondary" id="lbl-perm">0 m²</span></div>
-                <input class="w-full" max="200" min="0" step="5" type="range" value="0" data-byg-navn="Permeabel belægning" oninput="updateByg('perm',this.value,'m²','lbl-perm',20)"/>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <h2 class="font-headline text-xl font-semibold text-on-surface mb-1 flex items-center gap-2"><span class="material-symbols-outlined text-secondary">water_full</span>Magasinering</h2>
-          <p class="text-sm text-on-surface-variant mb-5">Vand opbevares midlertidigt</p>
-          <div class="grid md:grid-cols-2 gap-5">
-            <div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden shadow-[0_4px_16px_rgba(30,28,17,0.05)]">
-              <div class="byg-status-Vaadbassin px-4 py-2 text-xs font-bold"></div>
-              <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=560&h=220&fit=crop&q=80" alt="Vådbassin" class="w-full h-44 object-cover"/>
-              <div class="p-5">
-                <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-headline font-semibold">Våde bassiner</h3><button onclick="openModal('Våde bassiner')" class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center hover:bg-secondary-container shrink-0 transition-colors"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-                <p class="text-xs text-on-surface-variant mb-4">Permanent vandspejl</p>
-                <div class="flex justify-between mb-1"><label class="text-xs uppercase tracking-widest font-medium text-on-surface-variant">Volumen</label><span class="text-xs font-bold text-secondary" id="lbl-vaad">0 m³</span></div>
-                <input class="w-full" max="500" min="0" step="5" type="range" value="0" data-byg-navn="Vådbassin" oninput="updateByg('vaad',this.value,'m³','lbl-vaad',1000)"/>
-              </div>
-            </div>
-            <div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden shadow-[0_4px_16px_rgba(30,28,17,0.05)]">
-              <div class="byg-status-Toerbassin px-4 py-2 text-xs font-bold"></div>
-              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=560&h=220&fit=crop&q=80" alt="Tørbassin" class="w-full h-44 object-cover"/>
-              <div class="p-5">
-                <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-headline font-semibold">Tørre bassiner</h3><button onclick="openModal('Tørre bassiner')" class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center hover:bg-secondary-container shrink-0 transition-colors"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-                <p class="text-xs text-on-surface-variant mb-4">Tørt til daglig — bruges til leg</p>
-                <div class="flex justify-between mb-1"><label class="text-xs uppercase tracking-widest font-medium text-on-surface-variant">Volumen</label><span class="text-xs font-bold text-secondary" id="lbl-toer">0 m³</span></div>
-                <input class="w-full" max="500" min="0" step="5" type="range" value="0" data-byg-navn="Tørbassin" oninput="updateByg('toer',this.value,'m³','lbl-toer',1000)"/>
-              </div>
-            </div>
-            <div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden shadow-[0_4px_16px_rgba(30,28,17,0.05)]">
-              <div class="byg-status-Underjordisk-bassin px-4 py-2 text-xs font-bold"></div>
-              <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=560&h=220&fit=crop&q=80" alt="Underjordisk bassin" class="w-full h-44 object-cover"/>
-              <div class="p-5">
-                <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-headline font-semibold">Underjordisk bassin</h3><button onclick="openModal('Underjordisk bassin')" class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center hover:bg-secondary-container shrink-0 transition-colors"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-                <p class="text-xs text-on-surface-variant mb-4">Plastkassetter under terræn</p>
-                <div class="flex justify-between mb-1"><label class="text-xs uppercase tracking-widest font-medium text-on-surface-variant">Kapacitet</label><span class="text-xs font-bold text-secondary" id="lbl-lukket">0 L</span></div>
-                <input class="w-full" max="10000" min="0" step="100" type="range" value="0" data-byg-navn="Underjordisk bassin" oninput="updateByg('lukket',this.value,'L','lbl-lukket',1)"/>
-              </div>
-            </div>
-            <div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden shadow-[0_4px_16px_rgba(30,28,17,0.05)]">
-              <div class="byg-status-Regnvandsbeholder px-4 py-2 text-xs font-bold"></div>
-              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=560&h=220&fit=crop&q=80" alt="Regnvandstank" class="w-full h-44 object-cover"/>
-              <div class="p-5">
-                <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-headline font-semibold">Regnvandstank</h3><button onclick="openModal('Regnvandstank')" class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center hover:bg-secondary-container shrink-0 transition-colors"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-                <p class="text-xs text-on-surface-variant mb-4">Opsamler tagvand til vanding</p>
-                <div class="flex justify-between mb-1"><label class="text-xs uppercase tracking-widest font-medium text-on-surface-variant">Kapacitet</label><span class="text-xs font-bold text-secondary" id="lbl-tank">0 L</span></div>
-                <input class="w-full" max="5000" min="0" step="100" type="range" value="0" data-byg-navn="Regnvandsbeholder" oninput="updateByg('tank',this.value,'L','lbl-tank',1)"/>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <h2 class="font-headline text-xl font-semibold text-on-surface mb-1 flex items-center gap-2"><span class="material-symbols-outlined text-secondary">eco</span>Fordampning</h2>
-          <p class="text-sm text-on-surface-variant mb-5">Grønne løsninger der fordamper vand</p>
-          <div class="grid md:grid-cols-2 gap-5">
-            <div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden shadow-[0_4px_16px_rgba(30,28,17,0.05)]">
-              <div class="byg-status-Groent-tag px-4 py-2 text-xs font-bold"></div>
-              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=560&h=220&fit=crop&q=80" alt="Grønt tag" class="w-full h-44 object-cover"/>
-              <div class="p-5">
-                <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-headline font-semibold">Grønne tage</h3><button onclick="openModal('Grønne tage')" class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center hover:bg-secondary-container shrink-0 transition-colors"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-                <p class="text-xs text-on-surface-variant mb-4">Sedum tilbageholder 50% af nedbøren</p>
-                <div class="flex justify-between mb-1"><label class="text-xs uppercase tracking-widest font-medium text-on-surface-variant">Areal</label><span class="text-xs font-bold text-secondary" id="lbl-grontag">0 m²</span></div>
-                <input class="w-full" max="300" min="0" step="5" type="range" value="0" data-byg-navn="Grønt tag" oninput="updateByg('grontag',this.value,'m²','lbl-grontag',50)"/>
-              </div>
-            </div>
-            <div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden shadow-[0_4px_16px_rgba(30,28,17,0.05)]">
-              <div class="byg-status-Traeer px-4 py-2 text-xs font-bold"></div>
-              <img src="https://images.unsplash.com/photo-1513836279014-a89f7d3f59a7?w=560&h=220&fit=crop&q=80" alt="Træer" class="w-full h-44 object-cover"/>
-              <div class="p-5">
-                <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-headline font-semibold">Træer</h3><button onclick="openModal('Træer')" class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center hover:bg-secondary-container shrink-0 transition-colors"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-                <p class="text-xs text-on-surface-variant mb-4">Et løvtræ fordamper 200 L/dag om sommeren</p>
-                <div class="flex justify-between mb-1"><label class="text-xs uppercase tracking-widest font-medium text-on-surface-variant">Antal</label><span class="text-xs font-bold text-secondary" id="lbl-traeer">0 stk</span></div>
-                <input class="w-full" max="20" min="0" step="1" type="range" value="0" data-byg-navn="Træer" oninput="updateByg('traeer',this.value,'stk','lbl-traeer',50000)"/>
-              </div>
-            </div>
-            <div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden shadow-[0_4px_16px_rgba(30,28,17,0.05)]">
-              <div class="byg-status-Groenne-vaegge px-4 py-2 text-xs font-bold"></div>
-              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=560&h=220&fit=crop&q=80" alt="Grønne vægge" class="w-full h-44 object-cover"/>
-              <div class="p-5">
-                <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-headline font-semibold">Grønne vægge</h3><button onclick="openModal('Grønne vægge')" class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center hover:bg-secondary-container shrink-0 transition-colors"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-                <p class="text-xs text-on-surface-variant mb-4">Klatreplanter på hegn eller facade</p>
-                <div class="flex justify-between mb-1"><label class="text-xs uppercase tracking-widest font-medium text-on-surface-variant">Areal</label><span class="text-xs font-bold text-secondary" id="lbl-gronvaeg">0 m²</span></div>
-                <input class="w-full" max="100" min="0" step="5" type="range" value="0" data-byg-navn="Grønne vægge" oninput="updateByg('gronvaeg',this.value,'m²','lbl-gronvaeg',15)"/>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="lg:col-span-1 sticky top-24 space-y-4">
-        <div class="bg-gradient-to-br from-primary to-primary-container rounded-[2rem] p-8">
-          <p class="text-on-primary/50 text-xs uppercase tracking-widest font-medium mb-5">Din løsning håndterer</p>
-          <div class="text-center mb-5">
-            <div class="text-6xl font-bold text-on-primary mb-1" id="byg-counter">0</div>
-            <p class="text-on-primary/70 text-sm">liter</p>
-          </div>
-          <div class="h-1.5 rounded-full bg-white/20 mb-2 overflow-hidden">
-            <div id="byg-bar" class="h-full bg-primary-fixed rounded-full transition-all duration-500" style="width:0%"></div>
-          </div>
-          <p class="text-xs text-center text-on-primary/40" id="byg-label">Skru på løsningerne ovenfor</p>
-        </div>
-        <button onclick="navigate('gang')" class="w-full bg-primary text-on-primary py-4 rounded-full font-medium hover:bg-primary-container transition-colors text-sm">Se byggevejledning →</button>
-        <div class="bg-surface-container-low rounded-[1.5rem] p-5 text-xs text-on-surface-variant flex gap-2 items-start">
-          <span class="material-symbols-outlined text-outline text-sm mt-0.5 shrink-0">info</span>
-          Beregningsmetode: Nina Sybrandt Jørgensens og Morten Skovgaards LAR-værktøj (2024).
-        </div>
-      </div>
+      <button onclick="navigate('diagnose')" class="text-xs font-bold text-[#1a4a3a] border border-[#1a4a3a]/25 px-4 py-1.5 rounded-full hover:bg-white transition-colors">Skift</button>
     </div>
   </div>
+
+  <!-- TO KATEGORIKORT — "Jeg overvejer X / Jeg er interesseret i Y" -->
+  <section class="max-w-4xl mx-auto px-6 pt-6 pb-5">
+    <div class="grid sm:grid-cols-2 gap-4">
+      <!-- Nedsivnings-løsninger -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.05)] cursor-pointer hover:shadow-md transition-all group" onclick="document.getElementById('byg-nedsivning').scrollIntoView({behavior:'smooth'})">
+        <div class="bg-[#eef6ef] flex justify-center items-center py-6 relative">
+          <svg width="100" height="85" viewBox="0 0 100 85" fill="none">
+            <ellipse cx="50" cy="75" rx="42" ry="8" fill="#c8dfc8" opacity="0.5"/>
+            <ellipse cx="50" cy="70" rx="34" ry="6" fill="#2a7045"/>
+            <circle cx="35" cy="58" r="11" fill="#3aaa55"/>
+            <circle cx="50" cy="52" r="14" fill="#4bb865"/>
+            <circle cx="65" cy="57" r="10" fill="#3aaa55"/>
+            <circle cx="40" cy="46" r="5" fill="#f0d040"/>
+            <circle cx="56" cy="42" r="6" fill="#f0a030"/>
+            <!-- Vand-pile ned -->
+            <path d="M20 20 L20 35" stroke="#7dd8f8" stroke-width="2.5" stroke-linecap="round"/>
+            <polygon points="16,33 24,33 20,40" fill="#7dd8f8"/>
+            <path d="M50 15 L50 30" stroke="#7dd8f8" stroke-width="2.5" stroke-linecap="round"/>
+            <polygon points="46,28 54,28 50,35" fill="#7dd8f8"/>
+            <path d="M80 20 L80 35" stroke="#7dd8f8" stroke-width="2.5" stroke-linecap="round"/>
+            <polygon points="76,33 84,33 80,40" fill="#7dd8f8"/>
+          </svg>
+        </div>
+        <div class="p-6">
+          <h3 class="font-headline font-bold text-[#1a2a1a] text-base mb-2 leading-snug">Jeg overvejer<br/>nedsivning</h3>
+          <p class="text-xs text-[#1a2a1a]/55 leading-relaxed mb-4">Regnbede, faskiner og permeable belægninger der lader vandet sive direkte ned i jordbunden.</p>
+          <button class="bg-[#1a4a3a] text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#154035] transition-colors inline-flex items-center gap-1">
+            Læs mere <span class="material-symbols-outlined text-xs">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Magasinerings-løsninger -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.05)] cursor-pointer hover:shadow-md transition-all group" onclick="document.getElementById('byg-magasinering').scrollIntoView({behavior:'smooth'})">
+        <div class="bg-[#fef6e8] flex justify-center items-center py-6">
+          <svg width="100" height="85" viewBox="0 0 100 85" fill="none">
+            <!-- Underjordisk tank -->
+            <rect x="15" y="35" width="70" height="42" rx="5" fill="white" stroke="#2d7a5a" stroke-width="2"/>
+            <!-- Vand i tanken -->
+            <rect x="15" y="52" width="70" height="25" rx="0 0 5 5" fill="#7dd8f8" opacity="0.4"/>
+            <!-- Indløb -->
+            <line x1="50" y1="15" x2="50" y2="35" stroke="#4a7a9a" stroke-width="3" stroke-linecap="round"/>
+            <rect x="35" y="10" width="30" height="8" rx="3" fill="#5a8aaa" opacity="0.7"/>
+            <!-- Vandniveau indikator -->
+            <line x1="90" y1="37" x2="90" y2="75" stroke="#2d7a5a" stroke-width="1.5" opacity="0.4"/>
+            <line x1="87" y1="52" x2="93" y2="52" stroke="#2d7a5a" stroke-width="2"/>
+            <text x="95" y="55" font-family="sans-serif" font-size="7" fill="#2d7a5a" opacity="0.6">60%</text>
+          </svg>
+        </div>
+        <div class="p-6">
+          <h3 class="font-headline font-bold text-[#1a2a1a] text-base mb-2 leading-snug">Jeg er interesseret i<br/>magasinering</h3>
+          <p class="text-xs text-[#1a2a1a]/55 leading-relaxed mb-4">Bassiner, tanke og underjordiske systemer der opbevarer vandet midlertidigt og frigiver det kontrolleret.</p>
+          <button class="bg-[#1a4a3a] text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#154035] transition-colors inline-flex items-center gap-1">
+            Læs mere <span class="material-symbols-outlined text-xs">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KOM GODT I GANG — tre horisontale links med pile -->
+  <section class="max-w-4xl mx-auto px-6 pb-7">
+    <div class="bg-white rounded-2xl p-7 shadow-[0_2px_16px_rgba(0,0,0,0.05)]">
+      <h2 class="font-headline text-lg font-bold text-[#1a2a1a] mb-1">Skru på din løsning</h2>
+      <p class="text-xs text-[#1a2a1a]/45 mb-5">Du kan sætte gang i dit projekt ved at justere størrelserne — vi har samlet de vigtigste løsninger her. Din tæller opdateres i realtid.</p>
+
+      <!-- Real-time tæller -->
+      <div class="bg-[#f9f5e8] rounded-xl p-5 mb-5 flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <p class="text-xs font-bold text-[#1a4a3a] uppercase tracking-widest mb-0.5">Din løsning håndterer nu</p>
+          <div class="flex items-baseline gap-2">
+            <span class="text-4xl font-bold text-[#1a2a1a]" id="byg-counter">0</span>
+            <span class="text-sm text-[#1a2a1a]/50 font-medium">liter</span>
+          </div>
+          <p class="text-xs text-[#1a2a1a]/40 mt-0.5" id="byg-label">Skru på løsningerne nedenfor</p>
+        </div>
+        <div class="flex-1 max-w-48">
+          <div class="h-2 rounded-full bg-[#e5ede5] overflow-hidden mb-1">
+            <div id="byg-bar" class="h-full bg-[#1a4a3a] rounded-full transition-all duration-500" style="width:0%"></div>
+          </div>
+          <button onclick="navigate('gang')" class="text-xs font-bold text-[#1a4a3a] inline-flex items-center gap-1 hover:underline mt-2">
+            Se byggevejledning <span class="material-symbols-outlined text-xs">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tre kategorier som horisontale links -->
+      <div class="space-y-0 divide-y divide-[#1a2a1a]/5">
+        <button onclick="document.getElementById('byg-nedsivning').scrollIntoView({behavior:'smooth'})" class="w-full flex items-center gap-4 py-4 hover:bg-[#f9f5e8] transition-colors rounded-lg px-3 -mx-3 group">
+          <div class="w-8 h-8 bg-[#eef6ef] rounded-lg flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[#1a4a3a] text-base">water_drop</span>
+          </div>
+          <div class="flex-1 text-left">
+            <p class="font-bold text-sm text-[#1a2a1a]">Nedsivningspuljen</p>
+            <p class="text-xs text-[#1a2a1a]/50">Du kan sætte gang i et projekt ved at vælge regnbed, faskine eller permeable belægninger</p>
+          </div>
+          <span class="material-symbols-outlined text-[#1a4a3a]/40 group-hover:text-[#1a4a3a] transition-colors">arrow_forward</span>
+        </button>
+        <button onclick="document.getElementById('byg-magasinering').scrollIntoView({behavior:'smooth'})" class="w-full flex items-center gap-4 py-4 hover:bg-[#f9f5e8] transition-colors rounded-lg px-3 -mx-3 group">
+          <div class="w-8 h-8 bg-[#eef6ef] rounded-lg flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[#1a4a3a] text-base">water_full</span>
+          </div>
+          <div class="flex-1 text-left">
+            <p class="font-bold text-sm text-[#1a2a1a]">Magasineringspuljen</p>
+            <p class="text-xs text-[#1a2a1a]/50">Her du finde tilbud om tilskud til magasinering og se løsninger til mere her</p>
+          </div>
+          <span class="material-symbols-outlined text-[#1a4a3a]/40 group-hover:text-[#1a4a3a] transition-colors">arrow_forward</span>
+        </button>
+        <button onclick="document.getElementById('byg-fordampning').scrollIntoView({behavior:'smooth'})" class="w-full flex items-center gap-4 py-4 hover:bg-[#f9f5e8] transition-colors rounded-lg px-3 -mx-3 group">
+          <div class="w-8 h-8 bg-[#eef6ef] rounded-lg flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[#1a4a3a] text-base">eco</span>
+          </div>
+          <div class="flex-1 text-left">
+            <p class="font-bold text-sm text-[#1a2a1a]">Fordampningspuljen (2020–2022)</p>
+            <p class="text-xs text-[#1a2a1a]/50">Her du finde tilbud om tilskud til fordampning og se grønne tage og træer her</p>
+          </div>
+          <span class="material-symbols-outlined text-[#1a4a3a]/40 group-hover:text-[#1a4a3a] transition-colors">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUL INFO BLOK — "Få tilskud til at skrotte fyret" -->
+  <section class="max-w-4xl mx-auto px-6 pb-7">
+    <div class="bg-[#f5e8c0] rounded-2xl p-8 grid sm:grid-cols-2 gap-6 items-center">
+      <div>
+        <h2 class="font-headline text-xl font-bold text-[#2a1400] mb-3 leading-snug">Få tilskud til at anlægge din løsning</h2>
+        <p class="text-sm text-[#2a1400]/65 leading-relaxed mb-5">Der er tilskud på op til 25.000 kr. til klimatilpasning af private grunde. Mange kommuner refunderer dele af tilslutningsbidraget, når du frakobler regnvand fra kloakken.</p>
+        <button onclick="navigate('inspiration')" class="bg-[#1a4a3a] text-white text-xs font-bold px-5 py-2.5 rounded-full hover:bg-[#154035] transition-colors inline-flex items-center gap-1.5">
+          Læs mere om tilskudsordningerne <span class="material-symbols-outlined text-xs">arrow_forward</span>
+        </button>
+      </div>
+      <div class="flex justify-center">
+        <svg width="120" height="110" viewBox="0 0 120 110" fill="none">
+          <!-- Pengepung/tilskud illustration -->
+          <circle cx="60" cy="55" r="45" fill="#e8b84b" opacity="0.2"/>
+          <ellipse cx="60" cy="68" rx="32" ry="20" fill="#c8a050"/>
+          <rect x="28" y="40" width="64" height="30" rx="8" fill="#e8b84b"/>
+          <rect x="28" y="37" width="64" height="10" rx="5" fill="#c8952a"/>
+          <!-- Mønt-tegn -->
+          <circle cx="60" cy="56" r="12" fill="white" opacity="0.8"/>
+          <text x="60" y="61" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#c8952a">kr</text>
+          <!-- Planter -->
+          <circle cx="22" cy="75" r="12" fill="#3aaa55" opacity="0.7"/>
+          <rect x="19" y="82" width="5" height="15" rx="2" fill="#8a6a35"/>
+          <circle cx="98" cy="72" r="11" fill="#4bb865" opacity="0.7"/>
+          <rect x="95" y="78" width="5" height="15" rx="2" fill="#8a6a35"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- LYSEGRØN ACCORDION — løsningskategorier -->
+  <section class="max-w-4xl mx-auto px-6 pb-7">
+    <div class="bg-[#cce8cc] rounded-2xl p-7">
+      <div class="grid sm:grid-cols-2 gap-4 items-start mb-5">
+        <div>
+          <p class="text-xs text-[#1a4a3a] uppercase tracking-widest font-bold mb-2">Det kan du få støtte til</p>
+          <h2 class="font-headline text-xl font-bold text-[#0d2a1a] leading-snug">Se hvad din løsning<br/>kan klare</h2>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
+            <circle cx="25" cy="25" r="23" fill="#1a4a3a" opacity="0.15"/>
+            <path d="M25 10 C25 10 16 20 16 27 C16 31.9 20.1 36 25 36 C29.9 36 34 31.9 34 27 C34 20 25 10 25 10Z" fill="#1a4a3a" opacity="0.6"/>
+          </svg>
+          <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Find ud af, hvordan du kan få regnvandshåndtering på dit tilskudsbudget. Læs vores vurdering af de mulige puljer, der er tilgængelige til dit område.</p>
+        </div>
+      </div>
+
+      <!-- Accordion-liste over løsningstyper med priser -->
+      <div class="space-y-1" id="byg-accordion">
+        <div class="bg-white rounded-xl overflow-hidden">
+          <button onclick="toggleAccordion('acc-regnbed')" class="w-full flex items-center justify-between px-5 py-3.5 hover:bg-[#f9f5e8] transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-[#1a4a3a] text-base">local_florist</span>
+              <span class="font-bold text-sm text-[#1a2a1a]">Regnbed</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-bold text-[#1a4a3a]">Fra 2.500 kr.</span>
+              <span class="material-symbols-outlined text-[#1a4a3a]/40 text-sm" id="acc-icon-regnbed">add</span>
+            </div>
+          </button>
+          <div id="acc-regnbed" class="hidden px-5 pb-4 border-t border-[#1a4a3a]/5">
+            <p class="text-xs text-[#1a2a1a]/60 leading-relaxed pt-3">Beplantet lavning der opsamler og nedsiver regnvand. Placeres 5 m fra fundament. Effektiv ved hverdagsregn og 5-årsregn.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl overflow-hidden">
+          <button onclick="toggleAccordion('acc-faskine')" class="w-full flex items-center justify-between px-5 py-3.5 hover:bg-[#f9f5e8] transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-[#1a4a3a] text-base">water_drop</span>
+              <span class="font-bold text-sm text-[#1a2a1a]">Faskine</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-bold text-[#1a4a3a]">3.000 – 8.000 kr.</span>
+              <span class="material-symbols-outlined text-[#1a4a3a]/40 text-sm" id="acc-icon-faskine">add</span>
+            </div>
+          </button>
+          <div id="acc-faskine" class="hidden px-5 pb-4 border-t border-[#1a4a3a]/5">
+            <p class="text-xs text-[#1a2a1a]/60 leading-relaxed pt-3">Underjordisk plastkassette-system der nedsiver regnvand uden at bruge overfladeareal. Levetid 15–25 år.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl overflow-hidden">
+          <button onclick="toggleAccordion('acc-grontag')" class="w-full flex items-center justify-between px-5 py-3.5 hover:bg-[#f9f5e8] transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-[#1a4a3a] text-base">filter_hdr</span>
+              <span class="font-bold text-sm text-[#1a2a1a]">Grønt tag</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-bold text-[#1a4a3a]">400 – 800 kr./m²</span>
+              <span class="material-symbols-outlined text-[#1a4a3a]/40 text-sm" id="acc-icon-grontag">add</span>
+            </div>
+          </button>
+          <div id="acc-grontag" class="hidden px-5 pb-4 border-t border-[#1a4a3a]/5">
+            <p class="text-xs text-[#1a2a1a]/60 leading-relaxed pt-3">Sedum-tag der tilbageholder 50% af årsnedbøren og isolerer bygningen. Lavt vedligehold. Velegnet til carporte.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl overflow-hidden">
+          <button onclick="toggleAccordion('acc-perm')" class="w-full flex items-center justify-between px-5 py-3.5 hover:bg-[#f9f5e8] transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-[#1a4a3a] text-base">grid_view</span>
+              <span class="font-bold text-sm text-[#1a2a1a]">Permeable belægninger</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-bold text-[#1a4a3a]">400 – 900 kr./m²</span>
+              <span class="material-symbols-outlined text-[#1a4a3a]/40 text-sm" id="acc-icon-perm">add</span>
+            </div>
+          </button>
+          <div id="acc-perm" class="hidden px-5 pb-4 border-t border-[#1a4a3a]/5">
+            <p class="text-xs text-[#1a2a1a]/60 leading-relaxed pt-3">Porøse fliser og sten der lader vandet sive direkte ned. Kræver nedsivningstilladelse og vedligehold for at bevare permeabiliteten.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl overflow-hidden">
+          <button onclick="toggleAccordion('acc-bassin')" class="w-full flex items-center justify-between px-5 py-3.5 hover:bg-[#f9f5e8] transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-[#1a4a3a] text-base">pool</span>
+              <span class="font-bold text-sm text-[#1a2a1a]">Bassiner (vådt/tørt)</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-bold text-[#1a4a3a]">5.000 – 25.000 kr.</span>
+              <span class="material-symbols-outlined text-[#1a4a3a]/40 text-sm" id="acc-icon-bassin">add</span>
+            </div>
+          </button>
+          <div id="acc-bassin" class="hidden px-5 pb-4 border-t border-[#1a4a3a]/5">
+            <p class="text-xs text-[#1a2a1a]/60 leading-relaxed pt-3">Tørre bassiner er tørre til daglig og bruges til leg. Våde bassiner har permanent vandspejl og øger biodiversiteten markant.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl overflow-hidden">
+          <button onclick="toggleAccordion('acc-solceller')" class="w-full flex items-center justify-between px-5 py-3.5 hover:bg-[#f9f5e8] transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-[#1a4a3a] text-base">park</span>
+              <span class="font-bold text-sm text-[#1a2a1a]">Træer og grønne vægge</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-bold text-[#1a4a3a]">500 – 3.000 kr./stk.</span>
+              <span class="material-symbols-outlined text-[#1a4a3a]/40 text-sm" id="acc-icon-solceller">add</span>
+            </div>
+          </button>
+          <div id="acc-solceller" class="hidden px-5 pb-4 border-t border-[#1a4a3a]/5">
+            <p class="text-xs text-[#1a2a1a]/60 leading-relaxed pt-3">Et stort løvtræ fordamper op til 200 L/dag om sommeren og giver naturlig klimasikring. Kræver vanding de første 2 somre.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LØSNINGS-SLIDERS — det faktiske byggeredskab, kompakt kort-layout -->
+  <section class="max-w-4xl mx-auto px-6 pb-7">
+    <h2 class="font-headline text-xl font-bold text-[#1a2a1a] mb-1" id="byg-nedsivning">Nedsivning</h2>
+    <p class="text-xs text-[#1a2a1a]/50 mb-4">Skru op — tælleren opdateres straks</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+
+      <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+        <div class="byg-status-Regnbed text-xs font-bold px-4 py-2"></div>
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=160&fit=crop&q=80" alt="Regnbed" class="w-full h-32 object-cover"/>
+        <div class="p-4">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <h3 class="font-headline font-bold text-sm">Regnbed</h3>
+            <button onclick="openModal('Regnbed')" class="w-6 h-6 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-xs text-[#1a4a3a]">info</span></button>
+          </div>
+          <p class="text-[10px] text-[#1a2a1a]/50 mb-3">Nedsiver naturligt · Fra 2.500 kr.</p>
+          <div class="flex justify-between mb-1"><label class="text-[10px] uppercase tracking-widest font-bold text-[#1a2a1a]/50">Størrelse</label><span class="text-[10px] font-bold text-[#1a4a3a]" id="lbl-regnbed">0 m²</span></div>
+          <input class="w-full" max="500" min="0" step="5" type="range" value="0" data-byg-navn="Regnbed" oninput="updateByg('regnbed',this.value,'m²','lbl-regnbed',40)"/>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+        <div class="byg-status-Faskine text-xs font-bold px-4 py-2"></div>
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=160&fit=crop&q=80" alt="Faskine" class="w-full h-32 object-cover"/>
+        <div class="p-4">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <h3 class="font-headline font-bold text-sm">Faskine</h3>
+            <button onclick="openModal('Faskine')" class="w-6 h-6 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-xs text-[#1a4a3a]">info</span></button>
+          </div>
+          <p class="text-[10px] text-[#1a2a1a]/50 mb-3">Underjordisk · Fra 3.000 kr.</p>
+          <div class="flex justify-between mb-1"><label class="text-[10px] uppercase tracking-widest font-bold text-[#1a2a1a]/50">Volumen</label><span class="text-[10px] font-bold text-[#1a4a3a]" id="lbl-fask">0 L</span></div>
+          <input class="w-full" max="10000" min="0" step="100" type="range" value="0" data-byg-navn="Faskine" oninput="updateByg('fask',this.value,'L','lbl-fask',1)"/>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+        <div class="byg-status-Permeabel-belaegning text-xs font-bold px-4 py-2"></div>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=160&fit=crop&q=80" alt="Permeable belægninger" class="w-full h-32 object-cover"/>
+        <div class="p-4">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <h4 class="font-headline font-bold text-sm">Permeabel belægning</h4>
+            <button onclick="openModal('Permeable belægninger')" class="w-6 h-6 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-xs text-[#1a4a3a]">info</span></button>
+          </div>
+          <p class="text-[10px] text-[#1a2a1a]/50 mb-3">Porøse sten · Fra 400 kr./m²</p>
+          <div class="flex justify-between mb-1"><label class="text-[10px] uppercase tracking-widest font-bold text-[#1a2a1a]/50">Areal</label><span class="text-[10px] font-bold text-[#1a4a3a]" id="lbl-perm">0 m²</span></div>
+          <input class="w-full" max="200" min="0" step="5" type="range" value="0" data-byg-navn="Permeabel belægning" oninput="updateByg('perm',this.value,'m²','lbl-perm',20)"/>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="font-headline text-xl font-bold text-[#1a2a1a] mb-1" id="byg-magasinering">Magasinering</h2>
+    <p class="text-xs text-[#1a2a1a]/50 mb-4">Vand opbevares midlertidigt</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+
+      <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+        <div class="byg-status-Vaadbassin text-xs font-bold px-4 py-2"></div>
+        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=160&fit=crop&q=80" alt="Vådbassin" class="w-full h-32 object-cover"/>
+        <div class="p-4">
+          <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-headline font-bold text-sm">Våde bassiner</h3><button onclick="openModal('Våde bassiner')" class="w-6 h-6 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-xs text-[#1a4a3a]">info</span></button></div>
+          <p class="text-[10px] text-[#1a2a1a]/50 mb-3">Permanent vandspejl · Fra 10.000 kr.</p>
+          <div class="flex justify-between mb-1"><label class="text-[10px] uppercase tracking-widest font-bold text-[#1a2a1a]/50">Volumen</label><span class="text-[10px] font-bold text-[#1a4a3a]" id="lbl-vaad">0 m³</span></div>
+          <input class="w-full" max="500" min="0" step="5" type="range" value="0" data-byg-navn="Vådbassin" oninput="updateByg('vaad',this.value,'m³','lbl-vaad',1000)"/>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+        <div class="byg-status-Toerbassin text-xs font-bold px-4 py-2"></div>
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=160&fit=crop&q=80" alt="Tørbassin" class="w-full h-32 object-cover"/>
+        <div class="p-4">
+          <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-headline font-bold text-sm">Tørre bassiner</h3><button onclick="openModal('Tørre bassiner')" class="w-6 h-6 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-xs text-[#1a4a3a]">info</span></button></div>
+          <p class="text-[10px] text-[#1a2a1a]/50 mb-3">Tørt til daglig · Fra 5.000 kr.</p>
+          <div class="flex justify-between mb-1"><label class="text-[10px] uppercase tracking-widest font-bold text-[#1a2a1a]/50">Volumen</label><span class="text-[10px] font-bold text-[#1a4a3a]" id="lbl-toer">0 m³</span></div>
+          <input class="w-full" max="500" min="0" step="5" type="range" value="0" data-byg-navn="Tørbassin" oninput="updateByg('toer',this.value,'m³','lbl-toer',1000)"/>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+        <div class="byg-status-Underjordisk-bassin text-xs font-bold px-4 py-2"></div>
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=160&fit=crop&q=80" alt="Underjordisk bassin" class="w-full h-32 object-cover"/>
+        <div class="p-4">
+          <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-headline font-bold text-sm">Underjordisk bassin</h3><button onclick="openModal('Underjordisk bassin')" class="w-6 h-6 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-xs text-[#1a4a3a]">info</span></button></div>
+          <p class="text-[10px] text-[#1a2a1a]/50 mb-3">Plastkassetter · Fra 8.000 kr.</p>
+          <div class="flex justify-between mb-1"><label class="text-[10px] uppercase tracking-widest font-bold text-[#1a2a1a]/50">Kapacitet</label><span class="text-[10px] font-bold text-[#1a4a3a]" id="lbl-lukket">0 L</span></div>
+          <input class="w-full" max="10000" min="0" step="100" type="range" value="0" data-byg-navn="Underjordisk bassin" oninput="updateByg('lukket',this.value,'L','lbl-lukket',1)"/>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+        <div class="byg-status-Regnvandsbeholder text-xs font-bold px-4 py-2"></div>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=160&fit=crop&q=80" alt="Regnvandstank" class="w-full h-32 object-cover"/>
+        <div class="p-4">
+          <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-headline font-bold text-sm">Regnvandstank</h3><button onclick="openModal('Regnvandstank')" class="w-6 h-6 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-xs text-[#1a4a3a]">info</span></button></div>
+          <p class="text-[10px] text-[#1a2a1a]/50 mb-3">Tagvand til vanding · Fra 500 kr.</p>
+          <div class="flex justify-between mb-1"><label class="text-[10px] uppercase tracking-widest font-bold text-[#1a2a1a]/50">Kapacitet</label><span class="text-[10px] font-bold text-[#1a4a3a]" id="lbl-tank">0 L</span></div>
+          <input class="w-full" max="5000" min="0" step="100" type="range" value="0" data-byg-navn="Regnvandsbeholder" oninput="updateByg('tank',this.value,'L','lbl-tank',1)"/>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="font-headline text-xl font-bold text-[#1a2a1a] mb-1" id="byg-fordampning">Fordampning</h2>
+    <p class="text-xs text-[#1a2a1a]/50 mb-4">Grønne løsninger der fordamper vand</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+        <div class="byg-status-Groent-tag text-xs font-bold px-4 py-2"></div>
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=160&fit=crop&q=80" alt="Grønt tag" class="w-full h-32 object-cover"/>
+        <div class="p-4">
+          <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-headline font-bold text-sm">Grønne tage</h3><button onclick="openModal('Grønne tage')" class="w-6 h-6 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-xs text-[#1a4a3a]">info</span></button></div>
+          <p class="text-[10px] text-[#1a2a1a]/50 mb-3">50% tilbageholdelse · 400–800 kr./m²</p>
+          <div class="flex justify-between mb-1"><label class="text-[10px] uppercase tracking-widest font-bold text-[#1a2a1a]/50">Areal</label><span class="text-[10px] font-bold text-[#1a4a3a]" id="lbl-grontag">0 m²</span></div>
+          <input class="w-full" max="300" min="0" step="5" type="range" value="0" data-byg-navn="Grønt tag" oninput="updateByg('grontag',this.value,'m²','lbl-grontag',50)"/>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+        <div class="byg-status-Traeer text-xs font-bold px-4 py-2"></div>
+        <img src="https://images.unsplash.com/photo-1513836279014-a89f7d3f59a7?w=400&h=160&fit=crop&q=80" alt="Træer" class="w-full h-32 object-cover"/>
+        <div class="p-4">
+          <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-headline font-bold text-sm">Træer</h3><button onclick="openModal('Træer')" class="w-6 h-6 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-xs text-[#1a4a3a]">info</span></button></div>
+          <p class="text-[10px] text-[#1a2a1a]/50 mb-3">200 L/dag · Fra 500 kr./stk.</p>
+          <div class="flex justify-between mb-1"><label class="text-[10px] uppercase tracking-widest font-bold text-[#1a2a1a]/50">Antal</label><span class="text-[10px] font-bold text-[#1a4a3a]" id="lbl-traeer">0 stk</span></div>
+          <input class="w-full" max="20" min="0" step="1" type="range" value="0" data-byg-navn="Træer" oninput="updateByg('traeer',this.value,'stk','lbl-traeer',50000)"/>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+        <div class="byg-status-Groenne-vaegge text-xs font-bold px-4 py-2"></div>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=160&fit=crop&q=80" alt="Grønne vægge" class="w-full h-32 object-cover"/>
+        <div class="p-4">
+          <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-headline font-bold text-sm">Grønne vægge</h3><button onclick="openModal('Grønne vægge')" class="w-6 h-6 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-xs text-[#1a4a3a]">info</span></button></div>
+          <p class="text-[10px] text-[#1a2a1a]/50 mb-3">Klatreplanter · 300–1.200 kr./m²</p>
+          <div class="flex justify-between mb-1"><label class="text-[10px] uppercase tracking-widest font-bold text-[#1a2a1a]/50">Areal</label><span class="text-[10px] font-bold text-[#1a4a3a]" id="lbl-gronvaeg">0 m²</span></div>
+          <input class="w-full" max="100" min="0" step="5" type="range" value="0" data-byg-navn="Grønne vægge" oninput="updateByg('gronvaeg',this.value,'m²','lbl-gronvaeg',15)"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SE HVAD ANDRE HAR GJORT — hvid carousel -->
+  <section class="max-w-4xl mx-auto px-6 pb-7">
+    <div class="bg-white rounded-2xl p-7 shadow-[0_2px_16px_rgba(0,0,0,0.05)]">
+      <h2 class="font-headline text-lg font-bold text-[#1a2a1a] mb-0.5">Se, hvad andre har gjort</h2>
+      <p class="text-xs text-[#1a2a1a]/45 mb-5">Cases · Få inspiration fra danskere der har klimasikret deres grunde</p>
+      <div class="overflow-x-auto -mx-2 px-2 pb-1 no-scrollbar">
+        <div class="flex gap-3 min-w-max">
+          <div onclick="navigate('inspiration')" class="w-48 cursor-pointer group">
+            <div class="h-28 rounded-xl overflow-hidden mb-2">
+              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=280&h=160&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"/>
+            </div>
+            <p class="text-[9px] uppercase tracking-widest font-bold text-[#1a4a3a] mb-0.5">REGNBED · PRIVAT GRUND</p>
+            <p class="text-xs font-bold text-[#1a2a1a] leading-snug">Regnbed er løsningen på en lavmavenlig og vedligeholdelsesfri have</p>
+          </div>
+          <div onclick="navigate('inspiration')" class="w-48 cursor-pointer group">
+            <div class="h-28 rounded-xl overflow-hidden mb-2">
+              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=280&h=160&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"/>
+            </div>
+            <p class="text-[9px] uppercase tracking-widest font-bold text-[#1a4a3a] mb-0.5">GRØNT TAG · CARPORT</p>
+            <p class="text-xs font-bold text-[#1a2a1a] leading-snug">Sedum-tag på carport er godt alternativ til dyre løsninger</p>
+          </div>
+          <div onclick="navigate('inspiration')" class="w-48 cursor-pointer group">
+            <div class="h-28 rounded-xl overflow-hidden mb-2">
+              <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=280&h=160&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform"/>
+            </div>
+            <p class="text-[9px] uppercase tracking-widest font-bold text-[#1a4a3a] mb-0.5">BASSIN · FÆLLES GRUND</p>
+            <p class="text-xs font-bold text-[#1a2a1a] leading-snug">Kollektivt vådbassin sikrer hele grundejerforeningens have</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MØRK GRØN CTA — "Få gratis rådgivning" -->
+  <section class="max-w-4xl mx-auto px-6 pb-7">
+    <div class="bg-[#1a4a3a] rounded-2xl p-8 grid sm:grid-cols-2 gap-6 items-center">
+      <div>
+        <h2 class="font-headline text-xl font-bold text-white mb-3">Få gratis rådgivning</h2>
+        <p class="text-sm text-white/65 leading-relaxed mb-5">Vores eksperter er klar til at rådgive dig om tilskud, valg af løsning, tilladelser og hvad der passer bedst til netop din grund og situation.</p>
+        <button onclick="navigate('gang')" class="bg-white text-[#1a4a3a] text-xs font-bold px-5 py-2.5 rounded-full hover:bg-[#e8f5ee] transition-colors inline-flex items-center gap-1.5">
+          Kontakt rådgivningen <span class="material-symbols-outlined text-xs">arrow_forward</span>
+        </button>
+      </div>
+      <div class="flex justify-center">
+        <svg width="130" height="110" viewBox="0 0 130 110" fill="none">
+          <!-- To personer der taler -->
+          <circle cx="45" cy="40" r="14" fill="#f5d5a8"/>
+          <rect x="35" y="54" width="20" height="28" rx="5" fill="#5a9a6a"/>
+          <circle cx="90" cy="38" r="14" fill="#e8c090"/>
+          <rect x="80" y="52" width="20" height="28" rx="5" fill="#e8a87c"/>
+          <!-- Talebobler -->
+          <rect x="52" y="20" width="28" height="18" rx="6" fill="white" opacity="0.9"/>
+          <polygon points="55,38 62,38 58,44" fill="white" opacity="0.9"/>
+          <text x="66" y="32" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#1a4a3a">?</text>
+          <rect x="60" y="16" width="28" height="18" rx="6" fill="#e8f5ee" opacity="0.9"/>
+          <polygon points="75,34 82,34 79,40" fill="#e8f5ee" opacity="0.9"/>
+          <circle cx="74" cy="25" r="4" fill="#2d7a5a" opacity="0.6"/>
+          <line x1="70" y1="25" x2="78" y2="25" stroke="#2d7a5a" stroke-width="1.5"/>
+          <line x1="70" y1="28" x2="75" y2="28" stroke="#2d7a5a" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUL NYHEDSBREV BANNER -->
+  <section class="max-w-4xl mx-auto px-6 pb-14">
+    <div class="bg-[#f5e8c0] rounded-2xl p-8 grid sm:grid-cols-2 gap-6 items-center">
+      <div>
+        <h2 class="font-headline text-xl font-bold text-[#2a1400] mb-3">Få nyt om tilskud</h2>
+        <p class="text-sm text-[#2a1400]/65 leading-relaxed mb-5">Vær blandt de første til at få besked, når der er nyt om tilskudsordningerne. Tilmeld dig vores nyhedsbrev og få de bedste tips direkte i indbakken.</p>
+        <div class="flex gap-2 max-w-sm">
+          <input type="email" placeholder="Din email" class="flex-1 rounded-full px-4 py-2.5 text-sm bg-white ring-1 ring-[#c8a030]/30 focus:ring-[#c8a030] focus:outline-none"/>
+          <button class="bg-[#1a4a3a] text-white font-bold text-xs px-5 py-2.5 rounded-full hover:bg-[#154035] transition-colors whitespace-nowrap">Tilmeld →</button>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <svg viewBox="0 0 160 140" class="w-40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Postkasse med flag -->
+          <rect x="55" y="55" width="70" height="55" rx="6" fill="white" opacity="0.85"/>
+          <rect x="55" y="55" width="70" height="18" rx="6 6 0 0" fill="#c8a030" opacity="0.7"/>
+          <!-- Brev -->
+          <rect x="65" y="80" width="50" height="22" rx="3" fill="#e8b84b" opacity="0.6"/>
+          <line x1="65" y1="88" x2="115" y2="88" stroke="#c8952a" stroke-width="1"/>
+          <line x1="65" y1="93" x2="105" y2="93" stroke="#c8952a" stroke-width="1" opacity="0.5"/>
+          <!-- Flag -->
+          <rect x="118" y="45" width="3" height="35" fill="#c8a030"/>
+          <polygon points="121,45 135,52 121,59" fill="#e8b84b"/>
+          <!-- Blade rundt om -->
+          <circle cx="30" cy="90" r="18" fill="#3aaa55" opacity="0.55"/>
+          <circle cx="22" cy="100" r="12" fill="#4bb865" opacity="0.6"/>
+          <rect x="28" y="102" width="5" height="22" rx="2" fill="#8a6a35"/>
+          <circle cx="148" cy="95" r="16" fill="#3aaa55" opacity="0.55"/>
+          <rect x="145" y="106" width="5" height="18" rx="2" fill="#8a6a35"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
 </div>
+</div><!-- /page-byg -->
+
 
 <!-- ══ PAGE: SE DIN HAVE ══ -->
 <div id="page-have" class="page pt-24">
@@ -1829,6 +2238,16 @@ function initInspiMap() {
       </div>`;
     }).join('');
   }
+}
+
+// ── Accordion ──
+function toggleAccordion(id) {
+  const panel = document.getElementById(id);
+  const icon = document.getElementById('acc-icon-' + id.replace('acc-', ''));
+  if (!panel) return;
+  const open = !panel.classList.contains('hidden');
+  panel.classList.toggle('hidden', open);
+  if (icon) icon.textContent = open ? 'add' : 'remove';
 }
 
 // ── Kortlæg toggle ──

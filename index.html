@@ -710,6 +710,288 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
     </div>
   </section>
 
+  <!-- HVAD GÅR DU EFTER — tre scorecard-illustrationer -->
+  <section class="max-w-4xl mx-auto px-6 pb-8">
+    <div class="text-center mb-7">
+      <h2 class="font-headline text-2xl font-bold text-[#1a2a1a] mb-2">Hvad går du efter?</h2>
+      <p class="text-sm text-[#1a2a1a]/55 max-w-xl mx-auto">Alle løsninger er ikke ens — se hvilke der scorer højest på det der betyder mest for dig</p>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-4">
+
+      <!-- BIODIVERSITET -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.05)] cursor-pointer hover:shadow-md transition-all group" onclick="navigate('byg')">
+        <!-- Illustration -->
+        <div class="bg-[#eef6ef] px-6 pt-6 pb-2 flex justify-center">
+          <svg viewBox="0 0 180 130" class="w-full max-w-[180px]" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Vandspejl/bassin i bunden -->
+            <ellipse cx="90" cy="108" rx="72" ry="14" fill="#a8d8e8" opacity="0.5"/>
+            <ellipse cx="90" cy="106" rx="60" ry="9" fill="#7dd8f8" opacity="0.35"/>
+            <!-- Siv og vandplanter -->
+            <line x1="35" y1="105" x2="35" y2="68" stroke="#2d7a4a" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse cx="35" cy="65" rx="5" ry="10" fill="#3a9a55" opacity="0.8"/>
+            <line x1="28" y1="105" x2="25" y2="75" stroke="#2d7a4a" stroke-width="2" stroke-linecap="round"/>
+            <ellipse cx="24" cy="72" rx="4" ry="8" fill="#3a9a55" opacity="0.7"/>
+            <line x1="42" y1="105" x2="45" y2="72" stroke="#2d7a4a" stroke-width="2" stroke-linecap="round"/>
+            <ellipse cx="46" cy="69" rx="4" ry="8" fill="#4aaa65" opacity="0.7"/>
+            <!-- Stor blomst venstre -->
+            <circle cx="65" cy="70" r="8" fill="#f0d040"/>
+            <circle cx="55" cy="68" r="5" fill="#f0a030" opacity="0.7"/>
+            <circle cx="75" cy="66" r="5" fill="#f0a030" opacity="0.7"/>
+            <circle cx="65" cy="60" r="5" fill="#f0a030" opacity="0.7"/>
+            <circle cx="65" cy="80" r="4" fill="#f0a030" opacity="0.6"/>
+            <line x1="65" y1="78" x2="65" y2="105" stroke="#3a7a35" stroke-width="2"/>
+            <!-- Stor blomst midt -->
+            <circle cx="90" cy="55" r="9" fill="#e84070" opacity="0.85"/>
+            <circle cx="79" cy="53" r="5.5" fill="#e84070" opacity="0.6"/>
+            <circle cx="101" cy="53" r="5.5" fill="#e84070" opacity="0.6"/>
+            <circle cx="90" cy="44" r="5.5" fill="#e84070" opacity="0.6"/>
+            <circle cx="84" cy="62" r="4.5" fill="#c03055" opacity="0.5"/>
+            <line x1="90" y1="64" x2="90" y2="105" stroke="#3a7a35" stroke-width="2"/>
+            <!-- Sommerfugl -->
+            <ellipse cx="110" cy="58" rx="10" ry="6" fill="#e8a030" opacity="0.8" transform="rotate(-25 110 58)"/>
+            <ellipse cx="120" cy="54" rx="9" ry="5" fill="#e8a030" opacity="0.8" transform="rotate(25 120 54)"/>
+            <ellipse cx="110" cy="65" rx="8" ry="5" fill="#c07020" opacity="0.7" transform="rotate(15 110 65)"/>
+            <ellipse cx="120" cy="62" rx="8" ry="5" fill="#c07020" opacity="0.7" transform="rotate(-15 120 62)"/>
+            <line x1="115" y1="58" x2="115" y2="68" stroke="#2a1400" stroke-width="1.5"/>
+            <!-- Bi -->
+            <ellipse cx="148" cy="45" rx="6" ry="4" fill="#f0c030"/>
+            <line x1="144" y1="44" x2="152" y2="44" stroke="#2a1400" stroke-width="1"/>
+            <line x1="144" y1="46" x2="152" y2="46" stroke="#2a1400" stroke-width="1"/>
+            <ellipse cx="144" cy="43" rx="5" ry="3" fill="white" opacity="0.6" transform="rotate(-20 144 43)"/>
+            <ellipse cx="148" cy="42" rx="5" ry="3" fill="white" opacity="0.6" transform="rotate(20 148 42)"/>
+            <!-- Frø i vand -->
+            <ellipse cx="72" cy="107" rx="7" ry="5" fill="#3a9a35"/>
+            <circle cx="69" cy="104" r="2" fill="#2d7a2a"/>
+            <circle cx="75" cy="104" r="2" fill="#2d7a2a"/>
+            <!-- Blade/vegetation højre -->
+            <ellipse cx="148" cy="85" rx="18" ry="10" fill="#3a9a55" opacity="0.6" transform="rotate(-15 148 85)"/>
+            <ellipse cx="158" cy="92" rx="14" ry="8" fill="#4aaa65" opacity="0.6" transform="rotate(10 158 92)"/>
+            <line x1="148" y1="90" x2="148" y2="108" stroke="#3a7a35" stroke-width="2"/>
+            <!-- Lille blomst højre -->
+            <circle cx="142" cy="68" r="5" fill="#e870a0" opacity="0.8"/>
+            <circle cx="135" cy="66" r="3" fill="#e870a0" opacity="0.6"/>
+            <circle cx="149" cy="66" r="3" fill="#e870a0" opacity="0.6"/>
+            <circle cx="142" cy="61" r="3" fill="#e870a0" opacity="0.6"/>
+            <line x1="142" y1="73" x2="142" y2="105" stroke="#3a7a35" stroke-width="1.5"/>
+          </svg>
+        </div>
+
+        <!-- Score bars -->
+        <div class="px-5 pt-4 pb-1">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-[10px] uppercase tracking-widest font-bold text-[#1a4a3a]">🌿 Biodiversitet</span>
+          </div>
+          <div class="space-y-1.5 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#1a2a1a]/60 w-28 shrink-0">Vådbassin</span>
+              <div class="flex-1 h-2 bg-[#e5ede5] rounded-full overflow-hidden"><div class="h-full bg-[#1a4a3a] rounded-full" style="width:95%"></div></div>
+              <span class="text-[10px] font-bold text-[#1a4a3a] w-6">★★★</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#1a2a1a]/60 w-28 shrink-0">Regnbed</span>
+              <div class="flex-1 h-2 bg-[#e5ede5] rounded-full overflow-hidden"><div class="h-full bg-[#2d7a5a] rounded-full" style="width:85%"></div></div>
+              <span class="text-[10px] font-bold text-[#2d7a5a] w-6">★★★</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#1a2a1a]/60 w-28 shrink-0">Træer</span>
+              <div class="flex-1 h-2 bg-[#e5ede5] rounded-full overflow-hidden"><div class="h-full bg-[#2d7a5a] rounded-full" style="width:80%"></div></div>
+              <span class="text-[10px] font-bold text-[#2d7a5a] w-6">★★★</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#1a2a1a]/60 w-28 shrink-0">Grønt tag</span>
+              <div class="flex-1 h-2 bg-[#e5ede5] rounded-full overflow-hidden"><div class="h-full bg-[#5aaa7a] rounded-full" style="width:55%"></div></div>
+              <span class="text-[10px] font-bold text-[#5aaa7a] w-6">★★☆</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#1a2a1a]/60 w-28 shrink-0">Faskine</span>
+              <div class="flex-1 h-2 bg-[#e5ede5] rounded-full overflow-hidden"><div class="h-full bg-[#aacaaa] rounded-full" style="width:20%"></div></div>
+              <span class="text-[10px] font-bold text-[#aacaaa] w-6">★☆☆</span>
+            </div>
+          </div>
+        </div>
+        <div class="px-5 pb-5">
+          <p class="text-[11px] text-[#1a2a1a]/55 leading-relaxed mb-3">Åbne vandflader og beplantning skaber levesteder for insekter, fugle og padder.</p>
+          <span class="text-xs font-bold text-[#1a4a3a] inline-flex items-center gap-1 group-hover:underline">Se løsninger <span class="material-symbols-outlined text-xs">arrow_forward</span></span>
+        </div>
+      </div>
+
+      <!-- ØKONOMI / BILLIGST -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.05)] cursor-pointer hover:shadow-md transition-all group" onclick="navigate('byg')">
+        <div class="bg-[#fef6e8] px-6 pt-6 pb-2 flex justify-center">
+          <svg viewBox="0 0 180 130" class="w-full max-w-[180px]" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Baggrunds-have -->
+            <ellipse cx="90" cy="115" rx="78" ry="10" fill="#c8dfc8" opacity="0.4"/>
+            <!-- Regnbed (billigste løsning — fremhævet) -->
+            <ellipse cx="55" cy="108" rx="38" ry="10" fill="#2a7045" opacity="0.7"/>
+            <ellipse cx="55" cy="104" rx="30" ry="7" fill="#3a8a55" opacity="0.7"/>
+            <circle cx="40" cy="93" r="10" fill="#4aaa65"/>
+            <circle cx="55" cy="88" r="13" fill="#55bb70"/>
+            <circle cx="70" cy="93" r="9" fill="#4aaa65"/>
+            <circle cx="45" cy="82" r="5" fill="#f0d040"/>
+            <circle cx="61" cy="78" r="6" fill="#f0a030"/>
+            <!-- Pris-badge på regnbed -->
+            <rect x="28" y="68" width="52" height="18" rx="9" fill="#e8b84b"/>
+            <text x="54" y="81" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a1400">Fra 2.500 kr.</text>
+
+            <!-- Regnvandstank (næstbilligst) -->
+            <rect x="115" y="75" width="22" height="35" rx="4" fill="#5a8aaa" opacity="0.85"/>
+            <rect x="113" y="72" width="26" height="7" rx="2" fill="#4a7a9a"/>
+            <line x1="126" y1="110" x2="126" y2="118" stroke="#4a7a9a" stroke-width="2.5"/>
+            <!-- Pris-badge på tank -->
+            <rect x="108" y="56" width="44" height="16" rx="8" fill="#e8b84b"/>
+            <text x="130" y="67" text-anchor="middle" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#2a1400">Fra 500 kr.</text>
+
+            <!-- Grønt tag til højre på carport -->
+            <rect x="130" y="90" width="42" height="28" rx="3" fill="#e8f0e8" stroke="#3a9a55" stroke-width="1.5"/>
+            <rect x="128" y="87" width="46" height="8" rx="2" fill="#3a9a55" opacity="0.7"/>
+            <ellipse cx="151" cy="86" rx="12" ry="5" fill="#4bb865" opacity="0.6"/>
+            <ellipse cx="140" cy="83" rx="9" ry="4" fill="#55cc70" opacity="0.6"/>
+
+            <!-- Mønt-ikon / kr-tegn -->
+            <circle cx="90" cy="40" r="22" fill="#e8b84b" opacity="0.15" stroke="#e8b84b" stroke-width="1.5"/>
+            <circle cx="90" cy="40" r="16" fill="#e8b84b" opacity="0.25"/>
+            <text x="90" y="46" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#c8952a">kr</text>
+
+            <!-- Lille pil ned (billig) fra mønt -->
+            <path d="M90 62 L90 72" stroke="#c8952a" stroke-width="2" stroke-linecap="round"/>
+            <polygon points="86,70 94,70 90,76" fill="#c8952a"/>
+          </svg>
+        </div>
+
+        <div class="px-5 pt-4 pb-1">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-[10px] uppercase tracking-widest font-bold text-[#c8952a]">💰 Økonomi</span>
+          </div>
+          <div class="space-y-1.5 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#1a2a1a]/60 w-28 shrink-0">Regnvandstank</span>
+              <div class="flex-1 h-2 bg-[#f5e8c0] rounded-full overflow-hidden"><div class="h-full bg-[#c8952a] rounded-full" style="width:98%"></div></div>
+              <span class="text-[10px] font-bold text-[#c8952a] w-6">★★★</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#1a2a1a]/60 w-28 shrink-0">Regnbed</span>
+              <div class="flex-1 h-2 bg-[#f5e8c0] rounded-full overflow-hidden"><div class="h-full bg-[#c8952a] rounded-full" style="width:88%"></div></div>
+              <span class="text-[10px] font-bold text-[#c8952a] w-6">★★★</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#1a2a1a]/60 w-28 shrink-0">Faskine</span>
+              <div class="flex-1 h-2 bg-[#f5e8c0] rounded-full overflow-hidden"><div class="h-full bg-[#e8b84b] rounded-full" style="width:65%"></div></div>
+              <span class="text-[10px] font-bold text-[#e8b84b] w-6">★★☆</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#1a2a1a]/60 w-28 shrink-0">Grønt tag</span>
+              <div class="flex-1 h-2 bg-[#f5e8c0] rounded-full overflow-hidden"><div class="h-full bg-[#e8b84b] rounded-full" style="width:50%"></div></div>
+              <span class="text-[10px] font-bold text-[#e8b84b] w-6">★★☆</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#1a2a1a]/60 w-28 shrink-0">Vådbassin</span>
+              <div class="flex-1 h-2 bg-[#f5e8c0] rounded-full overflow-hidden"><div class="h-full bg-[#f0c880] rounded-full" style="width:20%"></div></div>
+              <span class="text-[10px] font-bold text-[#f0c880] w-6">★☆☆</span>
+            </div>
+          </div>
+        </div>
+        <div class="px-5 pb-5">
+          <p class="text-[11px] text-[#1a2a1a]/55 leading-relaxed mb-3">Et regnbed fra 2.500 kr. giver mest klimaeffekt per investeret krone.</p>
+          <span class="text-xs font-bold text-[#c8952a] inline-flex items-center gap-1 group-hover:underline">Se priser <span class="material-symbols-outlined text-xs">arrow_forward</span></span>
+        </div>
+      </div>
+
+      <!-- NEMHED / DIY -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.05)] cursor-pointer hover:shadow-md transition-all group" onclick="navigate('gang')">
+        <div class="bg-[#fce5dc] px-6 pt-6 pb-2 flex justify-center">
+          <svg viewBox="0 0 180 130" class="w-full max-w-[180px]" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Baggrunds-have -->
+            <ellipse cx="90" cy="115" rx="75" ry="10" fill="#e8c8a8" opacity="0.4"/>
+
+            <!-- Person der graver/anlægger regnbed — DIY-illustration -->
+            <!-- Hul i jord (regnbed) -->
+            <ellipse cx="90" cy="108" rx="48" ry="12" fill="#a87a45" opacity="0.4"/>
+            <ellipse cx="90" cy="105" rx="40" ry="8" fill="#c89a65" opacity="0.35"/>
+            <!-- Planter i regnbed -->
+            <circle cx="72" cy="97" r="9" fill="#3aaa55" opacity="0.85"/>
+            <circle cx="85" cy="93" r="11" fill="#4bb865" opacity="0.85"/>
+            <circle cx="100" cy="96" r="8" fill="#3aaa55" opacity="0.8"/>
+            <circle cx="78" cy="88" r="5" fill="#f0d040"/>
+            <circle cx="92" cy="85" r="5.5" fill="#f0a030"/>
+
+            <!-- Person (DIY) til højre -->
+            <circle cx="148" cy="72" r="9" fill="#f5d5a8"/>
+            <!-- Hat -->
+            <ellipse cx="148" cy="65" rx="12" ry="4" fill="#c8952a" opacity="0.7"/>
+            <rect x="143" y="56" width="10" height="9" rx="2" fill="#c8952a" opacity="0.7"/>
+            <!-- Krop -->
+            <rect x="142" y="81" width="12" height="24" rx="4" fill="#5a9a6a"/>
+            <!-- Arm med skovl -->
+            <line x1="142" y1="88" x2="128" y2="100" stroke="#5a9a6a" stroke-width="4" stroke-linecap="round"/>
+            <!-- Skovl -->
+            <rect x="115" y="98" width="16" height="5" rx="2" fill="#c8952a" transform="rotate(-30 115 98)"/>
+            <line x1="124" y1="94" x2="132" y2="102" stroke="#8a6a35" stroke-width="2.5" stroke-linecap="round"/>
+
+            <!-- Tjekliste øverst -->
+            <rect x="20" y="20" width="80" height="65" rx="6" fill="white" opacity="0.9" stroke="#e8a87c" stroke-width="1.5"/>
+            <rect x="27" y="28" width="10" height="10" rx="2" fill="#e8f5ee" stroke="#2d7a5a" stroke-width="1.5"/>
+            <path d="M29 33 L31 35 L35 30" stroke="#2d7a5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="42" y1="33" x2="90" y2="33" stroke="#1a2a1a" stroke-width="1.5" opacity="0.3"/>
+            <text x="42" y="32" font-family="sans-serif" font-size="7.5" fill="#1a2a1a" opacity="0.5">Regnbed</text>
+
+            <rect x="27" y="43" width="10" height="10" rx="2" fill="#e8f5ee" stroke="#2d7a5a" stroke-width="1.5"/>
+            <path d="M29 48 L31 50 L35 45" stroke="#2d7a5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="42" y="51" font-family="sans-serif" font-size="7.5" fill="#1a2a1a" opacity="0.5">Regnvandstank</text>
+
+            <rect x="27" y="58" width="10" height="10" rx="2" fill="#f5f0e5" stroke="#1a2a1a" stroke-width="1" opacity="0.4"/>
+            <text x="42" y="66" font-family="sans-serif" font-size="7.5" fill="#1a2a1a" opacity="0.3">Faskine</text>
+
+            <rect x="27" y="72" width="10" height="10" rx="2" fill="#f5f0e5" stroke="#1a2a1a" stroke-width="1" opacity="0.4"/>
+            <text x="42" y="80" font-family="sans-serif" font-size="7.5" fill="#1a2a1a" opacity="0.3">Vådbassin</text>
+
+            <!-- Tidsmærkat -->
+            <rect x="110" y="22" width="55" height="18" rx="9" fill="#e8a87c"/>
+            <text x="137" y="34" text-anchor="middle" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="white">1 weekend ✓</text>
+          </svg>
+        </div>
+
+        <div class="px-5 pt-4 pb-1">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-[10px] uppercase tracking-widest font-bold text-[#c04030]">🔨 Nemhed (DIY)</span>
+          </div>
+          <div class="space-y-1.5 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#1a2a1a]/60 w-28 shrink-0">Regnvandstank</span>
+              <div class="flex-1 h-2 bg-[#fce5dc] rounded-full overflow-hidden"><div class="h-full bg-[#c04030] rounded-full" style="width:97%"></div></div>
+              <span class="text-[10px] font-bold text-[#c04030] w-6">★★★</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#1a2a1a]/60 w-28 shrink-0">Regnbed</span>
+              <div class="flex-1 h-2 bg-[#fce5dc] rounded-full overflow-hidden"><div class="h-full bg-[#c04030] rounded-full" style="width:85%"></div></div>
+              <span class="text-[10px] font-bold text-[#c04030] w-6">★★★</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#1a2a1a]/60 w-28 shrink-0">Grønt tag</span>
+              <div class="flex-1 h-2 bg-[#fce5dc] rounded-full overflow-hidden"><div class="h-full bg-[#e05040] rounded-full" style="width:65%"></div></div>
+              <span class="text-[10px] font-bold text-[#e05040] w-6">★★☆</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#1a2a1a]/60 w-28 shrink-0">Faskine</span>
+              <div class="flex-1 h-2 bg-[#fce5dc] rounded-full overflow-hidden"><div class="h-full bg-[#e88070] rounded-full" style="width:40%"></div></div>
+              <span class="text-[10px] font-bold text-[#e88070] w-6">★★☆</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#1a2a1a]/60 w-28 shrink-0">Vådbassin</span>
+              <div class="flex-1 h-2 bg-[#fce5dc] rounded-full overflow-hidden"><div class="h-full bg-[#f0a898] rounded-full" style="width:18%"></div></div>
+              <span class="text-[10px] font-bold text-[#f0a898] w-6">★☆☆</span>
+            </div>
+          </div>
+        </div>
+        <div class="px-5 pb-5">
+          <p class="text-[11px] text-[#1a2a1a]/55 leading-relaxed mb-3">En regnvandstank sættes op på én eftermiddag. Regnbed kræver en weekends arbejde.</p>
+          <span class="text-xs font-bold text-[#c04030] inline-flex items-center gap-1 group-hover:underline">Kom i gang <span class="material-symbols-outlined text-xs">arrow_forward</span></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Bottom padding -->
   <div class="pb-16"></div>
 </div>

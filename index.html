@@ -2191,25 +2191,510 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 
 
 <!-- ══ PAGE: SE DIN HAVE ══ -->
-<div id="page-have" class="page pt-24">
-  <section class="relative bg-gradient-to-br from-primary to-primary-container pt-16 pb-32 px-8 overflow-hidden">
-    <div class="max-w-7xl mx-auto relative z-10">
-      <p class="text-on-primary/60 text-xs uppercase tracking-widest font-medium mb-3">Visualisér</p>
-      <h1 class="font-headline text-4xl md:text-5xl text-on-primary font-bold leading-tight mb-4">Se din fremtidige have</h1>
-      <p class="text-on-primary/80 text-lg">Vælg sæson og se hvordan dine løsninger vil se ud.</p>
+<div id="page-have" class="page">
+<div class="pt-16 bg-[#f5f0e5] min-h-screen">
+
+  <!-- LYSEGRØN HERO med illustration + sæson-dropdown -->
+  <section class="bg-[#c8e0c8] relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 pt-10 pb-0 grid lg:grid-cols-2 gap-6 items-end">
+      <div class="pb-10">
+        <p class="text-[#1a4a3a]/55 text-xs uppercase tracking-widest font-bold mb-3">Visualisér</p>
+        <h1 class="font-headline text-3xl font-bold text-[#0d2a1a] leading-tight mb-4">
+          Overvejer du at<br/>renovere din have?
+        </h1>
+        <p class="text-[#0d2a1a]/60 text-sm leading-relaxed mb-6 max-w-sm">
+          Hvad vil der ske med din have, hvis du investerer i et regnbed eller et grønt tag? Her ser du hvordan din have vil se ud sæson for sæson — og hvad det kræver af dig.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-[#0d2a1a]/10 text-[#0d2a1a] text-xs font-medium px-3 py-1.5 rounded-full">Sæsonvisning</span>
+          <span class="bg-[#0d2a1a]/10 text-[#0d2a1a] text-xs font-medium px-3 py-1.5 rounded-full">Vedligeholdelse</span>
+          <span class="bg-[#0d2a1a]/10 text-[#0d2a1a] text-xs font-medium px-3 py-1.5 rounded-full">Biodiversitet</span>
+        </div>
+      </div>
+      <div class="flex items-end justify-center lg:justify-end">
+        <svg viewBox="0 0 280 220" class="w-64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="140" cy="205" rx="125" ry="12" fill="#a8c8a8" opacity="0.4"/>
+          <!-- Hus -->
+          <rect x="65" y="110" width="110" height="90" rx="4" fill="white" opacity="0.9"/>
+          <polygon points="55,113 185,113 120,62" fill="#2d7a5a"/>
+          <!-- Grønt tag med sedum -->
+          <rect x="55" y="106" width="130" height="13" rx="2" fill="#3d9a6a"/>
+          <ellipse cx="78" cy="103" rx="9" ry="5" fill="#4bb865" opacity="0.85"/>
+          <ellipse cx="98" cy="99" rx="11" ry="5" fill="#55c870" opacity="0.85"/>
+          <ellipse cx="120" cy="97" rx="9" ry="4" fill="#4bb865" opacity="0.85"/>
+          <ellipse cx="140" cy="99" rx="10" ry="5" fill="#55c870" opacity="0.85"/>
+          <ellipse cx="158" cy="102" rx="8" ry="4" fill="#4bb865" opacity="0.85"/>
+          <!-- Dør -->
+          <rect x="110" y="168" width="22" height="32" rx="2" fill="#c8a050"/>
+          <!-- Vinduer -->
+          <rect x="73" y="124" width="22" height="19" rx="2" fill="#a8d8c8"/>
+          <rect x="150" y="124" width="22" height="19" rx="2" fill="#a8d8c8"/>
+          <!-- Regnbed venstre stor -->
+          <ellipse cx="30" cy="195" rx="30" ry="10" fill="#1a5535"/>
+          <ellipse cx="30" cy="190" rx="24" ry="7" fill="#2a7045"/>
+          <circle cx="17" cy="180" r="10" fill="#3aaa55"/>
+          <circle cx="31" cy="174" r="13" fill="#4bb865"/>
+          <circle cx="45" cy="180" r="9" fill="#3aaa55"/>
+          <circle cx="20" cy="168" r="5" fill="#f0d040"/>
+          <circle cx="36" cy="163" r="6" fill="#f0a030"/>
+          <circle cx="48" cy="170" r="4" fill="#e84070" opacity="0.8"/>
+          <!-- Sommerfugl -->
+          <ellipse cx="14" cy="158" rx="8" ry="5" fill="#e8a030" opacity="0.85" transform="rotate(-20 14 158)"/>
+          <ellipse cx="22" cy="155" rx="7" ry="4" fill="#e8a030" opacity="0.8" transform="rotate(20 22 155)"/>
+          <ellipse cx="14" cy="163" rx="6" ry="4" fill="#c07020" opacity="0.7" transform="rotate(15 14 163)"/>
+          <ellipse cx="22" cy="161" rx="6" ry="4" fill="#c07020" opacity="0.7" transform="rotate(-10 22 161)"/>
+          <line x1="18" y1="158" x2="18" y2="166" stroke="#2a1400" stroke-width="1"/>
+          <!-- Træ højre -->
+          <rect x="240" y="168" width="10" height="40" rx="3" fill="#8a6a35"/>
+          <circle cx="245" cy="158" rx="22" r="22" fill="#2d7a4a"/>
+          <circle cx="230" cy="167" rx="15" r="15" fill="#349958"/>
+          <circle cx="260" cy="165" rx="17" r="17" fill="#349958"/>
+          <!-- Blomster i have -->
+          <circle cx="190" cy="193" r="6" fill="#f0d040"/>
+          <circle cx="200" cy="196" r="5" fill="#f0d040"/>
+          <circle cx="210" cy="194" r="6" fill="#e84070" opacity="0.8"/>
+          <line x1="190" y1="199" x2="190" y2="208" stroke="#3a7a35" stroke-width="1.5"/>
+          <line x1="200" y1="201" x2="200" y2="208" stroke="#3a7a35" stroke-width="1.5"/>
+          <line x1="210" y1="200" x2="210" y2="208" stroke="#3a7a35" stroke-width="1.5"/>
+          <!-- Flow-pil fra tag til regnbed -->
+          <path d="M65 120 Q30 148 30 183" stroke="#7dd8f8" stroke-width="2" stroke-dasharray="4,3" fill="none" opacity="0.6"/>
+        </svg>
+      </div>
     </div>
-    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none translate-y-1"><svg class="block w-full h-16 text-surface fill-current" preserveAspectRatio="none" viewBox="0 0 1200 60"><path d="M0,0 C300,60 900,60 1200,0 L1200,60 L0,60 Z"/></svg></div>
   </section>
-  <div class="max-w-7xl mx-auto px-8 py-12 -mt-8 relative z-20">
-    <div class="flex gap-3 mb-8 flex-wrap">
-      <button onclick="setSaeson('vinter')" class="have-btn bg-surface-container-low text-on-surface px-5 py-2.5 rounded-full text-sm font-medium hover:bg-secondary-container transition-colors" data-saeson="vinter">❄️ Vinter</button>
-      <button onclick="setSaeson('foraar')" class="have-btn bg-surface-container-low text-on-surface px-5 py-2.5 rounded-full text-sm font-medium hover:bg-secondary-container transition-colors" data-saeson="foraar">🌱 Forår</button>
-      <button onclick="setSaeson('sommer')" class="have-btn bg-surface-container-low text-on-surface px-5 py-2.5 rounded-full text-sm font-medium hover:bg-secondary-container transition-colors" data-saeson="sommer">☀️ Sommer</button>
-      <button onclick="setSaeson('efteraar')" class="have-btn bg-surface-container-low text-on-surface px-5 py-2.5 rounded-full text-sm font-medium hover:bg-secondary-container transition-colors" data-saeson="efteraar">🍂 Efterår</button>
+
+  <!-- DROPDOWN "Bliv klogere på en bestemt løsning" -->
+  <section class="max-w-4xl mx-auto px-6 pt-0 pb-6 -mt-1">
+    <div class="bg-white rounded-b-2xl shadow-[0_4px_20px_rgba(0,0,0,0.07)]">
+      <button onclick="haveToggleDropdown()" class="w-full flex items-center justify-between px-8 py-5 hover:bg-[#f9f5e8] transition-colors rounded-2xl">
+        <span class="text-sm font-medium text-[#1a2a1a]" id="have-dropdown-label">Bliv klogere på en bestemt sæson — vælg fra listen</span>
+        <span class="material-symbols-outlined text-[#1a4a3a]" id="have-dropdown-icon">expand_more</span>
+      </button>
+      <div id="have-dropdown" class="hidden border-t border-[#1a2a1a]/5 px-8 py-4 grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <button onclick="setSaeson('vinter',this)" class="have-sæson-btn text-left px-4 py-3 rounded-xl bg-[#f9f5e8] hover:bg-[#eef6ef] transition-colors">
+          <span class="text-lg block mb-1">❄️</span>
+          <p class="font-bold text-sm text-[#1a2a1a]">Vinter</p>
+          <p class="text-[10px] text-[#1a2a1a]/50">dec–feb</p>
+        </button>
+        <button onclick="setSaeson('foraar',this)" class="have-sæson-btn text-left px-4 py-3 rounded-xl bg-[#f9f5e8] hover:bg-[#eef6ef] transition-colors">
+          <span class="text-lg block mb-1">🌱</span>
+          <p class="font-bold text-sm text-[#1a2a1a]">Forår</p>
+          <p class="text-[10px] text-[#1a2a1a]/50">mar–maj</p>
+        </button>
+        <button onclick="setSaeson('sommer',this)" class="have-sæson-btn text-left px-4 py-3 rounded-xl bg-[#eef6ef] border-2 border-[#1a4a3a] transition-colors">
+          <span class="text-lg block mb-1">☀️</span>
+          <p class="font-bold text-sm text-[#1a4a3a]">Sommer</p>
+          <p class="text-[10px] text-[#1a4a3a]/60">jun–aug</p>
+        </button>
+        <button onclick="setSaeson('efteraar',this)" class="have-sæson-btn text-left px-4 py-3 rounded-xl bg-[#f9f5e8] hover:bg-[#eef6ef] transition-colors">
+          <span class="text-lg block mb-1">🍂</span>
+          <p class="font-bold text-sm text-[#1a2a1a]">Efterår</p>
+          <p class="text-[10px] text-[#1a2a1a]/50">sep–nov</p>
+        </button>
+      </div>
     </div>
-    <div id="have-vis" class="grid md:grid-cols-2 gap-5"></div>
-  </div>
+  </section>
+
+  <!-- HVAD FÅR DU UD AF AT RENOVERE — 6-ikon grid som SparEnergi -->
+  <section class="max-w-4xl mx-auto px-6 pb-8">
+    <div class="text-center mb-7">
+      <h2 class="font-headline text-2xl font-bold text-[#1a2a1a] mb-2">Hvad får du ud af at renovere din have?</h2>
+      <p class="text-sm text-[#1a2a1a]/50 max-w-xl mx-auto">Du kan bl.a. spare penge og reducere din CO₂-belastning ved at anlægge naturbaserede løsninger. Hvilke fordele der vejer tungest afhænger af dit konkrete projekt.</p>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-5">
+      <div class="text-center px-3">
+        <div class="w-11 h-11 mx-auto mb-3 flex items-center justify-center">
+          <svg width="42" height="42" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="21" fill="#e8f5ee" opacity="0.8"/><path d="M21 10C21 10 14 18 14 23c0 3.9 3.1 7 7 7s7-3.1 7-7c0-5-7-13-7-13Z" fill="#2d7a5a"/></svg>
+        </div>
+        <h4 class="font-headline font-bold text-sm text-[#1a2a1a] mb-1">Lavere varmeforbrug</h4>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Grønne tage og vægge reducerer overophedning og sænker behovet for køling om sommeren.</p>
+      </div>
+      <div class="text-center px-3">
+        <div class="w-11 h-11 mx-auto mb-3 flex items-center justify-center">
+          <svg width="42" height="42" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="21" fill="#e8f5ee" opacity="0.8"/><path d="M14 21h14M21 14v14" stroke="#2d7a5a" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div>
+        <h4 class="font-headline font-bold text-sm text-[#1a2a1a] mb-1">Mindre træk og kulde</h4>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Beplantning fungerer som vindbarriere og reducerer kuldepåvirkning fra vinterstorme.</p>
+      </div>
+      <div class="text-center px-3">
+        <div class="w-11 h-11 mx-auto mb-3 flex items-center justify-center">
+          <svg width="42" height="42" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="21" fill="#e8f5ee" opacity="0.8"/><rect x="12" y="16" width="18" height="12" rx="3" fill="none" stroke="#2d7a5a" stroke-width="2"/><rect x="17" y="12" width="8" height="5" rx="1.5" fill="none" stroke="#2d7a5a" stroke-width="2"/></svg>
+        </div>
+        <h4 class="font-headline font-bold text-sm text-[#1a2a1a] mb-1">Moderne løsninger</h4>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">LAR-haver er anerkendte som moderne og æstetiske løsninger der øger ejendommens værdi.</p>
+      </div>
+      <div class="text-center px-3">
+        <div class="w-11 h-11 mx-auto mb-3 flex items-center justify-center">
+          <svg width="42" height="42" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="21" fill="#e8f5ee" opacity="0.8"/><polyline points="13,28 18,22 22,25 29,15" stroke="#2d7a5a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4 class="font-headline font-bold text-sm text-[#1a2a1a] mb-1">Værdien stiger</h4>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Klimasikrede grunde med grønne løsninger sælger hurtigere og til højere priser.</p>
+      </div>
+      <div class="text-center px-3">
+        <div class="w-11 h-11 mx-auto mb-3 flex items-center justify-center">
+          <svg width="42" height="42" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="21" fill="#e8f5ee" opacity="0.8"/><path d="M21 13c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8Z" fill="none" stroke="#2d7a5a" stroke-width="2"/><path d="M17 21l2.5 2.5L25 18" stroke="#2d7a5a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4 class="font-headline font-bold text-sm text-[#1a2a1a] mb-1">Klimavenlig bolig</h4>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Du aflaster kloakken og mindsker din CO₂-belastning med naturbaserede løsninger.</p>
+      </div>
+      <div class="text-center px-3">
+        <div class="w-11 h-11 mx-auto mb-3 flex items-center justify-center">
+          <svg width="42" height="42" viewBox="0 0 42 42" fill="none"><circle cx="21" cy="21" r="21" fill="#e8f5ee" opacity="0.8"/><ellipse cx="21" cy="24" rx="7" ry="5" fill="none" stroke="#2d7a5a" stroke-width="2"/><line x1="21" y1="14" x2="21" y2="19" stroke="#2d7a5a" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="16" x2="18.5" y2="20" stroke="#2d7a5a" stroke-width="1.5" stroke-linecap="round"/><line x1="26" y1="16" x2="23.5" y2="20" stroke="#2d7a5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h4 class="font-headline font-bold text-sm text-[#1a2a1a] mb-1">Mere biodiversitet</h4>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Regnbede og vådområder tiltrækker insekter, fugle og padder til din have.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MØR GRØN BLOK — "Hvordan renoverer du netop din hustype?" -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="bg-[#1a4a3a] rounded-2xl overflow-hidden grid lg:grid-cols-2 gap-0">
+      <div class="p-9 flex flex-col justify-center">
+        <h2 class="font-headline text-xl font-bold text-white mb-3 leading-snug">Hvordan ser din fremtidige have ud sæson for sæson?</h2>
+        <p class="text-sm text-white/65 leading-relaxed mb-5">Alle løsninger ser ikke ens ud om vinteren og sommeren. Et regnbed blomstrer om sommeren og sover om vinteren. Grønne tage er ensartede hele året.</p>
+        <p class="text-xs text-white/45 mb-5">Du kan her lese viden og inspiration til, hvordan din have vil se ud på de 4 årstider. Find de løsninger der passer bedst til din have og din livsstil.</p>
+        <button onclick="navigate('gang')" class="self-start bg-white text-[#1a4a3a] text-xs font-bold px-5 py-2.5 rounded-full hover:bg-[#e8f5ee] transition-colors inline-flex items-center gap-1.5">
+          Find din guide <span class="material-symbols-outlined text-xs">arrow_forward</span>
+        </button>
+      </div>
+      <div class="bg-[#154035] flex items-end justify-center min-h-[200px] py-4">
+        <svg viewBox="0 0 240 190" class="w-56" fill="none">
+          <!-- Hus med grønt tag -->
+          <rect x="60" y="100" width="100" height="80" rx="3" fill="white" opacity="0.85"/>
+          <polygon points="50,103 170,103 110,55" fill="#2d7a5a"/>
+          <!-- Sedum -->
+          <ellipse cx="75" cy="100" rx="8" ry="4" fill="#4bb865" opacity="0.8"/>
+          <ellipse cx="92" cy="96" rx="10" ry="4" fill="#55c870" opacity="0.8"/>
+          <ellipse cx="110" cy="94" rx="8" ry="4" fill="#4bb865" opacity="0.8"/>
+          <ellipse cx="128" cy="96" rx="9" ry="4" fill="#55c870" opacity="0.8"/>
+          <ellipse cx="144" cy="100" rx="7" ry="4" fill="#4bb865" opacity="0.8"/>
+          <!-- Person ved vindue -->
+          <rect x="145" y="115" width="8" height="6" rx="1" fill="#a8d8c8"/>
+          <circle cx="180" cy="120" r="8" fill="#f5d5a8"/>
+          <rect x="175" y="128" width="10" height="22" rx="3" fill="#5a9a6a"/>
+          <!-- Sæson-labels -->
+          <rect x="10" y="30" width="35" height="18" rx="9" fill="white" opacity="0.15"/>
+          <text x="27" y="42" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white" opacity="0.7">❄️ Vinter</text>
+          <rect x="55" y="15" width="35" height="18" rx="9" fill="white" opacity="0.15"/>
+          <text x="72" y="27" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white" opacity="0.7">🌱 Forår</text>
+          <rect x="140" y="15" width="40" height="18" rx="9" fill="#e8b84b" opacity="0.8"/>
+          <text x="160" y="27" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#2a1400" font-weight="bold">☀️ Sommer</text>
+          <rect x="195" y="30" width="40" height="18" rx="9" fill="white" opacity="0.15"/>
+          <text x="215" y="42" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white" opacity="0.7">🍂 Efterår</text>
+          <!-- Regnbed -->
+          <ellipse cx="30" cy="175" rx="28" ry="9" fill="#2a7045"/>
+          <circle cx="18" cy="163" r="9" fill="#3aaa55"/>
+          <circle cx="31" cy="158" r="11" fill="#4bb865"/>
+          <circle cx="44" cy="163" r="8" fill="#3aaa55"/>
+          <circle cx="21" cy="152" r="4.5" fill="#f0d040"/>
+          <circle cx="37" cy="148" r="5" fill="#f0a030"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- LYSEGRØN BLOK — "Regnbed eller grønt tag?" -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="bg-[#c8e0c8] rounded-2xl p-8 grid lg:grid-cols-2 gap-7 items-center">
+      <div>
+        <h2 class="font-headline text-xl font-bold text-[#0d2a1a] mb-3 leading-snug">Regnbed eller grønt tag?</h2>
+        <p class="text-sm text-[#0d2a1a]/65 leading-relaxed mb-4">Det kan være fordelagtigt at satse på ét frem for det andet, men der er faktisk mange gode grunde til at kombinere begge og renovere din have som en helhed.</p>
+        <p class="text-sm text-[#0d2a1a]/65 leading-relaxed mb-5">Bliv klogere på de to løsninger og find ud af hvad der giver mest mening for netop din grund og din økonomi.</p>
+        <button onclick="navigate('byg')" class="bg-[#1a4a3a] text-white text-xs font-bold px-5 py-2.5 rounded-full hover:bg-[#154035] transition-colors inline-flex items-center gap-1.5">
+          Renovering vs. nyanlæg <span class="material-symbols-outlined text-xs">arrow_forward</span>
+        </button>
+      </div>
+      <div class="flex justify-center">
+        <svg viewBox="0 0 200 160" class="w-44" fill="none">
+          <!-- Regnbed venstre -->
+          <ellipse cx="50" cy="140" rx="42" ry="12" fill="#1a5535" opacity="0.6"/>
+          <circle cx="35" cy="124" r="13" fill="#3aaa55"/>
+          <circle cx="52" cy="118" r="16" fill="#4bb865"/>
+          <circle cx="68" cy="124" r="12" fill="#3aaa55"/>
+          <!-- Midt: pil/valg -->
+          <text x="100" y="110" text-anchor="middle" font-family="sans-serif" font-size="24" fill="#1a4a3a" opacity="0.3">vs</text>
+          <!-- Grønt tag højre -->
+          <rect x="120" y="105" width="65" height="45" rx="3" fill="white" opacity="0.8"/>
+          <polygon points="115,108 190,108 152,72" fill="#2d7a5a"/>
+          <ellipse cx="130" cy="105" rx="7" ry="3.5" fill="#4bb865" opacity="0.8"/>
+          <ellipse cx="145" cy="101" rx="9" ry="3.5" fill="#55c870" opacity="0.8"/>
+          <ellipse cx="162" cy="99" rx="8" ry="3.5" fill="#4bb865" opacity="0.8"/>
+          <ellipse cx="177" cy="101" rx="7" ry="3.5" fill="#55c870" opacity="0.8"/>
+          <!-- Labels -->
+          <text x="52" y="156" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#1a4a3a" font-weight="bold">Regnbed</text>
+          <text x="152" y="157" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#1a4a3a" font-weight="bold">Grønt tag</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- TO STORE KATEGORIKORT med illustrationer -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div onclick="navigate('byg')" class="bg-[#f5e8c0] rounded-2xl overflow-hidden cursor-pointer hover:brightness-97 transition-all">
+        <div class="flex justify-center pt-7 pb-2">
+          <svg width="110" height="90" viewBox="0 0 110 90" fill="none">
+            <ellipse cx="55" cy="80" rx="48" ry="8" fill="#c8a830" opacity="0.3"/>
+            <ellipse cx="55" cy="75" rx="38" ry="7" fill="#2a7045"/>
+            <circle cx="38" cy="62" r="12" fill="#3aaa55"/>
+            <circle cx="56" cy="56" r="15" fill="#4bb865"/>
+            <circle cx="72" cy="61" r="11" fill="#3aaa55"/>
+            <circle cx="44" cy="47" r="6" fill="#f0d040"/>
+            <circle cx="62" cy="43" r="7" fill="#f0a030"/>
+            <circle cx="74" cy="51" r="5" fill="#e84070" opacity="0.8"/>
+            <!-- Bi -->
+            <ellipse cx="88" cy="35" rx="6" ry="4" fill="#f0c030"/>
+            <line x1="84" y1="34" x2="92" y2="34" stroke="#2a1400" stroke-width="0.8"/>
+            <ellipse cx="84" cy="33" rx="5" ry="3" fill="white" opacity="0.6" transform="rotate(-20 84 33)"/>
+            <ellipse cx="89" cy="32" rx="5" ry="3" fill="white" opacity="0.6" transform="rotate(20 89 32)"/>
+            <!-- Regndråbe ned -->
+            <line x1="20" y1="20" x2="18" y2="35" stroke="#7dd8f8" stroke-width="2" stroke-linecap="round"/>
+            <line x1="35" y1="15" x2="33" y2="30" stroke="#7dd8f8" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="px-7 pb-7">
+          <h3 class="font-headline font-bold text-[#2a1400] text-base mb-2 leading-snug">Spar energi med boligens naturlager</h3>
+          <p class="text-xs text-[#2a1400]/60 leading-relaxed mb-4">En naturhave med LAR-løsninger fungerer som dit personlige energimagasin og reducerer behovet for kunstig vanding og klimaanlæg markant.</p>
+          <button class="bg-[#1a4a3a] text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#154035] transition-colors inline-flex items-center gap-1">
+            Læs mere <span class="material-symbols-outlined text-xs">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+      <div onclick="navigate('inspiration')" class="bg-[#c8e0c8] rounded-2xl overflow-hidden cursor-pointer hover:brightness-97 transition-all">
+        <div class="flex justify-center pt-7 pb-2">
+          <svg width="110" height="90" viewBox="0 0 110 90" fill="none">
+            <!-- Globe / verden -->
+            <circle cx="55" cy="45" r="32" fill="white" opacity="0.6" stroke="#2d7a5a" stroke-width="2"/>
+            <ellipse cx="55" cy="45" rx="18" ry="32" fill="none" stroke="#2d7a5a" stroke-width="1.5" opacity="0.5"/>
+            <line x1="23" y1="45" x2="87" y2="45" stroke="#2d7a5a" stroke-width="1.5" opacity="0.5"/>
+            <line x1="27" y1="32" x2="83" y2="32" stroke="#2d7a5a" stroke-width="1" opacity="0.3"/>
+            <line x1="27" y1="58" x2="83" y2="58" stroke="#2d7a5a" stroke-width="1" opacity="0.3"/>
+            <!-- Planter rundt om globen -->
+            <circle cx="25" cy="72" r="9" fill="#3aaa55" opacity="0.7"/>
+            <rect x="22" y="78" width="5" height="10" rx="2" fill="#8a6a35"/>
+            <circle cx="85" cy="70" r="8" fill="#4bb865" opacity="0.7"/>
+            <rect x="82" y="75" width="5" height="10" rx="2" fill="#8a6a35"/>
+            <!-- Sky -->
+            <ellipse cx="55" cy="15" rx="16" ry="7" fill="white" opacity="0.7"/>
+            <ellipse cx="67" cy="13" rx="11" ry="6" fill="white" opacity="0.7"/>
+            <ellipse cx="43" cy="14" rx="9" ry="5" fill="white" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="px-7 pb-7">
+          <h3 class="font-headline font-bold text-[#0d2a1a] text-base mb-2 leading-snug">Vil du renovere bæredygtigt?</h3>
+          <p class="text-xs text-[#0d2a1a]/60 leading-relaxed mb-4">Et bæredygtigt have-projekt handler om mere end regnvand. Her kan du se hvad du kan gøre for at renovere din have om bæredygtighed og biodiversitet.</p>
+          <button class="bg-[#1a4a3a] text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#154035] transition-colors inline-flex items-center gap-1">
+            Bæredygtig renovering <span class="material-symbols-outlined text-xs">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIRE ACTION-CARDS — som "Bor du i hus/lejlighed/sommerhus" -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      <div onclick="navigate('gang')" class="bg-[#f5e8c0] rounded-2xl p-6 cursor-pointer hover:brightness-97 transition-all flex flex-col">
+        <div class="mb-4">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="22" fill="#e8b84b" opacity="0.3"/>
+            <rect x="11" y="22" width="22" height="16" rx="2" fill="#c8952a" opacity="0.7"/>
+            <polygon points="8,24 36,24 22,12" fill="#c8952a"/>
+            <rect x="18" y="28" width="8" height="10" rx="1" fill="#e8b84b" opacity="0.8"/>
+          </svg>
+        </div>
+        <h4 class="font-headline font-bold text-[#2a1400] text-sm mb-1.5 leading-snug">Bor du i hus?</h4>
+        <p class="text-xs text-[#2a1400]/60 leading-relaxed mb-4 flex-1">Find guides til regnbed og faskine der er nemme at anlægge i en have med mere plads.</p>
+        <span class="text-xs font-bold text-[#8a6010] inline-flex items-center gap-1">→</span>
+      </div>
+      <div onclick="navigate('gang')" class="bg-[#cce0cc] rounded-2xl p-6 cursor-pointer hover:brightness-97 transition-all flex flex-col">
+        <div class="mb-4">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="22" fill="#2d7a5a" opacity="0.2"/>
+            <rect x="11" y="10" width="22" height="26" rx="2" fill="#2d7a5a" opacity="0.6"/>
+            <rect x="14" y="16" width="5" height="4" rx="1" fill="white" opacity="0.7"/>
+            <rect x="25" y="16" width="5" height="4" rx="1" fill="white" opacity="0.7"/>
+            <rect x="14" y="23" width="5" height="4" rx="1" fill="white" opacity="0.7"/>
+            <rect x="25" y="23" width="5" height="4" rx="1" fill="white" opacity="0.7"/>
+          </svg>
+        </div>
+        <h4 class="font-headline font-bold text-[#0d2a1a] text-sm mb-1.5 leading-snug">Bor du i lejlighed?</h4>
+        <p class="text-xs text-[#0d2a1a]/60 leading-relaxed mb-4 flex-1">Se gode guides til fælles gårdhave-projekter, der kan spare hele boligforeningen penge.</p>
+        <span class="text-xs font-bold text-[#1a4a3a] inline-flex items-center gap-1">→</span>
+      </div>
+      <div onclick="navigate('gang')" class="bg-[#fce5dc] rounded-2xl p-6 cursor-pointer hover:brightness-97 transition-all flex flex-col col-span-2 sm:col-span-1">
+        <div class="mb-4">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="22" fill="#e8a87c" opacity="0.3"/>
+            <rect x="10" y="25" width="24" height="14" rx="2" fill="#e8a87c" opacity="0.7"/>
+            <polygon points="7,27 37,27 22,16" fill="#c8784c" opacity="0.8"/>
+            <circle cx="32" cy="30" r="3" fill="#f0c890" opacity="0.8"/>
+            <rect x="15" y="30" width="6" height="9" rx="1" fill="white" opacity="0.6"/>
+          </svg>
+        </div>
+        <h4 class="font-headline font-bold text-[#2a0a00] text-sm mb-1.5 leading-snug">Har du sommerhus?</h4>
+        <p class="text-xs text-[#2a0a00]/60 leading-relaxed mb-4 flex-1">Der kan store mængder regn fra taget og varmen og sommerhuset kan kræve specielle løsninger.</p>
+        <span class="text-xs font-bold text-[#c04030] inline-flex items-center gap-1">→</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STOR GRØN LØSNINGS-MENU — som "Alle renoveringer"-griddet -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="bg-[#c8e0c8] rounded-2xl p-7">
+      <p class="text-[10px] uppercase tracking-widest font-bold text-[#1a4a3a] mb-1">Alle løsninger</p>
+      <h2 class="font-headline text-xl font-bold text-[#0d2a1a] mb-6">Bliv klogere på en bestemt løsning — vælg fra listen</h2>
+      <div class="grid sm:grid-cols-3 gap-4">
+        <!-- Nedsivning -->
+        <div class="bg-white rounded-xl p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="material-symbols-outlined text-[#1a4a3a] text-base">water_drop</span>
+            <h3 class="font-headline font-bold text-[#1a2a1a] text-sm">Nedsivning</h3>
+          </div>
+          <div class="space-y-1">
+            <button onclick="navigate('gang')" class="w-full flex items-center justify-between py-2 px-2 rounded-lg hover:bg-[#f9f5e8] transition-colors text-xs text-[#1a2a1a]/70 hover:text-[#1a2a1a] group">
+              <span>Regnbed</span><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]/40 group-hover:text-[#1a4a3a]">chevron_right</span>
+            </button>
+            <button onclick="navigate('gang')" class="w-full flex items-center justify-between py-2 px-2 rounded-lg hover:bg-[#f9f5e8] transition-colors text-xs text-[#1a2a1a]/70 hover:text-[#1a2a1a] group">
+              <span>Faskine</span><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]/40 group-hover:text-[#1a4a3a]">chevron_right</span>
+            </button>
+            <button onclick="navigate('gang')" class="w-full flex items-center justify-between py-2 px-2 rounded-lg hover:bg-[#f9f5e8] transition-colors text-xs text-[#1a2a1a]/70 hover:text-[#1a2a1a] group">
+              <span>Permeable belægninger</span><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]/40 group-hover:text-[#1a4a3a]">chevron_right</span>
+            </button>
+            <button onclick="navigate('gang')" class="w-full flex items-center justify-between py-2 px-2 rounded-lg hover:bg-[#f9f5e8] transition-colors text-xs text-[#1a2a1a]/70 hover:text-[#1a2a1a] group">
+              <span>Vadi / åben grøft</span><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]/40 group-hover:text-[#1a4a3a]">chevron_right</span>
+            </button>
+            <button onclick="navigate('gang')" class="w-full flex items-center justify-between py-2 px-2 rounded-lg hover:bg-[#f9f5e8] transition-colors text-xs text-[#1a2a1a]/70 hover:text-[#1a2a1a] group">
+              <span>Infiltrationsplæne</span><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]/40 group-hover:text-[#1a4a3a]">chevron_right</span>
+            </button>
+          </div>
+        </div>
+        <!-- Magasinering -->
+        <div class="bg-white rounded-xl p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="material-symbols-outlined text-[#1a4a3a] text-base">water_full</span>
+            <h3 class="font-headline font-bold text-[#1a2a1a] text-sm">Magasinering</h3>
+          </div>
+          <div class="space-y-1">
+            <button onclick="navigate('gang')" class="w-full flex items-center justify-between py-2 px-2 rounded-lg hover:bg-[#f9f5e8] transition-colors text-xs text-[#1a2a1a]/70 hover:text-[#1a2a1a] group">
+              <span>Vådbassin</span><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]/40 group-hover:text-[#1a4a3a]">chevron_right</span>
+            </button>
+            <button onclick="navigate('gang')" class="w-full flex items-center justify-between py-2 px-2 rounded-lg hover:bg-[#f9f5e8] transition-colors text-xs text-[#1a2a1a]/70 hover:text-[#1a2a1a] group">
+              <span>Tørbassin</span><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]/40 group-hover:text-[#1a4a3a]">chevron_right</span>
+            </button>
+            <button onclick="navigate('gang')" class="w-full flex items-center justify-between py-2 px-2 rounded-lg hover:bg-[#f9f5e8] transition-colors text-xs text-[#1a2a1a]/70 hover:text-[#1a2a1a] group">
+              <span>Underjordisk bassin</span><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]/40 group-hover:text-[#1a4a3a]">chevron_right</span>
+            </button>
+            <button onclick="navigate('gang')" class="w-full flex items-center justify-between py-2 px-2 rounded-lg hover:bg-[#f9f5e8] transition-colors text-xs text-[#1a2a1a]/70 hover:text-[#1a2a1a] group">
+              <span>Regnvandstank</span><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]/40 group-hover:text-[#1a4a3a]">chevron_right</span>
+            </button>
+          </div>
+        </div>
+        <!-- Fordampning + Beskyttelse -->
+        <div class="space-y-4">
+          <div class="bg-white rounded-xl p-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="material-symbols-outlined text-[#1a4a3a] text-base">eco</span>
+              <h3 class="font-headline font-bold text-[#1a2a1a] text-sm">Fordampning</h3>
+            </div>
+            <div class="space-y-1">
+              <button onclick="navigate('gang')" class="w-full flex items-center justify-between py-2 px-2 rounded-lg hover:bg-[#f9f5e8] transition-colors text-xs text-[#1a2a1a]/70 hover:text-[#1a2a1a] group">
+                <span>Grønne tage</span><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]/40 group-hover:text-[#1a4a3a]">chevron_right</span>
+              </button>
+              <button onclick="navigate('gang')" class="w-full flex items-center justify-between py-2 px-2 rounded-lg hover:bg-[#f9f5e8] transition-colors text-xs text-[#1a2a1a]/70 hover:text-[#1a2a1a] group">
+                <span>Træer</span><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]/40 group-hover:text-[#1a4a3a]">chevron_right</span>
+              </button>
+              <button onclick="navigate('gang')" class="w-full flex items-center justify-between py-2 px-2 rounded-lg hover:bg-[#f9f5e8] transition-colors text-xs text-[#1a2a1a]/70 hover:text-[#1a2a1a] group">
+                <span>Grønne vægge</span><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]/40 group-hover:text-[#1a4a3a]">chevron_right</span>
+              </button>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="material-symbols-outlined text-[#1a4a3a] text-base">security</span>
+              <h3 class="font-headline font-bold text-[#1a2a1a] text-sm">Beskyttelse</h3>
+            </div>
+            <div class="space-y-1">
+              <button onclick="navigate('gang')" class="w-full flex items-center justify-between py-2 px-2 rounded-lg hover:bg-[#f9f5e8] transition-colors text-xs text-[#1a2a1a]/70 hover:text-[#1a2a1a] group">
+                <span>Højvandslukke</span><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]/40 group-hover:text-[#1a4a3a]">chevron_right</span>
+              </button>
+              <button onclick="navigate('gang')" class="w-full flex items-center justify-between py-2 px-2 rounded-lg hover:bg-[#f9f5e8] transition-colors text-xs text-[#1a2a1a]/70 hover:text-[#1a2a1a] group">
+                <span>Omfangsdræn</span><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]/40 group-hover:text-[#1a4a3a]">chevron_right</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRE BUNDKORT + NYHEDSBREV -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="grid sm:grid-cols-3 gap-4">
+      <div onclick="navigate('kortlaeg')" class="bg-[#f5e0c0] rounded-2xl p-6 cursor-pointer hover:brightness-97 transition-all flex flex-col">
+        <div class="flex-1">
+          <div class="w-10 h-10 mb-3 flex items-center justify-center">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#e8b84b" opacity="0.3"/><rect x="8" y="22" width="24" height="14" rx="2" fill="none" stroke="#c8952a" stroke-width="2"/><path d="M12 22v-5a8 8 0 0116 0v5" stroke="#c8952a" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h4 class="font-headline font-bold text-[#2a1400] text-sm mb-1.5">Kan du få tilskud?</h4>
+          <p class="text-xs text-[#2a1400]/60 leading-relaxed mb-4">Bliv klogere på de aktuelle tilskudsmuligheder og find ud af hvem der kan hjælpe dig.</p>
+        </div>
+        <span class="text-xs font-bold text-[#8a6010] inline-flex items-center gap-1">→</span>
+      </div>
+      <div onclick="navigate('byg')" class="bg-[#cce8cc] rounded-2xl p-6 cursor-pointer hover:brightness-97 transition-all flex flex-col">
+        <div class="flex-1">
+          <div class="w-10 h-10 mb-3 flex items-center justify-center">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#2d7a5a" opacity="0.2"/><rect x="10" y="20" width="20" height="14" rx="2" fill="none" stroke="#2d7a5a" stroke-width="2"/><polygon points="7,22 33,22 20,11" fill="none" stroke="#2d7a5a" stroke-width="2" stroke-linejoin="round"/><ellipse cx="20" cy="19" rx="8" ry="3" fill="#4bb865" opacity="0.6"/></svg>
+          </div>
+          <h4 class="font-headline font-bold text-[#0d2a1a] text-sm mb-1.5">Skift varmekilde</h4>
+          <p class="text-xs text-[#0d2a1a]/60 leading-relaxed mb-4">Find den bedste varmepumpe til din bolig, hvad det koster og hvad du kan spare.</p>
+        </div>
+        <span class="text-xs font-bold text-[#1a4a3a] inline-flex items-center gap-1">→</span>
+      </div>
+      <div onclick="navigate('diagnose')" class="bg-[#fce5dc] rounded-2xl p-6 cursor-pointer hover:brightness-97 transition-all flex flex-col">
+        <div class="flex-1">
+          <div class="w-10 h-10 mb-3 flex items-center justify-center">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#e8a87c" opacity="0.3"/><path d="M20 13c-3.9 0-7 3.1-7 7s3.1 7 7 7 7-3.1 7-7-3.1-7-7-7Z" fill="none" stroke="#c8784c" stroke-width="2"/><line x1="25.5" y1="25.5" x2="30" y2="30" stroke="#c8784c" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </div>
+          <h4 class="font-headline font-bold text-[#2a0a00] text-sm mb-1.5">Spar energi i hverdagen</h4>
+          <p class="text-xs text-[#2a0a00]/60 leading-relaxed mb-4">Vi hjælper dig med at finde de rigtige løsninger til din situation og budget.</p>
+        </div>
+        <span class="text-xs font-bold text-[#c04030] inline-flex items-center gap-1">→</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- NYHEDSBREV BANNER -->
+  <section class="max-w-4xl mx-auto px-6 pb-14">
+    <div class="bg-[#1a4a3a] rounded-2xl p-8 grid sm:grid-cols-2 gap-6 items-center">
+      <div>
+        <h2 class="font-headline text-xl font-bold text-white mb-3">Tilmeld dig vores nyhedsbrev</h2>
+        <p class="text-sm text-white/60 leading-relaxed mb-5">Vil du spare vand og klimasikre din have? Tilmeld dig vores nyhedsbrev og få de bedste tips til din bolig og haven direkte i indbakken.</p>
+        <div class="flex gap-2 max-w-sm">
+          <input type="email" placeholder="Din email" class="flex-1 rounded-full px-4 py-2.5 text-sm bg-white/10 text-white border border-white/20 focus:border-white/50 focus:outline-none placeholder:text-white/35"/>
+          <button class="bg-white text-[#1a4a3a] font-bold text-xs px-5 py-2.5 rounded-full hover:bg-[#e8f5ee] transition-colors whitespace-nowrap">Tilmeld →</button>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <svg viewBox="0 0 160 130" class="w-36" fill="none">
+          <rect x="45" y="45" width="75" height="55" rx="6" fill="white" opacity="0.85"/>
+          <rect x="45" y="45" width="75" height="18" rx="6 6 0 0" fill="#c8a030" opacity="0.6"/>
+          <path d="M45 63l37.5 24 37.5-24" stroke="#e8b84b" stroke-width="1.5" fill="none" opacity="0.4"/>
+          <rect x="120" y="35" width="3" height="30" fill="#c8a030"/>
+          <polygon points="123,35 136,42 123,49" fill="#e8b84b"/>
+          <circle cx="25" cy="88" r="15" fill="#3aaa55" opacity="0.55"/>
+          <rect x="22" y="98" width="5" height="18" rx="2" fill="#8a6a35"/>
+          <circle cx="145" cy="85" r="14" fill="#4bb865" opacity="0.55"/>
+          <rect x="142" y="94" width="5" height="18" rx="2" fill="#8a6a35"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
 </div>
+</div><!-- /page-have -->
+
 
 <!-- ══ PAGE: KOM GODT I GANG ══ -->
 <div id="page-gang" class="page pt-24">
@@ -2660,6 +3145,36 @@ function initInspiMap() {
       </div>`;
     }).join('');
   }
+}
+
+// ── Have sæson dropdown ──
+function haveToggleDropdown() {
+  const dd = document.getElementById('have-dropdown');
+  const icon = document.getElementById('have-dropdown-icon');
+  if (!dd || !icon) return;
+  const open = !dd.classList.contains('hidden');
+  dd.classList.toggle('hidden', open);
+  icon.textContent = open ? 'expand_more' : 'expand_less';
+}
+
+function setSaeson(s, btn) {
+  // Update button styles
+  document.querySelectorAll('.have-sæson-btn').forEach(b => {
+    b.classList.remove('bg-[#eef6ef]', 'border-2', 'border-[#1a4a3a]');
+    b.classList.add('bg-[#f9f5e8]');
+    b.querySelectorAll('p').forEach(p => {
+      p.classList.remove('text-[#1a4a3a]', 'text-[#1a4a3a]/60');
+      p.classList.add('text-[#1a2a1a]', 'text-[#1a2a1a]/50');
+    });
+  });
+  if (btn) {
+    btn.classList.remove('bg-[#f9f5e8]');
+    btn.classList.add('bg-[#eef6ef]', 'border-2', 'border-[#1a4a3a]');
+  }
+  // Update label
+  const labels = { vinter:'❄️ Vinter — dec–feb', foraar:'🌱 Forår — mar–maj', sommer:'☀️ Sommer — jun–aug', efteraar:'🍂 Efterår — sep–nov' };
+  const lbl = document.getElementById('have-dropdown-label');
+  if (lbl) lbl.textContent = 'Valgt sæson: ' + (labels[s] || s);
 }
 
 // ── Accordion ──

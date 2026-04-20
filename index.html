@@ -368,7 +368,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
           </div>
           <button onclick="navigate('diagnose')" class="text-xs font-label uppercase tracking-wider text-primary hover:underline shrink-0 ml-2">Skift</button>
         </div>
-        class="bg-surface-container-low p-8 md:p-12 rounded-xl">
+        <section class="bg-surface-container-low p-8 md:p-12 rounded-xl">
         <h2 class="font-headline text-2xl text-primary mb-8">Arealberegning</h2>
 
         <!-- DAWA adressesøgning -->
@@ -484,6 +484,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
         <button onclick="calcKortlaeg()" class="w-full bg-primary hover:opacity-90 text-on-primary py-5 rounded-lg font-label uppercase text-sm tracking-widest font-bold transition-all">
           Beregn mit vandbehov
         </button>
+        </section>
       </section>
 
       <!-- Tilføj flere adresser -->
@@ -653,7 +654,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
         <div class="byg-anbefalet hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-primary bg-primary-container rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">thumb_up</span>Anbefalet til din situation</div>
         <div class="byg-status-Vaadbassin hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div>
               <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-bold">Våde bassiner</h3><button onclick="openModal('Våde bassiner')" class="shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container transition-all" title="Læs mere"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=120&h=120&fit=crop&q=80" alt="" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 mt-1 border-2 border-surface-container-highest" loading="lazy"/>
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=120&h=120&fit=crop&q=80" alt="" class="w-full h-36 object-cover rounded-xl mb-4" loading="lazy"/>
             <p class="text-xs text-on-surface-variant leading-relaxed mb-4">Bassiner med permanent vandspejl.</p>
             <div class="mb-4">
               <div class="flex justify-between items-center mb-1">
@@ -670,7 +671,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
         <div class="byg-anbefalet hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-primary bg-primary-container rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">thumb_up</span>Anbefalet til din situation</div>
         <div class="byg-status-Toerbassin hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div>
               <div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-bold">Tørre bassiner</h3><button onclick="openModal('Tørre bassiner')" class="shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container transition-all" title="Læs mere"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=120&h=120&fit=crop&q=80" alt="" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 mt-1 border-2 border-surface-container-highest" loading="lazy"/>
+            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=120&h=120&fit=crop&q=80" alt="" class="w-full h-36 object-cover rounded-xl mb-4" loading="lazy"/>
             <p class="text-xs text-on-surface-variant leading-relaxed mb-4">Områder der kun fyldes ved regn.</p>
             <div class="mb-4">
               <div class="flex justify-between items-center mb-1">
@@ -684,7 +685,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
           <div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-lowest transition-all border-b-2 border-transparent hover:border-primary group relative">
             <span class="material-symbols-outlined text-3xl text-primary mb-4 block">inventory_2</span>
             <div class="byg-status-Underjordisk-bassin hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div><div class="flex items-start justify-between gap-2 mb-1"><h3 class="font-bold">Lukkede bassiner</h3><button onclick="openModal('Underjordisk bassin')" class="shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container transition-all" title="Læs mere"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=120&h=120&fit=crop&q=80" alt="" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 mt-1 border-2 border-surface-container-highest" loading="lazy"/>
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=120&h=120&fit=crop&q=80" alt="" class="w-full h-36 object-cover rounded-xl mb-4" loading="lazy"/>
             <p class="text-xs text-on-surface-variant leading-relaxed mb-4">Underjordiske forsinkelsesmagasiner.</p>
             <div class="mb-4">
               <div class="flex justify-between items-center mb-1">
@@ -707,7 +708,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
         <div class="bg-surface-container-low p-8 rounded-xl flex flex-col md:flex-row gap-8 items-start">
           <div class="flex-1 w-full">
             <div class="byg-status-Regnvandsbeholder hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div><div class="flex items-start justify-between gap-2 mb-2"><h3 class="font-bold text-xl">Regnvandstank</h3><button onclick="openModal('Regnvandstank')" class="shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container transition-all" title="Læs mere"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&h=120&fit=crop&q=80" alt="" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 mt-1 border-2 border-surface-container-highest" loading="lazy"/>
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&h=120&fit=crop&q=80" alt="" class="w-full h-36 object-cover rounded-xl mb-4" loading="lazy"/>
             <p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Opsamling af tagvand til brug i haven eller toiletskyl.</p>
             <div class="mb-6">
               <div class="flex justify-between items-center mb-2">
@@ -735,7 +736,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
           <div class="md:col-span-2 bg-surface-container-low rounded-xl p-8 border-b-2 border-transparent hover:border-primary transition-all">
             <div class="byg-status-Regnbed hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div>
             <div class="flex items-start justify-between gap-2 mb-2"><h3 class="font-bold text-xl">Regnbed</h3><button onclick="openModal('Regnbed')" class="shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container transition-all" title="Læs mere"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=120&h=120&fit=crop&q=80" alt="" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 mt-1 border-2 border-surface-container-highest" loading="lazy"/>
+            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=120&h=120&fit=crop&q=80" alt="" class="w-full h-36 object-cover rounded-xl mb-4" loading="lazy"/>
             <p class="text-sm text-on-surface-variant mb-6">En beplantet lavning i terrænet, hvor regnvandet kan samles og nedsive over tid.</p>
             <div class="mb-6">
               <div class="flex justify-between items-center mb-1">
@@ -751,7 +752,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
         <div class="byg-anbefalet hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-primary bg-primary-container rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">thumb_up</span>Anbefalet</div>
         <div class="byg-status-Permeabel-belaegning hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div>
               <div class="flex items-start justify-between gap-2 mb-2"><h4 class="font-bold">Permeable belægninger</h4><button onclick="openModal('Permeable belægninger')" class="shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container transition-all" title="Læs mere"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&h=120&fit=crop&q=80" alt="" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 mt-1 border-2 border-surface-container-highest" loading="lazy"/>
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&h=120&fit=crop&q=80" alt="" class="w-full h-36 object-cover rounded-xl mb-4" loading="lazy"/>
             <p class="text-xs text-on-surface-variant mb-4">Fliser eller sten der tillader vand at trænge ned.</p>
             <div class="mb-4">
               <div class="flex justify-between items-center mb-1"><label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Areal</label><span class="text-primary font-bold text-xs" id="lbl-perm">0 m²</span></div>
@@ -764,7 +765,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
         <div class="byg-anbefalet hidden mb-2 flex items-center gap-1.5 text-xs font-bold text-primary bg-primary-container rounded-lg px-2 py-1"><span class="material-symbols-outlined text-sm">thumb_up</span>Anbefalet</div>
         <div class="byg-status-Faskine hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div>
               <div class="flex items-start justify-between gap-2 mb-2"><h4 class="font-bold">Faskine</h4><button onclick="openModal('Faskine')" class="shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container transition-all" title="Læs mere"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=120&h=120&fit=crop&q=80" alt="" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 mt-1 border-2 border-surface-container-highest" loading="lazy"/>
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=120&h=120&fit=crop&q=80" alt="" class="w-full h-36 object-cover rounded-xl mb-4" loading="lazy"/>
             <p class="text-xs text-on-surface-variant mb-4">Punktvis nedsivning i undergrunden.</p>
             <div class="mb-4">
               <div class="flex justify-between items-center mb-1"><label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Kapacitet</label><span class="text-primary font-bold text-xs" id="lbl-fask">0 L</span></div>
@@ -784,7 +785,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-lowest transition-all flex flex-col">
             <div class="flex items-center gap-2 mb-4"><span class="material-symbols-outlined text-3xl text-primary">filter_hdr</span><div class="byg-status-Groent-tag hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div><div class="flex items-start justify-between gap-2"><h3 class="font-bold">Grønne tage</h3><button onclick="openModal('Grønne tage')" class="shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container transition-all" title="Læs mere"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=120&h=120&fit=crop&q=80" alt="" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 mt-1 border-2 border-surface-container-highest" loading="lazy"/></div>
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=120&h=120&fit=crop&q=80" alt="" class="w-full h-36 object-cover rounded-xl mb-4" loading="lazy"/></div>
             <p class="text-xs text-on-surface-variant mb-4">Sedum-måtter til carporte og udhuse.</p>
             <div class="mt-auto mb-4">
               <div class="flex justify-between items-center mb-1"><label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Areal</label><span class="text-primary font-bold text-xs" id="lbl-grontag">0 m²</span></div>
@@ -794,7 +795,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
           </div>
           <div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-lowest transition-all flex flex-col">
             <div class="flex items-center gap-2 mb-4"><span class="material-symbols-outlined text-3xl text-primary">park</span><div class="byg-status-Traeer hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div><div class="flex items-start justify-between gap-2"><h3 class="font-bold">Træer</h3><button onclick="openModal('Træer')" class="shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container transition-all" title="Læs mere"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-            <img src="https://images.unsplash.com/photo-1513836279014-a89f7d3f59a7?w=120&h=120&fit=crop&q=80" alt="" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 mt-1 border-2 border-surface-container-highest" loading="lazy"/></div>
+            <img src="https://images.unsplash.com/photo-1513836279014-a89f7d3f59a7?w=120&h=120&fit=crop&q=80" alt="" class="w-full h-36 object-cover rounded-xl mb-4" loading="lazy"/></div>
             <p class="text-xs text-on-surface-variant mb-4">Biodiverse træarter der fordamper store mængder vand.</p>
             <div class="mt-auto mb-4">
               <div class="flex justify-between items-center mb-1"><label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Antal</label><span class="text-primary font-bold text-xs" id="lbl-traeer">0 stk</span></div>
@@ -804,7 +805,7 @@ input[type=range]::-webkit-slider-thumb{height:16px;width:16px;border-radius:50%
           </div>
           <div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-lowest transition-all flex flex-col">
             <div class="flex items-center gap-2 mb-4"><span class="material-symbols-outlined text-3xl text-primary">grid_view</span><div class="byg-status-Groenne-vaegge hidden mb-2 px-3 py-1.5 rounded-lg text-xs font-bold"></div><div class="flex items-start justify-between gap-2"><h3 class="font-bold">Grønne vægge</h3><button onclick="openModal('Grønne vægge')" class="shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container transition-all" title="Læs mere"><span class="material-symbols-outlined text-sm text-on-surface-variant">info</span></button></div>
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&h=120&fit=crop&q=80" alt="" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 mt-1 border-2 border-surface-container-highest" loading="lazy"/></div>
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&h=120&fit=crop&q=80" alt="" class="w-full h-36 object-cover rounded-xl mb-4" loading="lazy"/></div>
             <p class="text-xs text-on-surface-variant mb-4">Vertikal beplantning til hegn eller facader.</p>
             <div class="mt-auto mb-4">
               <div class="flex justify-between items-center mb-1"><label class="text-[10px] font-bold font-label uppercase text-on-surface-variant tracking-wider">Areal</label><span class="text-primary font-bold text-xs" id="lbl-gronvaeg">0 m²</span></div>
@@ -1189,6 +1190,19 @@ function navigate(page) {
   initReveal();
   if (page === 'inspiration') setTimeout(initInspiMap, 100);
   if (page === 'byg' || page === 'kortlaeg') setTimeout(() => KB._opdaterUI(), 100);
+  if (page === 'byg') {
+    setTimeout(() => {
+      const liter = KB.liter || 0;
+      if (liter > 0) {
+        const counter = document.getElementById('byg-counter');
+        const bar = document.getElementById('byg-bar');
+        const label = document.getElementById('byg-label');
+        if (counter) counter.textContent = liter.toLocaleString('da-DK');
+        if (label) label.textContent = 'Af i alt ' + liter.toLocaleString('da-DK') + ' liter fra din matrikel';
+        if (bar) bar.style.width = '100%';
+      }
+    }, 150);
+  }
   if (page === 'diagnose') setTimeout(dInit, 50);
 }
 

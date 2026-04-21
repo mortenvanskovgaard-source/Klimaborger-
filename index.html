@@ -360,7 +360,105 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
     </div>
   </section>
 
-  <!-- FEATURE TILES -->
+  <!-- EPINION DATA SEKTION -->
+  <section class="max-w-5xl mx-auto px-8 pt-10 pb-2">
+    <!-- Overoverskrift -->
+    <div class="text-center mb-8" style="position:relative">
+      <!-- Akvarel-stænk -->
+      <svg style="position:absolute;top:-30px;right:5%;width:200px;height:160px;opacity:0.13;pointer-events:none" viewBox="0 0 200 160" fill="none">
+        <filter id="wc_epi1"><feGaussianBlur stdDeviation="13"/></filter>
+        <ellipse cx="110" cy="75" rx="100" ry="82" fill="#3aaa55" filter="url(#wc_epi1)"/>
+        <ellipse cx="140" cy="50" rx="65" ry="55" fill="#55c870" filter="url(#wc_epi1)" opacity="0.5"/>
+      </svg>
+      <p class="text-xs uppercase tracking-widest font-bold mb-3" style="color:#006573">Kilde: Epinion — Danskernes forståelse af klimatilpasning</p>
+      <h2 class="font-headline text-2xl sm:text-3xl font-bold text-[#1a2a1a] leading-snug mb-3 max-w-2xl mx-auto">
+        Klimatilpasning er alles problem<br/>— men ingen ved, hvad de skal gøre
+      </h2>
+      <p class="text-sm text-[#1a2a1a]/55 max-w-xl mx-auto leading-relaxed">
+        Vi er bekymrede for klimaet — men de færreste gør noget ved det. Regnhjælper er her for at ændre det.
+      </p>
+    </div>
+
+    <!-- Fire datakort -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+
+      <!-- Kort 1: Bekymring vs. handling -->
+      <div class="bg-white rounded-2xl p-5 shadow-[0_2px_16px_rgba(0,0,0,0.06)] relative overflow-hidden flex flex-col">
+        <svg style="position:absolute;top:-15px;right:-15px;width:100px;height:90px;opacity:0.18;pointer-events:none" viewBox="0 0 100 90" fill="none">
+          <filter id="wc_k1"><feGaussianBlur stdDeviation="9"/></filter>
+          <ellipse cx="55" cy="45" rx="52" ry="46" fill="#3aaa55" filter="url(#wc_k1)"/>
+        </svg>
+        <div class="text-4xl font-bold mb-2 leading-none" style="color:#006573">70<span class="text-2xl">%</span></div>
+        <p class="text-sm font-bold text-[#1a2a1a] mb-1.5 leading-snug">er bekymrede for ændringer i vejret</p>
+        <p class="text-xs text-[#1a2a1a]/50 leading-relaxed flex-1">— men mange har ikke forebygget, eller ved ikke om de har.</p>
+        <div class="mt-4 pt-3 border-t border-[#1a2a1a]/8">
+          <p class="text-[10px] italic text-[#1a2a1a]/35 leading-relaxed">"Vi er bekymrede for klimaet — men de færreste gør noget ved det."</p>
+        </div>
+      </div>
+
+      <!-- Kort 2: "Det rammer ikke mig" -->
+      <div class="bg-white rounded-2xl p-5 shadow-[0_2px_16px_rgba(0,0,0,0.06)] relative overflow-hidden flex flex-col">
+        <svg style="position:absolute;top:-15px;right:-15px;width:100px;height:90px;opacity:0.18;pointer-events:none" viewBox="0 0 100 90" fill="none">
+          <filter id="wc_k2"><feGaussianBlur stdDeviation="9"/></filter>
+          <ellipse cx="55" cy="45" rx="52" ry="46" fill="#e8b84b" filter="url(#wc_k2)"/>
+        </svg>
+        <div class="text-4xl font-bold mb-2 leading-none text-[#c8952a]">Lav</div>
+        <p class="text-sm font-bold text-[#1a2a1a] mb-1.5 leading-snug">vurderer risiko for<br/>egen bolig</p>
+        <p class="text-xs text-[#1a2a1a]/50 leading-relaxed flex-1">De fleste vurderer lav eller ingen risiko for oversvømmelse på netop deres adresse.</p>
+        <div class="mt-4 pt-3 border-t border-[#1a2a1a]/8">
+          <p class="text-[10px] italic text-[#1a2a1a]/35 leading-relaxed">"Klimaforandringer er et problem — bare ikke for mig."</p>
+        </div>
+      </div>
+
+      <!-- Kort 3: Ansvar -->
+      <div class="bg-white rounded-2xl p-5 shadow-[0_2px_16px_rgba(0,0,0,0.06)] relative overflow-hidden flex flex-col">
+        <svg style="position:absolute;top:-15px;right:-15px;width:100px;height:90px;opacity:0.18;pointer-events:none" viewBox="0 0 100 90" fill="none">
+          <filter id="wc_k3"><feGaussianBlur stdDeviation="9"/></filter>
+          <ellipse cx="55" cy="45" rx="52" ry="46" fill="#e8a87c" filter="url(#wc_k3)"/>
+        </svg>
+        <div class="text-4xl font-bold mb-2 leading-none text-[#c06030]">1/3</div>
+        <p class="text-sm font-bold text-[#1a2a1a] mb-1.5 leading-snug">ved ikke hvem der<br/>betaler ved oversvømmelse</p>
+        <p class="text-xs text-[#1a2a1a]/50 leading-relaxed flex-1">Op mod hver tredje dansker kender ikke reglerne for erstatning og ansvar.</p>
+        <div class="mt-4 pt-3 border-t border-[#1a2a1a]/8">
+          <p class="text-[10px] italic text-[#1a2a1a]/35 leading-relaxed">"Hvem har ansvaret, når din bolig oversvømmes?"</p>
+        </div>
+      </div>
+
+      <!-- Kort 4: Naturbaserede løsninger -->
+      <div class="bg-white rounded-2xl p-5 shadow-[0_2px_16px_rgba(0,0,0,0.06)] relative overflow-hidden flex flex-col">
+        <svg style="position:absolute;top:-15px;right:-15px;width:100px;height:90px;opacity:0.18;pointer-events:none" viewBox="0 0 100 90" fill="none">
+          <filter id="wc_k4"><feGaussianBlur stdDeviation="9"/></filter>
+          <ellipse cx="55" cy="45" rx="52" ry="46" fill="#1a4a3a" filter="url(#wc_k4)"/>
+        </svg>
+        <div class="text-4xl font-bold mb-2 leading-none" style="color:#1a4a3a">68<span class="text-2xl">%</span></div>
+        <p class="text-sm font-bold text-[#1a2a1a] mb-1.5 leading-snug">ønsker naturbaserede<br/>løsninger</p>
+        <p class="text-xs text-[#1a2a1a]/50 leading-relaxed flex-1">Selv hvis det er dyrere — danskerne vil have klimatilpasning, der også gavner naturen.</p>
+        <div class="mt-4 pt-3 border-t border-[#1a2a1a]/8">
+          <p class="text-[10px] italic text-[#1a2a1a]/35 leading-relaxed">"Løsninger der gavner både have og klimaet."</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA under kortene -->
+    <div class="bg-[#1a4a3a] rounded-2xl px-8 py-7 flex flex-col sm:flex-row items-center justify-between gap-5 mb-4" style="position:relative;overflow:hidden">
+      <!-- Akvarel bag -->
+      <svg style="position:absolute;right:-40px;top:-30px;width:220px;height:180px;opacity:0.12;pointer-events:none" viewBox="0 0 220 180" fill="none">
+        <filter id="wc_cta"><feGaussianBlur stdDeviation="15"/></filter>
+        <ellipse cx="120" cy="90" rx="115" ry="100" fill="#3aaa55" filter="url(#wc_cta)"/>
+      </svg>
+      <div style="position:relative;z-index:1">
+        <p class="text-white font-bold text-lg font-headline mb-1 leading-snug">Vi ved godt hvad vi kan gøre — vi gør det bare ikke.</p>
+        <p class="text-white/60 text-sm">38% har ikke forebygget eller ved ikke om de har. Regnhjælper gør det nemt at tage det første skridt.</p>
+      </div>
+      <button onclick="navigate('diagnose')" class="bg-[#e8b84b] text-[#1a2a1a] font-bold text-sm px-7 py-3.5 rounded-full hover:bg-[#f0c855] transition-colors whitespace-nowrap shrink-0 inline-flex items-center gap-2" style="position:relative;z-index:1">
+        👉 Kom i gang <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </button>
+    </div>
+
+  </section>
+
+<!-- FEATURE TILES -->
   <section class="max-w-5xl mx-auto px-8 pt-8 pb-6">
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-4">
 

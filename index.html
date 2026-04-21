@@ -2697,19 +2697,507 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 
 
 <!-- ══ PAGE: KOM GODT I GANG ══ -->
-<div id="page-gang" class="page pt-24">
-  <section class="relative bg-gradient-to-br from-primary to-primary-container pt-16 pb-32 px-8 overflow-hidden">
-    <div class="max-w-7xl mx-auto relative z-10">
-      <p class="text-on-primary/60 text-xs uppercase tracking-widest font-medium mb-3">Trin 4</p>
-      <h1 class="font-headline text-4xl md:text-5xl text-on-primary font-bold leading-tight mb-4">Kom godt i gang</h1>
-      <p class="text-on-primary/80 text-lg">Trin-for-trin vejledninger til de mest populære klimaløsninger.</p>
+<div id="page-gang" class="page">
+<div class="pt-16 bg-[#f5f0e5] min-h-screen">
+
+  <!-- GUL HERO — halvt layout som tilskuds-siden -->
+  <section class="bg-[#e8b84b] relative overflow-hidden">
+    <div class="max-w-4xl mx-auto grid lg:grid-cols-2 gap-0 items-stretch">
+      <div class="px-8 pt-10 pb-10 flex flex-col justify-center">
+        <!-- Brødkrumme -->
+        <p class="text-[#2a1400]/45 text-xs mb-5 flex items-center gap-1.5">
+          <button onclick="navigate('forsta')" class="hover:text-[#2a1400] transition-colors">Hjem</button>
+          <span class="material-symbols-outlined text-xs">chevron_right</span>
+          <span class="text-[#2a1400]/70 font-medium">Kom godt i gang</span>
+        </p>
+        <h1 class="font-headline text-3xl font-bold text-[#2a1400] leading-tight mb-4">
+          Kom godt i gang<br/>med din klimaløsning
+        </h1>
+        <p class="text-[#2a1400]/65 text-sm leading-relaxed mb-6 max-w-sm">
+          Læs om regler, krav og anlægsprocessen til din løsning — eller gå direkte til vejledningsportalen og kom i gang med dit projekt.
+        </p>
+        <div class="flex flex-col gap-3 max-w-xs">
+          <button onclick="document.getElementById('gang-vaelg').scrollIntoView({behavior:'smooth'})" class="bg-[#1a4a3a] text-white text-sm font-bold px-6 py-3 rounded-full hover:bg-[#154035] transition-colors inline-flex items-center gap-2">
+            Vælg din løsning <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+          <div class="flex items-center gap-3 mt-1">
+            <div class="h-px flex-1 bg-[#2a1400]/20"></div>
+            <span class="text-xs text-[#2a1400]/40 font-medium">Har du allerede valgt?</span>
+            <div class="h-px flex-1 bg-[#2a1400]/20"></div>
+          </div>
+          <button onclick="document.getElementById('gang-step-guide').scrollIntoView({behavior:'smooth'})" class="bg-white/80 text-[#2a1400] text-sm font-bold px-6 py-3 rounded-full hover:bg-white transition-colors inline-flex items-center gap-2 border border-[#2a1400]/10">
+            Se trin-for-trin guide <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+      <!-- Illustration/foto-panel -->
+      <div class="hidden lg:flex bg-[#d4a830] items-end justify-center min-h-[220px] relative overflow-hidden">
+        <svg viewBox="0 0 280 230" class="w-72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="140" cy="215" rx="120" ry="12" fill="#b8901a" opacity="0.3"/>
+          <!-- Hus -->
+          <rect x="65" y="110" width="110" height="100" rx="3" fill="white" opacity="0.9"/>
+          <polygon points="55,113 185,113 120,62" fill="#1a4a3a"/>
+          <!-- Grønt tag -->
+          <rect x="55" y="107" width="130" height="12" rx="2" fill="#2d7a5a"/>
+          <ellipse cx="80" cy="104" rx="9" ry="4.5" fill="#4bb865" opacity="0.8"/>
+          <ellipse cx="100" cy="100" rx="11" ry="4.5" fill="#55c870" opacity="0.8"/>
+          <ellipse cx="120" cy="98" rx="9" ry="4" fill="#4bb865" opacity="0.8"/>
+          <ellipse cx="140" cy="100" rx="10" ry="4.5" fill="#55c870" opacity="0.8"/>
+          <ellipse cx="158" cy="104" rx="8" ry="4" fill="#4bb865" opacity="0.8"/>
+          <!-- Dør -->
+          <rect x="110" y="173" width="22" height="37" rx="2" fill="#c8a050"/>
+          <!-- Vinduer -->
+          <rect x="73" y="126" width="22" height="18" rx="2" fill="#a8d8c8"/>
+          <rect x="149" y="126" width="22" height="18" rx="2" fill="#a8d8c8"/>
+          <!-- Regnbed med person -->
+          <ellipse cx="28" cy="202" rx="26" ry="9" fill="#2a7045"/>
+          <circle cx="16" cy="190" r="9" fill="#3aaa55"/>
+          <circle cx="29" cy="184" r="12" fill="#4bb865"/>
+          <circle cx="42" cy="190" r="8" fill="#3aaa55"/>
+          <circle cx="20" cy="178" r="4" fill="#f0d040"/>
+          <circle cx="35" cy="174" r="5" fill="#f0a030"/>
+          <!-- Person med skovl -->
+          <circle cx="220" cy="148" r="9" fill="#f5d5a8"/>
+          <!-- Hat -->
+          <ellipse cx="220" cy="141" rx="11" ry="3.5" fill="#e8b84b" opacity="0.7"/>
+          <rect x="216" y="134" width="8" height="8" rx="2" fill="#e8b84b" opacity="0.7"/>
+          <rect x="215" y="157" width="10" height="22" rx="3" fill="#5a9a6a"/>
+          <!-- Skovl -->
+          <line x1="215" y1="164" x2="200" y2="178" stroke="#5a9a6a" stroke-width="4" stroke-linecap="round"/>
+          <rect x="188" y="175" width="15" height="5" rx="2" fill="#c8952a" transform="rotate(-30 188 175)"/>
+          <line x1="196" y1="170" x2="203" y2="178" stroke="#8a6a35" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Tjekliste i hånden -->
+          <rect x="222" y="142" width="20" height="26" rx="3" fill="white" opacity="0.9"/>
+          <rect x="228" y="138" width="8" height="6" rx="1" fill="white" opacity="0.9"/>
+          <line x1="226" y1="150" x2="238" y2="150" stroke="#2d7a5a" stroke-width="1.5"/>
+          <line x1="226" y1="155" x2="238" y2="155" stroke="#2d7a5a" stroke-width="1.5"/>
+          <line x1="226" y1="160" x2="234" y2="160" stroke="#2d7a5a" stroke-width="1"/>
+          <!-- Check-mark på liste -->
+          <path d="M226 147 L228 149 L232 145" stroke="#2d7a5a" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Sidst opdateret -->
+        </svg>
+      </div>
     </div>
-    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none translate-y-1"><svg class="block w-full h-16 text-surface fill-current" preserveAspectRatio="none" viewBox="0 0 1200 60"><path d="M0,0 C300,60 900,60 1200,0 L1200,60 L0,60 Z"/></svg></div>
   </section>
-  <div class="max-w-7xl mx-auto px-8 py-12 -mt-8 relative z-20">
-    <div id="gang-grid" class="grid md:grid-cols-2 gap-5"></div>
-  </div>
+
+  <!-- HVID INFOBOX — "Hvad er LAR-metoden?" med stort tal -->
+  <section class="max-w-4xl mx-auto px-6 pt-5 pb-6">
+    <div class="bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.07)] grid lg:grid-cols-2 gap-0">
+      <div class="p-8">
+        <h2 class="font-headline text-xl font-bold text-[#1a2a1a] mb-3">Hvad er LAR-metoden?</h2>
+        <p class="text-sm text-[#1a2a1a]/60 leading-relaxed mb-4">LAR — Lokal Afledning af Regnvand — er en tilgang til at håndtere regnvand der falder på din grund lokalt, i stedet for at sende det i kloakken.</p>
+        <p class="text-sm text-[#1a2a1a]/60 leading-relaxed">På siden her kan du læse mere om kravene til de forskellige løsninger og blive klogere på, hvordan du anlægger dem.</p>
+      </div>
+      <!-- Gul video/tal-panel som SparEnergi -->
+      <div class="bg-[#e8b84b] flex flex-col items-center justify-center p-8 text-center relative">
+        <p class="text-[#2a1400]/60 text-xs uppercase tracking-widest font-bold mb-2">Du kan spare op til</p>
+        <div class="text-5xl font-bold text-[#1a4a3a] mb-1">42.000 <span class="text-3xl">L</span></div>
+        <p class="text-[#2a1400]/70 text-sm font-medium mb-3">vand om året med et regnbed</p>
+        <div class="flex items-center gap-2 bg-white/30 rounded-full px-4 py-2 cursor-pointer hover:bg-white/40 transition-colors" onclick="navigate('kortlaeg')">
+          <span class="material-symbols-outlined text-[#1a4a3a] text-lg">play_circle</span>
+          <span class="text-xs font-bold text-[#1a4a3a]">Beregn dit behov</span>
+        </div>
+        <!-- Illustration -->
+        <svg class="absolute bottom-0 right-0 w-20 opacity-20" viewBox="0 0 80 80" fill="none">
+          <circle cx="60" cy="60" r="40" fill="#1a4a3a"/>
+          <path d="M40 20C40 20 25 35 25 47c0 8.3 6.7 15 15 15s15-6.7 15-15c0-12-15-27-15-27Z" fill="white"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 KRAV SEKTION — nummererede krav i creme grid -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="text-center mb-6">
+      <h2 class="font-headline text-2xl font-bold text-[#1a2a1a] mb-2">Lever du op til de 5 grundkrav?</h2>
+      <p class="text-sm text-[#1a2a1a]/50 max-w-lg mx-auto">Hvis du vil anlægge en LAR-løsning med tilskud, skal du som udgangspunkt leve op til disse 5 krav.</p>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-4 mb-4">
+      <div class="text-center p-5">
+        <div class="w-8 h-8 rounded-full bg-[#1a4a3a] text-white flex items-center justify-center mx-auto mb-3 text-sm font-bold">1</div>
+        <h4 class="font-headline font-bold text-sm text-[#1a2a1a] mb-1.5">Krav 1</h4>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Din grund skal være privatejet boligejendom — du skal som ejer selv stå for projektet.</p>
+      </div>
+      <div class="text-center p-5">
+        <div class="w-8 h-8 rounded-full bg-[#1a4a3a] text-white flex items-center justify-center mx-auto mb-3 text-sm font-bold">2</div>
+        <h4 class="font-headline font-bold text-sm text-[#1a2a1a] mb-1.5">Krav 2</h4>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Dit hus skal have tagvand, have, gårdsplads eller befæstede arealer som kilderne til regnvand.</p>
+      </div>
+      <div class="text-center p-5">
+        <div class="w-8 h-8 rounded-full bg-[#1a4a3a] text-white flex items-center justify-center mx-auto mb-3 text-sm font-bold">3</div>
+        <h4 class="font-headline font-bold text-sm text-[#1a2a1a] mb-1.5">Krav 3</h4>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Du må ikke have løst problemet allerede — og der skal ikke være planlagt fjernvarme til din adresse.</p>
+      </div>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+      <div class="text-center p-5">
+        <div class="w-8 h-8 rounded-full bg-[#1a4a3a] text-white flex items-center justify-center mx-auto mb-3 text-sm font-bold">4</div>
+        <h4 class="font-headline font-bold text-sm text-[#1a2a1a] mb-1.5">Krav 4</h4>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Du er ikke allerede i gang med at anlægge løsningen — og du har endnu ikke indhentet eller afgivet bindende tilbud.</p>
+      </div>
+      <div class="text-center p-5">
+        <div class="w-8 h-8 rounded-full bg-[#1a4a3a] text-white flex items-center justify-center mx-auto mb-3 text-sm font-bold">5</div>
+        <h4 class="font-headline font-bold text-sm text-[#1a2a1a] mb-1.5">Krav 5</h4>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Du ønsker at anlægge en regnbed, faskine, grønt tag eller anden anerkendt LAR-løsning.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUL ADRESSE-CHECKER — "Tjek om du kan få tilskud" -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="bg-[#e8b84b] rounded-2xl p-8 grid sm:grid-cols-2 gap-6 items-center">
+      <div>
+        <h2 class="font-headline text-xl font-bold text-[#2a1400] mb-2">Tjek om du kan anlægge din løsning nu</h2>
+        <p class="text-sm text-[#2a1400]/65 leading-relaxed mb-5">Indtast din adresse og tjek om du kan gå i gang med en LAR-løsning. Svaret er vejledende og baseret på offentlige data fra BBR og Plandata. Du kan først være sikker på, hvad du kan gøre, når du har talt med din kommune.</p>
+        <label class="block text-xs font-bold text-[#2a1400] uppercase tracking-widest mb-2">Indtast din adresse</label>
+        <div class="flex gap-2 max-w-sm">
+          <div class="relative flex-1">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#2a1400]/40 text-sm">search</span>
+            <input type="text" placeholder="Indtast din adresse" class="w-full rounded-full border-0 bg-white py-3 pl-9 pr-4 text-sm text-[#1a2a1a] focus:outline-none focus:ring-2 focus:ring-[#1a4a3a]/30"/>
+          </div>
+          <button onclick="navigate('kortlaeg')" class="bg-[#1a4a3a] text-white font-bold text-sm px-5 py-3 rounded-full hover:bg-[#154035] transition-colors whitespace-nowrap inline-flex items-center gap-1">
+            Tjek nu <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <svg width="130" height="120" viewBox="0 0 130 120" fill="none">
+          <!-- Person med tablet -->
+          <circle cx="65" cy="35" r="14" fill="#f5d5a8"/>
+          <rect x="50" y="49" width="30" height="38" rx="6" fill="#5a9a6a"/>
+          <!-- Tablet -->
+          <rect x="72" y="38" width="30" height="22" rx="4" fill="white" opacity="0.9" stroke="#e8b84b" stroke-width="1.5"/>
+          <rect x="75" y="42" width="8" height="2" rx="1" fill="#2d7a5a" opacity="0.5"/>
+          <rect x="75" y="46" width="12" height="2" rx="1" fill="#2d7a5a" opacity="0.5"/>
+          <rect x="75" y="50" width="6" height="2" rx="1" fill="#e8b84b" opacity="0.8"/>
+          <!-- Check mark cirkel -->
+          <circle cx="95" cy="90" r="16" fill="#1a4a3a"/>
+          <path d="M87 90 L93 96 L103 83" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Planter -->
+          <circle cx="20" cy="95" r="14" fill="#3aaa55" opacity="0.6"/>
+          <rect x="17" y="104" width="5" height="14" rx="2" fill="#8a6a35"/>
+          <circle cx="118" cy="98" r="12" fill="#4bb865" opacity="0.6"/>
+          <rect x="115" y="106" width="5" height="14" rx="2" fill="#8a6a35"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- LØSNINGS-DIAGRAM — tre "huse" der viser tilskudsniveauer -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <h2 class="font-headline text-xl font-bold text-[#1a2a1a] mb-1" id="gang-vaelg">Det kan du anlægge</h2>
+    <p class="text-sm text-[#1a2a1a]/50 mb-6">Her kan du få overblik over, hvad du kan anlægge fra de forskellige LAR-kategorier.</p>
+    <div class="flex gap-0 items-end justify-center overflow-x-auto pb-2">
+      <!-- Venstre: Regnbed -->
+      <div class="flex flex-col items-center flex-1 min-w-0 px-3">
+        <div class="text-center mb-3 max-w-[140px]">
+          <p class="font-headline font-bold text-sm text-[#1a2a1a] mb-1">Regnbed</p>
+          <div class="text-[10px] text-[#1a4a3a] space-y-0.5 text-left">
+            <p class="flex items-start gap-1"><span class="text-[#1a4a3a] mt-0.5">›</span>Ved anlæg af regnbed gives tilskud på op til <strong>25.000 kr.</strong></p>
+          </div>
+        </div>
+        <svg width="100" height="90" viewBox="0 0 100 90" fill="none">
+          <ellipse cx="50" cy="82" rx="42" ry="7" fill="#c8dfc8" opacity="0.5"/>
+          <ellipse cx="50" cy="78" rx="34" ry="6" fill="#2a7045"/>
+          <circle cx="35" cy="65" r="11" fill="#3aaa55"/>
+          <circle cx="51" cy="59" r="14" fill="#4bb865"/>
+          <circle cx="66" cy="65" r="10" fill="#3aaa55"/>
+          <circle cx="40" cy="52" r="5.5" fill="#f0d040"/>
+          <circle cx="57" cy="48" r="6" fill="#f0a030"/>
+          <circle cx="70" cy="55" r="4.5" fill="#e84070" opacity="0.8"/>
+          <!-- Regndråbe ned -->
+          <line x1="15" y1="20" x2="13" y2="35" stroke="#7dd8f8" stroke-width="2" stroke-linecap="round"/>
+          <line x1="30" y1="15" x2="28" y2="30" stroke="#7dd8f8" stroke-width="2" stroke-linecap="round"/>
+          <line x1="70" y1="18" x2="68" y2="33" stroke="#7dd8f8" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="text-center mt-2 bg-[#eef6ef] rounded-lg px-3 py-1.5 w-full max-w-[130px]">
+          <p class="text-[10px] font-bold text-[#1a4a3a]">Fra 2.500 kr.</p>
+        </div>
+      </div>
+      <!-- Midt: Faskine + Grønt tag (taller/fremhævet) -->
+      <div class="flex flex-col items-center flex-1 min-w-0 px-3 relative">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#1a4a3a] text-white text-[9px] font-bold px-3 py-1 rounded-full whitespace-nowrap">Mest populær</div>
+        <div class="text-center mb-3 max-w-[140px]">
+          <p class="font-headline font-bold text-sm text-[#1a2a1a] mb-1">Grønt tag + faskine</p>
+          <div class="text-[10px] text-[#1a4a3a] space-y-0.5 text-left">
+            <p class="flex items-start gap-1"><span class="mt-0.5">›</span>Kombinationen giver mest klimaeffekt og kan reducere afstrømning med 70–90%.</p>
+          </div>
+        </div>
+        <svg width="110" height="100" viewBox="0 0 110 100" fill="none">
+          <ellipse cx="55" cy="92" rx="46" ry="7" fill="#c8dfc8" opacity="0.5"/>
+          <!-- Hus -->
+          <rect x="22" y="55" width="66" height="42" rx="3" fill="white" opacity="0.9" stroke="#e8f0e8" stroke-width="1"/>
+          <polygon points="15,58 95,58 55,20" fill="#1a4a3a"/>
+          <!-- Grønt sedum-tag -->
+          <rect x="15" y="52" width="80" height="10" rx="2" fill="#2d7a5a"/>
+          <ellipse cx="28" cy="50" rx="6" ry="3" fill="#4bb865" opacity="0.8"/>
+          <ellipse cx="42" cy="47" rx="8" ry="3.5" fill="#55c870" opacity="0.8"/>
+          <ellipse cx="55" cy="46" rx="7" ry="3" fill="#4bb865" opacity="0.8"/>
+          <ellipse cx="68" cy="47" rx="7" ry="3.5" fill="#55c870" opacity="0.8"/>
+          <ellipse cx="80" cy="50" rx="6" ry="3" fill="#4bb865" opacity="0.8"/>
+          <!-- Dør -->
+          <rect x="47" y="72" width="16" height="25" rx="2" fill="#c8a050"/>
+          <!-- Faskine antydet -->
+          <rect x="4" y="68" width="14" height="18" rx="2" fill="#5a8aaa" opacity="0.4" stroke="#4a7a9a" stroke-width="1" stroke-dasharray="3,2"/>
+          <text x="11" y="80" text-anchor="middle" font-family="sans-serif" font-size="5.5" fill="#4a7a9a">Fask.</text>
+        </svg>
+        <div class="text-center mt-2 bg-[#1a4a3a] rounded-lg px-3 py-1.5 w-full max-w-[130px]">
+          <p class="text-[10px] font-bold text-white">Fra 5.500 kr.</p>
+        </div>
+      </div>
+      <!-- Højre: Komplet løsning -->
+      <div class="flex flex-col items-center flex-1 min-w-0 px-3">
+        <div class="text-center mb-3 max-w-[140px]">
+          <p class="font-headline font-bold text-sm text-[#1a2a1a] mb-1">Komplet LAR-løsning</p>
+          <div class="text-[10px] text-[#1a4a3a] space-y-0.5 text-left">
+            <p class="flex items-start gap-1"><span class="mt-0.5">›</span>For større projekter med bassin kan der søges tilskud til store LAR-anlæg.</p>
+          </div>
+        </div>
+        <svg width="120" height="100" viewBox="0 0 120 100" fill="none">
+          <ellipse cx="60" cy="92" rx="50" ry="7" fill="#c8dfc8" opacity="0.5"/>
+          <!-- Hus stor -->
+          <rect x="25" y="52" width="70" height="44" rx="3" fill="white" opacity="0.9" stroke="#e8f0e8" stroke-width="1"/>
+          <polygon points="18,55 102,55 60,18" fill="#1a4a3a"/>
+          <rect x="18" y="49" width="84" height="11" rx="2" fill="#2d7a5a"/>
+          <ellipse cx="35" cy="47" rx="7" ry="3.5" fill="#4bb865" opacity="0.8"/>
+          <ellipse cx="52" cy="44" rx="9" ry="3.5" fill="#55c870" opacity="0.8"/>
+          <ellipse cx="67" cy="43" rx="8" ry="3.5" fill="#4bb865" opacity="0.8"/>
+          <ellipse cx="83" cy="44" rx="7" ry="3.5" fill="#55c870" opacity="0.8"/>
+          <!-- Regnbed -->
+          <ellipse cx="10" cy="85" rx="12" ry="6" fill="#2a7045" opacity="0.7"/>
+          <circle cx="5" cy="77" r="6" fill="#3aaa55"/>
+          <circle cx="12" cy="74" r="8" fill="#4bb865"/>
+          <!-- Faskine -->
+          <rect x="3" y="58" width="12" height="14" rx="2" fill="#5a8aaa" opacity="0.4" stroke="#4a7a9a" stroke-width="1" stroke-dasharray="3,2"/>
+          <!-- Tank -->
+          <rect x="102" y="60" width="12" height="20" rx="2" fill="#5a8aaa" opacity="0.6"/>
+          <rect x="100" y="57" width="16" height="6" rx="1" fill="#4a7a9a" opacity="0.7"/>
+          <!-- Dør -->
+          <rect x="51" y="73" width="18" height="23" rx="2" fill="#c8a050"/>
+        </svg>
+        <div class="text-center mt-2 bg-[#e8f5ee] rounded-lg px-3 py-1.5 w-full max-w-[130px]">
+          <p class="text-[10px] font-bold text-[#1a4a3a]">Fra 15.000 kr.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABBED STEP GUIDE — "Sådan søger du tilskud" med sidebar-tabs -->
+  <section class="max-w-4xl mx-auto px-6 pb-6" id="gang-step-guide">
+    <h2 class="font-headline text-xl font-bold text-[#1a2a1a] mb-1">Sådan anlægger du din løsning</h2>
+    <p class="text-sm text-[#1a2a1a]/50 mb-5">Det er vigtigt at forberede sig grundigt inden du går i gang — det betaler sig.</p>
+    <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.05)] flex flex-col sm:flex-row">
+      <!-- Tab sidebar -->
+      <div class="sm:w-52 shrink-0 border-b sm:border-b-0 sm:border-r border-[#1a2a1a]/5 p-2">
+        <button onclick="gangTab(0,this)" id="gang-tab-0" class="w-full text-left px-4 py-3 rounded-xl bg-[#f9f5e8] text-sm font-bold text-[#1a4a3a] mb-1 border-l-2 border-[#1a4a3a]">
+          Forbered dig — det betaler sig
+        </button>
+        <button onclick="gangTab(1,this)" id="gang-tab-1" class="w-full text-left px-4 py-3 rounded-xl hover:bg-[#f9f5e8] text-sm font-medium text-[#1a2a1a]/60 mb-1 transition-colors">
+          Indhent tilbud
+        </button>
+        <button onclick="gangTab(2,this)" id="gang-tab-2" class="w-full text-left px-4 py-3 rounded-xl hover:bg-[#f9f5e8] text-sm font-medium text-[#1a2a1a]/60 mb-1 transition-colors">
+          Anlæg løsningen
+        </button>
+        <button onclick="gangTab(3,this)" id="gang-tab-3" class="w-full text-left px-4 py-3 rounded-xl hover:bg-[#f9f5e8] text-sm font-medium text-[#1a2a1a]/60 transition-colors">
+          Når anlægget er færdigt
+        </button>
+      </div>
+      <!-- Tab content -->
+      <div class="flex-1 p-7">
+        <div id="gang-panel-0">
+          <h3 class="font-headline font-bold text-[#1a2a1a] text-lg mb-3">Du og dit hus skal leve op til 5 krav</h3>
+          <p class="text-sm text-[#1a2a1a]/60 leading-relaxed mb-4">Du og din hustand skal leve op til de 5 krav, hvis du vil anlægge en LAR-løsning med kommunalt tilskud.</p>
+          <a onclick="navigate('kortlaeg')" class="text-sm font-bold text-[#1a4a3a] inline-flex items-center gap-1 cursor-pointer hover:underline mb-4 block">Se kravene <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+          <div class="bg-[#f9f5e8] rounded-xl p-5">
+            <h4 class="font-bold text-sm text-[#1a2a1a] mb-2">Find ud af, hvilken løsning du vil anlægge</h4>
+            <p class="text-xs text-[#1a2a1a]/55 leading-relaxed mb-3">Muligheder og krav varierer afhænger af den løsningstype du vælger. Du kan sammenligne de tre kategorier og konkrete modeller på vores løsningsside.</p>
+            <a onclick="navigate('byg')" class="text-xs font-bold text-[#1a4a3a] inline-flex items-center gap-1 cursor-pointer hover:underline">Se løsningsoversigten <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+            <br/><a onclick="navigate('diagnose')" class="text-xs font-bold text-[#1a4a3a] inline-flex items-center gap-1 cursor-pointer hover:underline mt-2">Gå til diagnosesiden <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+          </div>
+        </div>
+        <div id="gang-panel-1" class="hidden">
+          <h3 class="font-headline font-bold text-[#1a2a1a] text-lg mb-3">Indhent mindst 3 tilbud</h3>
+          <p class="text-sm text-[#1a2a1a]/60 leading-relaxed mb-4">Du skal indhente mindst 3 sammenlignelige tilbud på anlægsarbejdet. Tilbuddene skal indeholde en detaljeret beskrivelse af arbejdet og materialerne.</p>
+          <div class="bg-[#f9f5e8] rounded-xl p-5">
+            <h4 class="font-bold text-sm text-[#1a2a1a] mb-2">Hvad skal tilbuddene indeholde?</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2 text-xs text-[#1a2a1a]/60"><span class="material-symbols-outlined text-[#1a4a3a] text-sm mt-0.5">check_circle</span>Beskrivelse af løsningstypen og dimensionerne</li>
+              <li class="flex items-start gap-2 text-xs text-[#1a2a1a]/60"><span class="material-symbols-outlined text-[#1a4a3a] text-sm mt-0.5">check_circle</span>Materialebeskrivelse og mærker</li>
+              <li class="flex items-start gap-2 text-xs text-[#1a2a1a]/60"><span class="material-symbols-outlined text-[#1a4a3a] text-sm mt-0.5">check_circle</span>Samlet pris inkl. montering og bortskaffelse</li>
+              <li class="flex items-start gap-2 text-xs text-[#1a2a1a]/60"><span class="material-symbols-outlined text-[#1a4a3a] text-sm mt-0.5">check_circle</span>CVR-nummer på håndværkeren</li>
+            </ul>
+          </div>
+        </div>
+        <div id="gang-panel-2" class="hidden">
+          <h3 class="font-headline font-bold text-[#1a2a1a] text-lg mb-3">Anlæg løsningen selv eller med håndværker</h3>
+          <p class="text-sm text-[#1a2a1a]/60 leading-relaxed mb-4">Regnbede og regnvandstanke kan anlægges som DIY. Faskiner og grønne tage kræver typisk fagfolk. Tjek med din kommune hvad der kræves i dit tilfælde.</p>
+          <div class="bg-[#f9f5e8] rounded-xl p-5">
+            <h4 class="font-bold text-sm text-[#1a2a1a] mb-2">Tids- og sæsonovervejelser</h4>
+            <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Anlæg regnbed om foråret eller efteråret. Grønne tage lægges bedst i sommerhalvåret. Faskiner kan anlægges hele året undtagen ved frost.</p>
+          </div>
+        </div>
+        <div id="gang-panel-3" class="hidden">
+          <h3 class="font-headline font-bold text-[#1a2a1a] text-lg mb-3">Dokumentér og søg tilskud</h3>
+          <p class="text-sm text-[#1a2a1a]/60 leading-relaxed mb-4">Når anlægget er færdigt, skal du dokumentere det med billeder og eventuelle kontrollerapporter. Herefter kan du sende din ansøgning om tilskud til kommunen.</p>
+          <div class="bg-[#eef6ef] rounded-xl p-5">
+            <h4 class="font-bold text-sm text-[#1a2a1a] mb-2 flex items-center gap-2"><span class="material-symbols-outlined text-[#1a4a3a] text-sm">celebration</span>Tillykke — du er kommet i mål!</h4>
+            <p class="text-xs text-[#1a2a1a]/55 leading-relaxed mb-3">Du har nu taget et vigtigt skridt for at klimasikre din grund og hjælpe kloaksystemet.</p>
+            <a onclick="navigate('inspiration')" class="text-xs font-bold text-[#1a4a3a] inline-flex items-center gap-1 cursor-pointer hover:underline">Se andres resultater <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT RÅDGIVERE — creme baggrund, illustration + åbningstider -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="bg-white rounded-2xl p-8 grid sm:grid-cols-2 gap-7 items-start shadow-[0_2px_16px_rgba(0,0,0,0.05)]">
+      <div>
+        <h2 class="font-headline text-xl font-bold text-[#1a2a1a] mb-3">Kontakt vores rådgivere</h2>
+        <p class="text-sm text-[#1a2a1a]/60 leading-relaxed mb-4">Har du brug for hjælp? Vores rådgivere er klar til at besvare dine spørgsmål om LAR-løsninger. Ring eller send os en besked.</p>
+        <div class="space-y-2 mb-4">
+          <p class="text-sm font-bold text-[#1a2a1a]">Træffetider</p>
+          <p class="text-xs text-[#1a2a1a]/55">Mandag, tirsdag, onsdag og fredag mellem kl. 9.00 og 14.00</p>
+          <p class="text-xs text-[#1a2a1a]/55">Har du tekniske problemer, kan du kontakte kommunen på: <span class="font-medium text-[#1a4a3a]">klima@egedal.dk</span></p>
+        </div>
+        <button onclick="navigate('gang')" class="bg-[#1a4a3a] text-white text-xs font-bold px-5 py-2.5 rounded-full hover:bg-[#154035] transition-colors inline-flex items-center gap-1.5">
+          Kontakt rådgivningen <span class="material-symbols-outlined text-xs">arrow_forward</span>
+        </button>
+      </div>
+      <div class="flex justify-center">
+        <svg width="140" height="120" viewBox="0 0 140 120" fill="none">
+          <!-- To personer der taler med spørgsmålstegn-boble -->
+          <circle cx="48" cy="42" r="14" fill="#f5d5a8"/>
+          <rect x="38" y="56" width="20" height="28" rx="5" fill="#5a9a6a"/>
+          <circle cx="95" cy="40" r="14" fill="#e8c090"/>
+          <rect x="85" y="54" width="20" height="28" rx="5" fill="#e8a87c"/>
+          <!-- Tale-bober -->
+          <rect x="55" y="22" width="28" height="18" rx="7" fill="white" stroke="#e8f0e8" stroke-width="1.5"/>
+          <polygon points="58,40 65,40 61,46" fill="white"/>
+          <text x="69" y="34" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#1a4a3a">?</text>
+          <rect x="72" y="18" width="28" height="18" rx="7" fill="#eef6ef" stroke="#2d7a5a" stroke-width="1.5"/>
+          <polygon points="85,36 92,36 89,42" fill="#eef6ef"/>
+          <circle cx="86" cy="27" r="4" fill="#2d7a5a" opacity="0.5"/>
+          <line x1="82" y1="27" x2="90" y2="27" stroke="#2d7a5a" stroke-width="1.5"/>
+          <line x1="82" y1="30" x2="87" y2="30" stroke="#2d7a5a" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- LYSEGRØN BLOK — "Søger du på vegne af en grundejerforening?" -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="bg-[#c8e0c8] rounded-2xl p-8 grid sm:grid-cols-2 gap-6 items-center">
+      <div>
+        <h2 class="font-headline text-xl font-bold text-[#0d2a1a] mb-3 leading-snug">Søger du tilskud på vegne af en grundejerforening?</h2>
+        <p class="text-sm text-[#0d2a1a]/65 leading-relaxed mb-5">Hvis du vil søge tilskud på vegne af en forening eller på vegne af flere er der særlige krav. Du skal bl.a. have alle fuldmagter klar, når du sender din ansøgning.</p>
+        <button onclick="navigate('kortlaeg')" class="bg-[#1a4a3a] text-white text-xs font-bold px-5 py-2.5 rounded-full hover:bg-[#154035] transition-colors inline-flex items-center gap-1.5">
+          Læs mere her <span class="material-symbols-outlined text-xs">arrow_forward</span>
+        </button>
+      </div>
+      <div class="flex justify-center">
+        <svg width="120" height="110" viewBox="0 0 120 110" fill="none">
+          <!-- Person der strækker sig/springer -->
+          <circle cx="65" cy="25" r="12" fill="#f5d5a8"/>
+          <!-- Arm op -->
+          <line x1="65" y1="37" x2="78" y2="18" stroke="#5a9a6a" stroke-width="5" stroke-linecap="round"/>
+          <!-- Krop -->
+          <rect x="59" y="37" width="12" height="28" rx="5" fill="#5a9a6a"/>
+          <!-- Ben -->
+          <line x1="62" y1="65" x2="55" y2="85" stroke="#5a9a6a" stroke-width="5" stroke-linecap="round"/>
+          <line x1="68" y1="65" x2="75" y2="85" stroke="#5a9a6a" stroke-width="5" stroke-linecap="round"/>
+          <!-- Arm nede -->
+          <line x1="59" y1="50" x2="46" y2="60" stroke="#5a9a6a" stroke-width="5" stroke-linecap="round"/>
+          <!-- Gruppe-ikon -->
+          <circle cx="28" cy="62" r="8" fill="#2d7a5a" opacity="0.5"/>
+          <circle cx="18" cy="68" r="6" fill="#2d7a5a" opacity="0.4"/>
+          <circle cx="38" cy="68" r="6" fill="#2d7a5a" opacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- TO BUNDKORT (gul + mørkegrøn) -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div onclick="navigate('kortlaeg')" class="bg-[#f5e8c0] rounded-2xl p-7 cursor-pointer hover:brightness-97 transition-all relative overflow-hidden flex flex-col">
+        <div class="flex-1">
+          <div class="flex justify-center mb-4">
+            <svg width="80" height="70" viewBox="0 0 80 70" fill="none">
+              <circle cx="40" cy="35" r="32" fill="#e8b84b" opacity="0.2"/>
+              <rect x="22" y="22" width="36" height="30" rx="4" fill="#e8b84b" opacity="0.5"/>
+              <text x="40" y="42" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#c8952a">kr</text>
+              <circle cx="55" cy="50" r="10" fill="#3aaa55" opacity="0.6"/>
+              <circle cx="25" cy="52" r="9" fill="#4bb865" opacity="0.6"/>
+            </svg>
+          </div>
+          <h3 class="font-headline font-bold text-[#2a1400] text-base mb-2 text-center leading-snug">Skriv dig op til vores<br/>nyhedsbrev — og få<br/>skræddersyede råd og nyheder</h3>
+          <p class="text-xs text-[#2a1400]/60 leading-relaxed text-center mb-4">Når du tilmelder dig vores nyhedsbrev, får du løbende opdateringer om LAR-tilskud og andre gode tips til havens klimasikring.</p>
+        </div>
+        <button class="w-full bg-[#1a4a3a] text-white text-xs font-bold px-4 py-2.5 rounded-full hover:bg-[#154035] transition-colors inline-flex items-center justify-center gap-1.5">
+          Tilmeld dig <span class="material-symbols-outlined text-xs">arrow_forward</span>
+        </button>
+      </div>
+      <div onclick="navigate('diagnose')" class="bg-[#1a4a3a] rounded-2xl p-7 cursor-pointer hover:brightness-110 transition-all relative overflow-hidden flex flex-col">
+        <div class="flex-1">
+          <div class="flex justify-center mb-4">
+            <svg width="80" height="70" viewBox="0 0 80 70" fill="none">
+              <circle cx="40" cy="35" r="32" fill="white" opacity="0.08"/>
+              <!-- Spørgsmålstegn-boble -->
+              <rect x="20" y="18" width="28" height="22" rx="7" fill="white" opacity="0.2"/>
+              <polygon points="23,40 30,40 27,46" fill="white" opacity="0.2"/>
+              <text x="34" y="33" text-anchor="middle" font-family="sans-serif" font-size="16" fill="white" opacity="0.7">?</text>
+              <circle cx="55" cy="42" r="12" fill="white" opacity="0.12"/>
+              <circle cx="55" cy="42" r="7" fill="white" opacity="0.15"/>
+            </svg>
+          </div>
+          <h3 class="font-headline font-bold text-white text-base mb-2 text-center leading-snug">Har du spørgsmål om<br/>din klimasikring?</h3>
+          <p class="text-xs text-white/60 leading-relaxed text-center mb-4">Find svaret i vores ofte stillede spørgsmål om LAR-metoden, tilskud og anlæg.</p>
+        </div>
+        <button class="w-full bg-white text-[#1a4a3a] text-xs font-bold px-4 py-2.5 rounded-full hover:bg-[#e8f5ee] transition-colors inline-flex items-center justify-center gap-1.5">
+          Gå til FAQ <span class="material-symbols-outlined text-xs">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MØRK GRØN CTA — "Søg tilskud til at renovere" -->
+  <section class="max-w-4xl mx-auto px-6 pb-14">
+    <div class="bg-[#1a4a3a] rounded-2xl p-9 grid sm:grid-cols-2 gap-6 items-center">
+      <div>
+        <h2 class="font-headline text-2xl font-bold text-white mb-3 leading-snug">Byg din LAR-løsning</h2>
+        <p class="text-sm text-white/60 leading-relaxed mb-5">Klimarenovering er en tilskudsordning til dig der ønsker at klimasikre din have. Du kan bl.a. søge tilskud til regnbede, faskiner og grønne tage.</p>
+        <button onclick="navigate('byg')" class="bg-white text-[#1a4a3a] text-sm font-bold px-6 py-3 rounded-full hover:bg-[#e8f5ee] transition-colors inline-flex items-center gap-2">
+          Læs mere <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </button>
+      </div>
+      <div class="flex justify-center">
+        <svg width="130" height="110" viewBox="0 0 130 110" fill="none">
+          <!-- Person der springer/løber -->
+          <circle cx="80" cy="28" r="12" fill="#f5d5a8"/>
+          <!-- Hår -->
+          <path d="M70 25 C70 18 90 16 88 25" fill="#c8952a" opacity="0.6"/>
+          <!-- Krop -->
+          <rect x="74" y="40" width="12" height="28" rx="5" fill="#5a9a6a"/>
+          <!-- Arme ud -->
+          <line x1="74" y1="48" x2="58" y2="42" stroke="#5a9a6a" stroke-width="5" stroke-linecap="round"/>
+          <line x1="86" y1="48" x2="100" y2="38" stroke="#5a9a6a" stroke-width="5" stroke-linecap="round"/>
+          <!-- Ben i gang -->
+          <line x1="77" y1="68" x2="65" y2="88" stroke="#5a9a6a" stroke-width="5" stroke-linecap="round"/>
+          <line x1="83" y1="68" x2="95" y2="85" stroke="#5a9a6a" stroke-width="5" stroke-linecap="round"/>
+          <!-- Have bagved -->
+          <ellipse cx="40" cy="92" rx="28" ry="9" fill="#2a7045" opacity="0.5"/>
+          <circle cx="28" cy="80" r="10" fill="#3aaa55" opacity="0.6"/>
+          <circle cx="42" cy="75" r="13" fill="#4bb865" opacity="0.6"/>
+          <circle cx="55" cy="80" r="9" fill="#3aaa55" opacity="0.6"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
 </div>
+</div><!-- /page-gang -->
+
 
 <!-- ══ PAGE: INSPIRATION ══ -->
 <div id="page-inspiration" class="page pt-24">
@@ -3144,6 +3632,27 @@ function initInspiMap() {
         </div>
       </div>`;
     }).join('');
+  }
+}
+
+// ── Gang step tabs ──
+function gangTab(idx, btn) {
+  // Hide all panels
+  for (let i = 0; i < 4; i++) {
+    const p = document.getElementById('gang-panel-' + i);
+    const t = document.getElementById('gang-tab-' + i);
+    if (p) p.classList.add('hidden');
+    if (t) {
+      t.classList.remove('bg-[#f9f5e8]', 'text-[#1a4a3a]', 'font-bold', 'border-l-2', 'border-[#1a4a3a]');
+      t.classList.add('text-[#1a2a1a]/60', 'font-medium');
+    }
+  }
+  // Show selected
+  const panel = document.getElementById('gang-panel-' + idx);
+  if (panel) panel.classList.remove('hidden');
+  if (btn) {
+    btn.classList.add('bg-[#f9f5e8]', 'text-[#1a4a3a]', 'font-bold', 'border-l-2', 'border-[#1a4a3a]');
+    btn.classList.remove('text-[#1a2a1a]/60', 'font-medium');
   }
 }
 

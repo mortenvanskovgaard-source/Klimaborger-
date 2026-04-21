@@ -702,7 +702,61 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
   </section>
 
   <!-- FORDELE SEKTION — tre ikoner på gul baggrund, som SparEnergi fordele -->
-  <section class="max-w-4xl mx-auto px-6 pb-8" id="d-fordele-wrap">
+    <!-- RØRCENTER LØSNINGSSAMMENLIGNING — Figur 13, s. 9 -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.05)]">
+      <div class="px-6 py-5 border-b border-[#006573]/10">
+        <p class="text-[10px] uppercase tracking-widest font-bold rapport-heading mb-0.5">Rørcenter-anvisning 016 · Figur 13, s. 9</p>
+        <h2 class="font-headline text-lg font-bold text-[#1a2a1a]">Principielle fordele og ulemper ved de tre LAR-løsninger</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs">
+          <thead>
+            <tr class="border-b border-[#006573]/10">
+              <th class="text-left px-5 py-3 font-bold text-[#006573] w-28">Løsningstype</th>
+              <th class="text-left px-4 py-3 font-bold text-[#3aaa55]">Fordele</th>
+              <th class="text-left px-4 py-3 font-bold text-[#c04030]">Ulemper</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-[#1a2a1a]/5 hover:bg-[#f9f5e8]">
+              <td class="px-5 py-4 font-bold text-[#1a2a1a]">Faskine</td>
+              <td class="px-4 py-4 text-[#1a2a1a]/65 space-y-1">
+                <p>+ Magasinvolumen · skjult løsning · optager ikke plads</p>
+              </td>
+              <td class="px-4 py-4 text-[#1a2a1a]/65 space-y-1">
+                <p>− Drift og levetid · usynligt overløb · pris og besvær ved anlæg</p>
+              </td>
+            </tr>
+            <tr class="border-b border-[#1a2a1a]/5 hover:bg-[#f9f5e8] bg-[#f9f5e8]/40">
+              <td class="px-5 py-4 font-bold text-[#1a2a1a]">Regnbed ★</td>
+              <td class="px-4 py-4 text-[#1a2a1a]/65">
+                <p>+ Magasinvolumen · smukt haveelement · simpelt og billigt · synligt overløb · regnvand synliggøres</p>
+              </td>
+              <td class="px-4 py-4 text-[#1a2a1a]/65">
+                <p>− Optager plads i haven</p>
+              </td>
+            </tr>
+            <tr class="hover:bg-[#f9f5e8]">
+              <td class="px-5 py-4 font-bold text-[#1a2a1a]">Græsplæne</td>
+              <td class="px-4 py-4 text-[#1a2a1a]/65">
+                <p>+ Simpelt og billigt · ingen drift · synligt overløb · optager ikke plads</p>
+              </td>
+              <td class="px-4 py-4 text-[#1a2a1a]/65">
+                <p>− Våd græsplæne når det regner kraftigt</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="px-6 py-3 bg-[#f9f5e8] flex justify-between items-center">
+        <p class="text-[10px] text-[#1a2a1a]/40 italic">"Det er mulighederne i den enkelte have og ejerens ønsker, der afgør hvilken løsning der er den bedste." — Rørcenter-anvisning 016</p>
+        <button onclick="navigate('byg')" class="text-[10px] font-bold text-[#006573] hover:underline whitespace-nowrap ml-3">Se løsninger →</button>
+      </div>
+    </div>
+  </section>
+
+<section class="max-w-4xl mx-auto px-6 pb-8" id="d-fordele-wrap">
     <div class="text-center mb-6">
       <h2 class="font-headline text-2xl font-bold text-[#1a2a1a] mb-2">Fordele ved at handle nu</h2>
       <p class="text-sm text-[#1a2a1a]/55 max-w-lg mx-auto">Du kan spare penge og undgå skader ved at håndtere regnvandsproblemer inden næste skybrud</p>
@@ -1386,13 +1440,60 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
           <!-- Jordbundstest -->
           <div class="bg-[#f9f5e8] rounded-xl p-4 mb-5">
             <p class="text-xs font-bold text-[#1a2a1a] flex items-center gap-1.5 mb-2">
-              <span class="material-symbols-outlined text-[#1a4a3a] text-sm">science</span>Simpel jordbundstest
+              <span class="material-symbols-outlined text-[#1a4a3a] text-sm">science</span>Simpel jordbundstest (Rørcenter-anvisning 016)
             </p>
             <p class="text-xs text-[#1a2a1a]/55 mb-3">Grav et hul 30×30×30 cm — fyld med vand — mål tid til tømt:</p>
-            <div class="grid grid-cols-3 gap-2 text-center text-[10px]">
+            <div class="grid grid-cols-3 gap-2 text-center text-[10px] mb-3">
               <div class="bg-white rounded-lg p-2 shadow-sm"><p class="font-bold text-[#1a2a1a]">Under 1 time</p><p class="text-[#1a2a1a]/50">Grus/sand</p></div>
               <div class="bg-white rounded-lg p-2 shadow-sm"><p class="font-bold text-[#1a2a1a]">1–4 timer</p><p class="text-[#1a2a1a]/50">Leret jord</p></div>
               <div class="bg-white rounded-lg p-2 shadow-sm"><p class="font-bold text-[#1a2a1a]">Over 4 timer</p><p class="text-[#1a2a1a]/50">Moræneler</p></div>
+            </div>
+            <p class="text-[10px] text-[#1a2a1a]/40 italic">Kilde: Rørcenter-anvisning 016, Bilag 1. Anvend den mindste af 2 målinger til dimensionering.</p>
+          </div>
+
+          <!-- MYNDIGHEDSKRAV fra Rørcenter-anvisning 016 -->
+          <div class="bg-white rounded-xl overflow-hidden border border-[#006573]/20 mb-5">
+            <div class="bg-[#006573] px-5 py-3 flex items-center gap-2">
+              <span class="material-symbols-outlined text-white text-sm">gavel</span>
+              <p class="text-xs font-bold text-white uppercase tracking-widest">Myndighedskrav — Rørcenter-anvisning 016</p>
+            </div>
+            <div class="p-5">
+              <p class="text-xs text-[#1a2a1a]/65 leading-relaxed mb-4">Kommunen giver normalt tilladelse til nedsivning af regnvand, når følgende forhold er opfyldt:</p>
+              <div class="space-y-2 mb-4">
+                <div class="flex items-start gap-3 py-2 border-b border-[#006573]/10">
+                  <div class="w-5 h-5 bg-[#006573] rounded flex items-center justify-center shrink-0 mt-0.5"><span class="material-symbols-outlined text-white text-[11px]">straighten</span></div>
+                  <div>
+                    <p class="text-xs font-bold text-[#1a2a1a]">5 m fra bolig med beboelse</p>
+                    <p class="text-[10px] text-[#1a2a1a]/50">Afstand fra nedsivningsanlæg til bygninger med beboelse</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 py-2 border-b border-[#006573]/10">
+                  <div class="w-5 h-5 bg-[#006573] rounded flex items-center justify-center shrink-0 mt-0.5"><span class="material-symbols-outlined text-white text-[11px]">straighten</span></div>
+                  <div>
+                    <p class="text-xs font-bold text-[#1a2a1a]">2 m fra bygninger uden beboelse og skel</p>
+                    <p class="text-[10px] text-[#1a2a1a]/50">Garage, udhus og matrikelskel</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 py-2 border-b border-[#006573]/10">
+                  <div class="w-5 h-5 bg-[#006573] rounded flex items-center justify-center shrink-0 mt-0.5"><span class="material-symbols-outlined text-white text-[11px]">straighten</span></div>
+                  <div>
+                    <p class="text-xs font-bold text-[#1a2a1a]">25 m fra vandindvinding, sø, hav eller vandløb</p>
+                    <p class="text-[10px] text-[#1a2a1a]/50">Beskyttelse af drikkevand og recipienter</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 py-2">
+                  <div class="w-5 h-5 bg-[#e8b84b] rounded flex items-center justify-center shrink-0 mt-0.5"><span class="material-symbols-outlined text-[#2a1400] text-[11px]">warning</span></div>
+                  <div>
+                    <p class="text-xs font-bold text-[#1a2a1a]">Ingen nedsivning fra bly-, kobber- eller zinktage</p>
+                    <p class="text-[10px] text-[#1a2a1a]/50">Forurener grundvandet — tag fra disse materialer kobles til kloak</p>
+                  </div>
+                </div>
+              </div>
+              <div class="vidste-du">
+                <svg class="wc-blob" aria-hidden="true" style="position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);pointer-events:none;z-index:0" viewBox="0 0 300 120" preserveAspectRatio="none" fill="none"><filter id="wcblob_myndighed"><feGaussianBlur stdDeviation="8"/></filter><ellipse cx="150" cy="60" rx="148" ry="58" fill="#3aaa55" filter="url(#wcblob_myndighed)" opacity="0.22"/></svg>
+                <p class="text-[10px] font-bold mb-1" style="color:#006573">Vidste du... (Rørcenter-anvisning 016, s. 7)</p>
+                <p class="text-[10px] text-[#1a2a1a]/65 leading-relaxed">I nogle kommuner tilbagebetaler forsyningen tilslutningsbidrag på op til ca. 22.000 kr. inkl. moms, hvis du håndterer alt dit regnvand på egen grund. Spørg din kommune.</p>
+              </div>
             </div>
           </div>
 
@@ -1960,7 +2061,11 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
                   <h4 class="font-headline font-bold text-sm">Regnbed</h4>
                   <button onclick="openModal('Regnbed')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button>
                 </div>
-                <p class="text-[9px] text-[#1a2a1a]/45 mb-2.5">Fra 2.500 kr. · 40 L/m²</p>
+                <p class="text-[9px] text-[#1a2a1a]/45 mb-2">Fra 2.500 kr. · bund: 40 cm sandblandet muld</p>
+                <div class="bg-[#e0f4f6] rounded-lg px-3 py-2 mb-2.5">
+                  <p class="text-[9px] font-bold text-[#006573] mb-0.5">Rørcenter-krav (016, s. 17)</p>
+                  <p class="text-[9px] text-[#1a2a1a]/60 leading-relaxed">Min. 5 m fra bolig · fald 20‰ væk fra hus · min. 40 cm sandblandet muld i bund · åben rende eller nedgravet rør fra tagnedløb</p>
+                </div>
                 <div class="flex justify-between mb-1"><span class="text-[9px] uppercase tracking-widest font-bold text-[#1a2a1a]/45">Størrelse</span><span class="text-[9px] font-bold text-[#1a4a3a]" id="lbl-regnbed">0 m²</span></div>
                 <input class="w-full" max="500" min="0" step="5" type="range" value="0" oninput="updateByg('regnbed',this.value,'m²','lbl-regnbed',40)"/>
               </div>
@@ -2003,7 +2108,12 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
                   <h4 class="font-headline font-bold text-sm">Faskine</h4>
                   <button onclick="openModal('Faskine')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button>
                 </div>
-                <p class="text-[9px] text-[#1a2a1a]/45 mb-2.5">Fra 3.000 kr. · direkte nedsivning</p>
+                <p class="text-[9px] text-[#1a2a1a]/45 mb-2">Fra 3.000 kr. · underjordisk · 95% hulrum</p>
+                <!-- Rørcenter kravfakta -->
+                <div class="bg-[#e0f4f6] rounded-lg px-3 py-2 mb-2.5">
+                  <p class="text-[9px] font-bold text-[#006573] mb-0.5">Rørcenter-krav (016, s. 13)</p>
+                  <p class="text-[9px] text-[#1a2a1a]/60 leading-relaxed">Min. 5 m fra bolig · sandfang obligatorisk · fiberdug om faskinen · overløb til terræn i god afstand fra hus</p>
+                </div>
                 <div class="flex justify-between mb-1"><span class="text-[9px] uppercase tracking-widest font-bold text-[#1a2a1a]/45">Volumen</span><span class="text-[9px] font-bold text-[#1a4a3a]" id="lbl-fask">0 L</span></div>
                 <input class="w-full" max="10000" min="0" step="100" type="range" value="0" oninput="updateByg('fask',this.value,'L','lbl-fask',1)"/>
               </div>
@@ -2160,7 +2270,11 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
               </div>
               <div class="p-3">
                 <div class="flex items-center justify-between gap-1 mb-0.5"><h4 class="font-headline font-bold text-sm">Grønne tage</h4><button onclick="openModal('Grønne tage')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button></div>
-                <p class="text-[9px] text-[#1a2a1a]/45 mb-2.5">400–800 kr./m² · 50% tilbageholdelse</p>
+                <p class="text-[9px] text-[#1a2a1a]/45 mb-2">400–800 kr./m² · ca. 50 kg/m² vandmættet</p>
+                <div class="bg-[#e0f4f6] rounded-lg px-3 py-2 mb-2.5">
+                  <p class="text-[9px] font-bold text-[#006573] mb-0.5">Rørcenter-krav (016, s. 21)</p>
+                  <p class="text-[9px] text-[#1a2a1a]/60 leading-relaxed">Hældning max 30° · tagkonstruktion skal bære vægten · fordamper ~50% af årsnedbøren · resterende 50% ledes til nedsivningsanlæg</p>
+                </div>
                 <div class="flex justify-between mb-1"><span class="text-[9px] uppercase tracking-widest font-bold text-[#1a2a1a]/45">Areal</span><span class="text-[9px] font-bold text-[#1a4a3a]" id="lbl-grontag">0 m²</span></div>
                 <input class="w-full" max="300" min="0" step="5" type="range" value="0" oninput="updateByg('grontag',this.value,'m²','lbl-grontag',50)"/>
               </div>
@@ -3115,6 +3229,96 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
     </div>
   </section>
 
+  <!-- PLANTELISTE TIL REGNBEDE — Rørcenter-anvisning 016, Bilag 2 -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.05)]">
+      <div class="bg-[#006573] px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-white text-lg">local_florist</span>
+          <div>
+            <p class="text-white font-bold text-sm">Planteliste til regnbede</p>
+            <p class="text-white/60 text-[10px]">Rørcenter-anvisning 016, Bilag 2 — planter der tåler både vand og tørke</p>
+          </div>
+        </div>
+        <button onclick="plantlisteToggle()" id="plantliste-btn" class="bg-white/20 text-white text-[10px] font-bold px-3 py-1.5 rounded-full hover:bg-white/30 transition-colors">
+          Vis liste
+        </button>
+      </div>
+      <div id="plantliste-content" class="hidden p-6">
+        <p class="text-sm text-[#1a2a1a]/65 leading-relaxed mb-5">Planterne i et regnbed skal tåle omskiftelige forhold — både lange våde og tørre perioder. Plant tæt for at hindre ukrudt og skabe et frodigt udtryk.</p>
+        <div class="grid sm:grid-cols-3 gap-5">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-4 h-4 rounded-full bg-[#e84070]"></div>
+              <h4 class="font-headline font-bold text-sm rapport-heading">Stauder</h4>
+            </div>
+            <ul class="space-y-1 text-[11px] text-[#1a2a1a]/65">
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Alm. akeleje <em>(Aquilegia vulgaris)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Alm. mjødurt <em>(Filipendula ulmaria)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Blodrød storkenæb <em>(Geranium sanguineum)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Daglilje <em>(Hemerocallis)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Iris <em>(Iris sibirica / pseudacorus)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Kattehale <em>(Lythrum salicaria)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Hjortetrøst <em>(Eupatorium fistulosum)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Skinnende solhat <em>(Rudbeckia flugida)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Lodden løvefod <em>(Alchemilla mollis)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Eng-storkenæb <em>(Geranium pratense)</em></li>
+            </ul>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-4 h-4 rounded-full bg-[#3aaa55]"></div>
+              <h4 class="font-headline font-bold text-sm rapport-heading">Prydgræsser</h4>
+            </div>
+            <ul class="space-y-1 text-[11px] text-[#1a2a1a]/65 mb-5">
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Alm. blåtop <em>(Molinia caerulea)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Blågrøn star <em>(Carex flacca)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Elefantgræs <em>(Miscanthus sinensis)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Morgenstjernestar <em>(Carex grayi)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Rørhvene <em>(Calamagrostis acutifolia)</em></li>
+            </ul>
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-4 h-4 rounded-full bg-[#1a4a3a]"></div>
+              <h4 class="font-headline font-bold text-sm rapport-heading">Buske</h4>
+            </div>
+            <ul class="space-y-1 text-[11px] text-[#1a2a1a]/65">
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Alm. benved <em>(Euonymus europaeus)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Alm. kvalkved <em>(Viburnum opulus)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Rød kornel <em>(Cornus sanguinea)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Sortfrugtet surbær <em>(Aronia melanocarpa)</em></li>
+              <li class="flex gap-1.5"><span class="text-[#006573]">·</span>Solbær <em>(Ribes nigrum)</em></li>
+            </ul>
+          </div>
+          <div class="bg-[#f9f5e8] rounded-xl p-4">
+            <h4 class="font-headline font-bold text-sm rapport-heading mb-3">Jordbund i regnbed</h4>
+            <div class="space-y-3 text-[11px] text-[#1a2a1a]/65">
+              <div class="flex items-start gap-2">
+                <div class="w-4 h-4 rounded bg-[#006573] shrink-0 mt-0.5"></div>
+                <p><strong>Øverste lag:</strong> Muldjord (ca. 20 cm)</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <div class="w-4 h-4 rounded bg-[#3a8a55] shrink-0 mt-0.5"></div>
+                <p><strong>Mellemlag:</strong> Sandblandet muld og grus, 40 cm</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <div class="w-4 h-4 rounded bg-[#c8a050] shrink-0 mt-0.5"></div>
+                <p><strong>Bund:</strong> Råjord — løsn ved lerjord med greb</p>
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-[#1a2a1a]/8">
+              <p class="text-[10px] text-[#1a2a1a]/45 leading-relaxed">Det færdige bed ligger ca. 20 cm under terræn. Plant tæt — både for at hindre ukrudt og skabe et frodigt udtryk.</p>
+            </div>
+            <div class="vidste-du mt-3">
+              <svg class="wc-blob" aria-hidden="true" style="position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);pointer-events:none;z-index:0" viewBox="0 0 300 120" preserveAspectRatio="none" fill="none"><filter id="wcblob_planter"><feGaussianBlur stdDeviation="8"/></filter><ellipse cx="150" cy="60" rx="148" ry="58" fill="#3aaa55" filter="url(#wcblob_planter)" opacity="0.22"/></svg>
+              <p class="text-[10px] font-bold mb-1" style="color:#006573">Vidste du...</p>
+              <p class="text-[10px] text-[#1a2a1a]/65">Tørkeperioderne i regnbedet sikrer at myg og insekter ikke udklækkes. Planter der kan tåle begge dele giver det bedste resultat.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TRE BUNDKORT + NYHEDSBREV -->
   <section class="max-w-4xl mx-auto px-6 pb-6">
     <div class="grid sm:grid-cols-3 gap-4">
@@ -3305,6 +3509,55 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
       <filter id="wc5"><feGaussianBlur stdDeviation="11"/></filter>
       <ellipse cx="95" cy="75" rx="90" ry="78" fill="#3aaa55" filter="url(#wc5)"/>
     </svg>
+    <!-- RØRCENTER TJEKLISTE: Nedsivning fra start til slut (s. 5) -->
+    <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.05)] mb-6">
+      <div class="bg-[#006573] px-6 py-4 flex items-center gap-3">
+        <span class="material-symbols-outlined text-white text-lg">checklist</span>
+        <div>
+          <p class="text-white font-bold text-sm">Nedsivning af tagvand fra start til slut</p>
+          <p class="text-white/60 text-[10px]">Rørcenter-anvisning 016, side 5</p>
+        </div>
+      </div>
+      <div class="p-6 grid sm:grid-cols-2 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-[#006573]/10">
+        <div class="py-2 sm:py-0 sm:pr-5 space-y-3">
+          <div class="flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-[#006573] flex items-center justify-center shrink-0 mt-0.5 text-white text-[9px] font-bold">1</div>
+            <p class="text-xs text-[#1a2a1a]/70 leading-relaxed">Undersøg i kommunens miljøafdeling om du kan få <strong>tilslutningsbidraget tilbage</strong> (op til 22.000 kr.)</p>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-[#006573] flex items-center justify-center shrink-0 mt-0.5 text-white text-[9px] font-bold">2</div>
+            <p class="text-xs text-[#1a2a1a]/70 leading-relaxed">Indtegn mulige placeringer på grunden og vurdér <strong>oversvømmelsesvejen</strong> ved skybrud</p>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-[#006573] flex items-center justify-center shrink-0 mt-0.5 text-white text-[9px] font-bold">3</div>
+            <p class="text-xs text-[#1a2a1a]/70 leading-relaxed">Vurdér om din grund er egnet til nedsivning — <strong>test jordens nedsivningsevne</strong> (se jordbundstesten)</p>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-[#006573] flex items-center justify-center shrink-0 mt-0.5 text-white text-[9px] font-bold">4</div>
+            <p class="text-xs text-[#1a2a1a]/70 leading-relaxed">Dimensionér anlægget med <strong>Spildevandskomiteens</strong> dimensioneringsværktøj (ida.dk/svk)</p>
+          </div>
+        </div>
+        <div class="py-2 sm:py-0 sm:pl-5 space-y-3">
+          <div class="flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-[#006573] flex items-center justify-center shrink-0 mt-0.5 text-white text-[9px] font-bold">5</div>
+            <p class="text-xs text-[#1a2a1a]/70 leading-relaxed"><strong>Ansøg kommunen</strong> om nedsivningstilladelse og afvent godkendelse</p>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-[#006573] flex items-center justify-center shrink-0 mt-0.5 text-white text-[9px] font-bold">6</div>
+            <p class="text-xs text-[#1a2a1a]/70 leading-relaxed">Ansøg forsyningen om <strong>tilbagebetaling</strong> af tilslutningsbidrag</p>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-[#e8b84b] flex items-center justify-center shrink-0 mt-0.5 text-[#2a1400] text-[9px] font-bold">7</div>
+            <p class="text-xs text-[#1a2a1a]/70 leading-relaxed">Etabler anlægget og afprop kloakken — <strong>kun autoriseret kloakmester</strong> må afproppe</p>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-[#3aaa55] flex items-center justify-center shrink-0 mt-0.5 text-white text-[9px] font-bold">✓</div>
+            <p class="text-xs text-[#1a2a1a]/70 leading-relaxed">Vedligehold: rens tagrender, tøm sandfang, fejn flisearealer jævnligt</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="text-center mb-6">
       <h2 class="font-headline text-2xl font-bold text-[#1a2a1a] mb-2">Lever du op til de 5 grundkrav?</h2>
       <p class="text-sm text-[#1a2a1a]/50 max-w-lg mx-auto">Hvis du vil anlægge en LAR-løsning med tilskud, skal du som udgangspunkt leve op til disse 5 krav.</p>
@@ -4192,6 +4445,16 @@ document.addEventListener('keydown', e => {
 });
 
 function toggleMobile() {}  // kept for compatibility
+// ── Planteliste toggle ──
+function plantlisteToggle() {
+  const panel = document.getElementById('plantliste-content');
+  const btn = document.getElementById('plantliste-btn');
+  if (!panel || !btn) return;
+  const open = !panel.classList.contains('hidden');
+  panel.classList.toggle('hidden', open);
+  btn.textContent = open ? 'Vis liste' : 'Skjul liste';
+}
+
 // ── Gang step tabs ──
 function gangTab(idx, btn) {
   // Hide all panels

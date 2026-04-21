@@ -284,81 +284,86 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 <main class="pt-16 bg-[#f5f0e1] min-h-screen">
 
   <!-- HERO BANNER -->
-  <section class="bg-[#1a4a3a] text-white relative overflow-hidden">
-    <div class="max-w-5xl mx-auto px-8 pt-14 pb-0 grid grid-cols-1 lg:grid-cols-2 gap-6 items-end">
-      <div class="pb-14">
-        <p class="text-white/50 text-xs uppercase tracking-widest font-medium mb-3">Klimatilpasning for private grundejere</p>
+  <section class="bg-[#1a4a3a] relative overflow-hidden">
+    <!-- Akvarel-dekorationer -->
+    <svg class="wc-hero-splash" style="top:-40px;right:-60px;width:340px;height:280px;opacity:0.18" viewBox="0 0 340 280" fill="none">
+      <filter id="wc1"><feGaussianBlur stdDeviation="12"/></filter>
+      <ellipse cx="180" cy="130" rx="155" ry="120" fill="#3aaa55" filter="url(#wc1)" opacity="0.7"/>
+      <ellipse cx="220" cy="100" rx="110" ry="85" fill="#55c870" filter="url(#wc1)" opacity="0.5"/>
+      <ellipse cx="150" cy="160" rx="90" ry="70" fill="#2d9a45" filter="url(#wc1)" opacity="0.4"/>
+    </svg>
+    <svg class="wc-hero-splash" style="bottom:-30px;left:-40px;width:260px;height:200px;opacity:0.10" viewBox="0 0 260 200" fill="none">
+      <filter id="wc2"><feGaussianBlur stdDeviation="14"/></filter>
+      <ellipse cx="120" cy="100" rx="115" ry="90" fill="#006573" filter="url(#wc2)" opacity="0.8"/>
+    </svg>
+
+    <!-- Hero tekst -->
+    <div class="max-w-5xl mx-auto px-8 pt-16 pb-10 relative z-10">
+      <div class="max-w-3xl">
         <p class="text-[#a8d8c0] text-xs uppercase tracking-widest font-bold mb-4">Du behøver ikke vide noget på forhånd — vi hjælper dig</p>
         <h1 class="font-headline text-4xl md:text-[2.75rem] font-bold leading-tight mb-5 text-white">
-          Spar penge og CO₂<br/>ved at håndtere<br/>dit regnvand
+          Det kan både spare penge<br/>og være godt for miljøet
         </h1>
-        <p class="text-white/70 text-base mb-7 max-w-md leading-relaxed">
-          Det kan både spare penge og være godt for miljøet — vi guider dig trin for trin og finder løsninger, der passer til netop din grund.
+        <p class="text-white/70 text-base mb-10 max-w-xl leading-relaxed">
+          Vi guider dig trin for trin og finder de løsninger, der passer til netop din grund — uanset om du er helt ny eller allerede ved lidt.
         </p>
-        <div class="flex flex-wrap gap-3">
-          <button onclick="navigate('diagnose')" class="bg-[#e8b84b] text-[#1a2a1a] px-7 py-3.5 rounded-full font-bold text-sm hover:bg-[#f0c855] transition-colors shadow-sm">
-            Find mit problem
-          </button>
-          <button onclick="navigate('kortlaeg')" class="bg-white/10 text-white border border-white/20 px-7 py-3.5 rounded-full font-medium text-sm hover:bg-white/20 transition-colors">
-            Beregn vandbehov
-          </button>
-        </div>
       </div>
-      <!-- SVG Illustration -->
-      <div class="flex justify-center lg:justify-end items-end">
-        <svg viewBox="0 0 320 240" class="w-64 md:w-72 lg:w-80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="160" cy="215" rx="145" ry="20" fill="#0d3025" opacity="0.5"/>
-          <!-- House -->
-          <rect x="75" y="120" width="115" height="95" rx="4" fill="#e8f3ee"/>
-          <polygon points="65,125 200,125 132,68" fill="#2d7a5a"/>
-          <rect x="65" y="118" width="135" height="13" rx="2" fill="#3d9a6a"/>
-          <!-- Door -->
-          <rect x="120" y="173" width="25" height="42" rx="3" fill="#c8a050"/>
-          <circle cx="141" cy="194" r="2.5" fill="#a07830"/>
-          <!-- Windows -->
-          <rect x="83" y="137" width="26" height="22" rx="2" fill="#a8d8c8"/>
-          <rect x="154" y="137" width="26" height="22" rx="2" fill="#a8d8c8"/>
-          <line x1="96" y1="137" x2="96" y2="159" stroke="#88c0b0" stroke-width="1.5"/>
-          <line x1="83" y1="148" x2="109" y2="148" stroke="#88c0b0" stroke-width="1.5"/>
-          <line x1="167" y1="137" x2="167" y2="159" stroke="#88c0b0" stroke-width="1.5"/>
-          <line x1="154" y1="148" x2="180" y2="148" stroke="#88c0b0" stroke-width="1.5"/>
-          <!-- Rainbed left -->
-          <ellipse cx="42" cy="208" rx="34" ry="11" fill="#1a5535"/>
-          <ellipse cx="42" cy="204" rx="27" ry="7" fill="#2a7045"/>
-          <circle cx="28" cy="195" r="9" fill="#3aaa55"/>
-          <circle cx="43" cy="191" r="12" fill="#4bb865"/>
-          <circle cx="57" cy="196" r="8" fill="#3aaa55"/>
-          <circle cx="33" cy="188" r="4" fill="#f0d040"/>
-          <circle cx="49" cy="184" r="5" fill="#f0d040"/>
-          <!-- Flow arrow -->
-          <path d="M75 133 Q42 155 42 196" stroke="#7dd8f8" stroke-width="2" stroke-dasharray="5,4" fill="none" opacity="0.65"/>
-          <!-- Tree right -->
-          <rect x="252" y="162" width="10" height="52" rx="3" fill="#8a6a35"/>
-          <circle cx="257" cy="152" r="27" fill="#2d7a4a"/>
-          <circle cx="242" cy="163" r="17" fill="#349958"/>
-          <circle cx="271" cy="160" r="19" fill="#349958"/>
-          <!-- Person -->
-          <circle cx="218" cy="182" r="7" fill="#e8c090"/>
-          <rect x="215" y="189" width="6" height="18" rx="2" fill="#e05040"/>
-          <line x1="218" y1="193" x2="231" y2="198" stroke="#c04030" stroke-width="2.5" stroke-linecap="round"/>
-          <rect x="230" y="195" width="10" height="7" rx="2" fill="#c04030"/>
-          <line x1="240" y1="199" x2="247" y2="204" stroke="#7dd8f8" stroke-width="1.5" stroke-dasharray="2,2"/>
-          <!-- Rain drops -->
-          <circle cx="105" cy="38" r="3" fill="#7dd8f8" opacity="0.75"/>
-          <circle cx="128" cy="24" r="2.5" fill="#7dd8f8" opacity="0.65"/>
-          <circle cx="153" cy="42" r="2" fill="#7dd8f8" opacity="0.6"/>
-          <circle cx="173" cy="28" r="3.5" fill="#7dd8f8" opacity="0.75"/>
-          <circle cx="197" cy="40" r="2" fill="#7dd8f8" opacity="0.65"/>
-          <circle cx="218" cy="22" r="3" fill="#7dd8f8" opacity="0.6"/>
-          <circle cx="240" cy="38" r="2.5" fill="#7dd8f8" opacity="0.75"/>
-          <!-- Cloud -->
-          <circle cx="178" cy="18" r="13" fill="white" opacity="0.12"/>
-          <circle cx="193" cy="14" r="17" fill="white" opacity="0.12"/>
-          <circle cx="210" cy="18" r="11" fill="white" opacity="0.12"/>
-        </svg>
+
+      <!-- 4 mission-bokse inden i den grønne hero -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pb-12">
+
+        <!-- Boks 1: Hvad er Regnhjælper -->
+        <div onclick="navigate('diagnose')" class="bg-white/10 hover:bg-white/18 border border-white/15 rounded-2xl p-5 cursor-pointer transition-all group backdrop-blur-sm">
+          <div class="w-9 h-9 bg-[#e8b84b]/20 rounded-xl flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-[#e8b84b] text-lg">water_drop</span>
+          </div>
+          <h3 class="font-headline font-bold text-white text-sm mb-2">Vi finder løsningen til dit regnvandsproblem</h3>
+          <p class="text-white/60 text-xs leading-relaxed mb-4">Fortæl os hvad du oplever — vand i kælderen, oversvømmet have, stående vand — og vi finder årsagen og de rette løsninger.</p>
+          <span class="text-[#a8d8c0] text-[10px] font-bold inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+            Start her <span class="material-symbols-outlined text-[10px]">arrow_forward</span>
+          </span>
+        </div>
+
+        <!-- Boks 2: Beregn -->
+        <div onclick="navigate('kortlaeg')" class="bg-white/10 hover:bg-white/18 border border-white/15 rounded-2xl p-5 cursor-pointer transition-all group backdrop-blur-sm">
+          <div class="w-9 h-9 bg-[#a8d8c0]/20 rounded-xl flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-[#a8d8c0] text-lg">calculate</span>
+          </div>
+          <h3 class="font-headline font-bold text-white text-sm mb-2">Vi beregner præcist hvad din matrikel skal håndtere</h3>
+          <p class="text-white/60 text-xs leading-relaxed mb-4">Indtast din adresse og hent automatisk grunddata fra BBR og kommunens nedbørsregistre. Ingen teknisk viden kræves.</p>
+          <span class="text-[#a8d8c0] text-[10px] font-bold inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+            Beregn dit behov <span class="material-symbols-outlined text-[10px]">arrow_forward</span>
+          </span>
+        </div>
+
+        <!-- Boks 3: Løsninger -->
+        <div onclick="navigate('byg')" class="bg-white/10 hover:bg-white/18 border border-white/15 rounded-2xl p-5 cursor-pointer transition-all group backdrop-blur-sm">
+          <div class="w-9 h-9 bg-[#3aaa55]/20 rounded-xl flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-[#3aaa55] text-lg">park</span>
+          </div>
+          <h3 class="font-headline font-bold text-white text-sm mb-2">Vi viser dig hvilke løsninger der passer til din have</h3>
+          <p class="text-white/60 text-xs leading-relaxed mb-4">Regnbede, faskiner, grønne tage — sammensæt løsninger og se kapaciteten live. Med priser og krav fra Rørcenter-anvisning 016.</p>
+          <span class="text-[#a8d8c0] text-[10px] font-bold inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+            Se løsninger <span class="material-symbols-outlined text-[10px]">arrow_forward</span>
+          </span>
+        </div>
+
+        <!-- Boks 4: Spar penge + tilskud -->
+        <div onclick="navigate('gang')" class="bg-white/10 hover:bg-white/18 border border-white/15 rounded-2xl p-5 cursor-pointer transition-all group backdrop-blur-sm">
+          <div class="w-9 h-9 bg-[#e8a87c]/20 rounded-xl flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-[#e8a87c] text-lg">savings</span>
+          </div>
+          <h3 class="font-headline font-bold text-white text-sm mb-2">Vi guider dig til tilskud og besparelser</h3>
+          <p class="text-white/60 text-xs leading-relaxed mb-4">Mange kommuner tilbagebetaler op til 22.000 kr. i tilslutningsbidrag. Vi viser dig trin for trin hvordan du søger og hvad du skal have styr på.</p>
+          <span class="text-[#a8d8c0] text-[10px] font-bold inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+            Tilskud og regler <span class="material-symbols-outlined text-[10px]">arrow_forward</span>
+          </span>
+        </div>
+
       </div>
     </div>
   </section>
+
 
   <!-- EPINION DATA SEKTION -->
   <section class="max-w-5xl mx-auto px-8 pt-10 pb-2">
@@ -458,62 +463,6 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 
   </section>
 
-<!-- FEATURE TILES -->
-  <section class="max-w-5xl mx-auto px-8 pt-8 pb-6">
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-4">
-
-      <!-- Stor tile: Søg tilskud / Beregn vandbehov -->
-      <div class="lg:col-span-2 bg-[#cce0cc] rounded-[1.25rem] p-8 flex flex-col justify-between min-h-[260px] cursor-pointer hover:bg-[#bdd5bd] transition-colors group" onclick="navigate('kortlaeg')">
-        <div>
-          <svg class="w-12 h-12 mb-5" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="24" fill="#1a4a3a" opacity="0.15"/>
-            <path d="M24 10 C24 10 16 20 16 27 C16 31.4 19.6 35 24 35 C28.4 35 32 31.4 32 27 C32 20 24 10 24 10Z" fill="#1a4a3a" opacity="0.7"/>
-          </svg>
-          <h2 class="font-headline text-xl font-bold text-[#0d2a1a] mb-2">Beregn dit vandbehov</h2>
-          <p class="text-sm text-[#0d2a1a]/65 leading-relaxed">Hent grunddata automatisk og beregn præcist hvad din matrikel skal håndtere ved skybrud.</p>
-        </div>
-        <button class="mt-6 self-start bg-white text-[#1a4a3a] px-5 py-2.5 rounded-full text-sm font-bold group-hover:bg-[#f5f5f5] transition-colors inline-flex items-center gap-1.5">
-          Læs mere og beregn <span class="material-symbols-outlined text-sm">arrow_forward</span>
-        </button>
-      </div>
-
-      <!-- 3 kompakte tiles -->
-      <div class="lg:col-span-3 grid grid-rows-3 gap-3">
-        <div class="bg-[#f5e8c0] rounded-[1.25rem] p-5 cursor-pointer hover:bg-[#ecdda8] transition-colors flex items-center gap-4" onclick="navigate('diagnose')">
-          <div class="w-9 h-9 bg-[#c8a030]/20 rounded-xl flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-[#7a6010] text-lg">search</span>
-          </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="font-headline font-bold text-[#2a1a00] text-sm mb-0.5">Få hjælp til regnvandet på din grund</h3>
-            <p class="text-xs text-[#2a1a00]/55">Regnhjælper — gør det nemt at komme i gang</p>
-          </div>
-          <span class="material-symbols-outlined text-[#8a6a20] shrink-0 text-lg">arrow_forward</span>
-        </div>
-
-        <div class="bg-[#e5ede5] rounded-[1.25rem] p-5 cursor-pointer hover:bg-[#d8e4d8] transition-colors flex items-center gap-4" onclick="navigate('byg')">
-          <div class="w-9 h-9 bg-[#1a4a3a]/15 rounded-xl flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-[#1a4a3a] text-lg">build</span>
-          </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="font-headline font-bold text-[#0d2a1a] text-sm mb-0.5">Mine muligheder</h3>
-            <p class="text-xs text-[#0d2a1a]/55 truncate">Sammensæt regnbede, faskiner og grønne tage — se kapaciteten live.</p>
-          </div>
-          <span class="material-symbols-outlined text-[#1a4a3a] shrink-0 text-lg">arrow_forward</span>
-        </div>
-
-        <div class="bg-[#fce5dc] rounded-[1.25rem] p-5 cursor-pointer hover:bg-[#f5d8cc] transition-colors flex items-center gap-4" onclick="navigate('gang')">
-          <div class="w-9 h-9 bg-[#c04030]/15 rounded-xl flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-[#c04030] text-lg">construction</span>
-          </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="font-headline font-bold text-[#2a0a00] text-sm mb-0.5">Spar penge i hverdagen</h3>
-            <p class="text-xs text-[#2a0a00]/55 truncate">Trin-for-trin vejledninger til dine klimaløsninger — med priser.</p>
-          </div>
-          <span class="material-symbols-outlined text-[#c04030] shrink-0 text-lg">arrow_forward</span>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- NEDBØRS-WIDGET (som elpriser-widget hos SparEnergi) -->
   <section class="max-w-5xl mx-auto px-8 pb-7">

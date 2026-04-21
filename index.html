@@ -853,6 +853,186 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
   </section>
 
   <!-- SYMPTOM GRID — som "varmetype"-menu i SparEnergi -->
+  <!-- FORFORSTÅELSE — symptomer og årsager -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
+
+      <!-- Header -->
+      <div class="px-7 pt-7 pb-5 border-b border-[#1a2a1a]/6">
+        <p class="text-[10px] uppercase tracking-widest font-bold rapport-heading mb-1">Forstå dit problem først</p>
+        <h2 class="font-headline text-xl font-bold text-[#1a2a1a] mb-2">Symptomer og årsager hænger ikke altid åbenlyst sammen</h2>
+        <p class="text-sm text-[#1a2a1a]/60 leading-relaxed max-w-2xl">
+          Når vand trænger ind i kælderen eller haven oversvømmes, er det fristende at gætte på årsagen. Men det samme symptom kan have flere årsager — og den forkerte diagnose fører til den forkerte løsning. Her er hvad du skal vide inden du vælger.
+        </p>
+      </div>
+
+      <!-- De 5 årsager — vandret illustreret -->
+      <div class="px-7 py-6 border-b border-[#1a2a1a]/6">
+        <p class="text-[10px] uppercase tracking-widest font-bold text-[#1a2a1a]/40 mb-4">Overordnet har klimarelaterede oversvømmelser fem årsager</p>
+        <div class="grid grid-cols-5 gap-3">
+
+          <!-- Årsag 1 -->
+          <div class="flex flex-col items-center text-center gap-2">
+            <div class="w-12 h-12 rounded-xl bg-[#e0f4f6] flex items-center justify-center">
+              <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none">
+                <filter id="dp1"><feGaussianBlur stdDeviation="2"/></filter>
+                <!-- Hus -->
+                <rect x="10" y="18" width="20" height="14" rx="1.5" fill="none" stroke="#006573" stroke-width="1.5"/>
+                <polygon points="8,19 32,19 20,10" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+                <!-- Grundvand stiger -->
+                <rect x="4" y="28" width="32" height="7" rx="1" fill="#006573" opacity="0.15"/>
+                <line x1="4" y1="28" x2="36" y2="28" stroke="#006573" stroke-width="1.5" stroke-dasharray="3,2"/>
+                <!-- Pile op -->
+                <line x1="20" y1="36" x2="20" y2="26" stroke="#006573" stroke-width="1.2" stroke-linecap="round"/>
+                <polygon points="17,27 23,27 20,23" fill="#006573" opacity="0.7"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-[10px] font-bold text-[#006573] leading-tight">Høj­stående grundvand</p>
+              <p class="text-[9px] text-[#1a2a1a]/45 mt-0.5">Vinter­halvår/<br/>hele året</p>
+            </div>
+          </div>
+
+          <!-- Årsag 2 -->
+          <div class="flex flex-col items-center text-center gap-2">
+            <div class="w-12 h-12 rounded-xl bg-[#e0f4f6] flex items-center justify-center">
+              <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none">
+                <!-- Hus -->
+                <rect x="10" y="18" width="20" height="14" rx="1.5" fill="none" stroke="#006573" stroke-width="1.5"/>
+                <polygon points="8,19 32,19 20,10" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+                <!-- Regn-linjer -->
+                <line x1="13" y1="4" x2="11" y2="10" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="20" y1="3" x2="18" y2="9" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="27" y1="4" x2="25" y2="10" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Kalender -->
+                <rect x="27" y="28" width="8" height="7" rx="1" fill="none" stroke="#006573" stroke-width="1"/>
+                <line x1="27" y1="31" x2="35" y2="31" stroke="#006573" stroke-width="0.8"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-[10px] font-bold text-[#006573] leading-tight">Længere­varende regn­perioder</p>
+              <p class="text-[9px] text-[#1a2a1a]/45 mt-0.5">Efterår/<br/>vinter</p>
+            </div>
+          </div>
+
+          <!-- Årsag 3 -->
+          <div class="flex flex-col items-center text-center gap-2">
+            <div class="w-12 h-12 rounded-xl bg-[#e0f4f6] flex items-center justify-center">
+              <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none">
+                <!-- Hus -->
+                <rect x="10" y="18" width="20" height="14" rx="1.5" fill="none" stroke="#006573" stroke-width="1.5"/>
+                <polygon points="8,19 32,19 20,10" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+                <!-- Skybrud: tykke pile ned -->
+                <line x1="14" y1="3" x2="14" y2="9" stroke="#006573" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="20" y1="2" x2="20" y2="8" stroke="#006573" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="26" y1="3" x2="26" y2="9" stroke="#006573" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Vand rundt om hus -->
+                <path d="M5 32 Q20 34 35 32" stroke="#006573" stroke-width="1.5" fill="none" opacity="0.5"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-[10px] font-bold text-[#006573] leading-tight">Skybrud</p>
+              <p class="text-[9px] text-[#1a2a1a]/45 mt-0.5">Sommer/<br/>hele året</p>
+            </div>
+          </div>
+
+          <!-- Årsag 4 -->
+          <div class="flex flex-col items-center text-center gap-2">
+            <div class="w-12 h-12 rounded-xl bg-[#e0f4f6] flex items-center justify-center">
+              <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none">
+                <!-- Hus -->
+                <rect x="10" y="18" width="20" height="14" rx="1.5" fill="none" stroke="#006573" stroke-width="1.5"/>
+                <polygon points="8,19 32,19 20,10" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+                <!-- Bølge fra højre (stormflod/havvand) -->
+                <path d="M32 28 Q36 25 40 28" stroke="#006573" stroke-width="1.5" fill="none"/>
+                <path d="M30 31 Q36 28 40 31" stroke="#006573" stroke-width="1.5" fill="none"/>
+                <!-- Vand niveau -->
+                <rect x="4" y="29" width="32" height="4" rx="1" fill="#006573" opacity="0.12"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-[10px] font-bold text-[#006573] leading-tight">Stormflod</p>
+              <p class="text-[9px] text-[#1a2a1a]/45 mt-0.5">Efterår/<br/>vinter</p>
+            </div>
+          </div>
+
+          <!-- Årsag 5 -->
+          <div class="flex flex-col items-center text-center gap-2">
+            <div class="w-12 h-12 rounded-xl bg-[#e0f4f6] flex items-center justify-center">
+              <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none">
+                <!-- Hus -->
+                <rect x="10" y="18" width="20" height="14" rx="1.5" fill="none" stroke="#006573" stroke-width="1.5"/>
+                <polygon points="8,19 32,19 20,10" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+                <!-- Sne smelter (tøbrud) — sneklat + vand -->
+                <path d="M16 10 Q20 7 24 10 Q22 13 20 12 Q18 13 16 10Z" fill="#c8e8f0" stroke="#006573" stroke-width="1" opacity="0.8"/>
+                <!-- Vand fra tag -->
+                <line x1="20" y1="12" x2="20" y2="18" stroke="#006573" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2,1.5"/>
+                <!-- Termometer -->
+                <line x1="30" y1="8" x2="30" y2="18" stroke="#c04030" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="30" cy="19" r="2.5" fill="#c04030"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-[10px] font-bold text-[#006573] leading-tight">Tøbrud</p>
+              <p class="text-[9px] text-[#1a2a1a]/45 mt-0.5">Forår/<br/>vinter</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Symptom → årsag mapping — forklaring i prosa -->
+      <div class="px-7 py-6 border-b border-[#1a2a1a]/6">
+        <p class="text-[10px] uppercase tracking-widest font-bold text-[#1a2a1a]/40 mb-4">Samme symptom — flere mulige årsager</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+
+          <div class="flex gap-3">
+            <div class="w-1.5 rounded-full bg-[#006573] shrink-0 self-stretch opacity-40"></div>
+            <div>
+              <p class="text-xs font-bold text-[#1a2a1a] mb-1">Vand i kælderen</p>
+              <p class="text-[11px] text-[#1a2a1a]/55 leading-relaxed">Kan skyldes højtstående grundvand (typisk vinter), kloakoverbelastning ved skybrud, eller vand der løber langs fundamentet. Meget forskellig løsning afhængig af årsag.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <div class="w-1.5 rounded-full bg-[#006573] shrink-0 self-stretch opacity-40"></div>
+            <div>
+              <p class="text-xs font-bold text-[#1a2a1a] mb-1">Stående vand i have</p>
+              <p class="text-[11px] text-[#1a2a1a]/55 leading-relaxed">Kan skyldes leret jord med dårlig nedsivning, lavtliggende terræn, eller overbelastet kloak. Regnbed og faskine hjælper — men grundvand gør nedsivning umulig.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <div class="w-1.5 rounded-full bg-[#e8b84b] shrink-0 self-stretch opacity-70"></div>
+            <div>
+              <p class="text-xs font-bold text-[#1a2a1a] mb-1">Vand fra vej eller nabo</p>
+              <p class="text-[11px] text-[#1a2a1a]/55 leading-relaxed">Terrænet leder vand fra naboejendomme eller veje ind på din grund. Løsning kræver samarbejde — og kan i nogle tilfælde løses med en nabopulje.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <div class="w-1.5 rounded-full bg-[#e8b84b] shrink-0 self-stretch opacity-70"></div>
+            <div>
+              <p class="text-xs font-bold text-[#1a2a1a] mb-1">Vand op ad gulvafløb</p>
+              <p class="text-[11px] text-[#1a2a1a]/55 leading-relaxed">Klassisk tegn på overbelastet fælleskloak under skybrud. Løsningen er ikke på din grund — men du kan beskytte dig med tilbageløbssikring og reducere din andel med LAR.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Afsluttende call-to-action ind i symptomvælgeren -->
+      <div class="px-7 py-5 bg-[#f9f5e8] flex items-center justify-between gap-4">
+        <div>
+          <p class="text-sm font-bold text-[#1a2a1a] mb-0.5">Hvad oplever du på din grund?</p>
+          <p class="text-xs text-[#1a2a1a]/55">Vælg dit symptom nedenfor — vi finder den sandsynlige årsag og de rette løsninger.</p>
+        </div>
+        <span class="material-symbols-outlined text-[#1a4a3a] text-2xl shrink-0">arrow_downward</span>
+      </div>
+
+    </div>
+  </section>
+
   <section class="max-w-4xl mx-auto px-6 pb-8">
     <div class="bg-white rounded-2xl p-8 shadow-[0_2px_16px_rgba(0,0,0,0.06)]" id="d-step1-wrap">
       <div class="flex items-center justify-between mb-1">

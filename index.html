@@ -5187,12 +5187,12 @@ const KB = {
 
 // ══ DIAGNOSE MATRIX ══
 const D_MATRIX = {
-  kaelder_revner:{label:"Der kommer vand ind i kælderen",icon:"foundation",desc:"Vand ind i kælderen gennem vægge eller gulv",aarsager:{grundvand:{primaer:["Omfangsdræn","Pumpe"],sekundaer:[],undgaa:["Regnbed","Faskine","Vejbed","Grøft","Permeabel belægning","Græslavning"]},langvarig:{primaer:["Omfangsdræn","Pumpe"],sekundaer:[],undgaa:["Regnbed","Faskine","Vejbed","Grøft","Permeabel belægning","Græslavning"]}}},
-  lavpunkt:{label:"Der står vand i haven som ikke forsvinder",icon:"water",desc:"Stående vand i haven der ikke forsvinder",aarsager:{grundvand:{primaer:["Omfangsdræn","Pumpe"],sekundaer:["Rende","Tørbassin"],undgaa:["Regnbed","Faskine","Vejbed","Grøft","Permeabel belægning","Græslavning"]},langvarig:{primaer:["Rende","Grøft","Tørbassin","Omfangsdræn","Pumpe"],sekundaer:["Græslavning","Regnbed","Faskine","Regnvandsbeholder","Grønt tag"],undgaa:[]},skybrud:{primaer:["Rende","Grøft","Tørbassin"],sekundaer:["Græslavning","Regnbed","Faskine","Regnvandsbeholder","Grønt tag"],undgaa:[]},toebrud:{primaer:["Rende","Grøft","Tørbassin"],sekundaer:["Græslavning","Vådbassin","Faskine","Regnbed"],undgaa:[]}}},
-  gulvafloeb:{label:"Vand kommer op gennem afløb i kælderen",icon:"plumbing",desc:"Kloakvand presses op ved kraftig regn",aarsager:{langvarig:{primaer:["Højvandslukke"],sekundaer:["Pumpe"],undgaa:[]},skybrud:{primaer:["Højvandslukke"],sekundaer:["Pumpe"],undgaa:[]}}},
-  vand_fra_vej:{label:"Vand fra vejen løber ind på din grund",icon:"directions_car",desc:"Vejvand løber ind på din grund",aarsager:{skybrud:{primaer:["Skybrudsvej","Hævede kantsten","Dige"],sekundaer:["Vådbassin","Rende","Vejbed","Regnbed","Grøft","Græslavning","Tørbassin"],undgaa:[]}}},
-  fra_nabo:{label:"Vand fra naboens grund løber ind til dig",icon:"fence",desc:"Nabovand oversvømmer din grund",aarsager:{langvarig:{primaer:["Rende","Græslavning","Regnbed","Faskine","Grøft"],sekundaer:["Dige","Tørbassin","Vådbassin"],undgaa:[]},skybrud:{primaer:["Rende","Græslavning","Dige","Grøft"],sekundaer:["Regnbed","Faskine","Tørbassin","Vådbassin"],undgaa:[]}}},
-  havvand:{label:"Havvand presser sig ind mod huset",icon:"sailing",desc:"Stormflod truer huset",aarsager:{stormflod:{primaer:["Dige"],sekundaer:["Pumpe","Hævede kantsten"],undgaa:[]}}},
+  kaelder_revner:{label:"Vand i kælder",icon:"foundation",desc:"Gennem væg eller gulv",color:"#006573",bg:"#e0f4f6",aarsager:{grundvand:{primaer:["Omfangsdræn","Pumpe"],sekundaer:[],undgaa:["Regnbed","Faskine","Vejbed","Grøft","Permeabel belægning","Græslavning"]},langvarig:{primaer:["Omfangsdræn","Pumpe"],sekundaer:[],undgaa:["Regnbed","Faskine","Vejbed","Grøft","Permeabel belægning","Græslavning"]}}},
+  lavpunkt:{label:"Vand i haven",icon:"water",desc:"Forsvinder ikke",color:"#1a4a3a",bg:"#e8f5ee",aarsager:{grundvand:{primaer:["Omfangsdræn","Pumpe"],sekundaer:["Rende","Tørbassin"],undgaa:["Regnbed","Faskine","Vejbed","Grøft","Permeabel belægning","Græslavning"]},langvarig:{primaer:["Rende","Grøft","Tørbassin","Omfangsdræn","Pumpe"],sekundaer:["Græslavning","Regnbed","Faskine","Regnvandsbeholder","Grønt tag"],undgaa:[]},skybrud:{primaer:["Rende","Grøft","Tørbassin"],sekundaer:["Græslavning","Regnbed","Faskine","Regnvandsbeholder","Grønt tag"],undgaa:[]},toebrud:{primaer:["Rende","Grøft","Tørbassin"],sekundaer:["Græslavning","Vådbassin","Faskine","Regnbed"],undgaa:[]}}},
+  gulvafloeb:{label:"Vand op fra afløb",icon:"plumbing",desc:"Ved kraftig regn",color:"#c04030",bg:"#fce5dc",aarsager:{langvarig:{primaer:["Højvandslukke"],sekundaer:["Pumpe"],undgaa:[]},skybrud:{primaer:["Højvandslukke"],sekundaer:["Pumpe"],undgaa:[]}}},
+  vand_fra_vej:{label:"Vand fra vej",icon:"directions_car",desc:"Løber ind på grunden",color:"#c8952a",bg:"#fdf3d8",aarsager:{skybrud:{primaer:["Skybrudsvej","Hævede kantsten","Dige"],sekundaer:["Vådbassin","Rende","Vejbed","Regnbed","Grøft","Græslavning","Tørbassin"],undgaa:[]}}},
+  fra_nabo:{label:"Vand fra nabo",icon:"fence",desc:"Løber ind til dig",color:"#7a5a9a",bg:"#f0eaf8",aarsager:{langvarig:{primaer:["Rende","Græslavning","Regnbed","Faskine","Grøft"],sekundaer:["Dige","Tørbassin","Vådbassin"],undgaa:[]},skybrud:{primaer:["Rende","Græslavning","Dige","Grøft"],sekundaer:["Regnbed","Faskine","Tørbassin","Vådbassin"],undgaa:[]}}},
+  havvand:{label:"Havvand mod hus",icon:"sailing",desc:"Stormflod presser på",color:"#1a5a7a",bg:"#dbeef8",aarsager:{stormflod:{primaer:["Dige"],sekundaer:["Pumpe","Hævede kantsten"],undgaa:[]}}},
 };
 
 const D_AARSAGER = {
@@ -5228,17 +5228,27 @@ let dSymptom = null;
 function dInit() {
   const grid = document.getElementById("d-symptom-grid");
   if (!grid || grid.children.length > 0) return;
-  grid.innerHTML = Object.entries(D_MATRIX).map(([id, s]) => `
-    <button onclick="dSelectSymptom('${id}')" class="text-left p-5 rounded-xl bg-[#f9f5e8] border border-[#1a4a3a]/10 hover:border-[#1a4a3a] hover:bg-[#eef6ef] transition-all group flex gap-4 items-start">
-      <div class="w-9 h-9 bg-[#e8f5ee] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#1a4a3a] transition-colors">
-        <span class="material-symbols-outlined text-[#1a4a3a] group-hover:text-white text-lg transition-colors">${s.icon}</span>
+  grid.innerHTML = Object.entries(D_MATRIX).map(([id, s]) => {
+    const bg = s.bg || '#f9f5e8';
+    const col = s.color || '#1a4a3a';
+    return `<button onclick="dSelectSymptom('${id}')"
+      class="text-left rounded-2xl border-2 transition-all group flex flex-col overflow-hidden"
+      style="border-color:${col}22;background:white"
+      onmouseenter="this.style.borderColor='${col}';this.style.background='${bg}'"
+      onmouseleave="this.style.borderColor='${col}22';this.style.background='white'">
+      <div class="px-4 py-3.5 flex items-center gap-3" style="background:${bg}">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style="background:${col}20">
+          <span class="material-symbols-outlined text-lg" style="color:${col}">${s.icon}</span>
+        </div>
+        <h3 class="font-headline font-bold text-sm leading-tight" style="color:${col}">${s.label}</h3>
       </div>
-      <div class="flex-1">
-        <h3 class="font-headline font-bold text-sm text-[#1a2a1a] mb-0.5">${s.label}</h3>
-        <p class="text-xs text-[#1a2a1a]/50 leading-snug">${s.desc}</p>
+      <div class="px-4 py-3 flex items-center justify-between gap-2">
+        <p class="text-xs leading-snug" style="color:${col}99">→ ${s.desc}</p>
+        <span class="material-symbols-outlined text-base shrink-0 group-hover:translate-x-0.5 transition-transform" style="color:${col}55">chevron_right</span>
       </div>
-      <span class="material-symbols-outlined text-[#1a4a3a]/30 group-hover:text-[#1a4a3a] text-lg mt-0.5 transition-colors shrink-0">chevron_right</span>
-    </button>`).join("");
+    </button>`;
+  }).join("");
+}
 }
 
 function dToggleGrid() {

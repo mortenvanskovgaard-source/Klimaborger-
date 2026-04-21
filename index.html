@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Klimaborger – Regnvandshåndtering</title>
+<title>Regnhjælper – Regnvandshåndtering</title>
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -67,6 +67,70 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 /* Rain bar animation */
 @keyframes growUp { from{height:0;opacity:0} to{opacity:1} }
 .rain-bar { animation: growUp 0.5s ease both; }
+
+/* ══ AKVAREL ÆSTETIK ══ */
+:root { --teal: #006573; --wc-green: rgba(58,170,85,0.18); --wc-teal: rgba(0,101,115,0.12); }
+
+.rapport-heading { color: #006573 !important; font-weight: 800; }
+.teal-rule { border-top: 2.5px solid #006573; padding-top: 10px; display: block; }
+
+/* Vidste du boks */
+.vidste-du { position:relative; padding:16px 18px; border-radius:14px; overflow:hidden; }
+.vidste-du::before {
+  content:''; position:absolute; inset:-8px; z-index:0;
+  background:
+    radial-gradient(ellipse 90% 85% at 48% 52%, rgba(58,170,85,0.22) 0%, rgba(58,170,85,0.10) 52%, transparent 75%),
+    radial-gradient(ellipse 60% 70% at 70% 30%, rgba(58,170,85,0.08) 0%, transparent 60%);
+}
+.vidste-du > * { position:relative; z-index:1; }
+
+/* Sektion akvarel - grøn stænk øverst højre */
+.wc-section-green { position:relative; overflow:hidden; }
+.wc-section-green::after {
+  content:''; position:absolute; top:-50px; right:-50px; width:260px; height:200px;
+  background: radial-gradient(ellipse 70% 75% at 55% 45%, rgba(58,170,85,0.16) 0%, rgba(58,170,85,0.07) 55%, transparent 78%);
+  border-radius: 44% 56% 38% 62% / 50% 42% 58% 50%;
+  pointer-events:none; z-index:0; transform: rotate(-8deg);
+}
+.wc-section-green > * { position:relative; z-index:1; }
+
+/* Sektion akvarel - teal stænk */
+.wc-section-teal { position:relative; overflow:hidden; }
+.wc-section-teal::after {
+  content:''; position:absolute; top:-40px; right:-30px; width:220px; height:180px;
+  background: radial-gradient(ellipse 72% 78% at 52% 48%, rgba(0,101,115,0.13) 0%, rgba(0,101,115,0.06) 55%, transparent 78%);
+  border-radius: 55% 45% 62% 38% / 45% 55% 45% 55%;
+  pointer-events:none; z-index:0; transform: rotate(5deg);
+}
+.wc-section-teal > * { position:relative; z-index:1; }
+
+/* Watercolor wash baggrund */
+.watercolor-bg {
+  background:
+    radial-gradient(ellipse 65% 55% at 75% 35%, rgba(0,101,115,0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 60% at 25% 70%, rgba(58,170,85,0.06) 0%, transparent 60%);
+}
+
+/* Inline blotch helper */
+.wc-blob-green { 
+  border-radius: 44% 56% 38% 62% / 50% 42% 58% 50%;
+  background: radial-gradient(ellipse 80% 80%, rgba(58,170,85,0.20) 0%, rgba(58,170,85,0.08) 55%, transparent 80%);
+}
+.wc-blob-teal {
+  border-radius: 55% 45% 62% 38% / 45% 55% 45% 55%;  
+  background: radial-gradient(ellipse 80% 80%, rgba(0,101,115,0.18) 0%, rgba(0,101,115,0.07) 55%, transparent 80%);
+}
+
+/* Akvarel-stænk på hero-sektioner */
+.wc-hero-splash {
+  position: absolute; pointer-events:none; z-index:0;
+}
+
+.lar-illustration { filter: drop-shadow(0 1px 5px rgba(0,101,115,0.12)); }
+@keyframes wcFade { from{opacity:0;transform:scale(0.92)} to{opacity:1;transform:none} }
+.wc-anim { animation: wcFade 0.6s ease both; }
+
+
 </style>
 </head>
 <body class="bg-[#f5f0e1] font-body text-on-surface antialiased">
@@ -76,7 +140,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
   <div class="flex justify-between items-center w-full max-w-5xl mx-auto px-6 py-3.5">
     <button onclick="navigate('forsta')" class="text-xl font-bold tracking-tighter text-white font-headline flex items-center gap-2">
       <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="13" fill="#2d7a5a"/><path d="M13 5 C13 5 7.5 12 7.5 16 C7.5 19.1 10 21.5 13 21.5 C16 21.5 18.5 19.1 18.5 16 C18.5 12 13 5 13 5Z" fill="white" opacity="0.9"/></svg>
-      Klimaborger
+      Regnhjælper
     </button>
     <div class="flex items-center gap-2">
       <button onclick="menuSearch()" class="w-9 h-9 flex items-center justify-center text-white/70 hover:text-white transition-colors rounded-full hover:bg-white/10">
@@ -201,9 +265,9 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
     <div class="border-t border-[#1a2a1a]/8 pt-5">
       <div class="flex items-center gap-2 mb-4">
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#2d7a5a"/><path d="M11 4C11 4 6.5 10 6.5 13.5C6.5 16 8.5 18 11 18C13.5 18 15.5 16 15.5 13.5C15.5 10 11 4 11 4Z" fill="white" opacity="0.85"/></svg>
-        <span class="font-bold text-sm text-[#1a2a1a]">Klimaborger</span>
+        <span class="font-bold text-sm text-[#1a2a1a]">Regnhjælper</span>
       </div>
-      <p class="text-xs text-[#1a2a1a]/40 leading-relaxed mb-3">Klimaborger giver viden og råd til, hvordan du klimasikrer din have og grund.</p>
+      <p class="text-xs text-[#1a2a1a]/40 leading-relaxed mb-3">Regnhjælper giver viden og råd til, hvordan du klimasikrer din have og grund.</p>
       <div class="flex flex-wrap gap-3">
         <a href="#" class="text-[10px] text-[#1a2a1a]/40 hover:text-[#1a4a3a] transition-colors">Privatlivspolitik</a>
         <a href="#" class="text-[10px] text-[#1a2a1a]/40 hover:text-[#1a4a3a] transition-colors">Tilgængelighed</a>
@@ -415,7 +479,12 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
   </section>
 
   <!-- AKTUELT -->
-  <section class="max-w-5xl mx-auto px-8 pb-8">
+  <section class="max-w-5xl mx-auto px-8 pb-8" style="position:relative">
+    <!-- Akvarel-stænk -->
+    <svg style="position:absolute;top:-20px;right:0;width:220px;height:180px;opacity:0.10;pointer-events:none" viewBox="0 0 220 180" fill="none">
+      <filter id="wca"><feGaussianBlur stdDeviation="12"/></filter>
+      <ellipse cx="120" cy="90" rx="110" ry="88" fill="#3aaa55" filter="url(#wca)"/>
+    </svg>
     <h2 class="font-headline text-2xl font-bold text-[#1a2a1a] mb-5">Aktuelt</h2>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
       <div onclick="navigate('diagnose')" class="bg-[#e8b84b] rounded-[1.25rem] p-6 cursor-pointer hover:brightness-95 transition-all min-h-[185px] flex flex-col justify-between">
@@ -450,7 +519,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
       <div class="grid lg:grid-cols-2 gap-0">
         <div class="p-10 flex flex-col justify-center">
           <h2 class="font-headline text-2xl font-bold text-white mb-3 leading-snug">
-            Klimaborger giver viden og råd til, hvordan du får mest ud af din have
+            Regnhjælper giver viden og råd til, hvordan du får mest ud af din have
           </h2>
           <p class="text-white/60 text-sm mb-7 leading-relaxed">Vil du spare vand og klimasikre din have? Tilmeld dig vores nyhedsbrev og få de bedste tips direkte i indbakken.</p>
           <div class="flex flex-col sm:flex-row gap-3 max-w-sm">
@@ -497,7 +566,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
         <div class="col-span-2 md:col-span-1">
           <div class="text-white font-bold text-lg mb-3 flex items-center gap-2">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#2d7a5a"/><path d="M10 4 C10 4 6 9.5 6 12.5 C6 14.9 7.8 17 10 17 C12.2 17 14 14.9 14 12.5 C14 9.5 10 4 10 4Z" fill="white" opacity="0.85"/></svg>
-            Klimaborger
+            Regnhjælper
           </div>
           <p class="text-white/45 text-xs leading-relaxed">Et redskab til privat klimatilpasning — regnvandshåndtering for danske grundejere.</p>
         </div>
@@ -531,7 +600,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
         </div>
       </div>
       <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
-        <div class="text-xs text-white/35">© 2024 Klimaborger – Et samarbejde med Egedal Kommune</div>
+        <div class="text-xs text-white/35">© 2024 Regnhjælper – Et samarbejde med Egedal Kommune</div>
         <div class="flex gap-5 flex-wrap justify-center">
           <a class="text-xs text-white/35 hover:text-white/60 transition-colors" href="#">Privatlivspolitik</a>
           <a class="text-xs text-white/35 hover:text-white/60 transition-colors" href="#">Cookies og privatliv</a>
@@ -548,7 +617,15 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 <div class="pt-16 bg-[#f5e8b0] min-h-screen">
 
   <!-- HERO BLOK — hvid kort på gul baggrund, illustration til højre -->
-  <section class="max-w-4xl mx-auto px-6 pt-10 pb-8">
+  <!-- Akvarel-stænk bag hero -->
+  <div class="max-w-4xl mx-auto px-6 pt-10 pb-1 relative">
+    <svg class="absolute top-0 right-8 opacity-[0.12] pointer-events-none" style="width:200px;height:160px" viewBox="0 0 200 160" fill="none">
+      <filter id="wcd"><feGaussianBlur stdDeviation="10"/></filter>
+      <ellipse cx="120" cy="70" rx="95" ry="75" fill="#3aaa55" filter="url(#wcd)"/>
+      <ellipse cx="100" cy="90" rx="70" ry="55" fill="#55c870" filter="url(#wcd)" opacity="0.6"/>
+    </svg>
+  </div>
+  <section class="max-w-4xl mx-auto px-6 pt-2 pb-8">
     <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
       <div class="grid lg:grid-cols-2 gap-0 items-stretch">
         <div class="p-10 flex flex-col justify-center">
@@ -693,6 +770,14 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
     </div>
 
     <!-- Årsag blok — hvid kort som SparEnergi's info-blokke -->
+    <!-- Grøn akvarel-stænk dekorativt element -->
+    <div style="text-align:right;margin-bottom:-24px;padding-right:16px;position:relative;z-index:1;pointer-events:none">
+      <svg width="140" height="90" viewBox="0 0 140 90" fill="none" class="wc-anim">
+        <filter id="wc_blob1"><feGaussianBlur stdDeviation="9"/></filter>
+        <ellipse cx="80" cy="45" rx="68" ry="45" fill="#3aaa55" filter="url(#wc_blob1)" opacity="0.28"/>
+        <ellipse cx="95" cy="35" rx="48" ry="35" fill="#55c870" filter="url(#wc_blob1)" opacity="0.18"/>
+      </svg>
+    </div>
     <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.06)] mb-5">
       <div class="grid lg:grid-cols-3 gap-0">
         <div class="lg:col-span-2 p-8 border-r border-[#1a2a1a]/5">
@@ -825,7 +910,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
   </section>
 
   <!-- HVAD GÅR DU EFTER — tre scorecard-illustrationer -->
-  <section class="max-w-4xl mx-auto px-6 pb-8">
+  <section class="max-w-4xl mx-auto px-6 pb-8" style="position:relative">
     <div class="text-center mb-7">
       <p class="text-xs uppercase tracking-widest font-bold mb-2" style="color:#006573">Fra rapporten: Har du regnet den ud?</p>
       <h2 class="font-headline text-2xl font-bold text-[#1a2a1a] mb-2">Hvad går du efter?</h2>
@@ -1122,6 +1207,12 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 
   <!-- HERO — terrakotta baggrund med illustration, som SparEnergi "Spar energi i hverdagen" -->
   <section class="bg-[#e8a87c] relative overflow-hidden">
+    <!-- Akvarel-stænk -->
+    <svg class="wc-hero-splash" style="top:-50px;right:-50px;width:300px;height:240px;opacity:0.15" viewBox="0 0 300 240" fill="none">
+      <filter id="wck"><feGaussianBlur stdDeviation="16"/></filter>
+      <ellipse cx="160" cy="110" rx="140" ry="115" fill="#006573" filter="url(#wck)"/>
+      <ellipse cx="200" cy="80" rx="100" ry="80" fill="#3aaa55" filter="url(#wck)" opacity="0.5"/>
+    </svg>
     <div class="max-w-4xl mx-auto px-6 pt-10 pb-0 grid lg:grid-cols-2 gap-6 items-end">
       <div class="pb-10">
         <p class="text-white/60 text-xs uppercase tracking-widest font-bold mb-3">Trin 2: Analyse</p>
@@ -1496,6 +1587,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
           <p class="text-sm text-[#1a2a1a]/65 leading-relaxed mb-3">Det første du skal gøre dig klart, når du vil klimatilpasse, er hvor regnvandet løber hen, og hvor det eventuelt giver problemer hos dig eller dine naboer.</p>
           <p class="text-sm text-[#1a2a1a]/65 leading-relaxed mb-4">Bor du i et lavtliggende område, har du typisk større udfordringer med at vandet samler sig på din grund. Det er også væsentligt at undersøge, om terrænet leder regnvandet mod dit hus eller væk fra dit hus.</p>
           <div class="vidste-du">
+          <svg class="wc-blob" aria-hidden="true" style="position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);pointer-events:none;z-index:0" viewBox="0 0 300 120" preserveAspectRatio="none" fill="none"><filter id="wcblob"><feGaussianBlur stdDeviation="8"/></filter><ellipse cx="150" cy="60" rx="148" ry="58" fill="#3aaa55" filter="url(#wcblob)" opacity="0.22"/><ellipse cx="130" cy="50" rx="110" ry="45" fill="#55c870" filter="url(#wcblob)" opacity="0.12"/></svg>
             <p class="text-xs font-bold mb-1" style="color:#006573">Vidste du...</p>
             <p class="text-xs text-[#1a2a1a]/65 leading-relaxed">At hvis du bor i et fælleskloakeret område, hvor kommunen tillader udtræden for regnvand, kan du få op til 24.500 kr. af tilslutningsbidraget tilbage — forudsat at du sørger for at håndtere regnvand på din egen grund.</p>
           </div>
@@ -2492,6 +2584,12 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 
   <!-- LYSEGRØN HERO med illustration + sæson-dropdown -->
   <section class="bg-[#c8e0c8] relative overflow-hidden">
+    <!-- Akvarel -->
+    <svg class="wc-hero-splash" style="top:-40px;right:-50px;width:300px;height:240px;opacity:0.25" viewBox="0 0 300 240" fill="none">
+      <filter id="wch"><feGaussianBlur stdDeviation="13"/></filter>
+      <ellipse cx="160" cy="110" rx="140" ry="115" fill="#2d7a5a" filter="url(#wch)"/>
+      <ellipse cx="200" cy="80" rx="95" ry="75" fill="#1a4a3a" filter="url(#wch)" opacity="0.4"/>
+    </svg>
     <div class="max-w-4xl mx-auto px-6 pt-10 pb-0 grid lg:grid-cols-2 gap-6 items-end">
       <div class="pb-10">
         <p class="text-[#1a4a3a]/55 text-xs uppercase tracking-widest font-bold mb-3">Visualisér</p>
@@ -2592,11 +2690,24 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
   </section>
 
   <!-- HVAD FÅR DU UD AF AT RENOVERE — 6-ikon grid som SparEnergi -->
-  <section class="max-w-4xl mx-auto px-6 pb-8">
+  <section class="max-w-4xl mx-auto px-6 pb-8" style="position:relative">
+    <!-- Akvarel stænk -->
+    <svg style="position:absolute;top:10px;right:-20px;width:200px;height:170px;opacity:0.12;pointer-events:none" viewBox="0 0 200 170" fill="none">
+      <filter id="wchf"><feGaussianBlur stdDeviation="13"/></filter>
+      <ellipse cx="110" cy="80" rx="100" ry="88" fill="#3aaa55" filter="url(#wchf)"/>
+      <ellipse cx="140" cy="55" rx="70" ry="60" fill="#55c870" filter="url(#wchf)" opacity="0.5"/>
+    </svg>
     <div class="text-center mb-7">
       <h2 class="font-headline text-2xl font-bold text-[#1a2a1a] mb-2">Hvad får du ud af at renovere din have?</h2>
       <p class="text-sm text-[#1a2a1a]/50 max-w-xl mx-auto">Du kan bl.a. spare penge og reducere din CO₂-belastning ved at anlægge naturbaserede løsninger. Hvilke fordele der vejer tungest afhænger af dit konkrete projekt.</p>
     </div>
+    <!-- Grøn stor akvarel-stænk bagved ikoner -->
+    <div style="position:relative">
+    <svg style="position:absolute;top:-30px;right:-20px;width:220px;height:200px;opacity:0.15;pointer-events:none" viewBox="0 0 220 200" fill="none">
+      <filter id="wcf1"><feGaussianBlur stdDeviation="16"/></filter>
+      <ellipse cx="120" cy="95" rx="110" ry="100" fill="#3aaa55" filter="url(#wcf1)"/>
+      <ellipse cx="150" cy="65" rx="75" ry="65" fill="#55c870" filter="url(#wcf1)" opacity="0.5"/>
+    </svg>
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-5">
       <div class="text-center px-3">
         <div class="w-11 h-11 mx-auto mb-3 flex items-center justify-center">
@@ -2640,6 +2751,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
         <h4 class="font-headline font-bold text-sm text-[#1a2a1a] mb-1">Mere biodiversitet</h4>
         <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Regnbede og vådområder tiltrækker insekter, fugle og padder til din have.</p>
       </div>
+    </div>
     </div>
   </section>
 
@@ -2700,12 +2812,19 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
           <p class="text-sm text-[#1a2a1a]/65 leading-relaxed mb-3">Et er at finde ud af, at det er muligt, eller at du godt kunne tænke dig at håndtere regnvand på egen grund. Noget andet er at finde ud af, hvilke løsninger der er mulige og ikke mindst at finde den løsning, der passer til netop dit behov og pengepung.</p>
           <p class="text-sm text-[#1a2a1a]/65 leading-relaxed mb-4">De kommende sider beskriver en række af de tiltag, du kan gøre for at håndtere regnvand på din grund.</p>
           <div class="vidste-du">
+          <svg class="wc-blob" aria-hidden="true" style="position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);pointer-events:none;z-index:0" viewBox="0 0 300 120" preserveAspectRatio="none" fill="none"><filter id="wcblob"><feGaussianBlur stdDeviation="8"/></filter><ellipse cx="150" cy="60" rx="148" ry="58" fill="#3aaa55" filter="url(#wcblob)" opacity="0.22"/><ellipse cx="130" cy="50" rx="110" ry="45" fill="#55c870" filter="url(#wcblob)" opacity="0.12"/></svg>
             <p class="text-xs font-bold mb-1" style="color:#006573">Vidste du...</p>
             <p class="text-xs text-[#1a2a1a]/65 leading-relaxed">At de fleste forsikringsselskaber giver rabat på husforsikringen, hvis du sikrer din bolig mod vandskader?</p>
           </div>
         </div>
         <!-- Tværsnit illustration: LAR løsninger fra rapport -->
-        <div class="p-6 watercolor-bg flex items-center justify-center">
+        <div class="p-6 watercolor-bg flex items-center justify-center" style="position:relative">
+          <!-- Akvarel-stænk bag illustration -->
+          <svg style="position:absolute;top:-20px;right:-20px;width:180px;height:160px;opacity:0.20;pointer-events:none" viewBox="0 0 180 160" fill="none">
+            <filter id="wcr"><feGaussianBlur stdDeviation="14"/></filter>
+            <ellipse cx="100" cy="75" rx="90" ry="80" fill="#006573" filter="url(#wcr)"/>
+            <ellipse cx="130" cy="50" rx="65" ry="55" fill="#3aaa55" filter="url(#wcr)" opacity="0.5"/>
+          </svg>
           <svg viewBox="0 0 240 150" class="w-full max-w-[260px] lar-illustration" fill="none">
             <!-- Terræn linje -->
             <line x1="5" y1="88" x2="235" y2="88" stroke="#006573" stroke-width="2" opacity="0.25"/>
@@ -3069,6 +3188,12 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 
   <!-- GUL HERO — halvt layout som tilskuds-siden -->
   <section class="bg-[#e8b84b] relative overflow-hidden">
+    <!-- Akvarel -->
+    <svg class="wc-hero-splash" style="bottom:-30px;right:-40px;width:280px;height:220px;opacity:0.20" viewBox="0 0 280 220" fill="none">
+      <filter id="wcg"><feGaussianBlur stdDeviation="14"/></filter>
+      <ellipse cx="150" cy="110" rx="130" ry="105" fill="#1a4a3a" filter="url(#wcg)"/>
+      <ellipse cx="190" cy="80" rx="90" ry="75" fill="#2d7a5a" filter="url(#wcg)" opacity="0.6"/>
+    </svg>
     <div class="max-w-4xl mx-auto grid lg:grid-cols-2 gap-0 items-stretch">
       <div class="px-8 pt-10 pb-10 flex flex-col justify-center">
         <!-- Brødkrumme -->
@@ -3174,7 +3299,12 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
   </section>
 
   <!-- 5 KRAV SEKTION — nummererede krav i creme grid -->
-  <section class="max-w-4xl mx-auto px-6 pb-6">
+  <section class="max-w-4xl mx-auto px-6 pb-6" style="position:relative">
+    <!-- Akvarel -->
+    <svg style="position:absolute;top:-10px;right:20px;width:180px;height:160px;opacity:0.13;pointer-events:none" viewBox="0 0 180 160" fill="none">
+      <filter id="wc5"><feGaussianBlur stdDeviation="11"/></filter>
+      <ellipse cx="95" cy="75" rx="90" ry="78" fill="#3aaa55" filter="url(#wc5)"/>
+    </svg>
     <div class="text-center mb-6">
       <h2 class="font-headline text-2xl font-bold text-[#1a2a1a] mb-2">Lever du op til de 5 grundkrav?</h2>
       <p class="text-sm text-[#1a2a1a]/50 max-w-lg mx-auto">Hvis du vil anlægge en LAR-løsning med tilskud, skal du som udgangspunkt leve op til disse 5 krav.</p>
@@ -3251,7 +3381,12 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
   </section>
 
   <!-- LØSNINGS-DIAGRAM — tre "huse" der viser tilskudsniveauer -->
-  <section class="max-w-4xl mx-auto px-6 pb-6">
+  <section class="max-w-4xl mx-auto px-6 pb-6" style="position:relative">
+    <!-- Akvarel -->
+    <svg style="position:absolute;top:0;right:-10px;width:160px;height:140px;opacity:0.10;pointer-events:none" viewBox="0 0 160 140" fill="none">
+      <filter id="wcda"><feGaussianBlur stdDeviation="11"/></filter>
+      <ellipse cx="90" cy="65" rx="80" ry="70" fill="#006573" filter="url(#wcda)"/>
+    </svg>
     <h2 class="font-headline text-xl font-bold mb-1 rapport-heading" id="gang-vaelg">Det kan du anlægge</h2>
     <p class="text-sm text-[#1a2a1a]/50 mb-6">Her kan du få overblik over, hvad du kan anlægge fra de forskellige LAR-kategorier.</p>
     <div class="flex gap-0 items-end justify-center overflow-x-auto pb-2">

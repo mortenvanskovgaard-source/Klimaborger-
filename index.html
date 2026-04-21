@@ -385,8 +385,8 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
             <span class="material-symbols-outlined text-[#7a6010] text-lg">search</span>
           </div>
           <div class="flex-1 min-w-0">
-            <h3 class="font-headline font-bold text-[#2a1a00] text-sm mb-0.5">Min grund</h3>
-            <p class="text-xs text-[#2a1a00]/55 truncate">Vand i kælderen? Stående vand? Find årsagen og løsningerne.</p>
+            <h3 class="font-headline font-bold text-[#2a1a00] text-sm mb-0.5">Få hjælp til regnvandet på din grund</h3>
+            <p class="text-xs text-[#2a1a00]/55">Regnhjælper — gør det nemt at komme i gang</p>
           </div>
           <span class="material-symbols-outlined text-[#8a6a20] shrink-0 text-lg">arrow_forward</span>
         </div>
@@ -630,17 +630,23 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
       <div class="grid lg:grid-cols-2 gap-0 items-stretch">
         <div class="p-10 flex flex-col justify-center">
           <p class="text-[#1a4a3a] text-xs uppercase tracking-widest font-bold mb-3">Find årsagen</p>
-          <h1 class="font-headline text-3xl font-bold text-[#1a2a1a] leading-tight mb-4">
-            Hvad sker der hos dig?
+          <h1 class="font-headline text-3xl font-bold text-[#1a2a1a] leading-tight mb-3">
+            Se hvad du kan gøre med regnvandet på din grund
           </h1>
-          <p class="text-[#1a2a1a]/65 text-sm leading-relaxed mb-6 max-w-sm">
-            Vælg det symptom du oplever nedenfor — vi finder den sandsynlige årsag og de rigtige løsninger til netop din situation.
+          <p class="text-[#1a2a1a]/65 text-sm leading-relaxed mb-2 max-w-sm">
+            Vi guider dig trin for trin og finder løsninger, der passer til din have.
           </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-[#e8f5ee] text-[#1a4a3a] text-xs font-medium px-3 py-1.5 rounded-full">Kælder</span>
-            <span class="bg-[#e8f5ee] text-[#1a4a3a] text-xs font-medium px-3 py-1.5 rounded-full">Have</span>
-            <span class="bg-[#e8f5ee] text-[#1a4a3a] text-xs font-medium px-3 py-1.5 rounded-full">Kloak</span>
-            <span class="bg-[#e8f5ee] text-[#1a4a3a] text-xs font-medium px-3 py-1.5 rounded-full">Vejvand</span>
+          <p class="text-[#1a2a1a]/40 text-xs mb-5">Det tager ca. 2 minutter</p>
+          <div class="flex flex-col gap-3 max-w-xs">
+            <button onclick="document.getElementById('d-step1').scrollIntoView({behavior:'smooth'})" class="bg-[#1a4a3a] text-white text-sm font-bold px-7 py-3.5 rounded-full hover:bg-[#154035] transition-colors inline-flex items-center gap-2 shadow-md">
+              👉 Kom i gang <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </button>
+            <div class="flex flex-wrap gap-2 mt-1">
+              <span class="bg-[#e8f5ee] text-[#1a4a3a] text-[10px] font-medium px-2.5 py-1 rounded-full">Kælder</span>
+              <span class="bg-[#e8f5ee] text-[#1a4a3a] text-[10px] font-medium px-2.5 py-1 rounded-full">Have</span>
+              <span class="bg-[#e8f5ee] text-[#1a4a3a] text-[10px] font-medium px-2.5 py-1 rounded-full">Kloak</span>
+              <span class="bg-[#e8f5ee] text-[#1a4a3a] text-[10px] font-medium px-2.5 py-1 rounded-full">Vejvand</span>
+            </div>
           </div>
         </div>
         <div class="bg-[#eef6ef] flex items-end justify-center pt-6 min-h-[200px]">

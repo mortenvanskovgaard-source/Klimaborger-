@@ -639,8 +639,12 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
           </svg>
         </div>
         <h3 class="font-headline font-bold text-[#1a2a1a] text-sm mb-1.5">Spar penge</h3>
-        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">En faskine koster fra 3.000 kr. — en oversvømmelse koster typisk 50.000–200.000 kr. i skader.</p>
-        <a onclick="navigate('kortlaeg')" class="text-xs text-[#1a4a3a] font-bold mt-2 inline-flex items-center gap-1 cursor-pointer hover:underline">Beregn dit behov <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed mb-2">En faskine koster fra 3.000 kr. — en oversvømmelse koster typisk 50.000–200.000 kr. i skader.</p>
+        <div class="vidste-du mt-3">
+          <p class="text-[10px] font-bold" style="color:#006573">Vidste du...</p>
+          <p class="text-[10px] text-[#1a2a1a]/65 leading-relaxed">At hvert år falder der 600–800 liter vand på hver eneste kvadratmeter jord i Danmark?</p>
+        </div>
+        <a onclick="navigate('kortlaeg')" class="text-xs text-[#1a4a3a] font-bold mt-3 inline-flex items-center gap-1 cursor-pointer hover:underline">Beregn dit behov <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
       </div>
       <div class="text-center px-4">
         <div class="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
@@ -651,7 +655,11 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
           </svg>
         </div>
         <h3 class="font-headline font-bold text-[#1a2a1a] text-sm mb-1.5">Hjælp klimaet</h3>
-        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Med lokal regnvandshåndtering reducerer du kloakkens belastning og mindsker CO₂, og lar.</p>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed mb-2">Med lokal regnvandshåndtering reducerer du kloakkens belastning og mindsker CO₂ og LAR.</p>
+        <div class="vidste-du mt-3">
+          <p class="text-[10px] font-bold" style="color:#006573">Vidste du...</p>
+          <p class="text-[10px] text-[#1a2a1a]/65 leading-relaxed">At hvis du bor i et fælleskloakeret område kan du få op til 24.500 kr. af tilslutningsbidraget tilbage?</p>
+        </div>
         <a onclick="navigate('inspiration')" class="text-xs text-[#1a4a3a] font-bold mt-2 inline-flex items-center gap-1 cursor-pointer hover:underline">Se eksempler <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
       </div>
       <div class="text-center px-4">
@@ -819,6 +827,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
   <!-- HVAD GÅR DU EFTER — tre scorecard-illustrationer -->
   <section class="max-w-4xl mx-auto px-6 pb-8">
     <div class="text-center mb-7">
+      <p class="text-xs uppercase tracking-widest font-bold mb-2" style="color:#006573">Fra rapporten: Har du regnet den ud?</p>
       <h2 class="font-headline text-2xl font-bold text-[#1a2a1a] mb-2">Hvad går du efter?</h2>
       <p class="text-sm text-[#1a2a1a]/55 max-w-xl mx-auto">Alle løsninger er ikke ens — se hvilke der scorer højest på det der betyder mest for dig</p>
     </div>
@@ -1090,7 +1099,11 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
           </div>
         </div>
         <div class="px-5 pb-5">
-          <p class="text-[11px] text-[#1a2a1a]/55 leading-relaxed mb-3">En regnvandstank sættes op på én eftermiddag. Regnbed kræver en weekends arbejde.</p>
+          <p class="text-[11px] text-[#1a2a1a]/55 leading-relaxed mb-2">En regnvandstank sættes op på én eftermiddag. Regnbed kræver en weekends arbejde.</p>
+        <div class="vidste-du mt-2">
+          <p class="text-[10px] font-bold" style="color:#006573">Vidste du...</p>
+          <p class="text-[10px] text-[#1a2a1a]/65 leading-relaxed">At regnvand som udgangspunkt betragtes som ikke forurenet — og frit kan bruges til havevanding?</p>
+        </div>
           <span class="text-xs font-bold text-[#c04030] inline-flex items-center gap-1 group-hover:underline">Kom i gang <span class="material-symbols-outlined text-xs">arrow_forward</span></span>
         </div>
       </div>
@@ -1473,6 +1486,54 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
     </div>
   </section>
 
+  <!-- VANDETS VEJ — rapport-inspireret sektion -->
+  <section class="max-w-4xl mx-auto px-6 pb-7">
+    <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.05)]">
+      <div class="grid lg:grid-cols-2 gap-0">
+        <div class="p-8 border-r border-[#1a2a1a]/5">
+          <h2 class="font-headline text-xl font-bold mb-1 rapport-heading">Vandets vej</h2>
+          <div class="teal-rule w-16 mb-4"></div>
+          <p class="text-sm text-[#1a2a1a]/65 leading-relaxed mb-3">Det første du skal gøre dig klart, når du vil klimatilpasse, er hvor regnvandet løber hen, og hvor det eventuelt giver problemer hos dig eller dine naboer.</p>
+          <p class="text-sm text-[#1a2a1a]/65 leading-relaxed mb-4">Bor du i et lavtliggende område, har du typisk større udfordringer med at vandet samler sig på din grund. Det er også væsentligt at undersøge, om terrænet leder regnvandet mod dit hus eller væk fra dit hus.</p>
+          <div class="vidste-du">
+            <p class="text-xs font-bold mb-1" style="color:#006573">Vidste du...</p>
+            <p class="text-xs text-[#1a2a1a]/65 leading-relaxed">At hvis du bor i et fælleskloakeret område, hvor kommunen tillader udtræden for regnvand, kan du få op til 24.500 kr. af tilslutningsbidraget tilbage — forudsat at du sørger for at håndtere regnvand på din egen grund.</p>
+          </div>
+        </div>
+        <div class="p-8 watercolor-bg">
+          <h3 class="font-headline font-bold text-sm mb-1 rapport-heading">Er din grund egnet til nedsivning?</h3>
+          <div class="teal-rule w-12 mb-3"></div>
+          <p class="text-sm text-[#1a2a1a]/60 leading-relaxed mb-4">På grunde der ligger i en lavning eller i områder, hvor grundvandet står meget højt, er nedsivning af regnvand ikke en god løsning. Er du i tvivl, kan du kontakte din lokale klimaentre­prenør.</p>
+          <!-- Linje-illustration: grundvand -->
+          <div class="flex justify-center">
+            <svg viewBox="0 0 200 110" class="w-56 lar-illustration" fill="none">
+              <!-- Terræn -->
+              <path d="M10 65 Q50 55 100 62 Q150 70 190 60" stroke="#006573" stroke-width="2" fill="none" opacity="0.4"/>
+              <!-- Hus 1 (lavtliggende) -->
+              <rect x="20" y="45" width="35" height="25" rx="2" fill="none" stroke="#006573" stroke-width="1.5"/>
+              <polygon points="15,47 60,47 37,32" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+              <!-- Vand rundt om hus 1 -->
+              <ellipse cx="37" cy="70" rx="28" ry="6" fill="#006573" opacity="0.12"/>
+              <path d="M12 68 Q37 73 62 68" stroke="#006573" stroke-width="1" opacity="0.3" fill="none"/>
+              <!-- Hus 2 (hævet) -->
+              <rect x="120" y="35" width="35" height="25" rx="2" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+              <polygon points="115,37 160,37 137,22" fill="none" stroke="#3aaa55" stroke-width="1.5" stroke-linejoin="round"/>
+              <!-- Regnbed ved hus 2 -->
+              <ellipse cx="170" cy="65" rx="18" ry="7" fill="#3aaa55" opacity="0.15"/>
+              <line x1="162" y1="60" x2="162" y2="50" stroke="#3aaa55" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M158 52 Q162 46 166 52" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+              <!-- Grundvandsniveau -->
+              <line x1="10" y1="90" x2="190" y2="90" stroke="#006573" stroke-width="1" stroke-dasharray="6,4" opacity="0.3"/>
+              <text x="12" y="100" font-family="sans-serif" font-size="7" fill="#006573" opacity="0.5">Grundvandsniveau</text>
+              <!-- Pil ned (nedsivning) -->
+              <line x1="137" y1="60" x2="137" y2="85" stroke="#3aaa55" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TO FEATURE CARDS — som SparEnergi "Brug strømmen / Unge sparer" -->
   <section class="max-w-4xl mx-auto px-6 pb-7">
     <div class="grid sm:grid-cols-2 gap-4">
@@ -1529,6 +1590,10 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
         <p class="text-xs text-[#1a4a3a] uppercase tracking-widest font-bold mb-2">LAR-princippet</p>
         <h2 class="font-headline text-2xl font-bold text-[#1a2a1a] mb-4 leading-tight">Spar med<br/>LAR-pyramiden</h2>
         <p class="text-sm text-[#1a2a1a]/60 leading-relaxed mb-3">De mindste løsninger i bunden er der, for at du altid har vand til nedsivning. Du skal kun op af pyramiden, hvis nedsivningskapaciteten er utilstrækkelig.</p>
+        <div class="vidste-du mt-2 mb-3">
+          <p class="text-xs font-bold mb-1" style="color:#006573">Vidste du...</p>
+          <p class="text-xs text-[#1a2a1a]/65 leading-relaxed">At du kan minimere risikoen for oversvømmelser ved skybrud ved at sikre, at der altid er fri passage i tagrende, afløb og riste?</p>
+        </div>
         <p class="text-sm text-[#1a2a1a]/60 leading-relaxed mb-3">Apparaterne i toppen bruger mest energi, men du kan med fordel vælge et apparat i stedet for et dyrere, hvis du er villig til at lave en indsats.</p>
         <p class="text-xs font-bold text-[#1a2a1a] mb-3">Passer LAR-pyramiden på dig?</p>
         <p class="text-xs text-[#1a2a1a]/55 leading-relaxed mb-4">LAR-pyramiden er generel. Den kan bruges som rettesnor, men der er mange faktorer der spiller ind. Måske er den rigtige løsning anderledes end den mindste overskrift.</p>
@@ -1563,8 +1628,8 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
       <div class="grid sm:grid-cols-2 gap-4">
         <div class="border-2 border-[#2d7a5a] rounded-xl p-5 relative">
           <div class="absolute -top-3 left-4 bg-[#2d7a5a] text-white text-[9px] font-bold px-2 py-0.5 rounded-full">ANBEFALET</div>
-          <h3 class="font-headline font-bold text-[#1a2a1a] text-sm mb-1">5-årsregn</h3>
-          <p class="text-2xl font-bold text-[#2d7a5a] mb-1">43 mm/t</p>
+          <h3 class="font-headline font-bold text-sm mb-1" style="color:#006573">5-årsregn</h3>
+          <p class="text-2xl font-bold mb-1" style="color:#006573">43 mm/t</p>
           <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Sker i gennemsnit hvert 5. år. Dimensionerer din løsning til det realistiske worst-case i en menneskealder.</p>
         </div>
         <div class="border border-[#1a2a1a]/10 rounded-xl p-5">
@@ -1763,7 +1828,41 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 
             <div class="bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
               <div class="byg-status-Regnbed text-[10px] font-bold px-3 py-1.5"></div>
-              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=130&fit=crop&q=80" alt="Regnbed" class="w-full h-24 object-cover"/>
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Akvarel stænk baggrund -->
+                  <ellipse cx="90" cy="60" rx="82" ry="22" fill="#3aaa55" opacity="0.08"/>
+                  <ellipse cx="70" cy="55" rx="60" ry="18" fill="#006573" opacity="0.05"/>
+                  <!-- Tværsnit af regnbed -->
+                  <!-- Jord/undergrund -->
+                  <rect x="10" y="60" width="160" height="20" rx="2" fill="#006573" opacity="0.08"/>
+                  <!-- Filterjord lag -->
+                  <rect x="20" y="48" width="140" height="14" rx="2" fill="#3aaa55" opacity="0.12"/>
+                  <!-- Grus/drænlag -->
+                  <rect x="25" y="40" width="130" height="10" rx="2" fill="#006573" opacity="0.10"/>
+                  <!-- Lavning profil -->
+                  <path d="M15 40 Q90 35 165 40" stroke="#006573" stroke-width="1.5" fill="none" opacity="0.4"/>
+                  <path d="M15 40 L15 62 Q90 68 165 62 L165 40" stroke="#006573" stroke-width="1.5" fill="none" opacity="0.3"/>
+                  <!-- Planter linje-tegning -->
+                  <line x1="55" y1="40" x2="55" y2="20" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+                  <ellipse cx="55" cy="17" rx="8" ry="6" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <line x1="90" y1="40" x2="90" y2="10" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+                  <ellipse cx="90" cy="7" rx="6" ry="5" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <line x1="88" y1="12" x2="84" y2="18" stroke="#3aaa55" stroke-width="1" opacity="0.6"/>
+                  <line x1="125" y1="40" x2="125" y2="22" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+                  <!-- Blomst -->
+                  <circle cx="125" cy="19" r="4" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <circle cx="119" cy="17" r="2.5" fill="none" stroke="#3aaa55" stroke-width="1"/>
+                  <circle cx="131" cy="17" r="2.5" fill="none" stroke="#3aaa55" stroke-width="1"/>
+                  <!-- Bi linje -->
+                  <ellipse cx="150" cy="12" rx="5" ry="3.5" fill="none" stroke="#006573" stroke-width="1"/>
+                  <line x1="146" y1="11" x2="154" y2="11" stroke="#006573" stroke-width="0.8" opacity="0.5"/>
+                  <ellipse cx="146" cy="10" rx="4" ry="2.5" fill="none" stroke="#3aaa55" stroke-width="0.8" opacity="0.6" transform="rotate(-20 146 10)"/>
+                  <!-- Regn/flow pile -->
+                  <path d="M30 20 L28 32" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                  <polygon points="25,30 31,30 28,36" fill="#006573" opacity="0.4"/>
+                </svg>
+              </div>
               <div class="p-3">
                 <div class="flex items-center justify-between gap-1 mb-0.5">
                   <h4 class="font-headline font-bold text-sm">Regnbed</h4>
@@ -1777,7 +1876,36 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 
             <div class="bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
               <div class="byg-status-Faskine text-[10px] font-bold px-3 py-1.5"></div>
-              <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=130&fit=crop&q=80" alt="Faskine" class="w-full h-24 object-cover"/>
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <!-- Akvarel baggrund -->
+                  <ellipse cx="90" cy="62" rx="75" ry="18" fill="#006573" opacity="0.07"/>
+                  <!-- Jord overfladen -->
+                  <line x1="5" y1="38" x2="175" y2="38" stroke="#006573" stroke-width="1.5" opacity="0.3"/>
+                  <!-- Terræn streg med hus -->
+                  <rect x="75" y="18" width="30" height="20" rx="2" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <polygon points="70,20 135,20 105,8" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+                  <!-- Nedløbsrør -->
+                  <line x1="105" y1="38" x2="105" y2="55" stroke="#006573" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="105" y1="52" x2="118" y2="52" stroke="#006573" stroke-width="2" stroke-linecap="round"/>
+                  <!-- Faskine kasse (underjordisk) -->
+                  <rect x="110" y="44" width="45" height="32" rx="3" fill="none" stroke="#006573" stroke-width="1.5" stroke-dasharray="4,2"/>
+                  <!-- Kassetter grid -->
+                  <line x1="122" y1="44" x2="122" y2="76" stroke="#006573" stroke-width="0.8" opacity="0.4"/>
+                  <line x1="134" y1="44" x2="134" y2="76" stroke="#006573" stroke-width="0.8" opacity="0.4"/>
+                  <line x1="146" y1="44" x2="146" y2="76" stroke="#006573" stroke-width="0.8" opacity="0.4"/>
+                  <line x1="110" y1="56" x2="155" y2="56" stroke="#006573" stroke-width="0.8" opacity="0.4"/>
+                  <line x1="110" y1="66" x2="155" y2="66" stroke="#006573" stroke-width="0.8" opacity="0.4"/>
+                  <!-- Vand pile ned -->
+                  <path d="M130 76 L130 84" stroke="#3aaa55" stroke-width="1.5" stroke-dasharray="2,2" stroke-linecap="round" opacity="0.5"/>
+                  <!-- Fiberdug -->
+                  <rect x="108" y="43" width="49" height="3" rx="1" fill="#3aaa55" opacity="0.2"/>
+                  <!-- Inspektionsbrønd -->
+                  <circle cx="118" cy="49" r="4" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <!-- Label -->
+                  <text x="132" y="42" font-family="sans-serif" font-size="7" fill="#006573" opacity="0.6" text-anchor="middle">Faskine</text>
+                </svg>
+              </div>
               <div class="p-3">
                 <div class="flex items-center justify-between gap-1 mb-0.5">
                   <h4 class="font-headline font-bold text-sm">Faskine</h4>
@@ -1791,7 +1919,38 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 
             <div class="bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
               <div class="byg-status-Permeabel-belaegning text-[10px] font-bold px-3 py-1.5"></div>
-              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=130&fit=crop&q=80" alt="Permeable belægninger" class="w-full h-24 object-cover"/>
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <ellipse cx="90" cy="64" rx="80" ry="16" fill="#006573" opacity="0.06"/>
+                  <!-- Belægning overflade (sten grid) -->
+                  <rect x="10" y="40" width="160" height="12" rx="1" fill="none" stroke="#006573" stroke-width="1.5" opacity="0.4"/>
+                  <!-- Sten i grid -->
+                  <rect x="12" y="41" width="18" height="9" rx="1" fill="none" stroke="#006573" stroke-width="1"/>
+                  <rect x="32" y="41" width="18" height="9" rx="1" fill="none" stroke="#006573" stroke-width="1"/>
+                  <rect x="52" y="41" width="18" height="9" rx="1" fill="none" stroke="#006573" stroke-width="1"/>
+                  <rect x="72" y="41" width="18" height="9" rx="1" fill="none" stroke="#006573" stroke-width="1"/>
+                  <rect x="92" y="41" width="18" height="9" rx="1" fill="none" stroke="#006573" stroke-width="1"/>
+                  <rect x="112" y="41" width="18" height="9" rx="1" fill="none" stroke="#006573" stroke-width="1"/>
+                  <rect x="132" y="41" width="18" height="9" rx="1" fill="none" stroke="#006573" stroke-width="1"/>
+                  <rect x="152" y="41" width="16" height="9" rx="1" fill="none" stroke="#006573" stroke-width="1"/>
+                  <!-- Hulrum med grus (permeable lag) -->
+                  <rect x="10" y="53" width="160" height="10" rx="1" fill="none" stroke="#3aaa55" stroke-width="1" opacity="0.4" stroke-dasharray="3,2"/>
+                  <!-- Jord/undergrund -->
+                  <rect x="10" y="64" width="160" height="16" rx="1" fill="#006573" opacity="0.06"/>
+                  <line x1="10" y1="64" x2="170" y2="64" stroke="#006573" stroke-width="1" opacity="0.2"/>
+                  <!-- Vand pile ned igennem -->
+                  <line x1="30" y1="41" x2="30" y2="32" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+                  <polygon points="27,34 33,34 30,40" fill="#006573" opacity="0.35"/>
+                  <line x1="70" y1="41" x2="70" y2="32" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+                  <polygon points="67,34 73,34 70,40" fill="#006573" opacity="0.35"/>
+                  <line x1="110" y1="41" x2="110" y2="32" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+                  <polygon points="107,34 113,34 110,40" fill="#006573" opacity="0.35"/>
+                  <!-- Vand pile videre ned -->
+                  <line x1="50" y1="64" x2="50" y2="74" stroke="#3aaa55" stroke-width="1.2" stroke-dasharray="2,2" opacity="0.5"/>
+                  <line x1="90" y1="64" x2="90" y2="74" stroke="#3aaa55" stroke-width="1.2" stroke-dasharray="2,2" opacity="0.5"/>
+                  <line x1="130" y1="64" x2="130" y2="74" stroke="#3aaa55" stroke-width="1.2" stroke-dasharray="2,2" opacity="0.5"/>
+                </svg>
+              </div>
               <div class="p-3">
                 <div class="flex items-center justify-between gap-1 mb-0.5">
                   <h4 class="font-headline font-bold text-sm">Perm. belægning</h4>
@@ -1875,7 +2034,38 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 
             <div class="bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
               <div class="byg-status-Groent-tag text-[10px] font-bold px-3 py-1.5"></div>
-              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=130&fit=crop&q=80" alt="Grønt tag" class="w-full h-24 object-cover"/>
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-4 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <!-- Akvarel -->
+                  <ellipse cx="90" cy="55" rx="80" ry="20" fill="#3aaa55" opacity="0.07"/>
+                  <!-- Hus tværsnit -->
+                  <rect x="40" y="45" width="100" height="35" rx="2" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <polygon points="32,47 148,47 90,18" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+                  <!-- Tagkonstruktion lag -->
+                  <path d="M32 47 Q90 43 148 47" stroke="#006573" stroke-width="1" opacity="0.3" fill="none"/>
+                  <!-- Vækstsubstrat (sedum lag) -->
+                  <path d="M35 45 Q90 40 145 45" stroke="#3aaa55" stroke-width="3" opacity="0.3" stroke-linecap="round"/>
+                  <!-- Sedum planter -->
+                  <line x1="55" y1="44" x2="55" y2="32" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M50 34 Q55 28 60 34" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+                  <line x1="75" y1="43" x2="75" y2="28" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M70 30 Q75 24 80 30" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+                  <line x1="95" y1="42" x2="95" y2="27" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M90 29 Q95 23 100 29" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+                  <line x1="115" y1="43" x2="115" y2="30" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M110 32 Q115 26 120 32" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+                  <!-- Fugl -->
+                  <path d="M132 22 Q137 18 142 22 Q137 20 132 22" fill="none" stroke="#006573" stroke-width="1.2"/>
+                  <!-- Pile op (fordampning) -->
+                  <line x1="62" y1="22" x2="62" y2="14" stroke="#006573" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+                  <polygon points="59,16 65,16 62,11" fill="#006573" opacity="0.4"/>
+                  <line x1="90" y1="18" x2="90" y2="10" stroke="#006573" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+                  <polygon points="87,12 93,12 90,7" fill="#006573" opacity="0.4"/>
+                  <!-- Drænrør -->
+                  <line x1="40" y1="48" x2="20" y2="55" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                  <circle cx="17" cy="56" r="3" fill="none" stroke="#006573" stroke-width="1.2" opacity="0.5"/>
+                </svg>
+              </div>
               <div class="p-3">
                 <div class="flex items-center justify-between gap-1 mb-0.5"><h4 class="font-headline font-bold text-sm">Grønne tage</h4><button onclick="openModal('Grønne tage')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button></div>
                 <p class="text-[9px] text-[#1a2a1a]/45 mb-2.5">400–800 kr./m² · 50% tilbageholdelse</p>
@@ -2500,6 +2690,77 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
     </div>
   </section>
 
+  <!-- FIND DEN RETTE LØSNING — rapport-stil tværsnit illustration -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.05)]">
+      <div class="grid lg:grid-cols-2 gap-0">
+        <div class="p-8">
+          <h2 class="font-headline text-xl font-bold rapport-heading mb-1">Find den rette løsning til dit behov</h2>
+          <div class="teal-rule w-16 mb-4"></div>
+          <p class="text-sm text-[#1a2a1a]/65 leading-relaxed mb-3">Et er at finde ud af, at det er muligt, eller at du godt kunne tænke dig at håndtere regnvand på egen grund. Noget andet er at finde ud af, hvilke løsninger der er mulige og ikke mindst at finde den løsning, der passer til netop dit behov og pengepung.</p>
+          <p class="text-sm text-[#1a2a1a]/65 leading-relaxed mb-4">De kommende sider beskriver en række af de tiltag, du kan gøre for at håndtere regnvand på din grund.</p>
+          <div class="vidste-du">
+            <p class="text-xs font-bold mb-1" style="color:#006573">Vidste du...</p>
+            <p class="text-xs text-[#1a2a1a]/65 leading-relaxed">At de fleste forsikringsselskaber giver rabat på husforsikringen, hvis du sikrer din bolig mod vandskader?</p>
+          </div>
+        </div>
+        <!-- Tværsnit illustration: LAR løsninger fra rapport -->
+        <div class="p-6 watercolor-bg flex items-center justify-center">
+          <svg viewBox="0 0 240 150" class="w-full max-w-[260px] lar-illustration" fill="none">
+            <!-- Terræn linje -->
+            <line x1="5" y1="88" x2="235" y2="88" stroke="#006573" stroke-width="2" opacity="0.25"/>
+            <!-- Akvarel stænk -->
+            <ellipse cx="120" cy="100" rx="110" ry="30" fill="#3aaa55" opacity="0.05"/>
+            
+            <!-- Regnbed (venstre) -->
+            <path d="M10 88 Q35 82 60 88" stroke="#006573" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <path d="M10 88 L10 105 Q35 110 60 105 L60 88" stroke="#006573" stroke-width="1.5" fill="none" opacity="0.35"/>
+            <line x1="20" y1="88" x2="20" y2="72" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M16 74 Q20 68 24 74" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+            <line x1="35" y1="88" x2="35" y2="65" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="35" cy="62" r="4" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+            <line x1="50" y1="88" x2="50" y2="73" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M46 75 Q50 69 54 75" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+            <text x="35" y="118" font-family="sans-serif" font-size="7.5" fill="#006573" text-anchor="middle" font-weight="bold" opacity="0.7">Regnbed</text>
+
+            <!-- Grønt tag (midt-hus) -->
+            <rect x="75" y="65" width="60" height="28" rx="2" fill="none" stroke="#006573" stroke-width="1.5"/>
+            <polygon points="68,67 142,67 105,40" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M70 65 Q105 60 140 65" stroke="#3aaa55" stroke-width="3" opacity="0.25" stroke-linecap="round"/>
+            <line x1="85" y1="64" x2="85" y2="52" stroke="#006573" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M81 54 Q85 48 89 54" fill="none" stroke="#3aaa55" stroke-width="1.2"/>
+            <line x1="105" y1="62" x2="105" y2="48" stroke="#006573" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M101 50 Q105 44 109 50" fill="none" stroke="#3aaa55" stroke-width="1.2"/>
+            <line x1="125" y1="64" x2="125" y2="52" stroke="#006573" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M121 54 Q125 48 129 54" fill="none" stroke="#3aaa55" stroke-width="1.2"/>
+            <!-- Dør -->
+            <rect x="97" y="78" width="16" height="15" rx="1" fill="none" stroke="#006573" stroke-width="1"/>
+            <text x="105" y="108" font-family="sans-serif" font-size="7.5" fill="#006573" text-anchor="middle" font-weight="bold" opacity="0.7">Grønt tag</text>
+
+            <!-- Faskine (højre) -->
+            <rect x="160" y="58" width="38" height="28" rx="2" fill="none" stroke="#006573" stroke-width="1.5" stroke-dasharray="4,2"/>
+            <line x1="170" y1="58" x2="170" y2="88" stroke="#006573" stroke-width="0.8" opacity="0.3"/>
+            <line x1="180" y1="58" x2="180" y2="88" stroke="#006573" stroke-width="0.8" opacity="0.3"/>
+            <line x1="190" y1="58" x2="190" y2="88" stroke="#006573" stroke-width="0.8" opacity="0.3"/>
+            <line x1="160" y1="68" x2="198" y2="68" stroke="#006573" stroke-width="0.8" opacity="0.3"/>
+            <line x1="160" y1="78" x2="198" y2="78" stroke="#006573" stroke-width="0.8" opacity="0.3"/>
+            <!-- Rør ned til faskine -->
+            <line x1="142" y1="93" x2="160" y2="70" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+            <!-- Vand ned -->
+            <line x1="179" y1="88" x2="179" y2="100" stroke="#3aaa55" stroke-width="1.2" stroke-dasharray="2,2" opacity="0.5"/>
+            <text x="179" y="118" font-family="sans-serif" font-size="7.5" fill="#006573" text-anchor="middle" font-weight="bold" opacity="0.7">Faskine</text>
+
+            <!-- Regndråber øverst -->
+            <line x1="30" y1="30" x2="28" y2="42" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+            <line x1="80" y1="25" x2="78" y2="35" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+            <line x1="170" y1="28" x2="168" y2="40" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+            <line x1="210" y1="22" x2="208" y2="34" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- LYSEGRØN BLOK — "Regnbed eller grønt tag?" -->
   <section class="max-w-4xl mx-auto px-6 pb-6">
     <div class="bg-[#c8e0c8] rounded-2xl p-8 grid lg:grid-cols-2 gap-7 items-center">
@@ -2649,7 +2910,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
   <!-- STOR GRØN LØSNINGS-MENU — som "Alle renoveringer"-griddet -->
   <section class="max-w-4xl mx-auto px-6 pb-6">
     <div class="bg-[#c8e0c8] rounded-2xl p-7">
-      <p class="text-[10px] uppercase tracking-widest font-bold text-[#1a4a3a] mb-1">Alle løsninger</p>
+      <p class="text-[10px] uppercase tracking-widest font-bold mb-1 rapport-heading">Alle løsninger</p>
       <h2 class="font-headline text-xl font-bold text-[#0d2a1a] mb-6">Bliv klogere på en bestemt løsning — vælg fra listen</h2>
       <div class="grid sm:grid-cols-3 gap-4">
         <!-- Nedsivning -->
@@ -2991,7 +3252,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 
   <!-- LØSNINGS-DIAGRAM — tre "huse" der viser tilskudsniveauer -->
   <section class="max-w-4xl mx-auto px-6 pb-6">
-    <h2 class="font-headline text-xl font-bold text-[#1a2a1a] mb-1" id="gang-vaelg">Det kan du anlægge</h2>
+    <h2 class="font-headline text-xl font-bold mb-1 rapport-heading" id="gang-vaelg">Det kan du anlægge</h2>
     <p class="text-sm text-[#1a2a1a]/50 mb-6">Her kan du få overblik over, hvad du kan anlægge fra de forskellige LAR-kategorier.</p>
     <div class="flex gap-0 items-end justify-center overflow-x-auto pb-2">
       <!-- Venstre: Regnbed -->
@@ -3090,7 +3351,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 
   <!-- TABBED STEP GUIDE — "Sådan søger du tilskud" med sidebar-tabs -->
   <section class="max-w-4xl mx-auto px-6 pb-6" id="gang-step-guide">
-    <h2 class="font-headline text-xl font-bold text-[#1a2a1a] mb-1">Sådan anlægger du din løsning</h2>
+    <h2 class="font-headline text-xl font-bold mb-1 rapport-heading">Sådan anlægger du din løsning</h2>
     <p class="text-sm text-[#1a2a1a]/50 mb-5">Det er vigtigt at forberede sig grundigt inden du går i gang — det betaler sig.</p>
     <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.05)] flex flex-col sm:flex-row">
       <!-- Tab sidebar -->
@@ -3136,7 +3397,11 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
         </div>
         <div id="gang-panel-2" class="hidden">
           <h3 class="font-headline font-bold text-[#1a2a1a] text-lg mb-3">Anlæg løsningen selv eller med håndværker</h3>
-          <p class="text-sm text-[#1a2a1a]/60 leading-relaxed mb-4">Regnbede og regnvandstanke kan anlægges som DIY. Faskiner og grønne tage kræver typisk fagfolk. Tjek med din kommune hvad der kræves i dit tilfælde.</p>
+          <p class="text-sm text-[#1a2a1a]/60 leading-relaxed mb-3">Regnbede og regnvandstanke kan anlægges som DIY. Faskiner og grønne tage kræver typisk fagfolk. Tjek med din kommune hvad der kræves i dit tilfælde.</p>
+        <div class="vidste-du mb-2">
+          <p class="text-xs font-bold mb-1" style="color:#006573">Vidste du...</p>
+          <p class="text-xs text-[#1a2a1a]/65 leading-relaxed">At du trygt kan anvende regnvand til at vande haven — også grøntsager og frugt. Regnvand betragtes ikke som forurenet.</p>
+        </div>
           <div class="bg-[#f9f5e8] rounded-xl p-5">
             <h4 class="font-bold text-sm text-[#1a2a1a] mb-2">Tids- og sæsonovervejelser</h4>
             <p class="text-xs text-[#1a2a1a]/55 leading-relaxed">Anlæg regnbed om foråret eller efteråret. Grønne tage lægges bedst i sommerhalvåret. Faskiner kan anlægges hele året undtagen ved frost.</p>

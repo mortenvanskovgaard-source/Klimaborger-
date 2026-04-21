@@ -4803,6 +4803,25 @@ function plantlisteToggle() {
   btn.textContent = open ? 'Vis liste' : 'Skjul liste';
 }
 
+// ── Symptom card hover via delegation ──
+document.addEventListener('mouseover', function(e) {
+  const card = e.target.closest('.symptom-card');
+  if (!card) return;
+  const col = card.dataset.col;
+  const bg = card.dataset.bg;
+  if (col && bg) {
+    card.style.borderColor = col;
+    card.style.background = bg;
+  }
+});
+document.addEventListener('mouseout', function(e) {
+  const card = e.target.closest('.symptom-card');
+  if (!card) return;
+  const col = card.dataset.col || '#1a4a3a';
+  card.style.borderColor = col + '22';
+  card.style.background = 'white';
+});
+
 // ── Gang step tabs ──
 function gangTab(idx, btn) {
   // Hide all panels
@@ -5232,19 +5251,18 @@ function dInit() {
     const bg = s.bg || '#f9f5e8';
     const col = s.color || '#1a4a3a';
     return `<button onclick="dSelectSymptom('${id}')"
-      class="text-left rounded-2xl border-2 transition-all group flex flex-col overflow-hidden"
-      style="border-color:${col}22;background:white"
-      onmouseenter="this.style.borderColor='${col}';this.style.background='${bg}'"
-      onmouseleave="this.style.borderColor='${col}22';this.style.background='white'">
-      <div class="px-4 py-3.5 flex items-center gap-3" style="background:${bg}">
+      class="text-left rounded-2xl border-2 transition-all group flex flex-col overflow-hidden symptom-card"
+      data-bg="${bg}" data-col="${col}"
+      style="border-color:${col}22;background:white">
+      <div class="px-4 py-3.5 flex items-center gap-3 symptom-card-header" style="background:${bg}">
         <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style="background:${col}20">
           <span class="material-symbols-outlined text-lg" style="color:${col}">${s.icon}</span>
         </div>
         <h3 class="font-headline font-bold text-sm leading-tight" style="color:${col}">${s.label}</h3>
       </div>
       <div class="px-4 py-3 flex items-center justify-between gap-2">
-        <p class="text-xs leading-snug" style="color:${col}99">→ ${s.desc}</p>
-        <span class="material-symbols-outlined text-base shrink-0 group-hover:translate-x-0.5 transition-transform" style="color:${col}55">chevron_right</span>
+        <p class="text-xs leading-snug" style="color:${col}99">&#8594; ${s.desc}</p>
+        <span class="material-symbols-outlined text-base shrink-0 transition-transform group-hover:translate-x-0.5" style="color:${col}55">chevron_right</span>
       </div>
     </button>`;
   }).join("");

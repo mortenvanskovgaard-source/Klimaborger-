@@ -282,80 +282,6 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 </div>
 
 
-<script>
-(function(){
-  const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
-  const $ = (sel, root=document) => root.querySelector(sel);
-
-  window.navigate = function(id){
-    $$('.page').forEach(el => el.classList.remove('active'));
-    const page = document.getElementById('page-' + id);
-    if (page) {
-      page.classList.add('active');
-      window.scrollTo({top:0, behavior:'auto'});
-      try { history.replaceState(null, '', '#' + id); } catch(e) {}
-    } else {
-      console.warn('Page not found:', id);
-    }
-  };
-
-  window.toggleMenu = function(){
-    const menu = $('#slide-menu');
-    const overlay = $('#slide-menu-overlay');
-    const icon = $('#menu-btn-icon');
-    if (!menu || !overlay) return;
-    const isOpen = menu.classList.contains('translate-x-0');
-    if (isOpen) {
-      menu.classList.remove('translate-x-0');
-      menu.classList.add('translate-x-full');
-      overlay.classList.add('hidden');
-      if (icon) icon.textContent = 'menu';
-      document.body.style.overflow = '';
-    } else {
-      menu.classList.remove('translate-x-full');
-      menu.classList.add('translate-x-0');
-      overlay.classList.remove('hidden');
-      if (icon) icon.textContent = 'close';
-      document.body.style.overflow = 'hidden';
-    }
-  };
-
-  window.closeMenu = function(){
-    const menu = $('#slide-menu');
-    const overlay = $('#slide-menu-overlay');
-    const icon = $('#menu-btn-icon');
-    if (menu) {
-      menu.classList.remove('translate-x-0');
-      menu.classList.add('translate-x-full');
-    }
-    if (overlay) overlay.classList.add('hidden');
-    if (icon) icon.textContent = 'menu';
-    document.body.style.overflow = '';
-  };
-
-  window.menuSetAudience = function(type){
-    ['privat','erhverv','partner'].forEach(name => {
-      const btn = document.getElementById('menu-tab-' + name);
-      if (!btn) return;
-      const active = name === type;
-      btn.className = active
-        ? 'px-4 py-1.5 rounded-full text-xs font-bold bg-[#1a4a3a] text-white transition-colors'
-        : 'px-4 py-1.5 rounded-full text-xs font-bold text-[#1a2a1a]/50 hover:bg-[#1a2a1a]/8 transition-colors';
-    });
-  };
-
-  window.menuSearch = function(){
-    const input = document.querySelector('input[type="search"], input[placeholder*="adresse"], input[placeholder*="Søg"]');
-    if (input) input.focus();
-  };
-
-  document.addEventListener('DOMContentLoaded', function(){
-    const pageId = (location.hash || '#forsta').replace('#','');
-    window.navigate(pageId || 'forsta');
-  });
-})();
-</script>
-
 <!-- ══════════════ PAGE: FORSIDE ══════════════ -->
 <div id="page-forsta" class="page active">
 <main class="pt-16 bg-[#f5f0e1] min-h-screen">
@@ -2014,3 +1940,118 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
       <div class="grid lg:grid-cols-3 gap-7 items-start">
         <div class="lg:col-span-2">
           <h2 class="font-headline text-lg font-bold text-[#1a2a1a] mb-0.5">Dit estimerede vandbehov</h2>
+
+
+
+<!-- RECOVERY FOOTER ADDED -->
+</div></div></section></div></main>
+<script>
+(function(){
+  const availablePages = new Set(Array.from(document.querySelectorAll('.page')).map(p => p.id.replace('page-','')));
+  const fallbackMap = { byg:'kortlaeg', have:'kortlaeg', gang:'diagnose', inspiration:'forsta' };
+  function safePage(id){ return availablePages.has(id) ? id : (fallbackMap[id] || 'forsta'); }
+  window.navigate = function(id){
+    id = safePage(id || 'forsta');
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const el = document.getElementById('page-' + id);
+    if(el) el.classList.add('active');
+    try { history.replaceState(null, '', '#' + id); } catch(e) {}
+    window.scrollTo({top:0, behavior:'smooth'});
+    closeMenu();
+  };
+  window.toggleMenu = function(){
+    const menu = document.getElementById('slide-menu');
+    const overlay = document.getElementById('slide-menu-overlay');
+    const icon = document.getElementById('menu-btn-icon');
+    if(!menu || !overlay) return;
+    const open = menu.classList.contains('translate-x-full');
+    if(open){
+      menu.classList.remove('translate-x-full');
+      overlay.classList.remove('hidden');
+      icon && (icon.textContent = 'close');
+      document.body.style.overflow = 'hidden';
+    } else {
+      window.closeMenu();
+    }
+  };
+  window.closeMenu = function(){
+    const menu = document.getElementById('slide-menu');
+    const overlay = document.getElementById('slide-menu-overlay');
+    const icon = document.getElementById('menu-btn-icon');
+    if(menu) menu.classList.add('translate-x-full');
+    if(overlay) overlay.classList.add('hidden');
+    if(icon) icon.textContent = 'menu';
+    document.body.style.overflow = '';
+  };
+  window.menuSetAudience = function(audience){
+    ['privat','erhverv','partner'].forEach(key => {
+      const btn = document.getElementById('menu-tab-' + key);
+      if(!btn) return;
+      if(key === audience){
+        btn.className = 'px-4 py-1.5 rounded-full text-xs font-bold bg-[#1a4a3a] text-white transition-colors';
+      } else {
+        btn.className = 'px-4 py-1.5 rounded-full text-xs font-bold text-[#1a2a1a]/50 hover:bg-[#1a2a1a]/8 transition-colors';
+      }
+    });
+  };
+  window.menuSearch = function(){
+    const input = document.getElementById('forside-dawa-quick') || document.querySelector('input[type="text"]');
+    if(input){ navigate('forsta'); setTimeout(()=>input.focus(), 50); }
+  };
+  window.forsideBarToggle = function(mode, btn){
+    const dag = document.getElementById('forside-btn-dag');
+    const uge = document.getElementById('forside-btn-uge');
+    const isDag = mode === 'dag';
+    if(dag) dag.className = 'px-3 py-1.5 rounded-full text-xs font-bold ' + (isDag ? 'bg-[#1a4a3a] text-white' : 'bg-[#e5ede5] text-[#1a4a3a]');
+    if(uge) uge.className = 'px-3 py-1.5 rounded-full text-xs font-bold ' + (!isDag ? 'bg-[#1a4a3a] text-white' : 'bg-[#e5ede5] text-[#1a4a3a]');
+    renderRainBars(mode);
+  };
+  function renderRainBars(mode){
+    const bars = document.getElementById('forside-regn-bars');
+    const labels = document.getElementById('forside-regn-labels');
+    if(!bars || !labels) return;
+    const dag = [2,5,0,8,14,6,3,1];
+    const uge = [12,18,9,25,32,19,14];
+    const data = mode === 'uge' ? uge : dag;
+    const lab = mode === 'uge' ? ['Man','Tir','Ons','Tor','Fre','Lør','Søn'] : ['06','09','12','15','18','21','00','03'];
+    const max = Math.max(...data, 1);
+    bars.innerHTML = data.map(v => `<div class="flex-1 flex items-end"><div class="rain-bar w-full rounded-t-md ${v>10?'bg-[#c04030]':'bg-[#6abedf]'}" style="height:${Math.max(8,(v/max)*128)}px"></div></div>`).join('');
+    labels.innerHTML = lab.map(t => `<div class="flex-1 text-center text-[10px] text-[#1a2a1a]/35">${t}</div>`).join('');
+  }
+  window.forsideDawaQuick = function(value){
+    const list = document.getElementById('forside-dawa-list');
+    const result = document.getElementById('forside-adresse-result');
+    if(!list) return;
+    const q = (value || '').trim();
+    if(q.length < 3){ list.classList.add('hidden'); list.innerHTML=''; return; }
+    const items = [q, q + ', Egedal', q + ', København'].slice(0,3);
+    list.innerHTML = items.map(item => `<li><button type="button" class="w-full text-left px-4 py-3 hover:bg-[#f9f5e8] text-sm" onclick="selectForsideAdresse('${item.replace(/'/g, "&#39;")}')">${item}</button></li>`).join('');
+    list.classList.remove('hidden');
+  };
+  window.selectForsideAdresse = function(value){
+    const input = document.getElementById('forside-dawa-quick');
+    const list = document.getElementById('forside-dawa-list');
+    const box = document.getElementById('forside-adresse-result');
+    if(input) input.value = value;
+    if(list) list.classList.add('hidden');
+    if(box) box.classList.remove('hidden');
+    const navn = document.getElementById('forside-adresse-navn');
+    const ned = document.getElementById('forside-adresse-nedboer');
+    if(navn) navn.textContent = value;
+    if(ned) ned.textContent = 'Estimeret behov: ca. 3.200 liter ved kraftig regn';
+  };
+  // simple stubs so inline handlers do not break
+  ['dawaSearch','clearDawa','calcKortlaeg','setRegnhaendelse','kortlToggle','dGoStep','dToggleGrid','toggleMultiAddr','multiDawaSearch'].forEach(fn => {
+    if(!window[fn]) window[fn] = function(){ console.log(fn + ' er ikke fuldt genoprettet i denne fil endnu.'); };
+  });
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeMenu(); });
+  document.addEventListener('DOMContentLoaded', function(){
+    const hash = (location.hash || '#forsta').replace('#','');
+    navigate(hash);
+    renderRainBars('dag');
+    closeMenu();
+  });
+})();
+</script>
+</body>
+</html>

@@ -282,8 +282,82 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 </div>
 
 
+<script>
+(function(){
+  const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+  const $ = (sel, root=document) => root.querySelector(sel);
+
+  window.navigate = function(id){
+    $$('.page').forEach(el => el.classList.remove('active'));
+    const page = document.getElementById('page-' + id);
+    if (page) {
+      page.classList.add('active');
+      window.scrollTo({top:0, behavior:'auto'});
+      try { history.replaceState(null, '', '#' + id); } catch(e) {}
+    } else {
+      console.warn('Page not found:', id);
+    }
+  };
+
+  window.toggleMenu = function(){
+    const menu = $('#slide-menu');
+    const overlay = $('#slide-menu-overlay');
+    const icon = $('#menu-btn-icon');
+    if (!menu || !overlay) return;
+    const isOpen = menu.classList.contains('translate-x-0');
+    if (isOpen) {
+      menu.classList.remove('translate-x-0');
+      menu.classList.add('translate-x-full');
+      overlay.classList.add('hidden');
+      if (icon) icon.textContent = 'menu';
+      document.body.style.overflow = '';
+    } else {
+      menu.classList.remove('translate-x-full');
+      menu.classList.add('translate-x-0');
+      overlay.classList.remove('hidden');
+      if (icon) icon.textContent = 'close';
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.closeMenu = function(){
+    const menu = $('#slide-menu');
+    const overlay = $('#slide-menu-overlay');
+    const icon = $('#menu-btn-icon');
+    if (menu) {
+      menu.classList.remove('translate-x-0');
+      menu.classList.add('translate-x-full');
+    }
+    if (overlay) overlay.classList.add('hidden');
+    if (icon) icon.textContent = 'menu';
+    document.body.style.overflow = '';
+  };
+
+  window.menuSetAudience = function(type){
+    ['privat','erhverv','partner'].forEach(name => {
+      const btn = document.getElementById('menu-tab-' + name);
+      if (!btn) return;
+      const active = name === type;
+      btn.className = active
+        ? 'px-4 py-1.5 rounded-full text-xs font-bold bg-[#1a4a3a] text-white transition-colors'
+        : 'px-4 py-1.5 rounded-full text-xs font-bold text-[#1a2a1a]/50 hover:bg-[#1a2a1a]/8 transition-colors';
+    });
+  };
+
+  window.menuSearch = function(){
+    const input = document.querySelector('input[type="search"], input[placeholder*="adresse"], input[placeholder*="Søg"]');
+    if (input) input.focus();
+  };
+
+  document.addEventListener('DOMContentLoaded', function(){
+    const pageId = (location.hash || '#forsta').replace('#','');
+    window.navigate(pageId || 'forsta');
+  });
+})();
+</script>
+
 <!-- ══════════════ PAGE: FORSIDE ══════════════ -->
-<div id="page-forsta" class="page">
+<div id="page-forsta" class="page active">
 <main class="pt-16 bg-[#f5f0e1] min-h-screen">
 
   <!-- HERO BANNER -->

@@ -1961,6 +1961,88 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
   <!-- TO KATEGORIKORT — "Jeg overvejer X / Jeg er interesseret i Y" -->
   
   <!-- LØSNINGS-SLIDERS + STICKY RESULTAT (nyt layout) -->
+  <!-- INTERAKTIV LAR-SYSTEMBYGGER -->
+  <section class="max-w-4xl mx-auto px-6 pb-6">
+    <div class="bg-white rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.07)] border border-[#1a4a3a]/10">
+
+      <!-- Header -->
+      <div class="bg-[#1a4a3a] px-6 py-4 flex items-center justify-between">
+        <div>
+          <p class="text-white font-bold text-sm font-headline">Dit LAR-system</p>
+          <p class="text-white/55 text-[10px]">Vælg elementer nedenfor — se dit system bygges op her</p>
+        </div>
+        <button onclick="resetLarSystem()" class="text-white/50 hover:text-white text-[10px] flex items-center gap-1 transition-colors">
+          <span class="material-symbols-outlined text-sm">refresh</span>Nulstil
+        </button>
+      </div>
+
+      <!-- Visuel systembygger -->
+      <div class="p-5">
+
+        <!-- Flow-diagram canvas -->
+        <div class="relative rounded-xl bg-[#f9f5e8] overflow-hidden mb-4" style="min-height:180px">
+
+          <!-- Baggrund: terræn og himmel -->
+          <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 640 180" preserveAspectRatio="xMidYMid meet" fill="none">
+            <!-- Akvarel himmel -->
+            <filter id="lar_blur"><feGaussianBlur stdDeviation="12"/></filter>
+            <ellipse cx="500" cy="30" rx="180" ry="60" fill="#c8e8f0" filter="url(#lar_blur)" opacity="0.3"/>
+            <ellipse cx="150" cy="20" rx="140" ry="50" fill="#c8e0c0" filter="url(#lar_blur)" opacity="0.2"/>
+            <!-- Terræn linje -->
+            <line x1="0" y1="115" x2="640" y2="115" stroke="#006573" stroke-width="1.5" opacity="0.2"/>
+            <!-- Under jord fill -->
+            <rect x="0" y="115" width="640" height="65" fill="#006573" opacity="0.04"/>
+          </svg>
+
+          <!-- LAR-elementer container -->
+          <div id="lar-canvas" class="relative flex items-end justify-center gap-2 px-4" style="min-height:180px;padding-bottom:20px;padding-top:10px">
+
+            <!-- HUSET — altid synligt som ankerpunkt -->
+            <div class="lar-node shrink-0 flex flex-col items-center gap-1" data-name="Hus" style="margin-bottom:28px">
+              <svg viewBox="0 0 60 55" width="60" height="55" fill="none">
+                <rect x="8" y="25" width="44" height="28" rx="2" fill="white" stroke="#006573" stroke-width="1.5"/>
+                <polygon points="4,27 56,27 30,8" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+                <!-- Sedum tag (vises altid let) -->
+                <rect x="4" y="22" width="52" height="7" rx="1.5" fill="#2d7a5a" opacity="0.2" id="lar-tag-layer"/>
+                <!-- Dør -->
+                <rect x="24" y="35" width="12" height="18" rx="1.5" fill="none" stroke="#006573" stroke-width="1"/>
+                <!-- Nedløbsrør -->
+                <line x1="8" y1="53" x2="8" y2="38" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+              </svg>
+              <span class="text-[9px] font-bold text-[#006573]">Din bolig</span>
+            </div>
+
+            <!-- LAR element nodes (indsættes dynamisk) -->
+            <div id="lar-elements-flow" class="flex items-end gap-2 flex-wrap"></div>
+
+          </div>
+
+          <!-- Tom-state besked -->
+          <div id="lar-empty-msg" class="absolute inset-0 flex items-center justify-center pointer-events-none" style="padding-left:100px">
+            <div class="text-center">
+              <span class="material-symbols-outlined text-[#1a4a3a]/20 text-4xl block mb-1">add_circle</span>
+              <p class="text-[10px] text-[#1a2a1a]/30">Skru på sliders nedenfor<br/>og se dit system her</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Flow-legende: viser kæden som tekst -->
+        <div id="lar-flow-chain" class="hidden items-center flex-wrap gap-1 px-1 mb-3">
+          <span class="text-[10px] text-[#1a2a1a]/40 font-medium">Dit system:</span>
+          <div id="lar-chain-labels" class="flex items-center gap-1 flex-wrap"></div>
+        </div>
+
+        <!-- Kompatibilitetsmatcher -->
+        <div id="lar-compat-hint" class="hidden bg-[#e0f4f6] rounded-xl px-4 py-2.5 text-[10px] text-[#006573] leading-relaxed mb-3">
+          <span class="font-bold">Tip: </span><span id="lar-compat-text"></span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
   <section class="max-w-4xl mx-auto px-6 pb-7">
     <div class="flex items-baseline justify-between mb-4">
       <div>
@@ -1978,7 +2060,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
       <div class="flex-1 min-w-0 space-y-8">
 
         <!-- Nedsivning -->
-        <div id="byg-nedsivning">
+        <div id="byg-nedsivning" data-category="nedsivning">
           <div class="flex items-center gap-2 mb-3">
             <div class="w-6 h-6 bg-[#1a4a3a] rounded-lg flex items-center justify-center">
               <span class="material-symbols-outlined text-white text-sm">water_drop</span>
@@ -1988,7 +2070,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
           </div>
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
 
-            <div class="bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+            <div data-loesning="Regnbed" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
               <div class="byg-status-Regnbed text-[10px] font-bold px-3 py-1.5"></div>
               <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
                 <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2040,7 +2122,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
               </div>
             </div>
 
-            <div class="bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+            <div data-loesning="Faskine" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
               <div class="byg-status-Faskine text-[10px] font-bold px-3 py-1.5"></div>
               <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
                 <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
@@ -2088,7 +2170,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
               </div>
             </div>
 
-            <div class="bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+            <div data-loesning="Permeabel belægning" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
               <div class="byg-status-Permeabel-belaegning text-[10px] font-bold px-3 py-1.5"></div>
               <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
                 <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
@@ -2136,7 +2218,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
         </div>
 
         <!-- Magasinering -->
-        <div id="byg-magasinering">
+        <div id="byg-magasinering" data-category="magasinering">
           <div class="flex items-center gap-2 mb-3">
             <div class="w-6 h-6 bg-[#1a4a3a] rounded-lg flex items-center justify-center">
               <span class="material-symbols-outlined text-white text-sm">water_full</span>
@@ -2146,44 +2228,134 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
           </div>
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
 
-            <div class="bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
-              <div class="byg-status-Vaadbassin text-[10px] font-bold px-3 py-1.5"></div>
-              <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=130&fit=crop&q=80" alt="Vådbassin" class="w-full h-24 object-cover"/>
-              <div class="p-3">
-                <div class="flex items-center justify-between gap-1 mb-0.5"><h4 class="font-headline font-bold text-sm">Våde bassiner</h4><button onclick="openModal('Våde bassiner')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button></div>
+            <div data-loesning="Vådbassin" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <ellipse cx="90" cy="62" rx="78" ry="18" fill="#006573" opacity="0.08"/>
+                  <!-- Vandoverflade -->
+                  <path d="M15 52 Q45 48 90 52 Q135 56 165 52" stroke="#006573" stroke-width="1.5" fill="none" opacity="0.5"/>
+                  <path d="M10 58 Q90 62 170 58" stroke="#006573" stroke-width="1" fill="none" opacity="0.3"/>
+                  <!-- Vandspejl fyld -->
+                  <path d="M15 52 Q45 48 90 52 Q135 56 165 52 L165 75 Q90 78 15 75Z" fill="#006573" opacity="0.07"/>
+                  <!-- Rørindløb -->
+                  <line x1="30" y1="35" x2="30" y2="52" stroke="#006573" stroke-width="2" stroke-linecap="round"/>
+                  <rect x="22" y="30" width="16" height="8" rx="2" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <!-- Beplantning rundt om -->
+                  <line x1="18" y1="52" x2="18" y2="35" stroke="#3aaa55" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M13 38 Q18 31 23 38" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+                  <line x1="155" y1="52" x2="155" y2="36" stroke="#3aaa55" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M150 39 Q155 32 160 39" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+                  <!-- Åkande/vandplante -->
+                  <ellipse cx="90" cy="53" rx="12" ry="4" fill="none" stroke="#3aaa55" stroke-width="1.2"/>
+                  <circle cx="90" cy="52" r="2.5" fill="none" stroke="#e84070" stroke-width="1" opacity="0.7"/>
+                  <!-- Overløb -->
+                  <line x1="150" y1="52" x2="165" y2="52" stroke="#006573" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5"/>
+                  <text x="90" y="80" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#006573" opacity="0.5">Permanent vandflade</text>
+                </svg>
+              </div>
                 <p class="text-[9px] text-[#1a2a1a]/45 mb-2.5">Fra 10.000 kr. · permanent vand</p>
                 <div class="flex justify-between mb-1"><span class="text-[9px] uppercase tracking-widest font-bold text-[#1a2a1a]/45">Volumen</span><span class="text-[9px] font-bold text-[#1a4a3a]" id="lbl-vaad">0 m³</span></div>
                 <input class="w-full" max="500" min="0" step="5" type="range" value="0" oninput="updateByg('vaad',this.value,'m³','lbl-vaad',1000)"/>
               </div>
             </div>
 
-            <div class="bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
-              <div class="byg-status-Toerbassin text-[10px] font-bold px-3 py-1.5"></div>
-              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=130&fit=crop&q=80" alt="Tørbassin" class="w-full h-24 object-cover"/>
-              <div class="p-3">
-                <div class="flex items-center justify-between gap-1 mb-0.5"><h4 class="font-headline font-bold text-sm">Tørre bassiner</h4><button onclick="openModal('Tørre bassiner')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button></div>
+            <div data-loesning="Tørbassin" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <ellipse cx="90" cy="65" rx="80" ry="16" fill="#3aaa55" opacity="0.07"/>
+                  <!-- Nedsænket terræn profil -->
+                  <path d="M10 40 L40 40 Q50 40 55 52 L125 52 Q130 40 140 40 L170 40" stroke="#006573" stroke-width="1.5" fill="none"/>
+                  <!-- Bund -->
+                  <path d="M55 52 L125 52" stroke="#006573" stroke-width="2" opacity="0.4"/>
+                  <!-- Jord lag -->
+                  <path d="M50 54 Q90 58 130 54 L130 65 Q90 68 50 65Z" fill="#006573" opacity="0.06"/>
+                  <!-- Indløbsrende -->
+                  <line x1="20" y1="40" x2="55" y2="52" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                  <!-- Græs i bunden -->
+                  <line x1="65" y1="52" x2="65" y2="43" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="75" y1="52" x2="75" y2="41" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="85" y1="52" x2="85" y2="44" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="95" y1="52" x2="95" y2="42" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="105" y1="52" x2="105" y2="43" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="115" y1="52" x2="115" y2="41" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <!-- Vandniveau ved regn (stiplet) -->
+                  <line x1="55" y1="47" x2="125" y2="47" stroke="#006573" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+                  <!-- Regndråber -->
+                  <line x1="90" y1="22" x2="88" y2="30" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                  <text x="90" y="80" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#006573" opacity="0.5">Tørt til daglig · fyldes ved regn</text>
+                </svg>
+              </div>
                 <p class="text-[9px] text-[#1a2a1a]/45 mb-2.5">Fra 5.000 kr. · tørt til daglig</p>
                 <div class="flex justify-between mb-1"><span class="text-[9px] uppercase tracking-widest font-bold text-[#1a2a1a]/45">Volumen</span><span class="text-[9px] font-bold text-[#1a4a3a]" id="lbl-toer">0 m³</span></div>
                 <input class="w-full" max="500" min="0" step="5" type="range" value="0" oninput="updateByg('toer',this.value,'m³','lbl-toer',1000)"/>
               </div>
             </div>
 
-            <div class="bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
-              <div class="byg-status-Underjordisk-bassin text-[10px] font-bold px-3 py-1.5"></div>
-              <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=130&fit=crop&q=80" alt="Underjordisk bassin" class="w-full h-24 object-cover"/>
-              <div class="p-3">
-                <div class="flex items-center justify-between gap-1 mb-0.5"><h4 class="font-headline font-bold text-sm">Underjordisk tank</h4><button onclick="openModal('Underjordisk bassin')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button></div>
+            <div data-loesning="Underjordisk bassin" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <ellipse cx="90" cy="68" rx="78" ry="14" fill="#006573" opacity="0.06"/>
+                  <!-- Terræn linje -->
+                  <line x1="5" y1="38" x2="175" y2="38" stroke="#006573" stroke-width="1.5" opacity="0.25"/>
+                  <!-- Hus -->
+                  <rect x="65" y="18" width="50" height="20" rx="2" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <polygon points="58,20 122,20 90,6" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+                  <!-- Nedløbsrør -->
+                  <line x1="65" y1="38" x2="65" y2="52" stroke="#006573" stroke-width="2" stroke-linecap="round"/>
+                  <!-- Underjordisk bassin (stor kasse) -->
+                  <rect x="20" y="42" width="80" height="28" rx="3" fill="none" stroke="#006573" stroke-width="1.5" stroke-dasharray="5,3"/>
+                  <!-- Indre struktur (kassetter) -->
+                  <line x1="36" y1="42" x2="36" y2="70" stroke="#006573" stroke-width="0.8" opacity="0.35"/>
+                  <line x1="52" y1="42" x2="52" y2="70" stroke="#006573" stroke-width="0.8" opacity="0.35"/>
+                  <line x1="68" y1="42" x2="68" y2="70" stroke="#006573" stroke-width="0.8" opacity="0.35"/>
+                  <line x1="84" y1="42" x2="84" y2="70" stroke="#006573" stroke-width="0.8" opacity="0.35"/>
+                  <line x1="20" y1="55" x2="100" y2="55" stroke="#006573" stroke-width="0.8" opacity="0.35"/>
+                  <!-- Rørforbindelser -->
+                  <line x1="65" y1="52" x2="55" y2="52" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+                  <!-- Pumpe/overløb -->
+                  <circle cx="130" cy="56" r="10" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <line x1="130" y1="46" x2="130" y2="38" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+                  <text x="130" y="59" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#006573">↑</text>
+                  <text x="90" y="81" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#006573" opacity="0.5">Underjordisk magasin</text>
+                </svg>
+              </div>
                 <p class="text-[9px] text-[#1a2a1a]/45 mb-2.5">Fra 8.000 kr. · plastkassetter</p>
                 <div class="flex justify-between mb-1"><span class="text-[9px] uppercase tracking-widest font-bold text-[#1a2a1a]/45">Kapacitet</span><span class="text-[9px] font-bold text-[#1a4a3a]" id="lbl-lukket">0 L</span></div>
                 <input class="w-full" max="10000" min="0" step="100" type="range" value="0" oninput="updateByg('lukket',this.value,'L','lbl-lukket',1)"/>
               </div>
             </div>
 
-            <div class="bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
-              <div class="byg-status-Regnvandsbeholder text-[10px] font-bold px-3 py-1.5"></div>
-              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=130&fit=crop&q=80" alt="Regnvandstank" class="w-full h-24 object-cover"/>
-              <div class="p-3">
-                <div class="flex items-center justify-between gap-1 mb-0.5"><h4 class="font-headline font-bold text-sm">Regnvandstank</h4><button onclick="openModal('Regnvandstank')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button></div>
+            <div data-loesning="Regnvandsbeholder" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <ellipse cx="90" cy="72" rx="75" ry="12" fill="#006573" opacity="0.07"/>
+                  <!-- Hus/tagnedløb -->
+                  <polygon points="50,15 115,15 82,2" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+                  <rect x="50" y="15" width="65" height="35" rx="2" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <!-- Nedløbsrør -->
+                  <line x1="50" y1="50" x2="50" y2="68" stroke="#006573" stroke-width="2" stroke-linecap="round"/>
+                  <!-- Forbindelsesrør til beholder -->
+                  <line x1="50" y1="55" x2="38" y2="55" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+                  <!-- Beholder (tønde) -->
+                  <rect x="28" y="44" width="20" height="28" rx="4" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <!-- Vandinhold -->
+                  <rect x="29" y="55" width="18" height="16" rx="3" fill="#006573" opacity="0.10"/>
+                  <!-- Vandniveau linje -->
+                  <line x1="29" y1="56" x2="47" y2="56" stroke="#006573" stroke-width="1" opacity="0.4"/>
+                  <!-- Tappekran -->
+                  <line x1="28" y1="64" x2="22" y2="64" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="22" y1="64" x2="22" y2="68" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/>
+                  <!-- Overløb til nedsivning -->
+                  <line x1="47" y1="48" x2="57" y2="48" stroke="#006573" stroke-width="1" stroke-dasharray="2,2" opacity="0.4"/>
+                  <!-- Vandkande (anvendelse) -->
+                  <rect x="130" y="48" width="18" height="22" rx="3" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+                  <path d="M148 55 Q155 52 158 58" stroke="#3aaa55" stroke-width="1.5" fill="none"/>
+                  <!-- Pil fra beholder til kande -->
+                  <line x1="50" y1="62" x2="128" y2="62" stroke="#3aaa55" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+                  <polygon points="124,59 130,62 124,65" fill="#3aaa55" opacity="0.5"/>
+                  <text x="90" y="82" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#006573" opacity="0.5">Tagvand til havevanding</text>
+                </svg>
+              </div>
                 <p class="text-[9px] text-[#1a2a1a]/45 mb-2.5">Fra 500 kr. · tagvand til vanding</p>
                 <div class="flex justify-between mb-1"><span class="text-[9px] uppercase tracking-widest font-bold text-[#1a2a1a]/45">Kapacitet</span><span class="text-[9px] font-bold text-[#1a4a3a]" id="lbl-tank">0 L</span></div>
                 <input class="w-full" max="5000" min="0" step="100" type="range" value="0" oninput="updateByg('tank',this.value,'L','lbl-tank',1)"/>
@@ -2193,7 +2365,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
         </div>
 
         <!-- Fordampning -->
-        <div id="byg-fordampning">
+        <div id="byg-fordampning" data-category="fordampning">
           <div class="flex items-center gap-2 mb-3">
             <div class="w-6 h-6 bg-[#1a4a3a] rounded-lg flex items-center justify-center">
               <span class="material-symbols-outlined text-white text-sm">eco</span>
@@ -2203,7 +2375,7 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
           </div>
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
 
-            <div class="bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+            <div data-loesning="Grønt tag" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
               <div class="byg-status-Groent-tag text-[10px] font-bold px-3 py-1.5"></div>
               <div class="w-full h-24 watercolor-bg flex items-end justify-center px-4 overflow-hidden">
                 <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
@@ -2249,28 +2421,368 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
               </div>
             </div>
 
-            <div class="bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
-              <div class="byg-status-Traeer text-[10px] font-bold px-3 py-1.5"></div>
-              <img src="https://images.unsplash.com/photo-1513836279014-a89f7d3f59a7?w=400&h=130&fit=crop&q=80" alt="Træer" class="w-full h-24 object-cover"/>
-              <div class="p-3">
-                <div class="flex items-center justify-between gap-1 mb-0.5"><h4 class="font-headline font-bold text-sm">Træer</h4><button onclick="openModal('Træer')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button></div>
+            <div data-loesning="Træer" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <ellipse cx="90" cy="72" rx="80" ry="12" fill="#3aaa55" opacity="0.08"/>
+                  <!-- Løvtræ venstre -->
+                  <line x1="45" y1="72" x2="45" y2="42" stroke="#6a4a25" stroke-width="3" stroke-linecap="round"/>
+                  <ellipse cx="45" cy="34" rx="18" ry="15" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+                  <ellipse cx="37" cy="38" rx="12" ry="10" fill="none" stroke="#3aaa55" stroke-width="1.2" opacity="0.6"/>
+                  <ellipse cx="53" cy="37" rx="11" ry="10" fill="none" stroke="#3aaa55" stroke-width="1.2" opacity="0.6"/>
+                  <!-- Rødder (synlige) -->
+                  <path d="M45 72 Q35 68 28 72" stroke="#6a4a25" stroke-width="1.5" fill="none" opacity="0.5"/>
+                  <path d="M45 72 Q55 68 62 72" stroke="#6a4a25" stroke-width="1.5" fill="none" opacity="0.5"/>
+                  <!-- Nåletræ højre -->
+                  <line x1="130" y1="72" x2="130" y2="25" stroke="#6a4a25" stroke-width="2.5" stroke-linecap="round"/>
+                  <polygon points="130,22 118,48 142,48" fill="none" stroke="#1a4a3a" stroke-width="1.5" stroke-linejoin="round"/>
+                  <polygon points="130,32 120,52 140,52" fill="none" stroke="#1a4a3a" stroke-width="1.5" stroke-linejoin="round" opacity="0.7"/>
+                  <!-- Regndråber filtreres -->
+                  <line x1="55" y1="15" x2="53" y2="22" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+                  <line x1="65" y1="12" x2="63" y2="19" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+                  <!-- Pil ned (fordampning) -->
+                  <line x1="90" y1="30" x2="90" y2="20" stroke="#006573" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+                  <polygon points="87,22 93,22 90,17" fill="#006573" opacity="0.4"/>
+                  <text x="90" y="82" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#006573" opacity="0.5">Fordampning og nedsivning</text>
+                </svg>
+              </div>
                 <p class="text-[9px] text-[#1a2a1a]/45 mb-2.5">Fra 500 kr./stk. · 200 L/dag sommer</p>
                 <div class="flex justify-between mb-1"><span class="text-[9px] uppercase tracking-widest font-bold text-[#1a2a1a]/45">Antal</span><span class="text-[9px] font-bold text-[#1a4a3a]" id="lbl-traeer">0 stk</span></div>
                 <input class="w-full" max="20" min="0" step="1" type="range" value="0" oninput="updateByg('traeer',this.value,'stk','lbl-traeer',50000)"/>
               </div>
             </div>
 
-            <div class="bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
-              <div class="byg-status-Groenne-vaegge text-[10px] font-bold px-3 py-1.5"></div>
-              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=130&fit=crop&q=80" alt="Grønne vægge" class="w-full h-24 object-cover"/>
-              <div class="p-3">
-                <div class="flex items-center justify-between gap-1 mb-0.5"><h4 class="font-headline font-bold text-sm">Grønne vægge</h4><button onclick="openModal('Grønne vægge')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button></div>
+            <div data-loesning="Grønne vægge" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <ellipse cx="90" cy="72" rx="75" ry="11" fill="#3aaa55" opacity="0.07"/>
+                  <!-- Bygning -->
+                  <rect x="55" y="20" width="70" height="52" rx="2" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <polygon points="48,22 132,22 90,6" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+                  <!-- Dør -->
+                  <rect x="78" y="52" width="24" height="20" rx="1" fill="none" stroke="#006573" stroke-width="1"/>
+                  <!-- Grøn væg beklædning venstre side -->
+                  <rect x="42" y="20" width="13" height="52" rx="2" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+                  <!-- Planter på væg -->
+                  <line x1="48" y1="68" x2="48" y2="58" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <path d="M44 61 Q48 56 52 61" fill="none" stroke="#3aaa55" stroke-width="1.2"/>
+                  <line x1="48" y1="55" x2="48" y2="45" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <path d="M44 48 Q48 43 52 48" fill="none" stroke="#3aaa55" stroke-width="1.2"/>
+                  <line x1="48" y1="42" x2="48" y2="32" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <path d="M44 35 Q48 30 52 35" fill="none" stroke="#3aaa55" stroke-width="1.2"/>
+                  <!-- Grøn væg højre side -->
+                  <rect x="125" y="20" width="13" height="52" rx="2" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+                  <line x1="131" y1="65" x2="131" y2="55" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <path d="M127 58 Q131 53 135 58" fill="none" stroke="#3aaa55" stroke-width="1.2"/>
+                  <line x1="131" y1="50" x2="131" y2="40" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <path d="M127 43 Q131 38 135 43" fill="none" stroke="#3aaa55" stroke-width="1.2"/>
+                  <!-- Pile op (fordampning) -->
+                  <line x1="48" y1="18" x2="48" y2="10" stroke="#006573" stroke-width="1" opacity="0.4" stroke-linecap="round"/>
+                  <polygon points="45,12 51,12 48,7" fill="#006573" opacity="0.4"/>
+                  <text x="90" y="82" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#006573" opacity="0.5">Isolering og fordampning</text>
+                </svg>
+              </div>
                 <p class="text-[9px] text-[#1a2a1a]/45 mb-2.5">300–1.200 kr./m² · klatreplanter</p>
                 <div class="flex justify-between mb-1"><span class="text-[9px] uppercase tracking-widest font-bold text-[#1a2a1a]/45">Areal</span><span class="text-[9px] font-bold text-[#1a4a3a]" id="lbl-gronvaeg">0 m²</span></div>
                 <input class="w-full" max="100" min="0" step="5" type="range" value="0" oninput="updateByg('gronvaeg',this.value,'m²','lbl-gronvaeg',15)"/>
               </div>
             </div>
           </div>
+
+        <!-- BESKYTTELSE: Højvandslukke, Omfangsdræn, Dige, Pumpe -->
+        <div id="byg-beskyttelse" data-category="beskyttelse">
+          <div class="flex items-center gap-2 mb-3 mt-5">
+            <div class="w-6 h-6 bg-[#1a5a7a] rounded-lg flex items-center justify-center">
+              <span class="material-symbols-outlined text-white text-sm">shield</span>
+            </div>
+            <h3 class="font-headline font-bold text-[#1a2a1a] text-base">Beskyttelse</h3>
+            <span class="text-[10px] text-[#1a5a7a]/70 bg-[#dbeef8] px-2 py-0.5 rounded-full">Afværger vand</span>
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+
+            <!-- Højvandslukke -->
+            <div data-loesning="Højvandslukke" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+              <div class="byg-status-Hoejvandslukke text-[10px] font-bold px-3 py-1.5"></div>
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <ellipse cx="90" cy="68" rx="78" ry="14" fill="#006573" opacity="0.06"/>
+                  <!-- Hus/kælder tværsnit -->
+                  <rect x="40" y="15" width="100" height="45" rx="2" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <polygon points="33,17 147,17 90,3" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+                  <!-- Kælder gulv -->
+                  <line x1="40" y1="42" x2="140" y2="42" stroke="#006573" stroke-width="1" opacity="0.3" stroke-dasharray="4,3"/>
+                  <!-- Kloak rør under jord -->
+                  <line x1="5" y1="60" x2="175" y2="60" stroke="#006573" stroke-width="3" opacity="0.15"/>
+                  <line x1="5" y1="60" x2="175" y2="60" stroke="#006573" stroke-width="1.5" opacity="0.4"/>
+                  <!-- Afløbsrør ned til kloak -->
+                  <line x1="90" y1="55" x2="90" y2="60" stroke="#006573" stroke-width="2" stroke-linecap="round"/>
+                  <!-- Højvandslukke (cirkel med ventil) -->
+                  <circle cx="90" cy="58" r="5" fill="none" stroke="#1a5a7a" stroke-width="2"/>
+                  <line x1="87" y1="55" x2="93" y2="61" stroke="#1a5a7a" stroke-width="2" stroke-linecap="round"/>
+                  <!-- Vandtryks-pil blokeret -->
+                  <line x1="120" y1="60" x2="97" y2="60" stroke="#c04030" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+                  <polygon points="100,57 96,60 100,63" fill="#c04030" opacity="0.7"/>
+                  <line x1="60" y1="60" x2="83" y2="60" stroke="#3aaa55" stroke-width="1.5" stroke-dasharray="3,2" stroke-linecap="round" opacity="0.5"/>
+                  <text x="90" y="80" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#006573" opacity="0.5">Ventil mod kloakvand</text>
+                </svg>
+              </div>
+              <div class="p-3">
+                <div class="flex items-center justify-between gap-1 mb-0.5">
+                  <h4 class="font-headline font-bold text-sm">Højvandslukke</h4>
+                  <button onclick="openModal('Højvandslukke')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button>
+                </div>
+                <p class="text-[9px] text-[#1a2a1a]/45 mb-2">1.500 – 5.000 kr. · monteres af kloakmester</p>
+                <p class="text-[9px] text-[#1a2a1a]/55 leading-relaxed">Automatisk ventil i kloakrøret der forhindrer kloakvand i at presses op gennem afløb ved overbelastning.</p>
+              </div>
+            </div>
+
+            <!-- Omfangsdræn -->
+            <div data-loesning="Omfangsdræn" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+              <div class="byg-status-Omfangsdroen text-[10px] font-bold px-3 py-1.5"></div>
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <ellipse cx="90" cy="70" rx="78" ry="13" fill="#006573" opacity="0.06"/>
+                  <!-- Hus fundament -->
+                  <rect x="55" y="18" width="70" height="40" rx="2" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <polygon points="48,20 132,20 90,5" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+                  <!-- Fundament underkant -->
+                  <rect x="52" y="55" width="76" height="8" rx="1" fill="none" stroke="#006573" stroke-width="1" opacity="0.4"/>
+                  <!-- Drænrør rundt om fundament -->
+                  <circle cx="52" cy="59" r="4" fill="none" stroke="#1a5a7a" stroke-width="1.5"/>
+                  <circle cx="128" cy="59" r="4" fill="none" stroke="#1a5a7a" stroke-width="1.5"/>
+                  <path d="M52 63 Q55 68 90 70 Q125 68 128 63" stroke="#1a5a7a" stroke-width="1.5" fill="none"/>
+                  <!-- Grus/skærver rundt om -->
+                  <path d="M46 58 Q50 72 90 75 Q130 72 134 58" stroke="#006573" stroke-width="1" stroke-dasharray="3,2" fill="none" opacity="0.4"/>
+                  <!-- Grundvandspile ned -->
+                  <line x1="30" y1="45" x2="30" y2="55" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                  <polygon points="27,52 33,52 30,57" fill="#006573" opacity="0.4"/>
+                  <line x1="150" y1="45" x2="150" y2="55" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                  <polygon points="147,52 153,52 150,57" fill="#006573" opacity="0.4"/>
+                  <!-- Afledning til brønd -->
+                  <circle cx="25" cy="72" r="6" fill="none" stroke="#006573" stroke-width="1.5" stroke-dasharray="3,2"/>
+                  <text x="25" y="75" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#006573" opacity="0.6">⊕</text>
+                  <text x="90" y="83" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#006573" opacity="0.5">Drænrør langs fundament</text>
+                </svg>
+              </div>
+              <div class="p-3">
+                <div class="flex items-center justify-between gap-1 mb-0.5">
+                  <h4 class="font-headline font-bold text-sm">Omfangsdræn</h4>
+                  <button onclick="openModal('Omfangsdræn')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button>
+                </div>
+                <p class="text-[9px] text-[#1a2a1a]/45 mb-2">15.000 – 50.000 kr. · krævende anlæg</p>
+                <p class="text-[9px] text-[#1a2a1a]/55 leading-relaxed">Perforeret drænrør rundt om fundamentet der opsamler og leder grundvand og overfladevand væk fra bygningen.</p>
+              </div>
+            </div>
+
+            <!-- Pumpe -->
+            <div data-loesning="Pumpe" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+              <div class="byg-status-Pumpe text-[10px] font-bold px-3 py-1.5"></div>
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <ellipse cx="90" cy="68" rx="78" ry="14" fill="#006573" opacity="0.06"/>
+                  <!-- Vandopsamling/kælder -->
+                  <rect x="55" y="40" width="70" height="30" rx="2" fill="none" stroke="#006573" stroke-width="1.5" stroke-dasharray="4,3"/>
+                  <!-- Vand i bunden -->
+                  <rect x="56" y="58" width="68" height="11" rx="1" fill="#006573" opacity="0.08"/>
+                  <line x1="56" y1="59" x2="124" y2="59" stroke="#006573" stroke-width="1" opacity="0.35"/>
+                  <!-- Pumpe (cirkel) -->
+                  <circle cx="90" cy="55" r="10" fill="none" stroke="#1a5a7a" stroke-width="2"/>
+                  <line x1="86" y1="51" x2="94" y2="59" stroke="#1a5a7a" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="90" y1="47" x2="90" y2="55" stroke="#1a5a7a" stroke-width="1.5" stroke-linecap="round"/>
+                  <!-- Stigrør op -->
+                  <line x1="90" y1="45" x2="90" y2="25" stroke="#1a5a7a" stroke-width="2" stroke-linecap="round"/>
+                  <!-- Udledning -->
+                  <line x1="90" y1="25" x2="135" y2="25" stroke="#1a5a7a" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="135" y1="25" x2="135" y2="35" stroke="#1a5a7a" stroke-width="2" stroke-linecap="round"/>
+                  <!-- Vandstrøms-pile -->
+                  <polygon points="128,22 135,25 128,28" fill="#1a5a7a"/>
+                  <!-- El-symbol -->
+                  <text x="90" y="57" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#1a5a7a" font-weight="bold">⚡</text>
+                  <!-- Regndråber der fylder -->
+                  <line x1="65" y1="20" x2="63" y2="30" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+                  <line x1="75" y1="18" x2="73" y2="28" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+                  <text x="90" y="80" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#006573" opacity="0.5">Aktiv bortpumpning</text>
+                </svg>
+              </div>
+              <div class="p-3">
+                <div class="flex items-center justify-between gap-1 mb-0.5">
+                  <h4 class="font-headline font-bold text-sm">Pumpe</h4>
+                  <button onclick="openModal('Pumpe')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button>
+                </div>
+                <p class="text-[9px] text-[#1a2a1a]/45 mb-2">3.000 – 12.000 kr. · kræver strøm</p>
+                <p class="text-[9px] text-[#1a2a1a]/55 leading-relaxed">Pumper aktivt grundvand eller overfladevand bort. Supplementær løsning — ikke en permanent afhjælpning af årsagen.</p>
+              </div>
+            </div>
+
+            <!-- Dige / Jordvold -->
+            <div data-loesning="Dige" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+              <div class="byg-status-Dige text-[10px] font-bold px-3 py-1.5"></div>
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <ellipse cx="90" cy="70" rx="80" ry="13" fill="#3aaa55" opacity="0.07"/>
+                  <!-- Terræn -->
+                  <line x1="5" y1="58" x2="175" y2="58" stroke="#006573" stroke-width="1.5" opacity="0.25"/>
+                  <!-- Hus til venstre -->
+                  <rect x="15" y="32" width="45" height="26" rx="2" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <polygon points="10,34 65,34 37,18" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+                  <!-- Jordvold/dige -->
+                  <path d="M85 58 Q100 35 115 58" fill="none" stroke="#1a4a3a" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M82 58 Q100 32 118 58" fill="#3aaa55" opacity="0.15"/>
+                  <!-- Beplantning på dige -->
+                  <line x1="98" y1="44" x2="98" y2="36" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <path d="M94 38 Q98 33 102 38" fill="none" stroke="#3aaa55" stroke-width="1.2"/>
+                  <line x1="105" y1="48" x2="105" y2="40" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <!-- Vand fra højre blokeres -->
+                  <line x1="175" y1="55" x2="120" y2="55" stroke="#006573" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+                  <polygon points="123,52 118,55 123,58" fill="#006573" opacity="0.5"/>
+                  <!-- Blokeret (X) -->
+                  <line x1="140" y1="50" x2="150" y2="60" stroke="#c04030" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+                  <line x1="150" y1="50" x2="140" y2="60" stroke="#c04030" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+                  <text x="90" y="80" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#006573" opacity="0.5">Jordvold mod indtrængende vand</text>
+                </svg>
+              </div>
+              <div class="p-3">
+                <div class="flex items-center justify-between gap-1 mb-0.5">
+                  <h4 class="font-headline font-bold text-sm">Dige / Jordvold</h4>
+                  <button onclick="openModal('Dige')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button>
+                </div>
+                <p class="text-[9px] text-[#1a2a1a]/45 mb-2">2.000 – 15.000 kr. · varierer med størrelse</p>
+                <p class="text-[9px] text-[#1a2a1a]/55 leading-relaxed">Ophøjet jordvold eller mur der afspærrer mod overfladestrømmende vand fra veje, naboer eller havvand.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TRANSPORT: Grøft, Rende, Græslavning -->
+        <div id="byg-transport" data-category="transport">
+          <div class="flex items-center gap-2 mb-3 mt-5">
+            <div class="w-6 h-6 bg-[#c8952a] rounded-lg flex items-center justify-center">
+              <span class="material-symbols-outlined text-white text-sm">linear_scale</span>
+            </div>
+            <h3 class="font-headline font-bold text-[#1a2a1a] text-base">Transport og afledning</h3>
+            <span class="text-[10px] text-[#c8952a]/70 bg-[#fdf3d8] px-2 py-0.5 rounded-full">Leder vandet væk</span>
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+
+            <!-- Grøft -->
+            <div data-loesning="Grøft" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+              <div class="byg-status-Groeft text-[10px] font-bold px-3 py-1.5"></div>
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <ellipse cx="90" cy="68" rx="80" ry="14" fill="#3aaa55" opacity="0.07"/>
+                  <!-- Terræn og grøft tværsnit -->
+                  <path d="M5 45 L55 45 Q65 45 70 58 L110 58 Q115 45 125 45 L175 45" stroke="#006573" stroke-width="1.5" fill="none"/>
+                  <!-- Bund -->
+                  <path d="M70 58 L110 58" stroke="#006573" stroke-width="2" opacity="0.5"/>
+                  <!-- Vand i grøft -->
+                  <path d="M70 58 L110 58 L108 62 Q90 65 72 62Z" fill="#006573" opacity="0.10"/>
+                  <line x1="71" y1="60" x2="109" y2="60" stroke="#006573" stroke-width="1" opacity="0.35"/>
+                  <!-- Beplantning langs kanter -->
+                  <line x1="60" y1="45" x2="60" y2="35" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <path d="M56 38 Q60 33 64 38" fill="none" stroke="#3aaa55" stroke-width="1.2"/>
+                  <line x1="120" y1="45" x2="120" y2="34" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <path d="M116 37 Q120 32 124 37" fill="none" stroke="#3aaa55" stroke-width="1.2"/>
+                  <!-- Strømningsretning -->
+                  <line x1="30" y1="45" x2="68" y2="45" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                  <polygon points="64,42 70,45 64,48" fill="#006573" opacity="0.4"/>
+                  <!-- Vandstrøm i bunden -->
+                  <line x1="75" y1="60" x2="105" y2="60" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                  <polygon points="101,57 107,60 101,63" fill="#006573" opacity="0.5"/>
+                  <text x="90" y="80" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#006573" opacity="0.5">Åben kanal til transport</text>
+                </svg>
+              </div>
+              <div class="p-3">
+                <div class="flex items-center justify-between gap-1 mb-0.5">
+                  <h4 class="font-headline font-bold text-sm">Grøft</h4>
+                  <button onclick="openModal('Grøft')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button>
+                </div>
+                <p class="text-[9px] text-[#1a2a1a]/45 mb-2">1.000 – 8.000 kr. · lav driftsomkostning</p>
+                <p class="text-[9px] text-[#1a2a1a]/55 leading-relaxed">Åben jordkanal der transporterer og delvist nedsiver overfladevand. Kan beplantes og give biodiversitet.</p>
+              </div>
+            </div>
+
+            <!-- Rende -->
+            <div data-loesning="Rende" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+              <div class="byg-status-Rende text-[10px] font-bold px-3 py-1.5"></div>
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <ellipse cx="90" cy="68" rx="80" ry="13" fill="#006573" opacity="0.06"/>
+                  <!-- Hus/nedløbsrør -->
+                  <rect x="15" y="20" width="40" height="30" rx="2" fill="none" stroke="#006573" stroke-width="1.5"/>
+                  <polygon points="10,22 60,22 35,8" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/>
+                  <!-- Nedløbsrør -->
+                  <line x1="55" y1="50" x2="55" y2="58" stroke="#006573" stroke-width="2" stroke-linecap="round"/>
+                  <!-- Terræn -->
+                  <line x1="5" y1="58" x2="175" y2="58" stroke="#006573" stroke-width="1.5" opacity="0.2"/>
+                  <!-- Åben rende i terræn -->
+                  <path d="M55 58 L55 62 L160 62 L160 58" stroke="#006573" stroke-width="1.5" fill="none"/>
+                  <rect x="55" y="58" width="105" height="4" rx="1" fill="#006573" opacity="0.08"/>
+                  <!-- Vand strømmer -->
+                  <line x1="65" y1="60" x2="145" y2="60" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                  <polygon points="140,57 148,60 140,63" fill="#006573" opacity="0.5"/>
+                  <!-- Rist over rende -->
+                  <line x1="70" y1="58" x2="70" y2="62" stroke="#006573" stroke-width="0.8" opacity="0.4"/>
+                  <line x1="80" y1="58" x2="80" y2="62" stroke="#006573" stroke-width="0.8" opacity="0.4"/>
+                  <line x1="90" y1="58" x2="90" y2="62" stroke="#006573" stroke-width="0.8" opacity="0.4"/>
+                  <line x1="100" y1="58" x2="100" y2="62" stroke="#006573" stroke-width="0.8" opacity="0.4"/>
+                  <!-- Destination (regnbed/faskine) -->
+                  <circle cx="163" cy="65" r="6" fill="none" stroke="#3aaa55" stroke-width="1.5"/>
+                  <line x1="160" y1="62" x2="166" y2="68" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+                  <text x="90" y="80" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#006573" opacity="0.5">Leder vand til nedsivning</text>
+                </svg>
+              </div>
+              <div class="p-3">
+                <div class="flex items-center justify-between gap-1 mb-0.5">
+                  <h4 class="font-headline font-bold text-sm">Rende</h4>
+                  <button onclick="openModal('Rende')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button>
+                </div>
+                <p class="text-[9px] text-[#1a2a1a]/45 mb-2">500 – 3.000 kr. · simpel installation</p>
+                <p class="text-[9px] text-[#1a2a1a]/55 leading-relaxed">Åben rende der leder regnvand fra nedløbsrør til regnbed, faskine eller grøft. Kan anlægges i græs.</p>
+              </div>
+            </div>
+
+            <!-- Græslavning -->
+            <div data-loesning="Græslavning" class="byg-card bg-white rounded-xl overflow-hidden shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+              <div class="byg-status-Graeslavning text-[10px] font-bold px-3 py-1.5"></div>
+              <div class="w-full h-24 watercolor-bg flex items-end justify-center px-3 overflow-hidden">
+                <svg viewBox="0 0 180 85" class="w-full h-full lar-illustration" fill="none">
+                  <ellipse cx="90" cy="68" rx="80" ry="14" fill="#3aaa55" opacity="0.08"/>
+                  <!-- Terræn med sænkning -->
+                  <path d="M5 45 L40 45 Q55 45 65 56 Q75 64 90 65 Q105 64 115 56 Q125 45 140 45 L175 45" stroke="#006573" stroke-width="1.5" fill="none"/>
+                  <!-- Fyldt lavning -->
+                  <path d="M65 56 Q90 64 115 56 Q105 62 90 63 Q75 62 65 56Z" fill="#006573" opacity="0.08"/>
+                  <!-- Vandniveau -->
+                  <path d="M65 58 Q90 62 115 58" stroke="#006573" stroke-width="1" fill="none" opacity="0.35"/>
+                  <!-- Tæt græs på lavning -->
+                  <line x1="72" y1="58" x2="72" y2="50" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="80" y1="60" x2="80" y2="52" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="88" y1="62" x2="88" y2="53" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="96" y1="62" x2="96" y2="53" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="104" y1="60" x2="104" y2="52" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <line x1="112" y1="58" x2="112" y2="50" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/>
+                  <!-- Vandstrøm fra sider -->
+                  <line x1="20" y1="45" x2="63" y2="45" stroke="#006573" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                  <polygon points="59,42 65,45 59,48" fill="#006573" opacity="0.4"/>
+                  <!-- Nedsivning pile -->
+                  <line x1="90" y1="65" x2="90" y2="73" stroke="#3aaa55" stroke-width="1.2" stroke-dasharray="2,2" opacity="0.5"/>
+                  <text x="90" y="83" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#006573" opacity="0.5">Sænket græsareal nedsiver</text>
+                </svg>
+              </div>
+              <div class="p-3">
+                <div class="flex items-center justify-between gap-1 mb-0.5">
+                  <h4 class="font-headline font-bold text-sm">Græslavning</h4>
+                  <button onclick="openModal('Græslavning')" class="w-5 h-5 rounded-full bg-[#f5f0e5] flex items-center justify-center hover:bg-[#eef6ef] shrink-0"><span class="material-symbols-outlined text-[10px] text-[#1a4a3a]">info</span></button>
+                </div>
+                <p class="text-[9px] text-[#1a2a1a]/45 mb-2">1.000 – 5.000 kr. · lavt vedligehold</p>
+                <p class="text-[9px] text-[#1a2a1a]/55 leading-relaxed">Sænket græsareal der midlertidigt opsamler og langsomt nedsiver store vandmængder. Simpel og billig løsning.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
         </div>
 
       </div><!-- /venstre slidere -->
@@ -2625,41 +3137,6 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 
   <!-- GUL NYHEDSBREV BANNER -->
 
-  <section class="max-w-4xl mx-auto px-6 pb-7">
-    <div class="grid lg:grid-cols-2 gap-8 items-center">
-      <div>
-        <p class="text-xs text-[#1a4a3a] uppercase tracking-widest font-bold mb-2">LAR-princippet</p>
-        <h2 class="font-headline text-2xl font-bold text-[#1a2a1a] mb-4 leading-tight">Spar med<br/>LAR-pyramiden</h2>
-        <p class="text-sm text-[#1a2a1a]/60 leading-relaxed mb-3">De mindste løsninger i bunden er der, for at du altid har vand til nedsivning. Du skal kun op af pyramiden, hvis nedsivningskapaciteten er utilstrækkelig.</p>
-        <div class="vidste-du mt-2 mb-3">
-          <p class="text-xs font-bold mb-1" style="color:#006573">Vidste du...</p>
-          <p class="text-xs text-[#1a2a1a]/65 leading-relaxed">At du kan minimere risikoen for oversvømmelser ved skybrud ved at sikre, at der altid er fri passage i tagrende, afløb og riste?</p>
-        </div>
-        <p class="text-sm text-[#1a2a1a]/60 leading-relaxed mb-3">Apparaterne i toppen bruger mest energi, men du kan med fordel vælge et apparat i stedet for et dyrere, hvis du er villig til at lave en indsats.</p>
-        <p class="text-xs font-bold text-[#1a2a1a] mb-3">Passer LAR-pyramiden på dig?</p>
-        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed mb-4">LAR-pyramiden er generel. Den kan bruges som rettesnor, men der er mange faktorer der spiller ind. Måske er den rigtige løsning anderledes end den mindste overskrift.</p>
-        <a onclick="navigate('gang')" class="text-xs font-bold text-[#1a4a3a] inline-flex items-center gap-1 cursor-pointer hover:underline">Download LAR-guide <span class="material-symbols-outlined text-xs">download</span></a>
-      </div>
-      <div class="flex justify-center">
-        <svg viewBox="0 0 240 220" class="w-56" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Pyramide -->
-          <polygon points="120,15 220,195 20,195" fill="#1a4a3a" opacity="0.08" stroke="#1a4a3a" stroke-width="1.5"/>
-          <!-- Niveauer -->
-          <line x1="47" y1="135" x2="193" y2="135" stroke="#1a4a3a" stroke-width="1" opacity="0.3"/>
-          <line x1="68" y1="100" x2="172" y2="100" stroke="#1a4a3a" stroke-width="1" opacity="0.3"/>
-          <line x1="90" y1="67" x2="150" y2="67" stroke="#1a4a3a" stroke-width="1" opacity="0.3"/>
-          <!-- Labels -->
-          <text x="120" y="185" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#1a4a3a" font-weight="bold" opacity="0.8">Nedsivning (regnbed, faskine)</text>
-          <text x="120" y="122" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#1a4a3a" opacity="0.7">Forsinkelse (bassin, tank)</text>
-          <text x="120" y="88" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#1a4a3a" opacity="0.7">Fordampning (grønt tag)</text>
-          <text x="120" y="56" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#1a4a3a" opacity="0.6">Afledning</text>
-          <!-- Sparer mest i bunden -->
-          <rect x="30" y="192" width="180" height="16" rx="3" fill="#1a4a3a"/>
-          <text x="120" y="204" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white" font-weight="bold">Nedsiv mest i bunden</text>
-        </svg>
-      </div>
-    </div>
-  </section>
 
   <section class="max-w-4xl mx-auto px-6 pb-7">
     <div class="bg-[#1a4a3a] rounded-2xl p-8 grid sm:grid-cols-2 gap-6 items-center">
@@ -2788,6 +3265,42 @@ input[type=range]::-webkit-slider-thumb { height:18px; width:18px; border-radius
 <div class="pt-16 bg-[#f5f0e5] min-h-screen">
 
   <!-- LYSEGRØN HERO med illustration + sæson-dropdown -->
+
+  <section class="max-w-4xl mx-auto px-6 pb-7">
+    <div class="grid lg:grid-cols-2 gap-8 items-center">
+      <div>
+        <p class="text-xs text-[#1a4a3a] uppercase tracking-widest font-bold mb-2">LAR-princippet</p>
+        <h2 class="font-headline text-2xl font-bold text-[#1a2a1a] mb-4 leading-tight">Spar med<br/>LAR-pyramiden</h2>
+        <p class="text-sm text-[#1a2a1a]/60 leading-relaxed mb-3">De mindste løsninger i bunden er der, for at du altid har vand til nedsivning. Du skal kun op af pyramiden, hvis nedsivningskapaciteten er utilstrækkelig.</p>
+        <div class="vidste-du mt-2 mb-3">
+          <p class="text-xs font-bold mb-1" style="color:#006573">Vidste du...</p>
+          <p class="text-xs text-[#1a2a1a]/65 leading-relaxed">At du kan minimere risikoen for oversvømmelser ved skybrud ved at sikre, at der altid er fri passage i tagrende, afløb og riste?</p>
+        </div>
+        <p class="text-sm text-[#1a2a1a]/60 leading-relaxed mb-3">Apparaterne i toppen bruger mest energi, men du kan med fordel vælge et apparat i stedet for et dyrere, hvis du er villig til at lave en indsats.</p>
+        <p class="text-xs font-bold text-[#1a2a1a] mb-3">Passer LAR-pyramiden på dig?</p>
+        <p class="text-xs text-[#1a2a1a]/55 leading-relaxed mb-4">LAR-pyramiden er generel. Den kan bruges som rettesnor, men der er mange faktorer der spiller ind. Måske er den rigtige løsning anderledes end den mindste overskrift.</p>
+        <a onclick="navigate('gang')" class="text-xs font-bold text-[#1a4a3a] inline-flex items-center gap-1 cursor-pointer hover:underline">Download LAR-guide <span class="material-symbols-outlined text-xs">download</span></a>
+      </div>
+      <div class="flex justify-center">
+        <svg viewBox="0 0 240 220" class="w-56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Pyramide -->
+          <polygon points="120,15 220,195 20,195" fill="#1a4a3a" opacity="0.08" stroke="#1a4a3a" stroke-width="1.5"/>
+          <!-- Niveauer -->
+          <line x1="47" y1="135" x2="193" y2="135" stroke="#1a4a3a" stroke-width="1" opacity="0.3"/>
+          <line x1="68" y1="100" x2="172" y2="100" stroke="#1a4a3a" stroke-width="1" opacity="0.3"/>
+          <line x1="90" y1="67" x2="150" y2="67" stroke="#1a4a3a" stroke-width="1" opacity="0.3"/>
+          <!-- Labels -->
+          <text x="120" y="185" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#1a4a3a" font-weight="bold" opacity="0.8">Nedsivning (regnbed, faskine)</text>
+          <text x="120" y="122" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#1a4a3a" opacity="0.7">Forsinkelse (bassin, tank)</text>
+          <text x="120" y="88" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#1a4a3a" opacity="0.7">Fordampning (grønt tag)</text>
+          <text x="120" y="56" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#1a4a3a" opacity="0.6">Afledning</text>
+          <!-- Sparer mest i bunden -->
+          <rect x="30" y="192" width="180" height="16" rx="3" fill="#1a4a3a"/>
+          <text x="120" y="204" text-anchor="middle" font-family="sans-serif" font-size="8" fill="white" font-weight="bold">Nedsiv mest i bunden</text>
+        </svg>
+      </div>
+    </div>
+  </section>
   <section class="bg-[#c8e0c8] relative overflow-hidden">
     <!-- Akvarel -->
     <svg class="wc-hero-splash" style="top:-40px;right:-50px;width:300px;height:240px;opacity:0.25" viewBox="0 0 300 240" fill="none">
@@ -4903,6 +5416,18 @@ const KB = {
       'Regnvandsbeholder':'Regnvandsbeholder','Regnbed':'Regnbed','Permeabel belægning':'Permeabel-belaegning',
       'Faskine':'Faskine','Grønt tag':'Groent-tag','Træer':'Traeer','Grønne vægge':'Groenne-vaegge',
     };
+    // Show sort legend if we have a diagnosis
+    const sortLegend = document.getElementById('byg-sort-legend');
+    if (sortLegend) {
+      if (KB.primaer.length > 0 || KB.undgaa.length > 0) {
+        sortLegend.classList.remove('hidden');
+        sortLegend.classList.add('flex');
+      } else {
+        sortLegend.classList.add('hidden');
+        sortLegend.classList.remove('flex');
+      }
+    }
+
     document.querySelectorAll('[class*="byg-status-"]').forEach(el => el.classList.add('hidden'));
     Object.entries(LOESNING_CSS).forEach(([navn, cssSuffix]) => {
       if (!cssSuffix) return;
@@ -4923,6 +5448,46 @@ const KB = {
         } else {
           el.classList.add('hidden');
         }
+      });
+    });
+
+    // Sort cards within each grid: anbefalet → neutral → frarådes
+    ['byg-nedsivning','byg-magasinering','byg-fordampning'].forEach(sectionId => {
+      const section = document.getElementById(sectionId);
+      if (!section) return;
+      const grid = section.querySelector('.grid');
+      if (!grid) return;
+      const cards = Array.from(grid.querySelectorAll('.byg-card'));
+      if (cards.length === 0) return;
+
+      cards.sort((a, b) => {
+        const scoreCard = (card) => {
+          const navn = card.dataset.loesning;
+          if (KB.primaer.includes(navn)) return 0;   // Green first
+          if (KB.sekundaer.includes(navn)) return 1;  // Neutral middle
+          if (KB.undgaa.includes(navn)) return 2;     // Red last
+          return 1; // Unknown = neutral
+        };
+        return scoreCard(a) - scoreCard(b);
+      });
+
+      // Re-append in sorted order + add visual separator if needed
+      let lastScore = -1;
+      cards.forEach(card => {
+        const navn = card.dataset.loesning;
+        let score = 1;
+        if (KB.primaer.includes(navn)) score = 0;
+        else if (KB.undgaa.includes(navn)) score = 2;
+
+        // Add subtle top border when group changes
+        card.style.borderTop = '';
+        if (lastScore !== -1 && score !== lastScore) {
+          card.style.marginTop = '4px';
+        } else {
+          card.style.marginTop = '';
+        }
+        lastScore = score;
+        grid.appendChild(card);
       });
     });
   }
@@ -4963,7 +5528,13 @@ const D_LOESNING_INFO = {
   "Vådbassin":{icon:"pool",desc:"Permanent vandflade der magasinerer og renser regnvand."},
   "Tørbassin":{icon:"landscape",desc:"Nedsænket areal tørt til daglig men fyldes ved kraftig regn."},
   "Dige":{icon:"terrain",desc:"Jordvold der afspærrer mod indtrængende overfladevand."},
-  "Pumpe":{icon:"speed",desc:"Pumper aktivt store vandmængder bort."}
+  "Pumpe":{icon:"speed",desc:"Pumper aktivt store vandmængder bort."},
+  "Højvandslukke":{icon:"lock",desc:"Automatisk ventil mod kloakvand ved skybrud."},
+  "Omfangsdræn":{icon:"home_repair_service",desc:"Drænrør langs fundament mod grundvand."},
+  "Grøft":{icon:"linear_scale",desc:"Åben kanal der transporterer og nedsiver vand."},
+  "Rende":{icon:"remove",desc:"Leder regnvand fra tagnedløb til nedsivning."},
+  "Græslavning":{icon:"grass",desc:"Sænket græsareal der opsamler og nedsiver."},
+  "Dige":{icon:"terrain",desc:"Jordvold der afspærrer mod overfladevand."}
 };
 
 let dSymptom = null;
@@ -4990,9 +5561,8 @@ function dInit() {
       + '</div>'
       + '</button>';
   }).join("");
-}
-
-function dToggleGrid() {
+  updateLarBuilder();
+}function dToggleGrid() {
   const step1 = document.getElementById("d-step1");
   const icon = document.getElementById("d-collapse-icon");
   const collapsed = step1.style.display === "none";
@@ -5110,6 +5680,105 @@ if (document.readyState !== 'loading') showRegnInfo(5);
 else document.addEventListener('DOMContentLoaded', () => showRegnInfo(5));
 
 // ── Jordart beskrivelse ──
+// ══ LAR SYSTEMBYGGER ══
+const LAR_COMPAT = {
+  'Grønt tag':['Regnvandsbeholder','Regnbed','Faskine','Permeabel belægning'],
+  'Regnvandsbeholder':['Regnbed','Pumpe','Faskine'],
+  'Regnbed':['Faskine','Grøft','Rende','Vådbassin'],
+  'Faskine':['Rende','Grøft','Regnbed'],
+  'Permeabel belægning':['Faskine','Regnbed','Grøft'],
+  'Vådbassin':['Rende','Grøft','Pumpe','Tørbassin'],
+  'Tørbassin':['Rende','Grøft','Vådbassin'],
+  'Omfangsdræn':['Pumpe','Højvandslukke','Faskine'],
+  'Pumpe':['Vådbassin','Tørbassin','Regnbed'],
+  'Grøft':['Regnbed','Vådbassin','Tørbassin','Faskine'],
+  'Rende':['Regnbed','Faskine','Grøft','Vådbassin'],
+  'Græslavning':['Regnbed','Grøft','Faskine'],
+  'Dige':[],
+  'Højvandslukke':['Omfangsdræn'],
+  'Træer':['Regnbed','Grøft'],
+  'Grønne vægge':['Regnbed','Grøft'],
+};
+const LAR_FLOW_ORDER = ['Grønt tag','Grønne vægge','Permeabel belægning','Træer','Rende','Grøft','Regnvandsbeholder','Regnbed','Faskine','Vådbassin','Tørbassin','Græslavning','Omfangsdræn','Dige','Højvandslukke','Pumpe'];
+
+function getLarElements() {
+  const bv = window.bygValues || {};
+  const map = {grontag:'Grønt tag',regnbed:'Regnbed',fask:'Faskine',perm:'Permeabel belægning',vaad:'Vådbassin',toer:'Tørbassin',tank:'Regnvandsbeholder',traeer:'Træer',gronvaeg:'Grønne vægge'};
+  const out = {};
+  Object.entries(map).forEach(([k,n]) => { if (bv[k] > 0) out[n] = bv[k]; });
+  return out;
+}
+
+function larIconSvg(name) {
+  const icons = {
+    'Grønt tag':'<svg viewBox="0 0 44 44" fill="none" width="40" height="40"><rect x="6" y="22" width="32" height="18" rx="1.5" fill="white" stroke="#006573" stroke-width="1.5"/><polygon points="3,23 41,23 22,9" fill="none" stroke="#006573" stroke-width="1.5" stroke-linejoin="round"/><path d="M5,21 Q22,17 39,21" stroke="#3aaa55" stroke-width="3" opacity="0.4" stroke-linecap="round"/><line x1="14" y1="21" x2="14" y2="13" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/><path d="M11,15 Q14,11 17,15" fill="none" stroke="#3aaa55" stroke-width="1.2"/><line x1="22" y1="21" x2="22" y2="11" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/><path d="M19,13 Q22,9 25,13" fill="none" stroke="#3aaa55" stroke-width="1.2"/></svg>',
+    'Regnvandsbeholder':'<svg viewBox="0 0 44 44" fill="none" width="40" height="40"><rect x="8" y="14" width="16" height="22" rx="4" fill="white" stroke="#006573" stroke-width="1.5"/><rect x="9" y="24" width="14" height="11" rx="3" fill="#006573" opacity="0.10"/><line x1="8" y1="12" x2="16" y2="12" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/><line x1="8" y1="32" x2="3" y2="32" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="32" x2="3" y2="36" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/><circle cx="34" cy="28" r="7" fill="none" stroke="#3aaa55" stroke-width="1.2"/></svg>',
+    'Regnbed':'<svg viewBox="0 0 44 44" fill="none" width="40" height="40"><path d="M4,30 Q22,25 40,30" stroke="#006573" stroke-width="1.5" fill="none"/><path d="M4,30 L4,38 Q22,42 40,38 L40,30Z" fill="#006573" opacity="0.07"/><line x1="13" y1="30" x2="13" y2="19" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="13" cy="17" rx="5" ry="4" fill="none" stroke="#006573" stroke-width="1.2"/><line x1="22" y1="30" x2="22" y2="15" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/><circle cx="22" cy="13" r="3.5" fill="none" stroke="#3aaa55" stroke-width="1.2"/><line x1="31" y1="30" x2="31" y2="20" stroke="#006573" stroke-width="1.5" stroke-linecap="round"/><path d="M28,22 Q31,18 34,22" fill="none" stroke="#3aaa55" stroke-width="1.2"/></svg>',
+    'Faskine':'<svg viewBox="0 0 44 44" fill="none" width="40" height="40"><rect x="8" y="18" width="28" height="20" rx="2" fill="white" stroke="#006573" stroke-width="1.5" stroke-dasharray="4,2"/><line x1="16" y1="18" x2="16" y2="38" stroke="#006573" stroke-width="0.8" opacity="0.4"/><line x1="24" y1="18" x2="24" y2="38" stroke="#006573" stroke-width="0.8" opacity="0.4"/><line x1="32" y1="18" x2="32" y2="38" stroke="#006573" stroke-width="0.8" opacity="0.4"/><line x1="8" y1="27" x2="36" y2="27" stroke="#006573" stroke-width="0.8" opacity="0.4"/><line x1="22" y1="10" x2="22" y2="18" stroke="#006573" stroke-width="2" stroke-linecap="round"/><circle cx="22" cy="16" r="3" fill="none" stroke="#006573" stroke-width="1.2"/></svg>',
+    'Permeabel belægning':'<svg viewBox="0 0 44 44" fill="none" width="40" height="40"><rect x="3" y="20" width="38" height="8" rx="1" fill="none" stroke="#006573" stroke-width="1.5" opacity="0.4"/><rect x="4" y="21" width="7" height="5" rx="0.5" fill="none" stroke="#006573" stroke-width="1"/><rect x="13" y="21" width="7" height="5" rx="0.5" fill="none" stroke="#006573" stroke-width="1"/><rect x="22" y="21" width="7" height="5" rx="0.5" fill="none" stroke="#006573" stroke-width="1"/><rect x="31" y="21" width="8" height="5" rx="0.5" fill="none" stroke="#006573" stroke-width="1"/><rect x="3" y="29" width="38" height="8" rx="1" fill="#3aaa55" opacity="0.12" stroke="#3aaa55" stroke-width="1" stroke-dasharray="3,2"/></svg>',
+    'Vådbassin':'<svg viewBox="0 0 44 44" fill="none" width="40" height="40"><path d="M4,26 Q11,22 22,26 Q33,30 40,26" stroke="#006573" stroke-width="1.5" fill="none" opacity="0.6"/><path d="M4,26 Q22,30 40,26 L40,38 Q22,42 4,38Z" fill="#006573" opacity="0.08"/><ellipse cx="22" cy="27" rx="8" ry="3" fill="none" stroke="#3aaa55" stroke-width="1"/><line x1="8" y1="26" x2="8" y2="16" stroke="#3aaa55" stroke-width="1.5" stroke-linecap="round"/><path d="M5,18 Q8,14 11,18" fill="none" stroke="#3aaa55" stroke-width="1.2"/></svg>',
+    'Tørbassin':'<svg viewBox="0 0 44 44" fill="none" width="40" height="40"><path d="M3,22 L12,22 Q16,22 18,30 L26,30 Q28,22 32,22 L41,22" stroke="#006573" stroke-width="1.5" fill="none"/><line x1="20" y1="30" x2="20" y2="23" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/><line x1="23" y1="30" x2="23" y2="22" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/><line x1="18" y1="27" x2="26" y2="27" stroke="#006573" stroke-width="1" stroke-dasharray="3,2" opacity="0.4"/></svg>',
+    'Træer':'<svg viewBox="0 0 44 44" fill="none" width="40" height="40"><line x1="16" y1="38" x2="16" y2="22" stroke="#8a6a35" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="16" cy="16" rx="10" ry="9" fill="none" stroke="#3aaa55" stroke-width="1.5"/><line x1="32" y1="38" x2="32" y2="22" stroke="#8a6a35" stroke-width="2" stroke-linecap="round"/><polygon points="32,18 25,34 39,34" fill="none" stroke="#1a4a3a" stroke-width="1.5" stroke-linejoin="round"/></svg>',
+    'Grønne vægge':'<svg viewBox="0 0 44 44" fill="none" width="40" height="40"><rect x="12" y="12" width="20" height="28" rx="1.5" fill="white" stroke="#006573" stroke-width="1.5"/><rect x="8" y="12" width="6" height="28" rx="1" fill="none" stroke="#3aaa55" stroke-width="1.5"/><line x1="11" y1="36" x2="11" y2="29" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/><path d="M8,31 Q11,27 14,31" fill="none" stroke="#3aaa55" stroke-width="1.2"/><line x1="11" y1="26" x2="11" y2="19" stroke="#3aaa55" stroke-width="1.2" stroke-linecap="round"/><path d="M8,21 Q11,17 14,21" fill="none" stroke="#3aaa55" stroke-width="1.2"/></svg>',
+  };
+  return icons[name] || '<svg viewBox="0 0 40 40" width="40" height="40"><circle cx="20" cy="20" r="15" fill="none" stroke="#006573" stroke-width="1.5"/></svg>';
+}
+
+function updateLarBuilder() {
+  const els = getLarElements();
+  const names = Object.keys(els);
+  const flow = document.getElementById('lar-elements-flow');
+  const emptyMsg = document.getElementById('lar-empty-msg');
+  const chainDiv = document.getElementById('lar-flow-chain');
+  const chainLabels = document.getElementById('lar-chain-labels');
+  const compatHint = document.getElementById('lar-compat-hint');
+  const compatText = document.getElementById('lar-compat-text');
+  if (!flow) return;
+  const sorted = LAR_FLOW_ORDER.filter(n => names.includes(n));
+  if (sorted.length === 0) {
+    emptyMsg.style.display = 'flex';
+    flow.innerHTML = '';
+    if (chainDiv) { chainDiv.classList.add('hidden'); chainDiv.classList.remove('flex'); }
+    if (compatHint) compatHint.classList.add('hidden');
+    return;
+  }
+  emptyMsg.style.display = 'none';
+  let html = '';
+  sorted.forEach((name, i) => {
+    const icon = larIconSvg(name);
+    const isGreen = (window.KB && KB.primaer.includes(name));
+    const isRed = (window.KB && KB.undgaa.includes(name));
+    const col = isGreen ? '#1a7a35' : isRed ? '#c04030' : '#006573';
+    const bg = isGreen ? '#e8f5ee' : isRed ? '#fce5dc' : '#e0f4f6';
+    const dot = isGreen ? '<div style="position:absolute;top:-4px;right:-4px;width:10px;height:10px;background:#3aaa55;border-radius:50%;border:2px solid white"></div>'
+              : isRed ? '<div style="position:absolute;top:-4px;right:-4px;width:10px;height:10px;background:#c04030;border-radius:50%;border:2px solid white"></div>' : '';
+    if (i > 0) {
+      html += '<div style="display:flex;align-items:center;margin-bottom:26px"><svg width="18" height="10" fill="none"><line x1="0" y1="5" x2="18" y2="5" stroke="#006573" stroke-width="1.2" opacity="0.4"/><polygon points="12,2 18,5 12,8" fill="#006573" opacity="0.4"/></svg></div>';
+    }
+    html += '<div style="display:flex;flex-direction:column;align-items:center;gap:4px;animation:larIn 0.3s ease both;animation-delay:' + (i*0.07) + 's"><div style="position:relative;background:' + bg + ';border:1.5px solid ' + col + '30;border-radius:10px;padding:5px">' + icon + dot + '</div><span style="font-size:9px;font-weight:700;color:' + col + ';text-align:center;max-width:52px;line-height:1.2">' + name + '</span></div>';
+  });
+  flow.innerHTML = html;
+  if (chainDiv) { chainDiv.classList.remove('hidden'); chainDiv.classList.add('flex'); }
+  if (chainLabels) chainLabels.innerHTML = sorted.map((n,i) => (i>0?'<span style="color:#006573;opacity:0.4;font-size:10px">→</span>':'') + '<span style="font-size:10px;font-weight:600;color:#1a2a1a">' + n + '</span>').join('');
+  if (compatHint && compatText) {
+    const lastEl = sorted[sorted.length-1];
+    const compatible = (LAR_COMPAT[lastEl]||[]).filter(c=>!sorted.includes(c));
+    if (compatible.length > 0) { compatHint.classList.remove('hidden'); compatText.textContent = lastEl + ' kan kobles til: ' + compatible.slice(0,3).join(', '); }
+    else compatHint.classList.add('hidden');
+  }
+}
+
+function resetLarSystem() {
+  if (window.bygValues) {
+    Object.keys(window.bygValues).forEach(k => window.bygValues[k] = 0);
+    document.querySelectorAll('input[type="range"]').forEach(el => { if(el.oninput && el.oninput.toString().includes('updateByg')) el.value = 0; });
+    if (typeof recalcByg === 'function') recalcByg();
+  }
+}
+
+(function(){const s=document.createElement('style');s.textContent='@keyframes larIn{from{opacity:0;transform:scale(0.85) translateY(6px)}to{opacity:1;transform:none}}';document.head.appendChild(s);})();
+
+
 function updateJordInfo() {
   const sel = document.getElementById('k-jord');
   const box = document.getElementById('jord-info');

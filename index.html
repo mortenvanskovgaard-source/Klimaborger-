@@ -4506,7 +4506,7 @@ body.rd-skin #page-inspiration .inspi-badge.is-private{background:#e8f5ee!import
 <nav class="rd-nav" id="rd-nav">
 <button class="rd-nav__link nav-link" data-page="diagnose" onclick="navigate('diagnose')">Din grund</button>
 <button aria-hidden="true" class="rd-nav__link nav-link" data-page="kortlaeg" data-rh-obsolete-nav="true" hidden="" onclick="navigate('kortlaeg')">Dit regnvand</button>
-<button class="rd-nav__link nav-link" data-page="have" onclick="navigate('have')">Vælg løsninger</button>
+<button class="rd-nav__link nav-link" data-page="have" onclick="navigate('byg')">Vælg løsninger</button>
 <button aria-hidden="true" class="rd-nav__link nav-link" data-page="byg" data-rh-obsolete-nav="true" hidden="" onclick="navigate('byg')">Hvad vil du opnå?</button>
 <button class="rd-nav__link nav-link" data-page="gang" onclick="navigate('gang')">Ansøg &amp; regler</button>
 <button class="rd-nav__link nav-link" data-page="saadan" onclick="navigate('saadan')">Sådan gør du</button>
@@ -4601,7 +4601,7 @@ body.rd-skin #page-inspiration .inspi-badge.is-private{background:#e8f5ee!import
 <span class="text-sm text-[#1a2a1a] font-medium group-hover:text-[#1a4a3a]">Hvad vil du opnå?</span>
 <span class="material-symbols-outlined text-[#1a2a1a]/20 text-sm group-hover:text-[#1a4a3a]">chevron_right</span>
 </button>
-<button class="w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-[#1a2a1a]/5 transition-colors text-left group" onclick="navigate('have');closeMenu()">
+<button class="w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-[#1a2a1a]/5 transition-colors text-left group" onclick="navigate('byg');closeMenu()">
 <span class="text-sm text-[#1a2a1a] font-medium group-hover:text-[#1a4a3a]">Vælg løsning</span>
 <span class="material-symbols-outlined text-[#1a2a1a]/20 text-sm group-hover:text-[#1a4a3a]">chevron_right</span>
 </button>
@@ -4636,7 +4636,7 @@ body.rd-skin #page-inspiration .inspi-badge.is-private{background:#e8f5ee!import
 <span class="text-sm text-[#1a2a1a] group-hover:text-[#1a4a3a]">Giv din gamle have nyt liv med LAR</span>
 <span class="material-symbols-outlined text-[#1a2a1a]/20 text-sm group-hover:text-[#1a4a3a]">chevron_right</span>
 </button>
-<button class="w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-[#1a2a1a]/5 transition-colors text-left group" onclick="navigate('have');closeMenu()">
+<button class="w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-[#1a2a1a]/5 transition-colors text-left group" onclick="navigate('byg');closeMenu()">
 <span class="text-sm text-[#1a2a1a] group-hover:text-[#1a4a3a]">God klimasikring til enhver ejendom</span>
 <span class="material-symbols-outlined text-[#1a2a1a]/20 text-sm group-hover:text-[#1a4a3a]">chevron_right</span>
 </button>
@@ -4659,7 +4659,7 @@ body.rd-skin #page-inspiration .inspi-badge.is-private{background:#e8f5ee!import
 <span class="text-xs text-[#1a2a1a]/60 group-hover:text-[#1a4a3a]">Hvad vil du opnå?</span>
 <span class="material-symbols-outlined text-[#1a2a1a]/15 text-sm group-hover:text-[#1a4a3a]">chevron_right</span>
 </button>
-<button class="w-full flex items-center justify-between py-2 px-3 rounded-lg hover:bg-[#1a2a1a]/5 transition-colors text-left group" onclick="navigate('have');closeMenu()">
+<button class="w-full flex items-center justify-between py-2 px-3 rounded-lg hover:bg-[#1a2a1a]/5 transition-colors text-left group" onclick="navigate('byg');closeMenu()">
 <span class="text-xs text-[#1a2a1a]/60 group-hover:text-[#1a4a3a]">Vælg løsning</span>
 <span class="material-symbols-outlined text-[#1a2a1a]/15 text-sm group-hover:text-[#1a4a3a]">chevron_right</span>
 </button>
@@ -5233,7 +5233,7 @@ body.rd-skin .wc-ref-art:before{
       btn.style.border = '1.5px solid ' + s.color + '40';
       btn.addEventListener('mouseenter', ()=>{ btn.style.background = s.bgColor; });
       btn.addEventListener('mouseleave', ()=>{ btn.style.background = '#fff'; });
-      btn.addEventListener('click', ()=>{ if(typeof navigate === 'function') navigate('have'); });
+      btn.addEventListener('click', ()=>{ if(typeof navigate === 'function') navigate('byg'); });
       loes.appendChild(btn);
     });
   }
@@ -13508,7 +13508,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
       return '<article class="samlet-card '+st+'" data-card-id="'+s.id+'" style="animation:larIn .2s ease both;animation-delay:'+(i*.03)+'s"><div class="samlet-card-top" onclick="samletToggleDetails(this)">'+window.larCardImage(id,s.svg||'')+'</div><div class="samlet-card-body"><span class="samlet-badge"><span class="material-symbols-outlined" style="font-size:13px">'+(st==='recommended'?'check_circle':st==='less'?'warning':'radio_button_unchecked')+'</span>'+statusLabel(st)+'</span><div style="font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:'+s.katCol+';display:flex;gap:5px;align-items:center"><span class="material-symbols-outlined" style="font-size:13px">'+(s.icon||'water_drop')+'</span>'+s.katNavn+'</div><h4 onclick="samletToggleDetails(this)">'+s.navn+'</h4><p onclick="samletToggleDetails(this)">'+(s.tagline||'')+'</p><div><div style="display:flex;justify-content:space-between;font-size:10px;font-weight:800;color:rgba(26,42,26,.55);margin-bottom:5px"><span>Håndterer <b class="samlet-handled">'+handled.toLocaleString('da-DK')+' L</b></span><span class="samlet-missing">'+Math.max(0,t-handled).toLocaleString('da-DK')+' L mangler</span></div><div class="samlet-mini-bar"><div style="width:'+pct+'%"></div></div></div><div class="samlet-card-actions"><button class="samlet-chipbtn secondary" onclick="event.stopPropagation();samletToggleDetails(this)"><span class="material-symbols-outlined" style="font-size:14px">expand_more</span> Læs mere</button>'+adjust+'</div><div class="samlet-details"><p>'+(s.hvad||'Denne løsning kan indgå i dit LAR-system og kombineres med andre løsninger efter behov.')+'</p><div class="samlet-details-grid"><div class="samlet-detail-box"><span>Pris</span><strong>'+(s.pris||'Varierer')+'</strong></div><div class="samlet-detail-box"><span>Sværhed</span><strong>'+(s.svaerhed||'Afhænger af grund')+'</strong></div><div class="samlet-detail-box"><span>Anlæg</span><strong>'+(s.tid||'Se detaljer')+'</strong></div><div class="samlet-detail-box"><span>Vedligehold</span><strong>'+(s.vedligehold||'Løbende')+'</strong></div></div>'+slider+'</div></div></article>';}).join(''); updateCards();
   };
   function patch(){injectIntro(); const title=document.querySelector('#page-byg h1'); if(title)title.textContent='Vælg løsninger til din grund'; const intro=Array.from(document.querySelectorAll('#page-byg p')).find(p=>p.textContent.includes('Skru på størrelserne')); if(intro)intro.textContent='Klik på kortene for at læse mere – og vælg de løsninger, der giver mening for dig. Når du vælger løsninger, opdaterer vi automatisk dit resultat.'; document.querySelectorAll('button,span,h4').forEach(el=>{if(el.textContent.trim()==='Hvad vil du opnå?'||el.textContent.trim()==='Vælg løsning') el.textContent='Vælg løsninger';}); window.byg2RenderGrid&&window.byg2RenderGrid(); window.recalcByg&&window.recalcByg();}
-  const originalNavigate=window.navigate; if(typeof originalNavigate==='function'){window.navigate=function(page){if(page==='have')page='byg'; originalNavigate(page); setTimeout(patch,80);};}
+  if(typeof window.navigate==='function'){const _nav=window.navigate; window.navigate=function(page){_nav(page); setTimeout(patch,80);};}
   document.addEventListener('DOMContentLoaded',()=>setTimeout(patch,100)); setTimeout(patch,200);
 })();
 </script>
@@ -17421,7 +17421,7 @@ body.rd-skin button[data-rain-symptom-card]:focus-visible{
       }
     }catch(e){}
     if(typeof window.navigate === 'function'){
-      window.navigate('have');
+      window.navigate('byg');
       setTimeout(function(){
         try{ if(typeof window.renderLarCards==='function') window.renderLarCards('alle'); }catch(e){}
         try{ if(typeof window.byg2RenderGrid==='function') window.byg2RenderGrid(); }catch(e){}
@@ -21846,7 +21846,7 @@ MÅLET med hver samtale: at brugeren føler sig forstået, føler sig klogere, f
     });
 
     section.querySelector('#rh-problem-to-solutions')?.addEventListener('click', function(){
-      if(typeof window.navigate === 'function') window.navigate('have');
+      if(typeof window.navigate === 'function') window.navigate('byg');
       else if(typeof window.showPage === 'function') window.showPage('have');
     });
 
@@ -22305,7 +22305,7 @@ MÅLET med hver samtale: at brugeren føler sig forstået, føler sig klogere, f
 
   function goToSolutions(){
     if(typeof window.navigate === 'function'){
-      window.navigate('have');
+      window.navigate('byg');
     } else if(typeof window.showPage === 'function'){
       window.showPage('have');
     }
@@ -33901,7 +33901,7 @@ html body.rd-skin #page-gang .lar-print-doc__btn--primary{
       btn.__rhV91Bound = true;
       btn.addEventListener('click', function(ev){
         ev.preventDefault();
-        if(typeof window.navigate === 'function') window.navigate('have');
+        if(typeof window.navigate === 'function') window.navigate('byg');
       });
     }
   }
@@ -34016,10 +34016,12 @@ html body.rd-skin #page-gang .lar-print-doc__btn--primary{
   }
 
   function updateNav(active){
+    // 'byg' and 'have' are the same nav slot — solutions page
+    var navActive = (active === 'byg') ? 'have' : active;
     var pageId = 'page-' + active;
     document.querySelectorAll('[data-page], .nav-link, .rd-nav__link').forEach(function(el){
       var target = norm(el.getAttribute('data-page') || el.getAttribute('data-target') || el.getAttribute('href') || '');
-      var isActive = target === active || el.getAttribute('href') === '#' + pageId;
+      var isActive = target === active || target === navActive || el.getAttribute('href') === '#' + pageId;
       el.classList.toggle('active', !!isActive);
       if (el.matches('button,[role="button"],a')) el.setAttribute('aria-current', isActive ? 'page' : 'false');
     });

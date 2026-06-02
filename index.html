@@ -7531,7 +7531,6 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
       return '<article class="samlet-card '+st+'" data-card-id="'+s.id+'" style="animation:larIn .2s ease both;animation-delay:'+(i*.03)+'s"><div class="samlet-card-top" onclick="samletToggleDetails(this)">'+window.larCardImage(id,s.svg||'')+'</div><div class="samlet-card-body"><span class="samlet-badge"><span class="material-symbols-outlined" style="font-size:13px">'+(st==='recommended'?'check_circle':st==='less'?'warning':'radio_button_unchecked')+'</span>'+statusLabel(st)+'</span><div style="font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:'+s.katCol+';display:flex;gap:5px;align-items:center"><span class="material-symbols-outlined" style="font-size:13px">'+(s.icon||'water_drop')+'</span>'+s.katNavn+'</div><h4 onclick="samletToggleDetails(this)">'+s.navn+'</h4><p onclick="samletToggleDetails(this)">'+(s.tagline||'')+'</p><div><div style="display:flex;justify-content:space-between;font-size:10px;font-weight:800;color:rgba(26,42,26,.55);margin-bottom:5px"><span>Håndterer <b class="samlet-handled">'+handled.toLocaleString('da-DK')+' L</b></span><span class="samlet-missing">'+Math.max(0,t-handled).toLocaleString('da-DK')+' L mangler</span></div><div class="samlet-mini-bar"><div style="width:'+pct+'%"></div></div></div><div class="samlet-card-actions"><button class="samlet-chipbtn secondary" onclick="event.stopPropagation();samletToggleDetails(this)"><span class="material-symbols-outlined" style="font-size:14px">expand_more</span> Læs mere</button>'+adjust+'</div><div class="samlet-details"><p>'+(s.hvad||'Denne løsning kan indgå i dit LAR-system og kombineres med andre løsninger efter behov.')+'</p><div class="samlet-details-grid"><div class="samlet-detail-box"><span>Pris</span><strong>'+(s.pris||'Varierer')+'</strong></div><div class="samlet-detail-box"><span>Sværhed</span><strong>'+(s.svaerhed||'Afhænger af grund')+'</strong></div><div class="samlet-detail-box"><span>Anlæg</span><strong>'+(s.tid||'Se detaljer')+'</strong></div><div class="samlet-detail-box"><span>Vedligehold</span><strong>'+(s.vedligehold||'Løbende')+'</strong></div></div>'+slider+'</div></div></article>';}).join(''); updateCards();
   };
   function patch(){injectIntro(); const title=document.querySelector('#page-byg h1'); if(title)title.textContent='Vælg løsninger til din grund'; const intro=Array.from(document.querySelectorAll('#page-byg p')).find(p=>p.textContent.includes('Skru på størrelserne')); if(intro)intro.textContent='Klik på kortene for at læse mere – og vælg de løsninger, der giver mening for dig. Når du vælger løsninger, opdaterer vi automatisk dit resultat.'; document.querySelectorAll('button,span,h4').forEach(el=>{if(el.textContent.trim()==='Hvad vil du opnå?'||el.textContent.trim()==='Vælg løsning') el.textContent='Vælg løsninger';}); window.byg2RenderGrid&&window.byg2RenderGrid(); window.recalcByg&&window.recalcByg();}
-  if(typeof window.navigate==='function'){const _nav=window.navigate; }
   document.addEventListener('DOMContentLoaded',()=>setTimeout(patch,100)); setTimeout(patch,200);
 })();
 </script>
@@ -9031,24 +9030,6 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
   setTimeout(runCleanup, 600);
   setTimeout(runCleanup, 1500);
 
-  // Hver gang man navigerer, kør cleanup igen (specielt vigtigt for
-  // det dynamisk injicerede "Næste skridt"-banner)
-  var prev = window.navigate;
-  if(typeof prev === 'function'){
-    
-  } else {
-    // Hvis navigate endnu ikke er defineret, vent og hook senere
-    var t = 0;
-    var iv = setInterval(function(){
-      t++;
-      if(typeof window.navigate === 'function'){
-        var p = window.navigate;
-        
-        clearInterval(iv);
-      }
-      if(t > 50) clearInterval(iv);
-    }, 100);
-  }
 })();
 </script>
 
@@ -9120,12 +9101,6 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     document.addEventListener('DOMContentLoaded', run);
   } else {
     run();
-  }
-
-  var previousNavigate = window.navigate;
-  if(typeof previousNavigate === 'function' && !window.__rhDuplicateNavigatePatch){
-    window.__rhDuplicateNavigatePatch = true;
-    
   }
 })();
 </script>
@@ -11126,16 +11101,6 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
       };
     }
   }
-
-  // Hook fane-skift, så tallet males ind efter Vælg løsninger renderes.
-  function hookNavigate(){
-    if(typeof window.navigate === 'function' && !window.__rhV4NavHook){
-      window.__rhV4NavHook = true;
-      var origNav = window.navigate;
-      
-    }
-  }
-
   // Capture alle klik på fanen/linket, også hvis navigate overskrives senere.
   document.addEventListener('click', function(ev){
     var el = ev.target && ev.target.closest && ev.target.closest('[data-page="byg"], button, a');
@@ -20030,6 +19995,11 @@ window.larCardStatus=larCardStatus;
     closeTransientUi();
     try { sessionStorage.setItem('rh_active_page', target); } catch(e) {}
     if (!opts || opts.scroll !== false) window.scrollTo({top:0, behavior:'smooth'});
+    // Page-specific inits (restored from original navigate)
+    if (target === 'inspiration') setTimeout(function(){ if(typeof initInspiMap==='function') initInspiMap(); }, 100);
+    if (target === 'byg') setTimeout(function(){ if(typeof byg2RenderGrid==='function') byg2RenderGrid(); }, 50);
+    if (target === 'diagnose') setTimeout(function(){ if(typeof dInit==='function') dInit(); }, 50);
+    if (target === 'gang') setTimeout(function(){ if(typeof renderKommuneList==='function') renderKommuneList(); }, 50);
     return true;
   }
 

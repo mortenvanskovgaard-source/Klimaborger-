@@ -9571,25 +9571,6 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
       if(btn) btn.setAttribute('aria-label', label);
     });
   }
-  var originalNavigate = window.navigate;
-  if(typeof originalNavigate === 'function'){
-    
-  }
-  var originalToggle = window.toggleMenu;
-  if(typeof originalToggle === 'function'){
-    window.toggleMenu = function(){
-      originalToggle();
-      var menu = document.getElementById('slide-menu');
-      setMenuExpanded(menu && !menu.classList.contains('translate-x-full'));
-    };
-  }
-  var originalClose = window.closeMenu;
-  if(typeof originalClose === 'function'){
-    window.closeMenu = function(){
-      originalClose();
-      setMenuExpanded(false);
-    };
-  }
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && typeof window.closeMenu === 'function') window.closeMenu();
   });

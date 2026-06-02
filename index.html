@@ -6881,13 +6881,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     if (typeof window.navigate !== 'function') return false;
 
     const originalNavigate = window.navigate;
-    window.navigate = function(page) {
-      originalNavigate(page);
-      setTimeout(function() {
-        cleanupPlaceholders();
-        inject(page);
-      }, 80);
-    };
+    
 
     window.__rhNextStepCtaFixed = true;
     return true;
@@ -7537,7 +7531,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
       return '<article class="samlet-card '+st+'" data-card-id="'+s.id+'" style="animation:larIn .2s ease both;animation-delay:'+(i*.03)+'s"><div class="samlet-card-top" onclick="samletToggleDetails(this)">'+window.larCardImage(id,s.svg||'')+'</div><div class="samlet-card-body"><span class="samlet-badge"><span class="material-symbols-outlined" style="font-size:13px">'+(st==='recommended'?'check_circle':st==='less'?'warning':'radio_button_unchecked')+'</span>'+statusLabel(st)+'</span><div style="font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:'+s.katCol+';display:flex;gap:5px;align-items:center"><span class="material-symbols-outlined" style="font-size:13px">'+(s.icon||'water_drop')+'</span>'+s.katNavn+'</div><h4 onclick="samletToggleDetails(this)">'+s.navn+'</h4><p onclick="samletToggleDetails(this)">'+(s.tagline||'')+'</p><div><div style="display:flex;justify-content:space-between;font-size:10px;font-weight:800;color:rgba(26,42,26,.55);margin-bottom:5px"><span>Håndterer <b class="samlet-handled">'+handled.toLocaleString('da-DK')+' L</b></span><span class="samlet-missing">'+Math.max(0,t-handled).toLocaleString('da-DK')+' L mangler</span></div><div class="samlet-mini-bar"><div style="width:'+pct+'%"></div></div></div><div class="samlet-card-actions"><button class="samlet-chipbtn secondary" onclick="event.stopPropagation();samletToggleDetails(this)"><span class="material-symbols-outlined" style="font-size:14px">expand_more</span> Læs mere</button>'+adjust+'</div><div class="samlet-details"><p>'+(s.hvad||'Denne løsning kan indgå i dit LAR-system og kombineres med andre løsninger efter behov.')+'</p><div class="samlet-details-grid"><div class="samlet-detail-box"><span>Pris</span><strong>'+(s.pris||'Varierer')+'</strong></div><div class="samlet-detail-box"><span>Sværhed</span><strong>'+(s.svaerhed||'Afhænger af grund')+'</strong></div><div class="samlet-detail-box"><span>Anlæg</span><strong>'+(s.tid||'Se detaljer')+'</strong></div><div class="samlet-detail-box"><span>Vedligehold</span><strong>'+(s.vedligehold||'Løbende')+'</strong></div></div>'+slider+'</div></div></article>';}).join(''); updateCards();
   };
   function patch(){injectIntro(); const title=document.querySelector('#page-byg h1'); if(title)title.textContent='Vælg løsninger til din grund'; const intro=Array.from(document.querySelectorAll('#page-byg p')).find(p=>p.textContent.includes('Skru på størrelserne')); if(intro)intro.textContent='Klik på kortene for at læse mere – og vælg de løsninger, der giver mening for dig. Når du vælger løsninger, opdaterer vi automatisk dit resultat.'; document.querySelectorAll('button,span,h4').forEach(el=>{if(el.textContent.trim()==='Hvad vil du opnå?'||el.textContent.trim()==='Vælg løsning') el.textContent='Vælg løsninger';}); window.byg2RenderGrid&&window.byg2RenderGrid(); window.recalcByg&&window.recalcByg();}
-  if(typeof window.navigate==='function'){const _nav=window.navigate; window.navigate=function(page){_nav(page); setTimeout(patch,80);};}
+  if(typeof window.navigate==='function'){const _nav=window.navigate; }
   document.addEventListener('DOMContentLoaded',()=>setTimeout(patch,100)); setTimeout(patch,200);
 })();
 </script>
@@ -8845,28 +8839,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     if(window._mergedNavigateInstalled) return;
     window._mergedNavigateInstalled = true;
 
-    window.navigate = function(page){
-      // Omdiriger 'kortlaeg' til 'diagnose' (samme fane nu)
-      if(page === 'kortlaeg') page = 'diagnose';
-
-      // Ring den oprindelige funktion
-      var result = orig.call(this, page);
-
-      // Efter den har skjult/vist sider, tilføj vores ekstra logik
-      if(page === 'diagnose'){
-        showKortlaegUnderDiagnose();
-        // Sikker UI-opdatering for kortlaeg-indhold der måske kræver init
-        setTimeout(function(){
-          if(typeof window.KB !== 'undefined' && typeof window.KB._opdaterUI === 'function'){
-            try { window.KB._opdaterUI(); } catch(e){}
-          }
-        }, 80);
-      } else {
-        hideKortlaegFromDiagnose();
-      }
-
-      return result;
-    };
+    
 
     // Wrap også navigateTo (bruges af nogle knapper)
     var origTo = window.navigateTo;
@@ -9062,12 +9035,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
   // det dynamisk injicerede "Næste skridt"-banner)
   var prev = window.navigate;
   if(typeof prev === 'function'){
-    window.navigate = function(page){
-      var r = prev.apply(this, arguments);
-      setTimeout(runCleanup, 100);
-      setTimeout(runCleanup, 300);
-      return r;
-    };
+    
   } else {
     // Hvis navigate endnu ikke er defineret, vent og hook senere
     var t = 0;
@@ -9075,12 +9043,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
       t++;
       if(typeof window.navigate === 'function'){
         var p = window.navigate;
-        window.navigate = function(page){
-          var r = p.apply(this, arguments);
-          setTimeout(runCleanup, 100);
-          setTimeout(runCleanup, 300);
-          return r;
-        };
+        
         clearInterval(iv);
       }
       if(t > 50) clearInterval(iv);
@@ -9162,11 +9125,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
   var previousNavigate = window.navigate;
   if(typeof previousNavigate === 'function' && !window.__rhDuplicateNavigatePatch){
     window.__rhDuplicateNavigatePatch = true;
-    window.navigate = function(){
-      var result = previousNavigate.apply(this, arguments);
-      run();
-      return result;
-    };
+    
   }
 })();
 </script>
@@ -9639,11 +9598,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
   }
   var originalNavigate = window.navigate;
   if(typeof originalNavigate === 'function'){
-    window.navigate = function(page){
-      originalNavigate(page);
-      updateNavState(page);
-      try { history.replaceState(null, '', '#'+page); } catch(e) {}
-    };
+    
   }
   var originalToggle = window.toggleMenu;
   if(typeof originalToggle === 'function'){
@@ -10995,16 +10950,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     if(window.__rhFaneSyncInstalled) return true;
     window.__rhFaneSyncInstalled = true;
 
-    window.navigate = function(page){
-      var r = orig.apply(this, arguments);
-      /* Når brugeren skifter til byg-fanen, opdater tallene */
-      if(page === 'byg'){
-        /* Lille forsinkelse så DOM er færdig med fane-switch */
-        setTimeout(refreshBygFane, 50);
-        setTimeout(refreshBygFane, 250);
-      }
-      return r;
-    };
+    
     return true;
   }
 
@@ -11186,12 +11132,7 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     if(typeof window.navigate === 'function' && !window.__rhV4NavHook){
       window.__rhV4NavHook = true;
       var origNav = window.navigate;
-      window.navigate = function(page){
-        storeCalculatedLiters();
-        var r = origNav.apply(this, arguments);
-        if(page === 'byg' || page === 'kortlaeg') refreshAfterRender();
-        return r;
-      };
+      
     }
   }
 
@@ -12933,12 +12874,7 @@ MÅLET med hver samtale: at brugeren føler sig forstået, føler sig klogere, f
   var oldNavigate = window.navigate;
   if(typeof oldNavigate === 'function' && !window.__rhSafeRemoveLarAnimationNav){
     window.__rhSafeRemoveLarAnimationNav = true;
-    window.navigate = function(){
-      var result = oldNavigate.apply(this, arguments);
-      setTimeout(restoreVaelgLoesninger, 80);
-      setTimeout(restoreVaelgLoesninger, 350);
-      return result;
-    };
+    
   }
 })();
 </script>
@@ -13085,11 +13021,7 @@ MÅLET med hver samtale: at brugeren føler sig forstået, føler sig klogere, f
   var oldNavigate = window.navigate;
   if(typeof oldNavigate === 'function' && !window.__rhRestoreProblemNav){
     window.__rhRestoreProblemNav = true;
-    window.navigate = function(){
-      var result = oldNavigate.apply(this, arguments);
-      setTimeout(insertSection, 200);
-      return result;
-    };
+    
   }
 })();
 </script>
@@ -13228,12 +13160,7 @@ MÅLET med hver samtale: at brugeren føler sig forstået, føler sig klogere, f
   var oldNavigate = window.navigate;
   if(typeof oldNavigate === 'function' && !window.__rhRemoveOffsetHeroDuplicate){
     window.__rhRemoveOffsetHeroDuplicate = true;
-    window.navigate = function(){
-      var result = oldNavigate.apply(this, arguments);
-      setTimeout(removeDuplicateHero, 180);
-      setTimeout(removeDuplicateHero, 800);
-      return result;
-    };
+    
   }
 })();
 </script>
@@ -13329,11 +13256,7 @@ MÅLET med hver samtale: at brugeren føler sig forstået, føler sig klogere, f
   var oldNavigate = window.navigate;
   if(typeof oldNavigate === 'function' && !window.__rhNaturalHeroPatch){
     window.__rhNaturalHeroPatch = true;
-    window.navigate = function(){
-      var result = oldNavigate.apply(this, arguments);
-      setTimeout(insertNaturalHero, 180);
-      return result;
-    };
+    
   }
 })();
 </script>
@@ -13441,12 +13364,7 @@ MÅLET med hver samtale: at brugeren føler sig forstået, føler sig klogere, f
   if(typeof oldNavigate === 'function' && !window.__rhDiagnosisOnlyAfterYesNav){
     window.__rhDiagnosisOnlyAfterYesNav = true;
 
-    window.navigate = function(){
-      var result = oldNavigate.apply(this, arguments);
-      setTimeout(init, 160);
-      setTimeout(init, 700);
-      return result;
-    };
+    
   }
 
   window.RHOpenDiagnosisCards = function(){
@@ -13727,12 +13645,7 @@ MÅLET med hver samtale: at brugeren føler sig forstået, føler sig klogere, f
   var oldNavigate = window.navigate;
   if(typeof oldNavigate === 'function' && !window.__rhProblemSelectRemoveButtons){
     window.__rhProblemSelectRemoveButtons = true;
-    window.navigate = function(){
-      var result = oldNavigate.apply(this, arguments);
-      setTimeout(init, 180);
-      setTimeout(init, 700);
-      return result;
-    };
+    
   }
 })();
 </script>
@@ -13796,11 +13709,7 @@ MÅLET med hver samtale: at brugeren føler sig forstået, føler sig klogere, f
   var oldNavigate = window.navigate;
   if(typeof oldNavigate === 'function' && !window.__rhNavLogoSeeOthersFix){
     window.__rhNavLogoSeeOthersFix = true;
-    window.navigate = function(){
-      var result = oldNavigate.apply(this, arguments);
-      setTimeout(fixNav, 150);
-      return result;
-    };
+    
   }
 })();
 </script>
@@ -13924,11 +13833,7 @@ MÅLET med hver samtale: at brugeren føler sig forstået, føler sig klogere, f
   var oldNavigate = window.navigate;
   if(typeof oldNavigate === 'function' && !window.__rhFinalNavFix){
     window.__rhFinalNavFix = true;
-    window.navigate = function(){
-      var result = oldNavigate.apply(this, arguments);
-      setTimeout(forceNavFix, 180);
-      return result;
-    };
+    
   }
 })();
 </script>
@@ -14162,12 +14067,7 @@ setInterval(forceWhiteNavigation,2500);
   const oldNavigate = window.navigate;
   if(typeof oldNavigate === 'function' && !window.__rhPremiumUxPatch){
     window.__rhPremiumUxPatch = true;
-    window.navigate = function(){
-      const result = oldNavigate.apply(this, arguments);
-      setTimeout(init, 180);
-      setTimeout(init, 800);
-      return result;
-    };
+    
   }
 })();
 </script>
@@ -14958,12 +14858,7 @@ setInterval(forceWhiteNavigation,2500);
 
   var oldNavigate=window.navigate;
   if(typeof oldNavigate==='function' && !oldNavigate.__rhCentralV4){
-    window.navigate=function(){
-      var r=oldNavigate.apply(this,arguments);
-      setTimeout(function(){wrapSelectors(); cleanupLegacy(); if(arguments[0]==='have') rerender();}.bind(null,arguments[0]),50);
-      setTimeout(cleanupLegacy,350);
-      return r;
-    };
+    
     window.navigate.__rhCentralV4=true;
   }
 
@@ -15269,7 +15164,7 @@ window.larCardStatus=larCardStatus;
         return r;
       };
       wrapped.__rhV5Wrapped = true;
-      window.navigate = wrapped;
+      
     }
   }
   function observeGrid(){
@@ -15544,7 +15439,7 @@ window.larCardStatus=larCardStatus;
   },true);
   var oldNavigate=window.navigate;
   if(typeof oldNavigate==='function' && !oldNavigate.__rhDxDefinitive){
-    window.navigate=function(page){var r=oldNavigate.apply(this,arguments); if(page==='byg'||page==='have') {setTimeout(renderGrid,60); setTimeout(renderGrid,250);} return r;};
+    
     window.navigate.__rhDxDefinitive=true;
   }
   function boot(){renderGrid(); setTimeout(renderGrid,120); setTimeout(renderGrid,600);}
@@ -15660,7 +15555,7 @@ window.larCardStatus=larCardStatus;
   if(typeof oldNavigate==='function' && !oldNavigate.__rhSummaryWrapped){
     var nav=function(){ var r=oldNavigate.apply(this,arguments); setTimeout(applyCleanup,60); return r; };
     nav.__rhSummaryWrapped=true;
-    window.navigate=nav;
+    
   }
   window.addEventListener('rh:problem-selected',function(){setTimeout(applyCleanup,0);});
   window.addEventListener('storage',function(e){if(e.key===STORAGE_KEY) setTimeout(applyCleanup,0);});
@@ -16290,13 +16185,7 @@ window.larCardStatus=larCardStatus;
   function wrapNavigate(){
     if(typeof window.navigate !== 'function' || window.navigate.__rhActiveNavWrapped) return;
     var original = window.navigate;
-    window.navigate = function(page){
-      var result = original.apply(this, arguments);
-      setTimeout(updateActiveNav, 0);
-      setTimeout(updateActiveNav, 80);
-      setTimeout(updateActiveNav, 250);
-      return result;
-    };
+    
     window.navigate.__rhActiveNavWrapped = true;
   }
   function boot(){ wrapNavigate(); updateActiveNav(); }
@@ -16412,7 +16301,7 @@ window.larCardStatus=larCardStatus;
       return result;
     };
     guarded.__rhDinGrundScrollGuard = true;
-    window.navigate = guarded;
+    
   }
 
   patchNavigate();
@@ -16922,7 +16811,7 @@ window.larCardStatus=larCardStatus;
         return r;
       };
       wrapped.__rhFinalWrapped=true;
-      window.navigate=wrapped;
+      
     }
   }
   function observe(){
